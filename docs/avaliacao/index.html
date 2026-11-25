@@ -43,6 +43,14 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 .wmdica{font-size:13.5px;background:#fff;border-radius:10px;padding:9px 11px;border:1px dashed #c9c9d1}
 .wmdica b{color:#c8102e}
 .wmb{display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:#fff;border:1px solid #d6d6dc;color:#c8102e;font-weight:800;text-decoration:none}
+.troca{display:none;margin-top:10px;gap:12px;align-items:center;background:var(--soft);border-radius:14px;padding:10px}
+.troca.on{display:flex}
+.troca img{width:96px;height:72px;object-fit:cover;border-radius:10px;background:#ddd;flex:none}
+.troca .t{flex:1}.troca b{display:block;font-size:14.5px}.troca small{color:var(--mut);font-size:12.5px;display:block}
+.troca .pl{margin-top:6px;display:flex;gap:6px;align-items:center}
+.troca .pl input{width:120px;height:36px;border:1px solid #d6d6dc;border-radius:9px;padding:0 9px;text-transform:uppercase;font-weight:700}
+.lista .tc{display:flex;gap:10px;align-items:center}.lista .tc img{width:56px;height:42px;object-fit:cover;border-radius:7px;background:#eee;flex:none}
+.lista .tc small{display:block;color:var(--mut);font-size:12px}
 .item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--soft)}
 .item:last-child{border-bottom:0}
 .item .t{flex:1}.item .t b{display:block;font-size:14.5px}.item .t small{color:var(--mut);font-size:12.5px}
@@ -145,9 +153,16 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
     <p class="nota">Tire fotos da frente, traseira, laterais, painel (com km), bancos, pneus e de cada avaria.</p>
   </section>
 
-  <!-- 4. resultado -->
+  <!-- 4. troca -->
+  <section class="card">
+    <h2><span class="n">4</span>Carro da troca (meu estoque)</h2>
+    <div class="busca"><input class="in" id="troca" placeholder="Carregando estoque…" autocomplete="off"><div class="lista" id="lTroca"></div></div>
+    <div class="troca" id="trocaBox"></div>
+  </section>
+
+  <!-- 5. resultado -->
   <section class="card res">
-    <h2><span class="n">4</span>Resultado</h2>
+    <h2><span class="n">5</span>Resultado</h2>
     <div id="calc"><p class="vazio">Escolha marca, modelo e ano para buscar a FIPE.</p></div>
     <div class="alerta" id="alerta"></div>
     <label class="l" for="proposta">Proposta final ao cliente (opcional)</label>
@@ -202,7 +217,7 @@ let CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, (ler('av
 const novo = () => ({ id: 'a' + Date.now(), criado: new Date().toISOString(), tipo: 'carros', marca: null, modelo: null, ano: null, fipe: null,
   km: '', webmotors: 0, wmVersao: '', placa: '', cor: '', cliente: '', proposta: '', obs: '',
   e: { pintura: 0, martelinho: 0, pneu: 0, parabrisa: false, revisao: true, chave: true, interior: 'bom', mecanica: 'ok', mecanicaValor: 0, sinistro: false, outros: 0 },
-  fotos: [], prints: [] });
+  fotos: [], prints: [], troca: null });
 let A = novo();
 
 /* ---------- FIPE ---------- */
@@ -417,7 +432,7 @@ function preencher() {
   $('#ano').innerHTML = A.ano ? `<option value="${esc(A.ano.codigo)}">${esc(A.ano.nome)}</option>` : '<option value="">Escolha o modelo primeiro</option>'; $('#ano').disabled = !A.modelo;
   $('#km').value = A.km ? (+A.km).toLocaleString('pt-BR') : ''; $('#placa').value = A.placa || ''; $('#cor').value = A.cor || ''; $('#cliente').value = A.cliente || '';
   $('#proposta').value = A.proposta ? brl(A.proposta) : ''; $('#wmVal').value = A.webmotors ? brl(A.webmotors) : ''; $('#obs').value = A.obs || '';
-  mostrarFipe(); desenharEstado(); desenharFotos(); calcular();
+  mostrarFipe(); desenharEstado(); desenharFotos(); desenharTroca(); calcular();
   if (A.marca) api(`${A.tipo}/marcas/${A.marca.codigo}/modelos`).then(r => { MODELOS = r.modelos; }).catch(() => {});
   if (A.modelo) api(`${A.tipo}/marcas/${A.marca.codigo}/modelos/${A.modelo.codigo}/anos`).then(anos => { $('#ano').innerHTML = anos.map(a => `<option value="${esc(a.codigo)}"${A.ano && a.codigo === A.ano.codigo ? ' selected' : ''}>${esc(a.nome.replace(/^32000/, '0 km'))}</option>`).join(''); }).catch(() => {});
   carregarMarcas();
@@ -446,6 +461,42 @@ $('#bCfg').onclick = abrirCfg;
 $('#cfgLista').addEventListener('change', e => { const k = e.target.dataset.cfg; if (!k) return; const v = parseFloat(String(e.target.value).replace(/\./g, '').replace(',', '.')); if (isFinite(v) && v >= 0) { CFG[k] = v; gravar('aval-cfg', CFG); desenharEstado(); calcular(); toast('Valor atualizado'); } else e.target.value = CFG[k]; });
 $('#cfgPadrao').onclick = () => { CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, o.v])); gravar('aval-cfg', CFG); abrirCfg(); desenharEstado(); calcular(); toast('Valores padrão restaurados'); };
 
+/* ---------- carro da troca (estoque) ---------- */
+let ESTOQUE = [];
+const placaDe = c => { const m = /\/Fotos\/([A-Z]{3})-?(\d[A-Z0-9]\d{2})_/.exec(c.capa || (c.fotos || [])[0] || ''); return m ? m[1] + m[2] : ''; };
+fetch('../estoque.json?t=' + Date.now()).then(r => r.json()).then(d => {
+  ESTOQUE = (d.carros || []).map(c => ({ ...c, placa: placaDe(c) }));
+  $('#troca').placeholder = `Buscar no estoque (${ESTOQUE.length} carros): nome, placa ou ano`;
+}).catch(() => { $('#troca').placeholder = 'Não consegui carregar o estoque'; });
+const lojaN = l => l === 'outlet' ? 'Outlet' : 'Carmax';
+function desenharTroca() {
+  const t = A.troca, box = $('#trocaBox');
+  if (!t) { box.classList.remove('on'); box.innerHTML = ''; $('#troca').value = ''; return; }
+  $('#troca').value = t.nome;
+  box.innerHTML = `${t.capa ? `<img src="${esc(t.capa)}" alt="">` : ''}<div class="t"><b>${esc(t.nome)}</b><small>${esc(t.ano)} · ${(+t.km || 0).toLocaleString('pt-BR')} km · ${esc(t.cor || '')} · ${lojaN(t.loja)}</small><small><b style="display:inline">${t.preco ? brl(t.preco) : 'Consulte'}</b></small><div class="pl"><small>Placa</small><input id="trocaPlaca" maxlength="7" value="${esc(t.placa || '')}" placeholder="Digite"></div></div><button class="mini" id="trocaX" aria-label="Tirar carro da troca">×</button>`;
+  box.classList.add('on');
+}
+{
+  const inp = $('#troca'), box = $('#lTroca');
+  const draw = () => {
+    const q = N(inp.value).replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean);
+    const v = ESTOQUE.filter(c => { const s = N(`${c.nome} ${c.ano} ${c.placa} ${c.cor}`); return q.every(w => s.includes(w)); }).slice(0, 40);
+    box.innerHTML = v.length ? v.map(c => `<button data-id="${esc(c.loja + ':' + c.id)}"><span class="tc">${c.capa ? `<img src="${esc(c.capa)}" alt="" loading="lazy">` : ''}<span>${esc(c.nome)}<small>${esc(c.ano)} · ${(+c.km || 0).toLocaleString('pt-BR')} km · ${c.preco ? brl(c.preco) : ''}${c.placa ? ' · ' + c.placa : ''} · ${lojaN(c.loja)}</small></span></span></button>`).join('') : '<p class="vazio">Nada encontrado</p>';
+    box.classList.add('on');
+  };
+  inp.addEventListener('focus', () => { inp.select(); draw(); }); inp.addEventListener('input', draw);
+  inp.addEventListener('blur', () => setTimeout(() => { box.classList.remove('on'); if (A.troca) inp.value = A.troca.nome; }, 150));
+  box.addEventListener('mousedown', e => e.preventDefault());
+  box.addEventListener('click', e => {
+    const b = e.target.closest('button[data-id]'); if (!b) return;
+    const c = ESTOQUE.find(x => x.loja + ':' + x.id === b.dataset.id); if (!c) return;
+    A.troca = { loja: c.loja, id: c.id, nome: c.nome, ano: c.ano, km: c.km, cor: c.cor, preco: c.preco, capa: c.capa, placa: c.placa, link: c.link };
+    box.classList.remove('on'); inp.blur(); desenharTroca(); calcular(); autosalvar();
+  });
+  $('#trocaBox').addEventListener('click', e => { if (e.target.closest('#trocaX')) { A.troca = null; desenharTroca(); calcular(); autosalvar(); } });
+  $('#trocaBox').addEventListener('input', e => { if (e.target.id === 'trocaPlaca') { e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); A.troca.placa = e.target.value; } });
+}
+
 /* ---------- enviar (WhatsApp / compartilhar) ---------- */
 $('#bShare').onclick = async () => {
   const r = calcular(); if (!r) { toast('Escolha o veículo e o ano primeiro'); return; }
@@ -464,11 +515,14 @@ $('#bShare').onclick = async () => {
     r.rep.length ? 'Reparos: ' + r.rep.map(x => `${x[0]} ${brl(x[1])}`).join('; ') : 'Sem reparos apontados',
     `*Valor sugerido: ${brl(r.sug)}* (faixa ${brl(r.min)} a ${brl(r.max)})`,
     A.proposta ? `Proposta ao cliente: ${brl(A.proposta)}` : '',
+    ...(A.troca ? ['', `*Carro da troca (nosso estoque):*`, `${A.troca.nome} · ${A.troca.ano} · ${(+A.troca.km || 0).toLocaleString('pt-BR')} km`,
+      `Placa: *${A.troca.placa || 'não informada'}*` + (A.troca.preco ? ` · Preço: ${brl(A.troca.preco)}` : ''),
+      A.troca.preco ? `Diferença (troca − ${A.proposta ? 'proposta' : 'valor sugerido'}): *${brl(A.troca.preco - (A.proposta || r.sug))}*` : ''] : []),
     A.obs ? 'Obs.: ' + A.obs : ''
   ].filter((l, i, a) => l !== '' || (i > 0 && a[i - 1] !== '')).join('\n');
   const arqs = [];
-  for (const [i, k] of A.fotos.entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `avaliacao-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
   for (const [i, k] of (A.prints || []).entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `webmotors-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
+  for (const [i, k] of A.fotos.entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `avaliacao-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
   try {
     if (arqs.length && navigator.canShare && navigator.canShare({ files: arqs, text: linhas })) { await navigator.share({ files: arqs, text: linhas }); return; }
     if (navigator.share) { await navigator.share({ text: linhas }); return; }
