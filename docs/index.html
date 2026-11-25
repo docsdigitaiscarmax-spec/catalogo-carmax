@@ -76,6 +76,9 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(2
 @media(min-width:760px){.track img{object-fit:contain;max-height:72vh;height:72vh;aspect-ratio:auto}}
 .gdl{position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:6px;border:0;background:rgba(0,0,0,.62);color:#fff;font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:999px;cursor:pointer}
 .gdl:disabled{opacity:.7;cursor:wait}
+.gdl.pronto{background:#1fae55;animation:pulsa 1.2s ease-in-out infinite}
+@keyframes pulsa{50%{transform:scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.gdl.pronto{animation:none}}
 .gcount{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.62);color:#fff;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px}
 .thumbs{display:flex;gap:6px;overflow-x:auto;padding:8px 12px;background:#111;scrollbar-width:none}
 .thumbs::-webkit-scrollbar{display:none}
@@ -382,35 +385,61 @@ function fechar() {
 }
 function irFoto(i) { const tr = $('#gtrack'); tr.scrollTo({ left: i * tr.clientWidth, behavior: 'smooth' }); }
 
+/* ---- baixar fotos: 1º toque prepara, 2º toque salva/compartilha (o celular exige um toque recente) ---- */
+const DL = { id: null, arqs: null, base: '' };
+const celular = () => matchMedia('(pointer:coarse)').matches;
+async function prepararFotos(c, lab) {
+  const fotos = c.fotos.length ? c.fotos : [c.capa];
+  const via = (u, h) => `https://${h}/?url=` + encodeURIComponent(u.replace(/^https?:\/\//, '')) + '&output=jpg&q=90';
+  const base = (c.nome + ' ' + c.ano).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+  const out = new Array(fotos.length); let feitas = 0, prox = 0;
+  const pegar = async i => {
+    for (const h of ['wsrv.nl', 'images.weserv.nl', 'wsrv.nl']) {
+      try { const r = await fetch(via(fotos[i], h)); if (r.ok) { const b = await r.blob(); if (b.size > 1000) return b; } } catch (e) {}
+      await new Promise(r => setTimeout(r, 400));
+    }
+    return null;
+  };
+  const trab = async () => { while (prox < fotos.length) { const i = prox++; const b = await pegar(i); if (b) out[i] = new File([b], `${base}-${String(i + 1).padStart(2, '0')}.jpg`, { type: 'image/jpeg' }); lab.textContent = `Preparando ${++feitas}/${fotos.length}…`; } };
+  await Promise.all([trab(), trab(), trab(), trab()]);
+  return { arqs: out.filter(Boolean), total: fotos.length, base };
+}
+async function baixarZip(arqs, base) {
+  if (!window.JSZip) await new Promise((ok, no) => { const sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'; sc.onload = ok; sc.onerror = no; document.head.appendChild(sc); });
+  const zip = new JSZip(); arqs.forEach(f => zip.file(f.name, f));
+  const z = await zip.generateAsync({ type: 'blob' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(z); a.download = base + '-fotos.zip'; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 5000);
+}
 async function baixarFotos() {
   if (!atual) return;
-  const c = atual, fotos = c.fotos.length ? c.fotos : [c.capa], b = $('#gdl'), lab = b.querySelector('span'), txt0 = lab.textContent;
-  const base = (c.nome + ' ' + c.ano).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
-  const via = u => 'https://wsrv.nl/?url=' + encodeURIComponent(u.replace(/^https?:\/\//, '')) + '&output=jpg&q=92';
-  b.disabled = true;
+  const c = atual, b = $('#gdl'), lab = b.querySelector('span');
+  // 2º toque no celular: já está pronto, compartilha na hora
+  if (DL.id === c.id && DL.arqs) {
+    const arqs = DL.arqs;
+    try {
+      if (navigator.canShare && navigator.canShare({ files: arqs })) await navigator.share({ files: arqs });
+      else await baixarZip(arqs, DL.base);
+    } catch (e) {
+      if (e.name !== 'AbortError') { try { await baixarZip(arqs, DL.base); toast('Baixei as fotos em um arquivo .zip'); } catch (x) { toast('Não consegui salvar as fotos. Tente de novo.'); } }
+    }
+    return;
+  }
+  b.disabled = true; DL.id = null; DL.arqs = null;
   try {
-    const arqs = [];
-    for (let i = 0; i < fotos.length; i++) {
-      lab.textContent = `Preparando ${i + 1}/${fotos.length}…`;
-      let blob = null;
-      for (const u of [fotos[i], via(fotos[i])]) { try { const r = await fetch(u, { referrerPolicy: 'no-referrer' }); if (r.ok) { blob = await r.blob(); break; } } catch (e) {} }
-      if (blob) arqs.push(new File([blob], `${base}-${String(i + 1).padStart(2, '0')}.jpg`, { type: 'image/jpeg' }));
-    }
+    const { arqs, total, base } = await prepararFotos(c, lab);
     if (!arqs.length) throw new Error('nenhuma');
-    const celular = matchMedia('(pointer:coarse)').matches;
-    if (celular && navigator.canShare && navigator.canShare({ files: arqs })) {
-      try { await navigator.share({ files: arqs, title: c.nome }); } catch (e) { if (e.name !== 'AbortError') throw e; }
-    } else {
-      lab.textContent = 'Compactando…';
-      if (!window.JSZip) await new Promise((ok, no) => { const sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'; sc.onload = ok; sc.onerror = no; document.head.appendChild(sc); });
-      const zip = new JSZip(); arqs.forEach(f => zip.file(f.name, f));
-      const z = await zip.generateAsync({ type: 'blob' });
-      const a = document.createElement('a'); a.href = URL.createObjectURL(z); a.download = base + '-fotos.zip'; document.body.appendChild(a); a.click();
-      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+    if (arqs.length < total) toast(`${total - arqs.length} foto(s) não estão mais disponíveis no site; seguem as outras ${arqs.length}`);
+    if (celular() && navigator.canShare && navigator.canShare({ files: arqs })) {
+      DL.id = c.id; DL.arqs = arqs; DL.base = base;
+      lab.textContent = `Toque para salvar ${arqs.length} foto${arqs.length > 1 ? 's' : ''}`;
+      b.classList.add('pronto'); b.disabled = false; return;
     }
-    toast(arqs.length < fotos.length ? `Baixei ${arqs.length} de ${fotos.length} fotos` : 'Fotos prontas');
-  } catch (e) { toast('Não consegui baixar as fotos agora. Tente de novo.'); }
-  b.disabled = false; lab.textContent = txt0;
+    lab.textContent = 'Compactando…';
+    await baixarZip(arqs, base);
+    toast('Fotos baixadas');
+  } catch (e) { toast('Não consegui baixar as fotos agora. Verifique a internet e tente de novo.'); }
+  b.disabled = false; const n = (c.fotos.length || 1); lab.textContent = `Baixar ${n > 1 ? n + ' fotos' : 'foto'}`;
 }
 $('#detail').addEventListener('click', e => {
   if (e.target.closest('#gdl')) { e.stopPropagation(); return baixarFotos(); }
