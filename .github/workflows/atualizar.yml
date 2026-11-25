@@ -6,7 +6,7 @@ on:
   workflow_dispatch:        # botão "Run workflow" para atualizar na hora
   push:
     branches: [main]
-    paths: ["scraper.py", ".github/workflows/atualizar.yml"]
+    paths: ["scraper.py", ".github/workflows/atualizar.yml", "docs/index.html"]
 
 permissions:
   contents: write
@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name "robo-catalogo"
           git config user.email "robo-catalogo@users.noreply.github.com"
-          git add docs/estoque.json
+          git add -A docs
           if git diff --cached --quiet; then
             echo "Nada mudou."
           else

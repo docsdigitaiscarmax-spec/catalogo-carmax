@@ -139,19 +139,98 @@ def principal():
         marca = next((m for m in MARCAS_COMPOSTAS if nome.upper().startswith(m + " ")), nome.split(" ", 1)[0])
         c["marca"] = marca
         c["modelo"] = nome[len(marca):].strip()
-    agora = datetime.now(timezone(timedelta(hours=-3))).strftime("%d/%m/%Y %H:%M")
+    fuso = timezone(timedelta(hours=-3))
+    hoje = datetime.now(fuso).strftime("%Y-%m-%d")
+    agora = datetime.now(fuso).strftime("%d/%m/%Y %H:%M")
+
+    # histórico: quando o carro entrou e se o preço baixou
+    antigo = SAIDA.read_text("utf-8") if SAIDA.exists() else ""
+    anteriores = {}
+    if antigo:
+        try:
+            anteriores = {c["id"]: c for c in json.loads(antigo)["carros"]}
+        except Exception:  # noqa: BLE001
+            anteriores = {}
+    for c in carros:
+        a = anteriores.get(c["id"])
+        if not a:
+            c["desde"] = hoje if anteriores else BASE_DATA
+            continue
+        c["desde"] = a.get("desde") or BASE_DATA
+        if a.get("preco") and c["preco"] and c["preco"] < a["preco"]:
+            c["preco_anterior"], c["baixou_em"] = a["preco"], hoje
+        elif a.get("preco_anterior") and a.get("baixou_em") and c["preco"] < a["preco_anterior"] \
+                and dias_desde(a["baixou_em"], hoje) <= 15:
+            c["preco_anterior"], c["baixou_em"] = a["preco_anterior"], a["baixou_em"]
+
+    carros.sort(key=lambda c: (c["loja"], c["marca"], c["preco"]))
     dados = {"atualizado": agora, "total": len(carros), "carros": carros}
     novo = json.dumps(dados, ensure_ascii=False, indent=1)
-    antigo = SAIDA.read_text("utf-8") if SAIDA.exists() else ""
     # só regrava se o estoque mudou (ignora a data), para não criar commit à toa
     tira = lambda s: re.sub(r'"atualizado": "[^"]*"', "", s)  # noqa: E731
-    if tira(novo) == tira(antigo):
+    if tira(novo) == tira(antigo) and (SAIDA.parent / "c").exists():
         print("Estoque sem mudanças.")
         return
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     SAIDA.write_text(novo, "utf-8")
+    gerar_previas(carros)
     print(f"Catálogo atualizado: {len(carros)} carros.")
 
+
+BASE_DATA = "2026-01-01"  # carros que já estavam no estoque antes do histórico existir
+SITE = "https://docsdigitaiscarmax-spec.github.io/catalogo-carmax/"
+
+
+def dias_desde(d, hoje):
+    return (datetime.strptime(hoje, "%Y-%m-%d") - datetime.strptime(d, "%Y-%m-%d")).days
+
+
+def brl(v):
+    return "R$ " + f"{v:,}".replace(",", ".")
+
+
+PREVIA = """<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>{titulo}</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Carmax Santos">
+<meta property="og:title" content="{titulo}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{img}">
+<meta property="og:url" content="{url}">
+<meta name="twitter:card" content="summary_large_image">
+<meta http-equiv="refresh" content="0; url=../#carro-{id}">
+<script>location.replace('../#carro-{id}')</script>
+</head><body><a href="../#carro-{id}">{titulo}</a></body></html>
+"""
+
+
+def gerar_previas(carros):
+    """Uma página pequena por carro, só para o WhatsApp mostrar foto e preço no link."""
+    pasta = SAIDA.parent / "c"
+    pasta.mkdir(exist_ok=True)
+    for f in pasta.glob("*.html"):
+        f.unlink()
+    esc = lambda t: html.escape(str(t), quote=True)  # noqa: E731
+    for c in carros:
+        km = "0 km" if not c["km"] else f'{c["km"]:,} km'.replace(",", ".")
+        desc = f'{brl(c["preco"])} · {c["ano"]} · {km}'
+        if c.get("cambio"):
+            desc += f' · {c["cambio"]}'
+        desc += " · Fale com Nickolas Garcia no WhatsApp"
+        (pasta / f'{c["id"]}.html').write_text(PREVIA.format(
+            titulo=esc(f'{c["nome"]} {c["ano"]}'), desc=esc(desc),
+            img=esc((c["fotos"] or [c["capa"]])[0]), url=esc(f'{SITE}c/{c["id"]}.html'),
+            id=esc(c["id"])), "utf-8")
+    # foto de capa da página principal = primeiro carro com mais fotos da loja principal
+    idx = SAIDA.parent / "index.html"
+    capa = max((c for c in carros if c["loja"] == "carmax"), key=lambda c: len(c["fotos"]), default=None)
+    if capa and idx.exists():
+        t = idx.read_text("utf-8")
+        tag = f'<meta property="og:image" content="{esc(capa["fotos"][0])}">'
+        t = re.sub(r'<meta property="og:image" content="[^"]*">', tag, t) if 'og:image' in t \
+            else t.replace('<meta property="og:type"', tag + '\n<meta property="og:type"', 1)
+        idx.write_text(t, "utf-8")
 
 if __name__ == "__main__":
     principal()
