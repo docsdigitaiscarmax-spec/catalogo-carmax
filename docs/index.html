@@ -114,19 +114,19 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(2
 .old{font-size:13.5px;color:var(--mut);text-decoration:line-through;font-weight:500;margin-right:6px}
 .chip.nov{border-color:#0b8a46;color:#0b8a46}.chip.nov.on{background:#0b8a46;color:#fff}
 .dt .tags{display:flex;gap:6px;margin:8px 0 2px}.dt .tags .tag{position:static}
-/* simulador */
+/* pedido de simulação */
 .sim{margin-top:22px;border:1px solid var(--line);border-radius:16px;padding:16px}
-.sim h2{margin:0 0 12px}
-.sim label{display:block;font-size:13px;color:var(--mut);margin-bottom:6px}
-.sim .ent{display:flex;align-items:center;gap:10px}
-.sim input[type=range]{flex:1;accent-color:var(--red);height:32px}
-.sim .ev{min-width:112px;text-align:right;font-weight:800;white-space:nowrap}
-.sim .pz{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:14px 0}
-.sim .pz button{height:42px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
-.sim .pz button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.sim .res{background:#f5f5f8;border-radius:12px;padding:14px;text-align:center}
-.sim .res b{display:block;font-size:26px;line-height:1.2}
-.sim .res small{color:var(--mut);font-size:12.5px}
+.sim h2{margin:0 0 4px}
+.sim .sub{color:var(--mut);font-size:13.5px;margin-bottom:14px}
+.sim label{display:block;font-size:13px;font-weight:600;margin:10px 0 5px}
+.sim label small{font-weight:400;color:var(--mut)}
+.sim input{width:100%;height:46px;border:1px solid #d6d6dc;border-radius:10px;padding:0 12px;font-size:16px;background:#fff}
+.sim input:focus{outline:2px solid var(--ink);outline-offset:1px;border-color:transparent}
+.sim input.err{border-color:var(--red);background:#fff5f5}
+.sim .msg{color:var(--red);font-size:12.5px;min-height:16px;margin-top:4px}
+.sim .ok{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#4a4a52;margin-top:10px}
+.sim .ok input{width:18px;height:18px;flex:none;margin-top:1px;accent-color:var(--ink)}
+.sim button[type=submit]{margin-top:12px;width:100%;height:50px;border:0;border-radius:12px;background:var(--wa);color:#fff;font-weight:800;font-size:15.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 .sim .aviso{font-size:11.5px;color:var(--mut);margin-top:10px;line-height:1.4}
 /* pop-up de Natal */
 .promo{position:fixed;inset:0;z-index:100;background:rgba(10,10,12,.62);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
@@ -234,11 +234,12 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(2
 
 <script>
 {
-const TAXA_MES = 1.99; // % ao mês usada no simulador (estimativa)
 const SITE = location.origin + location.pathname.replace(/[^/]*$/, '');
 const linkCarro = c => SITE + 'c/' + c.id + '.html';
 const hojeMs = Date.now(), dias = d => d ? (hojeMs - new Date(d + 'T12:00:00-03:00')) / 864e5 : 999;
 const ehNovo = c => dias(c.desde) <= 7, baixou = c => c.preco_anterior && dias(c.baixou_em) <= 15;
+const cpfOk = d => { if (!/^\d{11}$/.test(d) || /^(\d)\1{10}$/.test(d)) return false;
+  for (const n of [9, 10]) { let t = 0; for (let i = 0; i < n; i++) t += +d[i] * (n + 1 - i); if ((t * 10 % 11) % 10 !== +d[n]) return false; } return true; };
 const FONE = '5513988396022', VENDEDOR = 'Nickolas Garcia', FONE_TXT = '(13) 98839-6022';
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
@@ -316,31 +317,50 @@ function abrir(id, push) {
         <div class="spec"><small>Cor</small><b>${esc(c.cor)}</b></div>
       </div>
       ${c.opcionais && c.opcionais.length ? `<h2>Itens e opcionais</h2><div class="opc">${c.opcionais.map(o => `<span>${esc(o)}</span>`).join('')}</div>` : ''}
-      <div class="sim" id="sim">
-        <h2>Simule sua parcela</h2>
-        <label for="simE">Entrada</label>
-        <div class="ent"><input type="range" id="simE" min="0" max="${Math.round(c.preco * 0.9)}" step="1000" value="${Math.round(c.preco * 0.3 / 1000) * 1000}"><span class="ev" id="simEv"></span></div>
-        <label>Número de parcelas</label>
-        <div class="pz" id="simP">${[12, 24, 36, 48, 60].map(n => `<button data-n="${n}" class="${n === 48 ? 'on' : ''}">${n}x</button>`).join('')}</div>
-        <div class="res"><small id="simL"></small><b id="simV"></b><small>Financiado: <span id="simF"></span></small></div>
-        <p class="aviso">Simulação aproximada, com taxa estimada de ${String(TAXA_MES).replace('.', ',')}% ao mês. Valores sujeitos à análise de crédito e às condições do banco. Fale comigo para uma proposta real.</p>
-      </div>
+      <form class="sim" id="sim" novalidate>
+        <h2>Quero uma simulação</h2>
+        <p class="sub">Preencha seus dados e envie pelo WhatsApp. Eu faço a simulação com os bancos e te respondo.</p>
+        <label for="sNome">Nome completo</label>
+        <input id="sNome" autocomplete="name" required>
+        <label for="sCpf">CPF</label>
+        <input id="sCpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" required>
+        <label for="sNasc">Data de nascimento</label>
+        <input id="sNasc" inputmode="numeric" autocomplete="bday" placeholder="dd/mm/aaaa" maxlength="10" required>
+        <label for="sEnt">Valor de entrada <small>(opcional)</small></label>
+        <input id="sEnt" inputmode="numeric" placeholder="R$ 0">
+        <div class="msg" id="sMsg" role="alert"></div>
+        <label class="ok"><input type="checkbox" id="sOk"> Autorizo o envio dos meus dados ao consultor ${esc(VENDEDOR)} para simulação de financiamento.</label>
+        <button type="submit"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>Enviar pelo WhatsApp</button>
+        <p class="aviso">Seus dados não ficam salvos nesta página: eles vão direto, na mensagem, para o WhatsApp do consultor.</p>
+      </form>
       <div class="seller"><div class="av">${esc(VENDEDOR[0])}</div><div><b>${esc(VENDEDOR)}</b><small>Consultor Carmax · ${FONE_TXT}</small></div></div>
       <a class="site" href="${esc(c.link)}" target="_blank" rel="noopener">Ver anúncio no site da Carmax ›</a>
     </div>`;
   $('#ctaP').textContent = brl(c.preco);
-  let prazo = 48, mexeu = false;
-  const sim = () => {
-    const e = +$('#simE').value, f = Math.max(c.preco - e, 0), i = TAXA_MES / 100;
-    const p = f ? f * i / (1 - Math.pow(1 + i, -prazo)) : 0;
-    $('#simEv').textContent = brl(e); $('#simF').textContent = brl(f);
-    $('#simL').textContent = prazo + 'x de aproximadamente'; $('#simV').textContent = brl(Math.round(p));
-    const extra = mexeu ? `\nSimulei: entrada de ${brl(e)} em ${prazo}x de cerca de ${brl(Math.round(p))}.` : '';
-    $('#ctaA').href = wa(`Olá, ${VENDEDOR.split(' ')[0]}! Tenho interesse no ${c.nome} ${c.ano} (${c.cor}) — ${brl(c.preco)}. Ainda está disponível?${extra}\n${linkCarro(c)}`);
-  };
-  $('#simE').addEventListener('input', () => { mexeu = true; sim(); });
-  $('#simP').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; prazo = +b.dataset.n; mexeu = true; $('#simP').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); sim(); });
-  sim();
+  const msgBase = `Olá, ${VENDEDOR.split(' ')[0]}! Tenho interesse no ${c.nome} ${c.ano} (${c.cor}) — ${brl(c.preco)}. Ainda está disponível?\n${linkCarro(c)}`;
+  $('#ctaA').href = wa(msgBase);
+  const so = el => el.value.replace(/\D/g, '');
+  $('#sCpf').addEventListener('input', e => { const d = so(e.target).slice(0, 11); e.target.value = d.replace(/^(\d{3})(\d)/, '$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d)/, '.$1-$2'); });
+  $('#sNasc').addEventListener('input', e => { const d = so(e.target).slice(0, 8); e.target.value = d.replace(/^(\d{2})(\d)/, '$1/$2').replace(/^(\d{2})\/(\d{2})(\d)/, '$1/$2/$3'); });
+  $('#sEnt').addEventListener('input', e => { const d = so(e.target).slice(0, 9); e.target.value = d ? brl(+d) : ''; });
+  $('#sim').addEventListener('submit', e => {
+    e.preventDefault();
+    const nome = $('#sNome').value.trim().replace(/\s+/g, ' '), cpf = so($('#sCpf')), nasc = $('#sNasc').value, ent = so($('#sEnt'));
+    const [dd, mm, aa] = nasc.split('/').map(Number), dt = new Date(aa, mm - 1, dd);
+    const idade = (Date.now() - dt) / 31557600000;
+    const erros = [];
+    $('#sim').querySelectorAll('input').forEach(i => i.classList.remove('err'));
+    if (nome.split(' ').length < 2) { erros.push('Digite o nome completo.'); $('#sNome').classList.add('err'); }
+    if (!cpfOk(cpf)) { erros.push('CPF inválido.'); $('#sCpf').classList.add('err'); }
+    if (!(aa > 1900 && dt.getDate() === dd && dt.getMonth() === mm - 1 && idade >= 18 && idade < 100)) { erros.push('Data de nascimento inválida (é preciso ter 18 anos ou mais).'); $('#sNasc').classList.add('err'); }
+    if (!$('#sOk').checked) erros.push('Marque a autorização para enviar.');
+    $('#sMsg').textContent = erros.join(' ');
+    if (erros.length) return;
+    const txt = `Olá, ${VENDEDOR.split(' ')[0]}! Quero uma simulação de financiamento para o ${c.nome} ${c.ano} (${c.cor}) — ${brl(c.preco)}.\n\n` +
+      `Nome: ${nome}\nCPF: ${$('#sCpf').value}\nData de nascimento: ${nasc}` + (ent ? `\nEntrada: ${brl(+ent)}` : '') + `\n\n${linkCarro(c)}`;
+    const url = wa(txt);
+    const w = window.open(url, '_blank', 'noopener'); if (!w) location.href = url;
+  });
   $('#sheet').scrollTop = 0;
   $('#sheet').classList.add('open'); $('#cta').classList.add('open');
   document.body.style.overflow = 'hidden';
