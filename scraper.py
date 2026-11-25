@@ -84,6 +84,7 @@ def ler_listagem(loja, BASE):
     return carros
 
 
+MARCAS_COMPOSTAS = ("LAND ROVER", "ALFA ROMEO", "ASTON MARTIN", "ROLLS ROYCE", "ROYAL ENFIELD", "HARLEY DAVIDSON", "GREAT WALL", "CAOA CHERY")
 CAMBIOS = ("Automatizado", "Automático", "Manual", "CVT")
 
 
@@ -134,9 +135,10 @@ def principal():
     with ThreadPoolExecutor(max_workers=6) as ex:
         carros = list(ex.map(ler_detalhe, carros))
     for c in carros:
-        partes = c["nome"].split(" ", 1)
-        c["marca"] = partes[0]
-        c["modelo"] = partes[1] if len(partes) > 1 else ""
+        nome = c["nome"]
+        marca = next((m for m in MARCAS_COMPOSTAS if nome.upper().startswith(m + " ")), nome.split(" ", 1)[0])
+        c["marca"] = marca
+        c["modelo"] = nome[len(marca):].strip()
     agora = datetime.now(timezone(timedelta(hours=-3))).strftime("%d/%m/%Y %H:%M")
     dados = {"atualizado": agora, "total": len(carros), "carros": carros}
     novo = json.dumps(dados, ensure_ascii=False, indent=1)
