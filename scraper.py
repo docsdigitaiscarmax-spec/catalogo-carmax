@@ -95,6 +95,13 @@ def ler_detalhe(c):
         print(f"  sem detalhe para {c['link']}: {e}", file=sys.stderr)
         h = ""
     carrossel = re.search(r"<Carousel\b.*?</Carousel>", h, re.S | re.I)
+    if not carrossel:
+        time.sleep(2)
+        try:
+            h = baixar(c["link"])
+        except Exception:  # noqa: BLE001
+            pass
+        carrossel = re.search(r"<Carousel\b.*?</Carousel>", h, re.S | re.I)
     fotos = []
     if carrossel:
         for src in re.findall(r'<img[^>]+src="([^"]+)"', carrossel.group(0)):
@@ -132,7 +139,7 @@ def principal():
             if c["id"] not in por_id or loja == "outlet":
                 por_id[c["id"]] = c
     carros = list(por_id.values())
-    with ThreadPoolExecutor(max_workers=6) as ex:
+    with ThreadPoolExecutor(max_workers=4) as ex:
         carros = list(ex.map(ler_detalhe, carros))
     for c in carros:
         nome = c["nome"]
@@ -157,6 +164,12 @@ def principal():
             c["desde"] = hoje if anteriores else BASE_DATA
             continue
         c["desde"] = a.get("desde") or BASE_DATA
+        # se a página de detalhe falhou desta vez, mantém as fotos/dados da leitura anterior
+        if len(c.get("fotos") or []) < len(a.get("fotos") or []) and len(c.get("fotos") or []) <= 1:
+            c["fotos"] = a["fotos"]
+        for k in ("cambio", "opcionais"):
+            if not c.get(k) and a.get(k):
+                c[k] = a[k]
         if a.get("preco") and c["preco"] and c["preco"] < a["preco"]:
             c["preco_anterior"], c["baixou_em"] = a["preco"], hoje
         elif a.get("preco_anterior") and a.get("baixou_em") and c["preco"] < a["preco_anterior"] \
