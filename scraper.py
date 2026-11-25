@@ -13,10 +13,23 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+# cada loja tem endereços alternativos: usa o primeiro que responder
 LOJAS = [
-    ("carmax", "https://carmaxsantos.com.br"),
-    ("outlet", "https://www.outletcarmax.com.br"),
+    ("carmax", ["https://carmax.com.br", "https://carmaxsantos.com.br", "https://www.carmax.com.br"]),
+    ("outlet", ["https://www.outletcarmax.com.br", "https://outletcarmax.com.br"]),
 ]
+
+
+def escolher_base(bases):
+    for b in bases:
+        try:
+            h = baixar(b + "/estoque", tentativas=2)
+            if "/veiculo/" in h:
+                print(f"usando {b}")
+                return b
+        except Exception as e:  # noqa: BLE001
+            print(f"  {b} fora do ar: {e}", file=sys.stderr)
+    return None
 UA = {"User-Agent": "Mozilla/5.0 (catalogo-carmax; +https://github.com)"}
 SAIDA = Path(__file__).parent / "docs" / "estoque.json"
 
@@ -130,7 +143,10 @@ def ler_detalhe(c):
 
 def principal():
     por_id = {}
-    for loja, base in LOJAS:
+    for loja, bases in LOJAS:
+        base = escolher_base(bases)
+        if not base:
+            sys.exit(f"Nenhum endereço da loja {loja} respondeu; mantendo o catálogo como está.")
         lista = ler_listagem(loja, base)
         if len(lista) < 3:
             sys.exit(f"Só achei {len(lista)} carros em {base}; o site pode ter mudado. Não vou sobrescrever o catálogo.")
