@@ -142,21 +142,36 @@ def ler_detalhe(c):
 
 
 def principal():
-    por_id = {}
+    antigo_txt = SAIDA.read_text("utf-8") if SAIDA.exists() else ""
+    try:
+        antigos_lista = json.loads(antigo_txt)["carros"] if antigo_txt else []
+    except Exception:  # noqa: BLE001
+        antigos_lista = []
+    por_id, manter = {}, []
     for loja, bases in LOJAS:
         base = escolher_base(bases)
-        if not base:
-            sys.exit(f"Nenhum endereço da loja {loja} respondeu; mantendo o catálogo como está.")
-        lista = ler_listagem(loja, base)
+        try:
+            lista = ler_listagem(loja, base) if base else []
+        except Exception as e:  # noqa: BLE001
+            print(f"  erro lendo {loja}: {e}", file=sys.stderr)
+            lista = []
         if len(lista) < 3:
-            sys.exit(f"Só achei {len(lista)} carros em {base}; o site pode ter mudado. Não vou sobrescrever o catálogo.")
+            velhos = [c for c in antigos_lista if c.get("loja") == loja]
+            if not velhos:
+                sys.exit(f"Loja {loja} fora do ar e sem leitura anterior; mantendo o catálogo como está.")
+            print(f"Loja {loja} fora do ar: mantendo {len(velhos)} carros da leitura anterior.")
+            manter += velhos
+            continue
         for c in lista:
             # carro que aparece nos dois sites fica na aba do Outlet
             if c["id"] not in por_id or loja == "outlet":
                 por_id[c["id"]] = c
-    carros = list(por_id.values())
+    for c in manter:
+        por_id.setdefault(c["id"], c)
+    carros = [c for c in por_id.values() if c not in manter]
     with ThreadPoolExecutor(max_workers=4) as ex:
         carros = list(ex.map(ler_detalhe, carros))
+    carros += [c for c in manter if c["id"] in por_id and por_id[c["id"]] is c]
     for c in carros:
         nome = c["nome"]
         marca = next((m for m in MARCAS_COMPOSTAS if nome.upper().startswith(m + " ")), nome.split(" ", 1)[0])
