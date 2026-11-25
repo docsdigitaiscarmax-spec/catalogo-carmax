@@ -1,0 +1,1464 @@
+{
+ "atualizado": "25/11/2026 10:30",
+ "total": 81,
+ "carros": [
+  {
+   "id": "0",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BMW X1 2.0 16V Turbo sDrive20i X-Line",
+   "marca": "BMW",
+   "modelo": "X1 2.0 16V Turbo sDrive20i X-Line",
+   "ano": "2023/2023",
+   "km": 14945,
+   "preco": 254790,
+   "cor": "Branco",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBF-3B22_04.jpg?u=20261014174533",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBF-3B22_04.jpg?u=20261014174533"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "1",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BMW X4 2.0 16V 30i M Sport",
+   "marca": "BMW",
+   "modelo": "X4 2.0 16V 30i M Sport",
+   "ano": "2020/2020",
+   "km": 50362,
+   "preco": 269790,
+   "cor": "Azul",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GIX-7E63_01.jpg?u=20261015175827",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GIX-7E63_01.jpg?u=20261015175827"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "2",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BMW 320i 2.0 16V Turbo M Sport",
+   "marca": "BMW",
+   "modelo": "320i 2.0 16V Turbo M Sport",
+   "ano": "2023/2023",
+   "km": 37291,
+   "preco": 273790,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GCY-5D25_02.jpg?u=20250329094655",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GCY-5D25_02.jpg?u=20250329094655"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "3",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BMW X6 3.0 TwinPower 40i M Sport",
+   "marca": "BMW",
+   "modelo": "X6 3.0 TwinPower 40i M Sport",
+   "ano": "2022/2022",
+   "km": 22926,
+   "preco": 498790,
+   "cor": "Branco",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EVA-9H16_09.jpg?u=20260903161615",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EVA-9H16_09.jpg?u=20260903161615"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "4",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BYD DOLPHIN MINI 38 kWh GL",
+   "marca": "BYD",
+   "modelo": "DOLPHIN MINI 38 kWh GL",
+   "ano": "2026/2027",
+   "km": 1256,
+   "preco": 122790,
+   "cor": "Azul",
+   "combustivel": "Elétrico",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UQW-5D45_01.jpg?u=20261023094400",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UQW-5D45_01.jpg?u=20261023094400"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "5",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BYD DOLPHIN MINI 38 kWh GL",
+   "marca": "BYD",
+   "modelo": "DOLPHIN MINI 38 kWh GL",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 123790,
+   "cor": "Branco",
+   "combustivel": "Elétrico",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DOLPH03_01.jpg?u=20261016091416",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DOLPH03_01.jpg?u=20261016091416"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "6",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BYD DOLPHIN MINI 38 kWh GL",
+   "marca": "BYD",
+   "modelo": "DOLPHIN MINI 38 kWh GL",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 123790,
+   "cor": "Preto",
+   "combustivel": "Elétrico",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DOLPH02_03.jpg?u=20260803143555",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DOLPH02_03.jpg?u=20260803143555"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "7",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BYD DOLPHIN 44,9 kWh GS",
+   "marca": "BYD",
+   "modelo": "DOLPHIN 44,9 kWh GS",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 155790,
+   "cor": "Cinza",
+   "combustivel": "Elétrico",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DOLPGS1_06.jpg?u=20261029093345",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DOLPGS1_06.jpg?u=20261029093345"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "8",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BYD ATTO 2 1.5 DM-i PHEV GL",
+   "marca": "BYD",
+   "modelo": "ATTO 2 1.5 DM-i PHEV GL",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 164790,
+   "cor": "Cinza",
+   "combustivel": "Híbrido",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/ATTO23G_01.jpg?u=20261024143258",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/ATTO23G_01.jpg?u=20261024143258"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "9",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BYD ATTO 2 1.5 DM-i PHEV GL",
+   "marca": "BYD",
+   "modelo": "ATTO 2 1.5 DM-i PHEV GL",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 164790,
+   "cor": "Preto",
+   "combustivel": "Híbrido",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/ATTO2GL_01.jpg?u=20261024143130",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/ATTO2GL_01.jpg?u=20261024143130"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "10",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BYD SONG PLUS 1.5 DM-i Turbo",
+   "marca": "BYD",
+   "modelo": "SONG PLUS 1.5 DM-i Turbo",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 244790,
+   "cor": "Cinza",
+   "combustivel": "Híbrido",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SONGPL2_01.jpg?u=20260820093722",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SONGPL2_01.jpg?u=20260820093722"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "11",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "BYD SONG PLUS 1.5 DM-i Turbo",
+   "marca": "BYD",
+   "modelo": "SONG PLUS 1.5 DM-i Turbo",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 244790,
+   "cor": "Cinza",
+   "combustivel": "Híbrido",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SONGPL1_01.jpg?u=20260820094324",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SONGPL1_01.jpg?u=20260820094324"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "12",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "CHERY TIGGO 7 PRO 1.6 TGDI Max Drive",
+   "marca": "CHERY",
+   "modelo": "TIGGO 7 PRO 1.6 TGDI Max Drive",
+   "ano": "2023/2024",
+   "km": 51200,
+   "preco": 136790,
+   "cor": "Preto",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STA-5F42_01.jpg?u=20261104173432",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STA-5F42_01.jpg?u=20261104173432"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "13",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "CHERY TIGGO 8 1.6 TGDI TXS Max Drive",
+   "marca": "CHERY",
+   "modelo": "TIGGO 8 1.6 TGDI TXS Max Drive",
+   "ano": "2024/2025",
+   "km": 27235,
+   "preco": 169790,
+   "cor": "Cinza",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUK-6D81_02.jpg?u=20260903160521",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUK-6D81_02.jpg?u=20260903160521"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "14",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "CHEVROLET ONIX 1.0",
+   "marca": "CHEVROLET",
+   "modelo": "ONIX 1.0",
+   "ano": "2025/2026",
+   "km": 17799,
+   "preco": 82790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RST-5J22_01.jpg?u=20261021121000",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RST-5J22_01.jpg?u=20261021121000"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "15",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "CHEVROLET TRACKER 1.2 Turbo Premier",
+   "marca": "CHEVROLET",
+   "modelo": "TRACKER 1.2 Turbo Premier",
+   "ano": "2022/2023",
+   "km": 39582,
+   "preco": 108790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FXI-7E83_01.jpg?u=20261105122142",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FXI-7E83_01.jpg?u=20261105122142"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "16",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "FIAT FASTBACK 1.3 Turbo 270 Limited Edition",
+   "marca": "FIAT",
+   "modelo": "FASTBACK 1.3 Turbo 270 Limited Edition",
+   "ano": "2022/2023",
+   "km": 18000,
+   "preco": 111790,
+   "cor": "Vermelho",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FCU-3D46_01.jpg?u=20261028100105",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FCU-3D46_01.jpg?u=20261028100105"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "17",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "FIAT FASTBACK 1.3 Turbo 270 Abarth",
+   "marca": "FIAT",
+   "modelo": "FASTBACK 1.3 Turbo 270 Abarth",
+   "ano": "2025/2025",
+   "km": 15894,
+   "preco": 132790,
+   "cor": "Vermelho",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TMB-7A11_01.jpg?u=20261029094006",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TMB-7A11_01.jpg?u=20261029094006"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "18",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "FIAT STRADA 1.0 Turbo 200 Ultra CD",
+   "marca": "FIAT",
+   "modelo": "STRADA 1.0 Turbo 200 Ultra CD",
+   "ano": "2024/2025",
+   "km": 36806,
+   "preco": 133790,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TLN-2J85_03.jpg?u=20261006095646",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TLN-2J85_03.jpg?u=20261006095646"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "19",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "FIAT PULSE 1.3 Turbo 270 Abarth",
+   "marca": "FIAT",
+   "modelo": "PULSE 1.3 Turbo 270 Abarth",
+   "ano": "2025/2026",
+   "km": 6000,
+   "preco": 138790,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TKO-0J56_01.jpg?u=20260627133138",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TKO-0J56_01.jpg?u=20260627133138"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "20",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "GEELY EX2 39,4 kWh MAX",
+   "marca": "GEELY",
+   "modelo": "EX2 39,4 kWh MAX",
+   "ano": "2026/2026",
+   "km": 0,
+   "preco": 151790,
+   "cor": "Cinza",
+   "combustivel": "Elétrico",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY22_01.jpg?u=20261030132918",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY22_01.jpg?u=20261030132918"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "21",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "GEELY EX2 39,4 kWh MAX",
+   "marca": "GEELY",
+   "modelo": "EX2 39,4 kWh MAX",
+   "ano": "2026/2026",
+   "km": 0,
+   "preco": 151790,
+   "cor": "Verde",
+   "combustivel": "Elétrico",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY33_01.jpg?u=20261030133134",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY33_01.jpg?u=20261030133134"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "22",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "GURGEL XAVANTE 1.3 8V",
+   "marca": "GURGEL",
+   "modelo": "XAVANTE 1.3 8V",
+   "ano": "1973/1973",
+   "km": 38155,
+   "preco": 69790,
+   "cor": "Bege",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/LEQ-0F51_01.jpg?u=20260911173816",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/LEQ-0F51_01.jpg?u=20260911173816"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "23",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HONDA HR-V 1.8 16V EXL",
+   "marca": "HONDA",
+   "modelo": "HR-V 1.8 16V EXL",
+   "ano": "2019/2020",
+   "km": 57000,
+   "preco": 107790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/ESX-0C04_01.jpg?u=20261104174359",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/ESX-0C04_01.jpg?u=20261104174359"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "24",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HONDA CITY 1.5 i-VTEC EXL",
+   "marca": "HONDA",
+   "modelo": "CITY 1.5 i-VTEC EXL",
+   "ano": "2023/2024",
+   "km": 30056,
+   "preco": 116790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FQJ-8B03_01.jpg?u=20260627134315",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FQJ-8B03_01.jpg?u=20260627134315"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "25",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HONDA CITY 1.5 i-VTEC Hatch Touring",
+   "marca": "HONDA",
+   "modelo": "CITY 1.5 i-VTEC Hatch Touring",
+   "ano": "2023/2024",
+   "km": 15437,
+   "preco": 118790,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUA-3F50_01.jpg?u=20260331123808",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUA-3F50_01.jpg?u=20260331123808"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "26",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HONDA HR-V 1.5 DI i-VTEC EX",
+   "marca": "HONDA",
+   "modelo": "HR-V 1.5 DI i-VTEC EX",
+   "ano": "2024/2025",
+   "km": 18687,
+   "preco": 141790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TIW-9D54_03.jpg?u=20261017143451",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TIW-9D54_03.jpg?u=20261017143451"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "27",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HONDA HR-V 1.5 DI i-VTEC EX",
+   "marca": "HONDA",
+   "modelo": "HR-V 1.5 DI i-VTEC EX",
+   "ano": "2025/2026",
+   "km": 12813,
+   "preco": 149790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UDG-9G74_01.jpg?u=20261030133549",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UDG-9G74_01.jpg?u=20261030133549"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "28",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HONDA HR-V 1.5 DI i-VTEC Turbo Touring",
+   "marca": "HONDA",
+   "modelo": "HR-V 1.5 DI i-VTEC Turbo Touring",
+   "ano": "2023/2024",
+   "km": 56843,
+   "preco": 153790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GDO-9C33_07.jpg?u=20260925161355",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GDO-9C33_07.jpg?u=20260925161355"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "29",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HONDA HR-V 1.5 DI i-VTEC EXL",
+   "marca": "HONDA",
+   "modelo": "HR-V 1.5 DI i-VTEC EXL",
+   "ano": "2024/2025",
+   "km": 10562,
+   "preco": 229790,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCT-9H68_01.jpg?u=20260919125520",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCT-9H68_01.jpg?u=20260919125520"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "30",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HYUNDAI CRETA 1.6 16V Attitude",
+   "marca": "HYUNDAI",
+   "modelo": "CRETA 1.6 16V Attitude",
+   "ano": "2017/2018",
+   "km": 77000,
+   "preco": 82790,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GEU-9148_01.jpg?u=20261023093131",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GEU-9148_01.jpg?u=20261023093131"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "31",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HYUNDAI HB20 1.0 TGDI Platinum Safety",
+   "marca": "HYUNDAI",
+   "modelo": "HB20 1.0 TGDI Platinum Safety",
+   "ano": "2023/2024",
+   "km": 60000,
+   "preco": 95790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FXJ-2G73_01.jpg?u=20250505090442",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FXJ-2G73_01.jpg?u=20250505090442"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "32",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HYUNDAI CRETA 2.0 16V Prestige",
+   "marca": "HYUNDAI",
+   "modelo": "CRETA 2.0 16V Prestige",
+   "ano": "2020/2021",
+   "km": 59724,
+   "preco": 101790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GDF-4J38_01.jpg?u=20261029101655",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GDF-4J38_01.jpg?u=20261029101655"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "33",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HYUNDAI IX35 2.0 MPFI GL 16V",
+   "marca": "HYUNDAI",
+   "modelo": "IX35 2.0 MPFI GL 16V",
+   "ano": "2017/2018",
+   "km": 86560,
+   "preco": 103790,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GKD-4272_01.jpg?u=20260803141358",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GKD-4272_01.jpg?u=20260803141358"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "34",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "HYUNDAI CRETA 1.0 TGDI Limited",
+   "marca": "HYUNDAI",
+   "modelo": "CRETA 1.0 TGDI Limited",
+   "ano": "2022/2023",
+   "km": 51800,
+   "preco": 111790,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GGR-8G95_01.jpg?u=20261019103844",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GGR-8G95_01.jpg?u=20261019103844"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "35",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JAECOO 5 1.5 TGDI HEV Comfort DHT",
+   "marca": "JAECOO",
+   "modelo": "5 1.5 TGDI HEV Comfort DHT",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 167790,
+   "cor": "Cinza",
+   "combustivel": "Híbrido",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/JAECOO5_01.jpg?u=20261023092501",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/JAECOO5_01.jpg?u=20261023092501"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "36",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JAECOO 7 1.5 TGDI PHEV Elite DHT",
+   "marca": "JAECOO",
+   "modelo": "7 1.5 TGDI PHEV Elite DHT",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 195790,
+   "cor": "Prata",
+   "combustivel": "Híbrido",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/JAECOOE_01.jpg?u=20261014174829",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/JAECOOE_01.jpg?u=20261014174829"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "37",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP RENEGADE 1.3 T270 Turbo Sport",
+   "marca": "JEEP",
+   "modelo": "RENEGADE 1.3 T270 Turbo Sport",
+   "ano": "2023/2023",
+   "km": 63129,
+   "preco": 99790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-7H41_01.jpg?u=20261006094104",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-7H41_01.jpg?u=20261006094104"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "38",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP RENEGADE 1.8 16V Limited",
+   "marca": "JEEP",
+   "modelo": "RENEGADE 1.8 16V Limited",
+   "ano": "2021/2021",
+   "km": 25000,
+   "preco": 102790,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FQB-2B48_06.jpg?u=20260611182449",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FQB-2B48_06.jpg?u=20260611182449"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "39",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP RENEGADE 1.3 T270 Turbo Longitude",
+   "marca": "JEEP",
+   "modelo": "RENEGADE 1.3 T270 Turbo Longitude",
+   "ano": "2024/2024",
+   "km": 37576,
+   "preco": 111790,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYU-8A23_03.jpg?u=20261017143659",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYU-8A23_03.jpg?u=20261017143659"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "40",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP COMPASS 1.3 T270 Turbo Sport",
+   "marca": "JEEP",
+   "modelo": "COMPASS 1.3 T270 Turbo Sport",
+   "ano": "2024/2025",
+   "km": 31832,
+   "preco": 128790,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TME-3J55_02.jpg?u=20261029095125",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TME-3J55_02.jpg?u=20261029095125"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "41",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP COMPASS 1.3 T270 Turbo Longitude",
+   "marca": "JEEP",
+   "modelo": "COMPASS 1.3 T270 Turbo Longitude",
+   "ano": "2023/2023",
+   "km": 48752,
+   "preco": 137790,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STR-0H14_01.jpg?u=20261028095722",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STR-0H14_01.jpg?u=20261028095722"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "42",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP COMPASS 1.3 T270 Turbo Longitude",
+   "marca": "JEEP",
+   "modelo": "COMPASS 1.3 T270 Turbo Longitude",
+   "ano": "2022/2023",
+   "km": 3935,
+   "preco": 137790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EAH-4J66_02.jpg?u=20261017151042",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EAH-4J66_02.jpg?u=20261017151042"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "43",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP COMPASS 1.3 T270 Turbo S",
+   "marca": "JEEP",
+   "modelo": "COMPASS 1.3 T270 Turbo S",
+   "ano": "2023/2023",
+   "km": 41820,
+   "preco": 148790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUD-2I11_05.jpg?u=20260820092908",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUD-2I11_05.jpg?u=20260820092908"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "44",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP COMPASS 1.3 T270 Turbo S",
+   "marca": "JEEP",
+   "modelo": "COMPASS 1.3 T270 Turbo S",
+   "ano": "2022/2023",
+   "km": 29213,
+   "preco": 150790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RIQ-8I16_04.jpg?u=20260911171514",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RIQ-8I16_04.jpg?u=20260911171514"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "45",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "JEEP COMMANDER 2.0 Hurricane 4 Turbo Blackhawk",
+   "marca": "JEEP",
+   "modelo": "COMMANDER 2.0 Hurricane 4 Turbo Blackhawk",
+   "ano": "2024/2025",
+   "km": 20219,
+   "preco": 215790,
+   "cor": "Cinza",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SWJ-8B33_03.jpg?u=20260520102620",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SWJ-8B33_03.jpg?u=20260520102620"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "46",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "MERCEDES-BENZ A 200 1.6 Turbo 16V",
+   "marca": "MERCEDES-BENZ",
+   "modelo": "A 200 1.6 Turbo 16V",
+   "ano": "2017/2017",
+   "km": 38000,
+   "preco": 97790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GSG-9H57_03.jpg?u=20261029094540",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GSG-9H57_03.jpg?u=20261029094540"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "47",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "NISSAN VERSA 1.6 16V Advance",
+   "marca": "NISSAN",
+   "modelo": "VERSA 1.6 16V Advance",
+   "ano": "2023/2023",
+   "km": 32256,
+   "preco": 93790,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FNT-4H34_01.jpg?u=20260324125238",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FNT-4H34_01.jpg?u=20260324125238"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "48",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "NISSAN KICKS 1.6 16V Start Sense",
+   "marca": "NISSAN",
+   "modelo": "KICKS 1.6 16V Start Sense",
+   "ano": "2022/2023",
+   "km": 28434,
+   "preco": 96790,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DPY-4C55_01.jpg?u=20261110165849",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DPY-4C55_01.jpg?u=20261110165849"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "49",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "NISSAN KICKS 1.6 16V Start Advance",
+   "marca": "NISSAN",
+   "modelo": "KICKS 1.6 16V Start Advance",
+   "ano": "2023/2023",
+   "km": 61116,
+   "preco": 102790,
+   "cor": "Vermelho",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GEI-1J45_04.jpg?u=20260925161916",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GEI-1J45_04.jpg?u=20260925161916"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "50",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "NISSAN KICKS 1.6 16V Start Advance",
+   "marca": "NISSAN",
+   "modelo": "KICKS 1.6 16V Start Advance",
+   "ano": "2023/2023",
+   "km": 45796,
+   "preco": 103790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EGX-2G23_01.jpg?u=20260611182308",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EGX-2G23_01.jpg?u=20260611182308"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "51",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "NISSAN KICKS 1.6 16V Start Advance",
+   "marca": "NISSAN",
+   "modelo": "KICKS 1.6 16V Start Advance",
+   "ano": "2023/2024",
+   "km": 50944,
+   "preco": 109790,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GEQ-9G23_04.jpg?u=20260826161746",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GEQ-9G23_04.jpg?u=20260826161746"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "52",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "NISSAN KICKS PLAY 1.6 16V Start Advance Plus",
+   "marca": "NISSAN",
+   "modelo": "KICKS PLAY 1.6 16V Start Advance Plus",
+   "ano": "2025/2025",
+   "km": 8793,
+   "preco": 122790,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TKV-1B71_02.jpg?u=20261110165324",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TKV-1B71_02.jpg?u=20261110165324"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "53",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "NISSAN SENTRA 2.0 16V Exclusive",
+   "marca": "NISSAN",
+   "modelo": "SENTRA 2.0 16V Exclusive",
+   "ano": "2024/2025",
+   "km": 35132,
+   "preco": 143790,
+   "cor": "Cinza",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TAI-3A78_03.jpg?u=20260903161017",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TAI-3A78_03.jpg?u=20260903161017"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "54",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "OMODA 5 1.5 TGDI HEV Luxury DHT",
+   "marca": "OMODA",
+   "modelo": "5 1.5 TGDI HEV Luxury DHT",
+   "ano": "2026/2027",
+   "km": 0,
+   "preco": 175790,
+   "cor": "Cinza",
+   "combustivel": "Híbrido",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/OMODACI_05.jpg?u=20260804113054",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/OMODACI_05.jpg?u=20260804113054"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "55",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "PEUGEOT 208 1.0 Turbo 200 Style",
+   "marca": "PEUGEOT",
+   "modelo": "208 1.0 Turbo 200 Style",
+   "ano": "2023/2024",
+   "km": 18161,
+   "preco": 89790,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STS-4C46_02.jpg?u=20261125091416",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STS-4C46_02.jpg?u=20261125091416"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "56",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "PORSCHE CAYENNE 3.6 4x4 V6 24V",
+   "marca": "PORSCHE",
+   "modelo": "CAYENNE 3.6 4x4 V6 24V",
+   "ano": "2015/2016",
+   "km": 58900,
+   "preco": 199790,
+   "cor": "Preto",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZB-0A11_02.jpg?u=20260520121418",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZB-0A11_02.jpg?u=20260520121418"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "57",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "PORSCHE MACAN 2.0 16V",
+   "marca": "PORSCHE",
+   "modelo": "MACAN 2.0 16V",
+   "ano": "2019/2019",
+   "km": 55200,
+   "preco": 311790,
+   "cor": "Cinza",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BRY-0E11_04.jpg?u=20260620102833",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BRY-0E11_04.jpg?u=20260620102833"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "58",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "RENAULT DUSTER 1.6 16V SCe Iconic",
+   "marca": "RENAULT",
+   "modelo": "DUSTER 1.6 16V SCe Iconic",
+   "ano": "2023/2024",
+   "km": 35381,
+   "preco": 99790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FKT-3G83_01.jpg?u=20261006094227",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FKT-3G83_01.jpg?u=20261006094227"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "59",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA YARIS 1.5 16V Sedan XL Live",
+   "marca": "TOYOTA",
+   "modelo": "YARIS 1.5 16V Sedan XL Live",
+   "ano": "2020/2021",
+   "km": 68037,
+   "preco": 84790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/ENE-6B78_02.jpg?u=20261116110234",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/ENE-6B78_02.jpg?u=20261116110234"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "60",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA YARIS 1.5 16V XS Connect",
+   "marca": "TOYOTA",
+   "modelo": "YARIS 1.5 16V XS Connect",
+   "ano": "2021/2022",
+   "km": 32445,
+   "preco": 91790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EPU-2F46_04.jpg?u=20261116104334",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EPU-2F46_04.jpg?u=20261116104334"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "61",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA YARIS 1.5 16V XS",
+   "marca": "TOYOTA",
+   "modelo": "YARIS 1.5 16V XS",
+   "ano": "2024/2025",
+   "km": 40812,
+   "preco": 106790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUY-5E45_05.jpg?u=20260324123758",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUY-5E45_05.jpg?u=20260324123758"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "62",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA YARIS 1.5 16V XLS",
+   "marca": "TOYOTA",
+   "modelo": "YARIS 1.5 16V XLS",
+   "ano": "2023/2024",
+   "km": 38596,
+   "preco": 109790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUL-4E15_05.jpg?u=20260520103007",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SUL-4E15_05.jpg?u=20260520103007"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "63",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA YARIS 1.5 16V Sedan XLS",
+   "marca": "TOYOTA",
+   "modelo": "YARIS 1.5 16V Sedan XLS",
+   "ano": "2024/2025",
+   "km": 40583,
+   "preco": 115790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_10.jpg?u=20260722123013",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_10.jpg?u=20260722123013"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "64",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA COROLLA 2.0 XEi",
+   "marca": "TOYOTA",
+   "modelo": "COROLLA 2.0 XEi",
+   "ano": "2023/2023",
+   "km": 60653,
+   "preco": 124790,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUN-2G94_01.jpg?u=20260627142034",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUN-2G94_01.jpg?u=20260627142034"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "65",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA COROLLA 2.0 XEi",
+   "marca": "TOYOTA",
+   "modelo": "COROLLA 2.0 XEi",
+   "ano": "2023/2023",
+   "km": 42994,
+   "preco": 125790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DKM-3G21_05.jpg?u=20260826162019",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DKM-3G21_05.jpg?u=20260826162019"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "66",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA COROLLA CROSS 2.0 XRE",
+   "marca": "TOYOTA",
+   "modelo": "COROLLA CROSS 2.0 XRE",
+   "ano": "2022/2023",
+   "km": 63000,
+   "preco": 132790,
+   "cor": "Vermelho",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GHE-7D04_01.jpg?u=20261014174328",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GHE-7D04_01.jpg?u=20261014174328"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "67",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA COROLLA 2.0 GLi",
+   "marca": "TOYOTA",
+   "modelo": "COROLLA 2.0 GLi",
+   "ano": "2025/2025",
+   "km": 18227,
+   "preco": 141790,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TJO-7C77_03.jpg?u=20260409123110",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TJO-7C77_03.jpg?u=20260409123110"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "68",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA HILUX SW4 2.8 SRX Diamond 4x4 7 Lugares Turbo",
+   "marca": "TOYOTA",
+   "modelo": "HILUX SW4 2.8 SRX Diamond 4x4 7 Lugares Turbo",
+   "ano": "2019/2019",
+   "km": 117000,
+   "preco": 229790,
+   "cor": "Branco",
+   "combustivel": "Diesel",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GIJ-2525_05.jpg?u=20261110163129",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GIJ-2525_05.jpg?u=20261110163129"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "69",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "TOYOTA HILUX SW4 2.8 D-4D Turbo SRX Platinum 7L 4x4",
+   "marca": "TOYOTA",
+   "modelo": "HILUX SW4 2.8 D-4D Turbo SRX Platinum 7L 4x4",
+   "ano": "2024/2024",
+   "km": 38000,
+   "preco": 329790,
+   "cor": "Cinza",
+   "combustivel": "Diesel",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-4H66_03.jpg?u=20260409122316",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-4H66_03.jpg?u=20260409122316"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "70",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Comfortline",
+   "marca": "VOLKSWAGEN",
+   "modelo": "NIVUS 1.0 200 TSI Comfortline",
+   "ano": "2022/2023",
+   "km": 65000,
+   "preco": 101790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBT-1G02_02.jpg?u=20250203151832",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBT-1G02_02.jpg?u=20250203151832"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "71",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Comfortline",
+   "marca": "VOLKSWAGEN",
+   "modelo": "NIVUS 1.0 200 TSI Comfortline",
+   "ano": "2023/2023",
+   "km": 55000,
+   "preco": 102790,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FDS-4F35_02.jpg?u=20261110162116",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FDS-4F35_02.jpg?u=20261110162116"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "72",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN SAVEIRO 1.6 MSI Extreme CD 16V",
+   "marca": "VOLKSWAGEN",
+   "modelo": "SAVEIRO 1.6 MSI Extreme CD 16V",
+   "ano": "2024/2025",
+   "km": 27117,
+   "preco": 103790,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TLL-1D50_02.jpg?u=20261113103939",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TLL-1D50_02.jpg?u=20261113103939"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "73",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Highline",
+   "marca": "VOLKSWAGEN",
+   "modelo": "NIVUS 1.0 200 TSI Highline",
+   "ano": "2024/2024",
+   "km": 15750,
+   "preco": 121790,
+   "cor": "Vermelho",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SWF-8C54_08.jpg?u=20261024125553",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SWF-8C54_08.jpg?u=20261024125553"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "74",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Highline",
+   "marca": "VOLKSWAGEN",
+   "modelo": "NIVUS 1.0 200 TSI Highline",
+   "ano": "2024/2025",
+   "km": 18400,
+   "preco": 129790,
+   "cor": "Vermelho",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DXW-0A83_05.jpg?u=20250612085038",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/DXW-0A83_05.jpg?u=20250612085038"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "75",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Highline",
+   "marca": "VOLKSWAGEN",
+   "modelo": "NIVUS 1.0 200 TSI Highline",
+   "ano": "2025/2026",
+   "km": 18079,
+   "preco": 132790,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GCL-4F91_01.jpg?u=20260703102132",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GCL-4F91_01.jpg?u=20260703102132"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "76",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Highline",
+   "marca": "VOLKSWAGEN",
+   "modelo": "NIVUS 1.0 200 TSI Highline",
+   "ano": "2025/2026",
+   "km": 19191,
+   "preco": 132790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UFB-5C20_05.jpg?u=20261110164736",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UFB-5C20_05.jpg?u=20261110164736"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "77",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN TIGUAN 2.0 350 TSI Allspace R-Line 4Motion",
+   "marca": "VOLKSWAGEN",
+   "modelo": "TIGUAN 2.0 350 TSI Allspace R-Line 4Motion",
+   "ano": "2020/2020",
+   "km": 82456,
+   "preco": 137790,
+   "cor": "Branco",
+   "combustivel": "Gasolina",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GGU-3G33_07.jpg?u=20260520103312",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GGU-3G33_07.jpg?u=20260520103312"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "78",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN T-CROSS 1.4 250 TSI Highline",
+   "marca": "VOLKSWAGEN",
+   "modelo": "T-CROSS 1.4 250 TSI Highline",
+   "ano": "2024/2025",
+   "km": 28567,
+   "preco": 139790,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TKQ-2J00_02.jpg?u=20251218165632",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TKQ-2J00_02.jpg?u=20251218165632"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "79",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLKSWAGEN T-CROSS 1.4 250 TSI Highline",
+   "marca": "VOLKSWAGEN",
+   "modelo": "T-CROSS 1.4 250 TSI Highline",
+   "ano": "2024/2025",
+   "km": 28031,
+   "preco": 206790,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STW-1I55_02.jpg?u=20261006095116",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STW-1I55_02.jpg?u=20261006095116"
+   ],
+   "cambio": "",
+   "opcionais": []
+  },
+  {
+   "id": "80",
+   "link": "https://carmaxsantos.com.br/estoque",
+   "nome": "VOLVO XC40 P6 Recharge Electric Plus",
+   "marca": "VOLVO",
+   "modelo": "XC40 P6 Recharge Electric Plus",
+   "ano": "2023/2024",
+   "km": 7659,
+   "preco": 209790,
+   "cor": "Prata",
+   "combustivel": "Elétrico",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STE-9G98_02.jpg?u=20261110162453",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/STE-9G98_02.jpg?u=20261110162453"
+   ],
+   "cambio": "",
+   "opcionais": []
+  }
+ ]
+}

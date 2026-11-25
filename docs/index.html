@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f0f10">
+<meta name="referrer" content="no-referrer">
+<title>Carmax Santos · Estoque</title>
+<meta name="description" content="Estoque atualizado da Carmax Santos. Fale com Nickolas Garcia pelo WhatsApp (13) 98839-6022.">
+<meta property="og:title" content="Carmax Santos · Estoque atualizado">
+<meta property="og:description" content="Seminovos e 0 km com fotos, preços e contato direto pelo WhatsApp.">
+<meta property="og:type" content="website">
+<style>
+:root{--red:#db0b14;--red2:#a00910;--ink:#121214;--mut:#6b6b73;--bg:#f4f4f6;--card:#fff;--line:#e6e6ea;--wa:#1fae55;
+--top:env(safe-area-inset-top,0px);--bot:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+body{overflow-x:hidden}
+button,input,select{font:inherit;color:inherit}
+img{display:block}
+/* barra do app */
+.app-bar{position:sticky;top:0;z-index:20;background:#0f0f10;color:#fff;padding:calc(10px + var(--top)) 16px 12px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{font-weight:900;font-size:21px;letter-spacing:.04em}.logo b{color:var(--red)}
+.brand small{display:block;font-size:11.5px;color:#a9a9b2;font-weight:500}
+.brand .wa-top{margin-left:auto;display:flex;align-items:center;gap:6px;background:var(--wa);color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:8px 12px;border-radius:999px}
+.search{margin-top:12px;display:flex;align-items:center;gap:8px;background:#1f1f22;border-radius:12px;padding:0 12px;height:44px}
+.search svg{flex:none;opacity:.6}
+.search input{flex:1;background:none;border:0;outline:0;color:#fff;font-size:16px;height:100%}
+.search input::placeholder{color:#8d8d96}
+.search .clear{border:0;background:none;color:#aaa;font-size:20px;width:28px;display:none}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 16px 4px;scrollbar-width:none;background:var(--bg)}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;color:#33333a;cursor:pointer}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip .n{opacity:.55;font-weight:500;margin-left:4px}
+.toolbar{display:flex;align-items:center;gap:10px;padding:8px 16px 4px;font-size:13px;color:var(--mut)}
+.toolbar select{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:10px;padding:6px 8px;font-size:13.5px;font-weight:600}
+/* lista */
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px;padding:10px 16px calc(28px + var(--bot));max-width:1240px;margin:0 auto}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05);cursor:pointer;text-align:left;border:0;display:flex;flex-direction:column;transition:transform .15s}
+.card:active{transform:scale(.985)}
+.ph{position:relative;aspect-ratio:3/2;background:#e9e9ee;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:11.5px;font-weight:800;padding:4px 8px;border-radius:6px}
+.cnt{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.62);color:#fff;font-size:12px;font-weight:600;padding:4px 8px;border-radius:999px;display:flex;align-items:center;gap:5px}
+.bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.mk{font-size:11.5px;font-weight:800;color:var(--red);letter-spacing:.06em}
+.nm{font-size:16px;font-weight:700;line-height:1.25}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.meta span{background:#f2f2f5;color:#4a4a52;border-radius:6px;padding:2px 8px;font-size:12.5px;white-space:nowrap}
+.pr{font-size:22px;font-weight:850;margin-top:auto;padding-top:4px;white-space:nowrap}
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:60px 20px}
+.skel{height:330px;border-radius:18px;background:linear-gradient(90deg,#ececf0,#f7f7f9,#ececf0);background-size:200% 100%;animation:sk 1.2s infinite}
+@keyframes sk{to{background-position:-200% 0}}
+footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(24px + var(--bot))}
+/* detalhe */
+.sheet{position:fixed;inset:0;z-index:50;background:#fff;overflow-y:auto;transform:translateY(100%);transition:transform .28s cubic-bezier(.2,.8,.2,1);overscroll-behavior:contain}
+.sheet.open{transform:none}
+.sh-top{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:calc(10px + var(--top)) 12px 10px;pointer-events:none}
+.rb{pointer-events:auto;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(0,0,0,.18);display:grid;place-items:center;cursor:pointer}
+.gal{margin-top:calc(-62px - var(--top));position:relative;background:#111}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.track img{flex:none;width:100%;aspect-ratio:4/3;object-fit:cover;scroll-snap-align:center;max-height:70vh}
+.gnav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:22px;cursor:pointer;display:none}
+.gnav.p{left:10px}.gnav.n{right:10px}
+@media(hover:hover){.gnav{display:block}}
+.gcount{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.62);color:#fff;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px}
+.thumbs{display:flex;gap:6px;overflow-x:auto;padding:8px 12px;background:#111;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs img{flex:none;width:64px;height:48px;object-fit:cover;border-radius:6px;opacity:.5;cursor:pointer;border:2px solid transparent}
+.thumbs img.on{opacity:1;border-color:#fff}
+.dt{max-width:760px;margin:0 auto;padding:18px 16px calc(110px + var(--bot))}
+.dt .mk{font-size:12px}
+.dt h1{font-size:23px;line-height:1.2;margin:4px 0 6px}
+.dt .pr{font-size:30px;padding:0}
+.specs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:18px 0}
+.spec{background:#f5f5f8;border-radius:14px;padding:12px}
+.spec small{display:block;color:var(--mut);font-size:12px}
+.spec b{font-size:15.5px}
+.dt h2{font-size:16px;margin:22px 0 10px}
+.opc{display:flex;flex-wrap:wrap;gap:8px}
+.opc span{border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:13px}
+.seller{display:flex;align-items:center;gap:12px;margin-top:24px;padding:14px;border-radius:14px;background:#f5f5f8}
+.av{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800}
+.seller small{display:block;color:var(--mut);font-size:12.5px}
+.site{display:inline-block;margin-top:14px;color:var(--mut);font-size:13px}
+.cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + var(--bot));display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .28s}
+.cta.open{transform:none}
+.cta .pv{font-size:12px;color:var(--mut);line-height:1.2}.cta .pv b{display:block;font-size:19px;color:var(--ink)}
+.cta a{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--wa);color:#fff;text-decoration:none;font-weight:800;padding:13px 18px;border-radius:14px;font-size:15px;white-space:nowrap}
+.toast{position:fixed;left:50%;bottom:calc(90px + var(--bot));transform:translate(-50%,20px);background:#222;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:.25s;z-index:80;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+/* tela cheia */
+.zoom{position:fixed;inset:0;z-index:90;background:#000;display:none}
+.zoom.open{display:block}
+.zoom .track{height:100%}
+.zoom .track img{height:100%;max-height:none;aspect-ratio:auto;object-fit:contain}
+.zoom .rb{position:absolute;top:calc(12px + var(--top));right:12px;z-index:2}
+@media(prefers-reduced-motion:reduce){.sheet,.cta{transition:none}}
+</style>
+</head>
+<body>
+<header class="app-bar">
+  <div class="brand">
+    <div><div class="logo">CAR<b>MAX</b></div><small>Santos · estoque atualizado</small></div>
+    <a class="wa-top" id="waTop" href="#" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2Z"/></svg>
+      WhatsApp</a>
+  </div>
+  <label class="search">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Buscar modelo, marca, cor…" autocomplete="off" aria-label="Buscar">
+    <button class="clear" id="qx" aria-label="Limpar busca">×</button>
+  </label>
+</header>
+<nav class="chips" id="chips" aria-label="Marcas"></nav>
+<div class="toolbar"><span id="count">Carregando estoque…</span>
+  <select id="sort" aria-label="Ordenar">
+    <option value="rec">Destaques</option>
+    <option value="asc">Menor preço</option>
+    <option value="desc">Maior preço</option>
+    <option value="new">Mais novos</option>
+    <option value="km">Menor km</option>
+  </select>
+</div>
+<main class="list" id="list"><div class="skel"></div><div class="skel"></div><div class="skel"></div></main>
+<footer id="foot"></footer>
+
+<section class="sheet" id="sheet" aria-modal="true" role="dialog">
+  <div class="sh-top">
+    <button class="rb" id="back" aria-label="Voltar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="rb" id="share" aria-label="Compartilhar este carro"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
+  </div>
+  <div id="detail"></div>
+</section>
+<div class="cta" id="cta"><div class="pv">Preço<b id="ctaP"></b></div><a id="ctaA" href="#" target="_blank" rel="noopener">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>Tenho interesse</a></div>
+<div class="zoom" id="zoom"><button class="rb" id="zx" aria-label="Fechar fotos"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="track" id="ztrack"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+{
+const FONE = '5513988396022', VENDEDOR = 'Nickolas Garcia', FONE_TXT = '(13) 98839-6022';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
+const brl = v => 'R$ ' + Number(v).toLocaleString('pt-BR');
+const kmf = v => v ? Number(v).toLocaleString('pt-BR') + ' km' : '0 km';
+const cap = s => s.toLowerCase().replace(/(^|[\s-])\S/g, m => m.toUpperCase());
+const wa = t => `https://wa.me/${FONE}?text=${encodeURIComponent(t)}`;
+const anoMod = c => +String(c.ano).split('/').pop() || 0;
+const imgAttr = 'referrerpolicy="no-referrer" decoding="async"';
+let CARS = [], marca = '', busca = '';
+
+$('#waTop').href = wa(`Olá, ${VENDEDOR.split(' ')[0]}! Vi o catálogo da Carmax e queria mais informações.`);
+
+function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('show'), 2200); }
+
+function filtrados() {
+  const q = busca.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  let v = CARS.filter(c => (!marca || c.marca === marca) &&
+    (!q || (c.nome + ' ' + c.cor + ' ' + c.combustivel + ' ' + c.ano + ' ' + (c.cambio || '')).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(q)));
+  const s = $('#sort').value;
+  if (s === 'asc') v.sort((a, b) => a.preco - b.preco);
+  if (s === 'desc') v.sort((a, b) => b.preco - a.preco);
+  if (s === 'new') v.sort((a, b) => anoMod(b) - anoMod(a) || a.km - b.km);
+  if (s === 'km') v.sort((a, b) => a.km - b.km);
+  return v;
+}
+
+function chips() {
+  const cont = {}; CARS.forEach(c => cont[c.marca] = (cont[c.marca] || 0) + 1);
+  const ms = Object.keys(cont).sort();
+  $('#chips').innerHTML = [['', 'Todos', CARS.length], ...ms.map(m => [m, cap(m), cont[m]])]
+    .map(([v, t, n]) => `<button class="chip${v === marca ? ' on' : ''}" data-m="${esc(v)}">${esc(t)}<span class="n">${n}</span></button>`).join('');
+}
+
+function render() {
+  const v = filtrados();
+  $('#count').textContent = v.length + (v.length === 1 ? ' veículo' : ' veículos');
+  $('#list').innerHTML = v.length ? v.map(c => `
+    <button class="card" data-id="${esc(c.id)}">
+      <div class="ph"><img loading="lazy" ${imgAttr} src="${esc(c.fotos[0] || c.capa)}" alt="${esc(c.nome)}">
+        ${c.km === 0 ? '<span class="tag">0 KM</span>' : ''}
+        ${c.fotos.length > 1 ? `<span class="cnt"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/></svg>${c.fotos.length}</span>` : ''}</div>
+      <div class="bd"><span class="mk">${esc(c.marca)}</span><span class="nm">${esc(c.modelo)}</span>
+        <span class="meta"><span>${esc(c.ano)}</span><span>${kmf(c.km)}</span>${c.cambio ? `<span>${esc(c.cambio)}</span>` : ''}<span>${esc(c.combustivel)}</span></span>
+        <span class="pr">${brl(c.preco)}</span></div>
+    </button>`).join('') : '<p class="empty">Nenhum carro encontrado com esse filtro.</p>';
+}
+
+/* ---- detalhe ---- */
+let atual = null;
+function galeria(fotos, nome, tracked) {
+  return `<div class="track" id="${tracked}">${fotos.map((f, i) => `<img ${imgAttr} ${i > 1 ? 'loading="lazy"' : ''} src="${esc(f)}" alt="${esc(nome)} — foto ${i + 1}" data-i="${i}">`).join('')}</div>`;
+}
+function abrir(id, push) {
+  const c = CARS.find(x => x.id === id); if (!c) return;
+  atual = c;
+  const fotos = c.fotos.length ? c.fotos : [c.capa];
+  $('#detail').innerHTML = `
+    <div class="gal">${galeria(fotos, c.nome, 'gtrack')}
+      <button class="gnav p" data-d="-1" aria-label="Foto anterior">‹</button><button class="gnav n" data-d="1" aria-label="Próxima foto">›</button>
+      <span class="gcount" id="gc">1 / ${fotos.length}</span></div>
+    ${fotos.length > 1 ? `<div class="thumbs" id="th">${fotos.map((f, i) => `<img ${imgAttr} loading="lazy" src="${esc(f)}" alt="" data-i="${i}" class="${i ? '' : 'on'}">`).join('')}</div>` : ''}
+    <div class="dt">
+      <span class="mk">${esc(c.marca)}</span>
+      <h1>${esc(c.modelo)}</h1>
+      <div class="pr">${brl(c.preco)}</div>
+      <div class="specs">
+        <div class="spec"><small>Ano</small><b>${esc(c.ano)}</b></div>
+        <div class="spec"><small>Quilometragem</small><b>${kmf(c.km)}</b></div>
+        ${c.cambio ? `<div class="spec"><small>Câmbio</small><b>${esc(c.cambio)}</b></div>` : ''}
+        <div class="spec"><small>Combustível</small><b>${esc(c.combustivel)}</b></div>
+        <div class="spec"><small>Cor</small><b>${esc(c.cor)}</b></div>
+      </div>
+      ${c.opcionais && c.opcionais.length ? `<h2>Itens e opcionais</h2><div class="opc">${c.opcionais.map(o => `<span>${esc(o)}</span>`).join('')}</div>` : ''}
+      <div class="seller"><div class="av">${esc(VENDEDOR[0])}</div><div><b>${esc(VENDEDOR)}</b><small>Consultor Carmax · ${FONE_TXT}</small></div></div>
+      <a class="site" href="${esc(c.link)}" target="_blank" rel="noopener">Ver anúncio no site da Carmax ›</a>
+    </div>`;
+  $('#ctaP').textContent = brl(c.preco);
+  $('#ctaA').href = wa(`Olá, ${VENDEDOR.split(' ')[0]}! Tenho interesse no ${c.nome} ${c.ano} (${c.cor}) — ${brl(c.preco)}. Ainda está disponível?\n${location.origin + location.pathname}#carro-${c.id}`);
+  $('#sheet').scrollTop = 0;
+  $('#sheet').classList.add('open'); $('#cta').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (push) history.pushState({ carro: id }, '', '#carro-' + id);
+  const tr = $('#gtrack');
+  tr.addEventListener('scroll', () => {
+    const i = Math.round(tr.scrollLeft / tr.clientWidth);
+    $('#gc').textContent = (i + 1) + ' / ' + fotos.length;
+    const th = $('#th'); if (th) th.querySelectorAll('img').forEach((t, j) => { t.classList.toggle('on', j === i); if (j === i) t.scrollIntoView({ block: 'nearest', inline: 'nearest' }); });
+  }, { passive: true });
+}
+function fechar() {
+  $('#sheet').classList.remove('open'); $('#cta').classList.remove('open');
+  document.body.style.overflow = ''; atual = null;
+}
+function irFoto(i) { const tr = $('#gtrack'); tr.scrollTo({ left: i * tr.clientWidth, behavior: 'smooth' }); }
+
+$('#detail').addEventListener('click', e => {
+  const nav = e.target.closest('.gnav');
+  const tr = $('#gtrack');
+  if (nav) return irFoto(Math.round(tr.scrollLeft / tr.clientWidth) + +nav.dataset.d);
+  const th = e.target.closest('#th img'); if (th) return irFoto(+th.dataset.i);
+  const gi = e.target.closest('#gtrack img'); if (gi) abrirZoom(+gi.dataset.i);
+});
+function abrirZoom(i) {
+  const fotos = atual.fotos.length ? atual.fotos : [atual.capa];
+  $('#ztrack').innerHTML = fotos.map(f => `<img ${imgAttr} src="${esc(f)}" alt="">`).join('');
+  $('#zoom').classList.add('open');
+  requestAnimationFrame(() => { $('#ztrack').scrollLeft = i * $('#ztrack').clientWidth; });
+}
+$('#zx').onclick = () => $('#zoom').classList.remove('open');
+
+$('#list').addEventListener('click', e => { const c = e.target.closest('.card'); if (c) abrir(c.dataset.id, true); });
+$('#back').onclick = () => { if (history.state && history.state.carro) history.back(); else { fechar(); history.replaceState(null, '', location.pathname); } };
+window.addEventListener('popstate', () => { const m = location.hash.match(/^#carro-(\w+)/); if (m) abrir(m[1], false); else { fechar(); $('#zoom').classList.remove('open'); } });
+$('#share').onclick = async () => {
+  if (!atual) return;
+  const url = location.origin + location.pathname + '#carro-' + atual.id;
+  const t = `${atual.nome} ${atual.ano} — ${brl(atual.preco)}`;
+  try { if (navigator.share) { await navigator.share({ title: t, text: t, url }); return; } } catch (e) { if (e.name === 'AbortError') return; }
+  try { await navigator.clipboard.writeText(t + '\n' + url); toast('Link do carro copiado'); } catch (e) { toast(url); }
+};
+
+$('#chips').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; marca = b.dataset.m; chips(); render(); window.scrollTo({ top: 0 }); });
+$('#sort').onchange = render;
+$('#q').addEventListener('input', e => { busca = e.target.value; $('#qx').style.display = busca ? 'block' : 'none'; render(); });
+$('#qx').onclick = e => { e.preventDefault(); $('#q').value = ''; busca = ''; $('#qx').style.display = 'none'; render(); };
+
+fetch('estoque.json?v=' + Date.now()).then(r => r.json()).then(d => {
+  CARS = d.carros.map(c => ({ ...c, fotos: (c.fotos && c.fotos.length ? c.fotos : [c.capa]).filter(Boolean) }));
+  $('#foot').innerHTML = `Atualizado automaticamente em ${esc(d.atualizado)} · ${d.total} veículos<br>Preços e disponibilidade sujeitos a alteração. Fale com ${esc(VENDEDOR)} · <a href="${wa('Olá!')}" target="_blank" rel="noopener">${FONE_TXT}</a>`;
+  chips(); render();
+  const m = location.hash.match(/^#carro-(\w+)/); if (m) abrir(m[1], false);
+}).catch(() => { $('#list').innerHTML = '<p class="empty">Não foi possível carregar o estoque agora. Tente de novo em instantes.</p>'; $('#count').textContent = ''; });
+}
+</script>
+</body>
+</html>

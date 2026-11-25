@@ -1,0 +1,39 @@
+name: Atualizar estoque
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # de hora em hora
+  workflow_dispatch:        # botão "Run workflow" para atualizar na hora
+  push:
+    branches: [main]
+    paths: ["scraper.py", ".github/workflows/atualizar.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ler o estoque do site
+        run: python scraper.py
+      - name: Salvar se mudou
+        run: |
+          git config user.name "robo-catalogo"
+          git config user.email "robo-catalogo@users.noreply.github.com"
+          git add docs/estoque.json
+          if git diff --cached --quiet; then
+            echo "Nada mudou."
+          else
+            git commit -m "Estoque atualizado $(TZ=America/Sao_Paulo date '+%d/%m/%Y %H:%M')"
+            git push
+          fi
