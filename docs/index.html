@@ -353,6 +353,7 @@ function abrir(id, push) {
     if (nome.split(' ').length < 2) { erros.push('Digite o nome completo.'); $('#sNome').classList.add('err'); }
     if (!cpfOk(cpf)) { erros.push('CPF inválido.'); $('#sCpf').classList.add('err'); }
     if (!(aa > 1900 && dt.getDate() === dd && dt.getMonth() === mm - 1 && idade >= 18 && idade < 100)) { erros.push('Data de nascimento inválida (é preciso ter 18 anos ou mais).'); $('#sNasc').classList.add('err'); }
+    if (ent && +ent >= c.preco) { erros.push('A entrada precisa ser menor que o preço do carro.'); $('#sEnt').classList.add('err'); }
     if (!$('#sOk').checked) erros.push('Marque a autorização para enviar.');
     $('#sMsg').textContent = erros.join(' ');
     if (erros.length) return;
