@@ -40,6 +40,8 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 .fipe .m{font-size:13px;color:#d9d9de}
 .wm{display:none;margin-top:10px;background:var(--soft);border-radius:14px;padding:12px 14px}
 .wm.on{display:block}
+.wmdica{font-size:13.5px;background:#fff;border-radius:10px;padding:9px 11px;border:1px dashed #c9c9d1}
+.wmdica b{color:#c8102e}
 .wmb{display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:#fff;border:1px solid #d6d6dc;color:#c8102e;font-weight:800;text-decoration:none}
 .item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--soft)}
 .item:last-child{border-bottom:0}
@@ -109,7 +111,11 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
     <select class="in" id="ano" disabled><option value="">Escolha o modelo primeiro</option></select>
     <div class="fipe" id="fipe"><small id="fRef">Tabela FIPE</small><b id="fVal">—</b><div class="m" id="fMod"></div></div>
     <div class="wm" id="wm">
-      <a class="wmb" id="wmLink" href="#" target="_blank" rel="noopener">Ver na Webmotors ↗</a>
+      <p class="wmdica" id="wmDica"></p>
+      <label class="l" for="wmVer">Versão exata na Webmotors</label>
+      <input class="in" id="wmVer" placeholder="Ex.: 1.3 T270 TURBO FLEX LONGITUDE AT6" autocomplete="off" style="text-transform:uppercase">
+      <p class="nota">Copie o nome da versão como aparece no filtro da Webmotors. Depois da primeira vez, o sistema lembra para essa versão FIPE.</p>
+      <a class="wmb" id="wmLink" href="#" target="_blank" rel="noopener" style="margin-top:10px">Ver na Webmotors ↗</a>
       <label class="l" for="wmVal">Média de venda na Webmotors</label>
       <input class="in" id="wmVal" inputmode="numeric" placeholder="Digite a média que aparece lá (R$)">
       <p class="nota" id="wmCmp"></p>
@@ -194,7 +200,7 @@ let CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, (ler('av
 
 /* ---------- estado da avaliação ---------- */
 const novo = () => ({ id: 'a' + Date.now(), criado: new Date().toISOString(), tipo: 'carros', marca: null, modelo: null, ano: null, fipe: null,
-  km: '', webmotors: 0, placa: '', cor: '', cliente: '', proposta: '', obs: '',
+  km: '', webmotors: 0, wmVersao: '', placa: '', cor: '', cliente: '', proposta: '', obs: '',
   e: { pintura: 0, martelinho: 0, pneu: 0, parabrisa: false, revisao: true, chave: true, interior: 'bom', mecanica: 'ok', mecanicaValor: 0, sinistro: false, outros: 0 },
   fotos: [], prints: [] });
 let A = novo();
@@ -231,7 +237,7 @@ listaBusca($('#modelo'), $('#lModelo'), () => MODELOS, async m => {
 });
 $('#ano').addEventListener('change', async () => {
   const cod = $('#ano').value; if (!cod) return;
-  A.ano = { codigo: cod, nome: $('#ano').selectedOptions[0].textContent }; A.fipe = null; A.webmotors = 0; $('#wmVal').value = ''; mostrarFipe(true);
+  A.ano = { codigo: cod, nome: $('#ano').selectedOptions[0].textContent }; A.fipe = null; A.webmotors = 0; A.wmVersao = ''; $('#wmVal').value = ''; mostrarFipe(true);
   try { const f = await api(`${A.tipo}/marcas/${A.marca.codigo}/modelos/${A.modelo.codigo}/anos/${cod}`);
     A.fipe = { valor: num(f.Valor) / (/,\d\d$/.test(f.Valor) ? 100 : 1), codigo: f.CodigoFipe, ref: f.MesReferencia, anoModelo: f.AnoModelo, comb: f.Combustivel, texto: f.Valor };
     mostrarFipe(); calcular(); }
@@ -241,7 +247,7 @@ function mostrarFipe(carregando) {
   const b = $('#fipe');
   if (carregando) { b.classList.add('on'); $('#fVal').textContent = 'Buscando…'; $('#fMod').textContent = ''; $('#fRef').textContent = 'Tabela FIPE'; return; }
   if (!A.fipe) { b.classList.remove('on'); $('#wm').classList.remove('on'); return; }
-  b.classList.add('on'); $('#wm').classList.add('on'); $('#wmLink').href = linkWebmotors(); $('#fVal').textContent = A.fipe.texto || brl(A.fipe.valor);
+  b.classList.add('on'); $('#wm').classList.add('on'); atualizarWm(); $('#fVal').textContent = A.fipe.texto || brl(A.fipe.valor);
   $('#fRef').textContent = `Tabela FIPE · ${A.fipe.ref} · código ${A.fipe.codigo}`;
   $('#fMod').textContent = `${A.marca.nome} ${A.modelo.nome} · ${A.ano.nome}`;
 }
@@ -253,8 +259,26 @@ function linkWebmotors() {
   const mod = dois.test(A.modelo.nome) && pal[1] ? pal[0] + ' ' + pal[1] : pal[0];
   const ano = A.fipe.anoModelo >= 32000 ? new Date().getFullYear() : A.fipe.anoModelo;
   const tipo = A.tipo === 'motos' ? 'motos' : 'carros';
-  return `https://www.webmotors.com.br/${tipo}/estoque/${slug(m)}/${slug(mod)}/de.${ano}/ate.${ano}`;
+  const v = (A.wmVersao || '').trim();
+  const vs = v ? '/' + N(v).replace(/\./g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') : '';
+  return `https://www.webmotors.com.br/${tipo}/estoque/${slug(m)}/${slug(mod)}${vs}/de.${ano}/ate.${ano}`;
 }
+const GEN = /^(flex|aut\.?|mec\.?|tb|turbo|gasolina|diesel|alcool|\d+p|\d+v|5p|4p|2p|aut|mec|automático|automatico|manual|cvt|tiptronic|\(.*\)|-|\/)$/i;
+function dicaVersao() {
+  const pal = A.modelo.nome.split(/\s+/).slice(1).filter(w => !GEN.test(w));
+  return pal.length ? 'Na Webmotors, escolha a versão que tenha: <b>' + pal.map(esc).join(' · ') + '</b>' : '';
+}
+const WMK = 'aval-wm-versoes';
+function atualizarWm() {
+  if (!A.fipe) return;
+  $('#wmDica').innerHTML = dicaVersao(); $('#wmDica').style.display = $('#wmDica').innerHTML ? '' : 'none';
+  if (!A.wmVersao) { const mapa = ler(WMK, {}); A.wmVersao = mapa[A.fipe.codigo + '|' + A.modelo.codigo] || ''; }
+  $('#wmVer').value = A.wmVersao; $('#wmLink').href = linkWebmotors();
+}
+$('#wmVer').addEventListener('input', e => {
+  A.wmVersao = e.target.value.toUpperCase().trim(); $('#wmLink').href = linkWebmotors();
+  const mapa = ler(WMK, {}), k = A.fipe.codigo + '|' + A.modelo.codigo; if (A.wmVersao) mapa[k] = A.wmVersao; else delete mapa[k]; gravar(WMK, mapa);
+});
 $('#wmVal').addEventListener('input', e => { const v = num(e.target.value); e.target.value = v ? brl(v) : ''; A.webmotors = v; calcular(); });
 $('#tipo').addEventListener('click', async e => {
   const b = e.target.closest('button'); if (!b || b.dataset.t === A.tipo) return;
@@ -433,6 +457,7 @@ $('#bShare').onclick = async () => {
     A.cliente ? 'Cliente: ' + A.cliente : '',
     '',
     `FIPE (${A.fipe.ref}): ${brl(r.fipe)}`,
+    A.wmVersao ? `Versão Webmotors: ${A.wmVersao}` : '',
     r.wm ? `Média Webmotors: ${brl(r.wm)} (${r.wm >= r.fipe ? '+' : '−'}${Math.abs((r.wm / r.fipe - 1) * 100).toFixed(1).replace('.', ',')}% da FIPE)` : '',
     (A.prints || []).length ? `${A.prints.length} print(s) de anúncios da Webmotors em anexo` : '',
     `Mercado estimado: ${brl(r.mercado)}`,
