@@ -105,6 +105,23 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(2
 .zoom .track{height:100%}
 .zoom .track img{height:100%;max-height:none;aspect-ratio:auto;object-fit:contain}
 .zoom .rb{position:absolute;top:calc(12px + var(--top));right:12px;z-index:2}
+/* pop-up de Natal */
+.promo{position:fixed;inset:0;z-index:100;background:rgba(10,10,12,.62);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
+.promo.open{display:flex;animation:pf .25s ease}
+@keyframes pf{from{opacity:0}}
+.pbox{width:min(400px,100%);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);position:relative;animation:pu .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes pu{from{transform:translateY(24px) scale(.97)}}
+.pban{position:relative;height:200px;background:radial-gradient(120% 90% at 50% 0%,#e3141d 0%,#a00910 55%,#5c0509 100%);overflow:hidden}
+.pban svg{position:absolute;inset:0;width:100%;height:100%}
+.pclose{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:20px;line-height:1;cursor:pointer}
+.ptxt{padding:20px 22px 22px;text-align:center}
+.ptxt h3{font-size:26px;line-height:1.1;margin-bottom:8px}
+.ptxt p{color:#55555d;font-size:15px}
+.pbtn{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+.pbtn a,.pbtn button{display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:12px;font-weight:800;font-size:15px;text-decoration:none;border:0;cursor:pointer}
+.pbtn a{background:var(--wa);color:#fff}
+.pbtn button{background:#f1f1f4;color:var(--ink)}
+@media(prefers-reduced-motion:reduce){.promo.open,.pbox{animation:none}}
 @media(prefers-reduced-motion:reduce){.sheet,.cta{transition:none}}
 </style>
 </head>
@@ -149,6 +166,47 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(2
 <div class="cta" id="cta"><div class="pv">Preço<b id="ctaP"></b></div><a id="ctaA" href="#" target="_blank" rel="noopener">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>Tenho interesse</a></div>
 <div class="zoom" id="zoom"><button class="rb" id="zx" aria-label="Fechar fotos"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="track" id="ztrack"></div></div>
+<div class="promo" id="promo" role="dialog" aria-modal="true" aria-labelledby="promoT">
+  <div class="pbox">
+    <button class="pclose" id="promoX" aria-label="Fechar">×</button>
+    <div class="pban">
+      <svg viewBox="0 0 400 200" aria-hidden="true">
+        <defs><radialGradient id="gl" cx="50%" cy="40%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+        <circle cx="200" cy="80" r="150" fill="url(#gl)"/>
+        <g fill="#fff">
+          <circle cx="30" cy="30" r="2.2" opacity=".8"/><circle cx="70" cy="70" r="1.6" opacity=".6"/><circle cx="110" cy="22" r="2.6" opacity=".7"/><circle cx="160" cy="48" r="1.4" opacity=".6"/><circle cx="250" cy="20" r="2" opacity=".7"/><circle cx="300" cy="60" r="2.6" opacity=".8"/><circle cx="350" cy="28" r="1.8" opacity=".7"/><circle cx="378" cy="90" r="2.2" opacity=".6"/><circle cx="20" cy="110" r="1.8" opacity=".6"/><circle cx="330" cy="120" r="1.5" opacity=".5"/><circle cx="60" cy="140" r="2.4" opacity=".5"/>
+        </g>
+        <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9">
+          <g transform="translate(56 48)"><path d="M0-12V12M-10.4-6 10.4 6M-10.4 6 10.4-6"/></g>
+          <g transform="translate(344 70) scale(.8)"><path d="M0-12V12M-10.4-6 10.4 6M-10.4 6 10.4-6"/></g>
+          <g transform="translate(206 26) scale(.6)"><path d="M0-12V12M-10.4-6 10.4 6M-10.4 6 10.4-6"/></g>
+        </g>
+        <path d="M0 175 Q100 158 200 170 T400 165 V200 H0Z" fill="#fff"/>
+        <g transform="translate(110 108)">
+          <ellipse cx="90" cy="66" rx="98" ry="7" fill="#000" opacity=".18"/>
+          <path d="M8 52 C8 40 16 34 30 32 L52 30 L76 12 C82 8 90 6 100 6 L132 6 C142 6 150 9 156 15 L172 30 C186 32 192 38 192 48 L192 56 C192 60 189 62 185 62 L14 62 C10 62 8 59 8 55Z" fill="#111"/>
+          <path d="M60 30 L80 14 C84 11 90 10 98 10 L112 10 L112 30Z M118 10 L130 10 C138 10 144 12 149 17 L160 30 L118 30Z" fill="#9fc6dd" opacity=".85"/>
+          <rect x="168" y="38" width="16" height="6" rx="3" fill="#ffd66b"/>
+          <circle cx="50" cy="62" r="14" fill="#222" stroke="#fff" stroke-width="3"/><circle cx="50" cy="62" r="5" fill="#bbb"/>
+          <circle cx="152" cy="62" r="14" fill="#222" stroke="#fff" stroke-width="3"/><circle cx="152" cy="62" r="5" fill="#bbb"/>
+          <rect x="94" y="0" width="12" height="8" fill="#ffcf3a"/>
+          <path d="M100 2 C88 -14 72 -8 80 2Z M100 2 C112 -14 128 -8 120 2Z" fill="#ffcf3a" stroke="#c99a10" stroke-width="1.2"/>
+          <path d="M100 4 L92 18 M100 4 L108 18" stroke="#ffcf3a" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(36 128)"><path d="M18 0 L36 44 H0Z" fill="#0f7a3d"/><path d="M18 -14 L32 18 H4Z" fill="#14974c"/><rect x="15" y="44" width="6" height="8" fill="#5b3a1e"/><circle cx="18" cy="-15" r="3" fill="#ffcf3a"/></g>
+        <g transform="translate(328 118) scale(1.15)"><path d="M18 0 L36 44 H0Z" fill="#0f7a3d"/><path d="M18 -14 L32 18 H4Z" fill="#14974c"/><rect x="15" y="44" width="6" height="8" fill="#5b3a1e"/><circle cx="18" cy="-15" r="3" fill="#ffcf3a"/></g>
+      </svg>
+    </div>
+    <div class="ptxt">
+      <h3 id="promoT"></h3>
+      <p id="promoD"></p>
+      <div class="pbtn">
+        <a id="promoWa" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <button id="promoOk">Ver o estoque</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -287,6 +345,29 @@ function setLoja(l, hist) {
 $('#tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.l !== loja) setLoja(b.dataset.l, true); });
 $('#q').addEventListener('input', e => { busca = e.target.value; $('#qx').style.display = busca ? 'block' : 'none'; render(); });
 $('#qx').onclick = e => { e.preventDefault(); $('#q').value = ''; busca = ''; $('#qx').style.display = 'none'; render(); };
+
+
+/* ---- pop-up de Natal: edite aqui o texto e as datas ---- */
+const PROMO = {
+  ativo: true,
+  inicio: '2026-11-25', fim: '2027-01-06',          // aparece só entre essas datas
+  titulo: 'Boas festas da Carmax! 🎄',
+  texto: 'Que tal começar 2027 de carro novo? Veja nosso estoque atualizado e fale comigo pelo WhatsApp para condições de pagamento e avaliação do seu usado.',
+  mensagem: 'Olá, Nickolas! Vi o catálogo de Natal da Carmax e queria saber das condições.',
+  chave: 'carmax-natal-2026'                         // troque para mostrar de novo a quem já viu
+};
+(() => {
+  const hoje = new Date().toISOString().slice(0, 10);
+  if (!PROMO.ativo || hoje < PROMO.inicio || hoje > PROMO.fim || /^#carro-/.test(location.hash)) return;
+  let visto = false; try { visto = localStorage.getItem(PROMO.chave) === '1'; } catch (e) {}
+  if (visto) return;
+  $('#promoT').textContent = PROMO.titulo; $('#promoD').textContent = PROMO.texto;
+  $('#promoWa').href = wa(PROMO.mensagem);
+  const fecha = () => { $('#promo').classList.remove('open'); try { localStorage.setItem(PROMO.chave, '1'); } catch (e) {} };
+  $('#promoX').onclick = fecha; $('#promoOk').onclick = fecha; $('#promoWa').addEventListener('click', fecha);
+  $('#promo').addEventListener('click', e => { if (e.target.id === 'promo') fecha(); });
+  setTimeout(() => $('#promo').classList.add('open'), 700);
+})();
 
 fetch('estoque.json?v=' + Date.now()).then(r => r.json()).then(d => {
   CARS = d.carros.map(c => ({ ...c, fotos: (c.fotos && c.fotos.length ? c.fotos : [c.capa]).filter(Boolean) }));
