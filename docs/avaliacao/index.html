@@ -113,6 +113,8 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
       <label class="l" for="wmVal">Média de venda na Webmotors</label>
       <input class="in" id="wmVal" inputmode="numeric" placeholder="Digite a média que aparece lá (R$)">
       <p class="nota" id="wmCmp"></p>
+      <label class="l">Prints de anúncios na Webmotors</label>
+      <div class="fotos" id="prints"></div>
     </div>
     <div class="g2">
       <div><label class="l" for="km">Quilometragem</label><input class="in" id="km" inputmode="numeric" placeholder="Ex.: 45.000"></div>
@@ -194,7 +196,7 @@ let CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, (ler('av
 const novo = () => ({ id: 'a' + Date.now(), criado: new Date().toISOString(), tipo: 'carros', marca: null, modelo: null, ano: null, fipe: null,
   km: '', webmotors: 0, placa: '', cor: '', cliente: '', proposta: '', obs: '',
   e: { pintura: 0, martelinho: 0, pneu: 0, parabrisa: false, revisao: true, chave: true, interior: 'bom', mecanica: 'ok', mecanicaValor: 0, sinistro: false, outros: 0 },
-  fotos: [] });
+  fotos: [], prints: [] });
 let A = novo();
 
 /* ---------- FIPE ---------- */
@@ -303,8 +305,8 @@ function calcular() {
   const esperado = Math.round(CFG.kmAno * idade);
   let ajKm = 0;
   if (km && !zero) { ajKm = -((km - esperado) / 10000) * (CFG.kmFator / 100); ajKm = Math.max(-0.15, Math.min(0.05, ajKm)); }
-  const wm = +A.webmotors || 0, base = wm || fipe;
-  $('#wmCmp').textContent = wm ? `Webmotors está ${Math.abs((wm / fipe - 1) * 100).toFixed(1).replace('.', ',')}% ${wm >= fipe ? 'acima' : 'abaixo'} da FIPE. A conta usa a média da Webmotors.` : 'Sem a média, a conta usa só a FIPE.';
+  const wm = +A.webmotors || 0, base = fipe;
+  $('#wmCmp').textContent = wm ? `Webmotors está ${Math.abs((wm / fipe - 1) * 100).toFixed(1).replace('.', ',')}% ${wm >= fipe ? 'acima' : 'abaixo'} da FIPE. Só vai na mensagem, não muda a conta.` : 'A média e os prints vão junto na mensagem para a gerência. Não mudam a conta.';
   const vKm = base * ajKm;
   let mercado = base + vKm;
   const vSin = A.e.sinistro ? -mercado * CFG.sinistro / 100 : 0; mercado += vSin;
@@ -321,7 +323,6 @@ function calcular() {
   const L = (t, v, cls) => `<div class="linha ${cls || ''}"><span>${t}</span><span>${v}</span></div>`;
   box.innerHTML =
     L('Valor FIPE', brl(fipe)) +
-    (wm ? L(`Média Webmotors (${wm >= fipe ? '+' : '−'}${Math.abs((wm / fipe - 1) * 100).toFixed(1).replace('.', ',')}% da FIPE)`, brl(wm)) : '') +
     (km && !zero ? L(`Ajuste por km (${km.toLocaleString('pt-BR')} km; esperado ~${esperado.toLocaleString('pt-BR')})`, (vKm >= 0 ? '+' : '−') + brl(Math.abs(vKm)).replace('R$ ', 'R$ ') + ` (${(ajKm * 100).toFixed(1).replace('.', ',')}%)`, vKm >= 0 ? 'pos' : 'neg') : '') +
     (vSin ? L(`Sinistro / leilão (−${CFG.sinistro}%)`, '−' + brl(-vSin), 'neg') : '') +
     L('<b>Valor de mercado estimado</b>', brl(mercado)) +
@@ -331,7 +332,6 @@ function calcular() {
     `<div class="total"><small>Valor sugerido de compra</small><b>${brl(r5(sug))}</b><span class="fx">Faixa de negociação: ${brl(r5(sug * 0.97))} a ${brl(r5(sug * 1.03))} · ${(sug / fipe * 100).toFixed(0)}% da FIPE</span></div>`;
   const avisos = [];
   if (!km && !zero) avisos.push('Informe a quilometragem para ajustar o valor.');
-  if (!wm) avisos.push('Toque em "Ver na Webmotors" e digite a média de venda para uma conta mais real.');
   if (A.e.mecanica === 'problema' && !A.e.mecanicaValor) avisos.push('Marcou problema no motor/câmbio: informe o custo estimado do reparo.');
   if (A.e.sinistro) avisos.push('Carro com sinistro/leilão: confirme a política da loja antes de fazer proposta.');
   if (!A.fotos.length) avisos.push('Nenhuma foto ainda.');
@@ -351,25 +351,29 @@ const idb = () => DB || (DB = new Promise((ok, no) => { const r = indexedDB.open
 const fotoPut = async (k, b) => { const d = await idb(); return new Promise((ok, no) => { const t = d.transaction('fotos', 'readwrite'); t.objectStore('fotos').put(b, k); t.oncomplete = ok; t.onerror = () => no(t.error); }); };
 const fotoGet = async k => { const d = await idb(); return new Promise(ok => { const r = d.transaction('fotos').objectStore('fotos').get(k); r.onsuccess = () => ok(r.result); r.onerror = () => ok(null); }); };
 const fotoDel = async k => { const d = await idb(); d.transaction('fotos', 'readwrite').objectStore('fotos').delete(k); };
-async function reduzir(file) {
-  const img = await createImageBitmap(file); const s = Math.min(1, 1600 / Math.max(img.width, img.height));
+async function reduzir(file, max = 1600) {
+  const img = await createImageBitmap(file); const s = Math.min(1, max / Math.max(img.width, img.height));
   const cv = document.createElement('canvas'); cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s);
   cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
   return new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.82));
 }
 const urls = new Map();
-async function desenharFotos() {
-  const parts = [];
-  for (const k of A.fotos) { if (!urls.has(k)) { const b = await fotoGet(k); if (b) urls.set(k, URL.createObjectURL(b)); } if (urls.has(k)) parts.push(`<div class="f"><img src="${urls.get(k)}" alt=""><button data-del="${esc(k)}" aria-label="Apagar foto">×</button></div>`); }
-  $('#fotos').innerHTML = parts.join('') + `<label class="add">＋<br>Adicionar fotos<input type="file" id="fIn" accept="image/*" multiple></label>`;
+const GR = { fotos: { el: '#fotos', txt: 'Adicionar fotos', max: 1600, pref: 'f' }, prints: { el: '#prints', txt: 'Adicionar prints', max: 2400, pref: 'p' } };
+async function desenharGrade(q) {
+  const g = GR[q], lista = A[q] || (A[q] = []), parts = [];
+  for (const k of lista) { if (!urls.has(k)) { const b = await fotoGet(k); if (b) urls.set(k, URL.createObjectURL(b)); } if (urls.has(k)) parts.push(`<div class="f"><img src="${urls.get(k)}" alt=""><button data-del="${esc(k)}" aria-label="Apagar">×</button></div>`); }
+  $(g.el).innerHTML = parts.join('') + `<label class="add">＋<br>${g.txt}<input type="file" accept="image/*" multiple></label>`;
 }
-$('#fotos').addEventListener('change', async e => {
-  if (e.target.id !== 'fIn') return; const fs = [...e.target.files]; if (!fs.length) return;
-  toast('Guardando fotos…');
-  for (const f of fs) { try { const b = await reduzir(f); const k = A.id + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6); await fotoPut(k, b); A.fotos.push(k); } catch (x) { toast('Uma foto não pôde ser lida'); } }
-  await desenharFotos(); calcular(); autosalvar();
+const desenharFotos = () => Promise.all([desenharGrade('fotos'), desenharGrade('prints')]);
+Object.entries(GR).forEach(([q, g]) => {
+  $(g.el).addEventListener('change', async e => {
+    if (e.target.type !== 'file') return; const fs = [...e.target.files]; if (!fs.length) return;
+    toast('Guardando…');
+    for (const f of fs) { try { const b = await reduzir(f, g.max); const k = A.id + '-' + g.pref + Date.now() + '-' + Math.random().toString(36).slice(2, 6); await fotoPut(k, b); A[q].push(k); } catch (x) { toast('Uma imagem não pôde ser lida'); } }
+    await desenharGrade(q); calcular(); autosalvar();
+  });
+  $(g.el).addEventListener('click', async e => { const b = e.target.closest('[data-del]'); if (!b) return; const k = b.dataset.del; A[q] = A[q].filter(x => x !== k); await fotoDel(k); urls.delete(k); await desenharGrade(q); calcular(); autosalvar(); });
 });
-$('#fotos').addEventListener('click', async e => { const b = e.target.closest('[data-del]'); if (!b) return; const k = b.dataset.del; A.fotos = A.fotos.filter(x => x !== k); await fotoDel(k); urls.delete(k); await desenharFotos(); calcular(); autosalvar(); });
 
 /* ---------- salvar / histórico ---------- */
 const HK = 'aval-lista';
@@ -403,7 +407,7 @@ $('#bHist').onclick = abrirHist;
 $('#histLista').addEventListener('click', async e => {
   const a = e.target.closest('[data-abre]'), d = e.target.closest('[data-apaga]');
   if (a) { const x = ler(HK, []).find(i => i.id === a.dataset.abre); if (x) { if (A.fipe) salvar(true); A = { ...novo(), ...x }; delete A.resultado; preencher(); $('#dHist').classList.remove('on'); window.scrollTo({ top: 0 }); } }
-  if (d) { const l = ler(HK, []); const x = l.find(i => i.id === d.dataset.apaga); if (x && confirmarApagar(d)) { (x.fotos || []).forEach(fotoDel); gravar(HK, l.filter(i => i.id !== x.id)); abrirHist(); } }
+  if (d) { const l = ler(HK, []); const x = l.find(i => i.id === d.dataset.apaga); if (x && confirmarApagar(d)) { [...(x.fotos || []), ...(x.prints || [])].forEach(fotoDel); gravar(HK, l.filter(i => i.id !== x.id)); abrirHist(); } }
 });
 function confirmarApagar(btn) { if (btn.dataset.ok) return true; btn.dataset.ok = '1'; btn.textContent = 'Apagar?'; setTimeout(() => { if (btn.isConnected) { delete btn.dataset.ok; btn.textContent = '🗑'; } }, 2500); return false; }
 document.querySelectorAll('[data-fecha]').forEach(b => b.onclick = () => b.closest('.dlg').classList.remove('on'));
@@ -429,7 +433,8 @@ $('#bShare').onclick = async () => {
     A.cliente ? 'Cliente: ' + A.cliente : '',
     '',
     `FIPE (${A.fipe.ref}): ${brl(r.fipe)}`,
-    r.wm ? `Média Webmotors: ${brl(r.wm)}` : '',
+    r.wm ? `Média Webmotors: ${brl(r.wm)} (${r.wm >= r.fipe ? '+' : '−'}${Math.abs((r.wm / r.fipe - 1) * 100).toFixed(1).replace('.', ',')}% da FIPE)` : '',
+    (A.prints || []).length ? `${A.prints.length} print(s) de anúncios da Webmotors em anexo` : '',
     `Mercado estimado: ${brl(r.mercado)}`,
     r.rep.length ? 'Reparos: ' + r.rep.map(x => `${x[0]} ${brl(x[1])}`).join('; ') : 'Sem reparos apontados',
     `*Valor sugerido: ${brl(r.sug)}* (faixa ${brl(r.min)} a ${brl(r.max)})`,
@@ -438,6 +443,7 @@ $('#bShare').onclick = async () => {
   ].filter((l, i, a) => l !== '' || (i > 0 && a[i - 1] !== '')).join('\n');
   const arqs = [];
   for (const [i, k] of A.fotos.entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `avaliacao-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
+  for (const [i, k] of (A.prints || []).entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `webmotors-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
   try {
     if (arqs.length && navigator.canShare && navigator.canShare({ files: arqs, text: linhas })) { await navigator.share({ files: arqs, text: linhas }); return; }
     if (navigator.share) { await navigator.share({ text: linhas }); return; }
