@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111114">
+<title>Avaliação de veículo · Carmax</title>
+<style>
+:root{--bg:#f3f3f5;--card:#fff;--ink:#141416;--mut:#6c6c75;--line:#e2e2e7;--soft:#f1f1f4;--red:#d80c15;--ok:#13874a;--warn:#b26b00;--top:env(safe-area-inset-top,0px);--bot:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding-bottom:calc(96px + var(--bot))}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+header{position:sticky;top:0;z-index:20;background:#111114;color:#fff;padding:calc(10px + var(--top)) 16px 10px;display:flex;align-items:center;gap:10px}
+header h1{font-size:17px;font-weight:800}header h1 b{color:#ff3b43}
+header .sp{margin-left:auto;display:flex;gap:6px}
+.hb{border:0;background:#26262b;color:#fff;border-radius:10px;height:38px;padding:0 12px;font-weight:700;font-size:13.5px}
+main{max-width:760px;margin:0 auto;padding:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.card h2{font-size:15px;display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.card h2 .n{width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;display:grid;place-items:center}
+label.l{display:block;font-size:12.5px;font-weight:700;color:var(--mut);margin:10px 0 5px}
+.in,select.in{width:100%;height:46px;border:1px solid #d6d6dc;border-radius:11px;background:#fff;padding:0 12px;font-size:16px}
+textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg{display:flex;background:var(--soft);border-radius:11px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:none;border-radius:9px;height:38px;font-weight:700;font-size:13.5px;color:var(--mut)}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.busca{position:relative}
+.lista{position:absolute;left:0;right:0;top:100%;z-index:10;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.14);max-height:280px;overflow:auto;display:none;margin-top:4px}
+.lista.on{display:block}
+.lista button{display:block;width:100%;text-align:left;border:0;background:none;padding:11px 12px;font-size:14px;border-bottom:1px solid var(--soft)}
+.lista button:hover{background:var(--soft)}
+.fipe{margin-top:12px;background:#111114;color:#fff;border-radius:14px;padding:14px 16px;display:none}
+.fipe.on{display:block}
+.fipe small{color:#a9a9b2;font-size:12px;display:block}
+.fipe b{font-size:26px;display:block;line-height:1.15;margin:2px 0}
+.fipe .m{font-size:13px;color:#d9d9de}
+.item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--soft)}
+.item:last-child{border-bottom:0}
+.item .t{flex:1}.item .t b{display:block;font-size:14.5px}.item .t small{color:var(--mut);font-size:12.5px}
+.step{display:flex;align-items:center;gap:6px}
+.step button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;font-size:20px;font-weight:700}
+.step span{min-width:22px;text-align:center;font-weight:800;font-size:16px}
+.sw{position:relative;width:52px;height:30px;flex:none}
+.sw input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:1}
+.sw i{position:absolute;inset:0;background:#d3d3d9;border-radius:99px;transition:.15s}
+.sw i::after{content:"";position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:.15s}
+.sw input:checked+i{background:var(--red)}.sw input:checked+i::after{left:25px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{border:1px solid var(--line);background:#fff;border-radius:99px;height:36px;padding:0 13px;font-weight:700;font-size:13px}
+.chips button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.money{width:120px;height:40px;border:1px solid #d6d6dc;border-radius:10px;padding:0 10px;text-align:right;font-size:15px}
+.fotos{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.fotos .f{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--soft)}
+.fotos .f img{width:100%;height:100%;object-fit:cover}
+.fotos .f button{position:absolute;top:5px;right:5px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:15px;line-height:1}
+.add{aspect-ratio:1;border-radius:12px;border:2px dashed #c9c9d1;background:#fff;display:grid;place-items:center;color:var(--mut);font-weight:700;font-size:13px;text-align:center;cursor:pointer}
+.add input{display:none}
+.res .linha{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.res .linha span:last-child{font-weight:700;white-space:nowrap}
+.res .neg span:last-child{color:var(--red)}
+.res .pos span:last-child{color:var(--ok)}
+.res .total{margin-top:12px;background:var(--red);color:#fff;border-radius:14px;padding:14px 16px}
+.res .total small{display:block;opacity:.85;font-size:12.5px}
+.res .total b{font-size:30px;display:block;line-height:1.15}
+.res .total .fx{font-size:13px;opacity:.9}
+.alerta{margin-top:10px;background:#fff4e0;color:#7a4a00;border-radius:12px;padding:10px 12px;font-size:13px;display:none}
+.alerta.on{display:block}
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:10px 12px calc(10px + var(--bot));display:flex;gap:8px;justify-content:center}
+.barra button{height:48px;border-radius:12px;border:0;font-weight:800;padding:0 16px;font-size:14.5px}
+.b1{background:var(--ink);color:#fff;flex:1;max-width:260px}.b2{background:#1faa52;color:#fff;flex:1;max-width:260px}.b3{background:var(--soft);color:var(--ink)}
+.dlg{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.45);display:none;align-items:flex-end;justify-content:center}
+.dlg.on{display:flex}
+.dlg .box{background:#fff;width:100%;max-width:640px;max-height:86vh;overflow:auto;border-radius:18px 18px 0 0;padding:16px 16px calc(20px + var(--bot))}
+.dlg .box h3{font-size:17px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.dlg .x{border:0;background:var(--soft);width:36px;height:36px;border-radius:50%;font-size:18px}
+.hist{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--soft)}
+.hist .t{flex:1}.hist b{display:block}.hist small{color:var(--mut)}
+.hist .v{font-weight:800;white-space:nowrap}
+.mini{border:1px solid var(--line);background:#fff;border-radius:9px;height:34px;padding:0 10px;font-size:13px;font-weight:700}
+.toast{position:fixed;left:50%;bottom:calc(84px + var(--bot));transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;z-index:60;pointer-events:none}
+.toast.on{opacity:1}
+.vazio{color:var(--mut);font-size:14px;padding:16px 0;text-align:center}
+.nota{font-size:12px;color:var(--mut);margin-top:8px}
+@media(prefers-reduced-motion:reduce){.sw i,.sw i::after,.toast{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Avaliação · <b>Carmax</b></h1>
+  <div class="sp"><button class="hb" id="bHist">Histórico</button><button class="hb" id="bCfg" aria-label="Configurações">⚙︎</button></div>
+</header>
+<main>
+  <!-- 1. veículo -->
+  <section class="card">
+    <h2><span class="n">1</span>Veículo</h2>
+    <div class="seg" id="tipo"><button data-t="carros" class="on">Carro</button><button data-t="motos">Moto</button><button data-t="caminhoes">Caminhão</button></div>
+    <label class="l" for="marca">Marca</label>
+    <div class="busca"><input class="in" id="marca" placeholder="Carregando marcas…" autocomplete="off"><div class="lista" id="lMarca"></div></div>
+    <label class="l" for="modelo">Modelo / versão</label>
+    <div class="busca"><input class="in" id="modelo" placeholder="Escolha a marca primeiro" autocomplete="off" disabled><div class="lista" id="lModelo"></div></div>
+    <label class="l" for="ano">Ano modelo</label>
+    <select class="in" id="ano" disabled><option value="">Escolha o modelo primeiro</option></select>
+    <div class="fipe" id="fipe"><small id="fRef">Tabela FIPE</small><b id="fVal">—</b><div class="m" id="fMod"></div></div>
+    <div class="g2">
+      <div><label class="l" for="km">Quilometragem</label><input class="in" id="km" inputmode="numeric" placeholder="Ex.: 45.000"></div>
+      <div><label class="l" for="placa">Placa</label><input class="in" id="placa" placeholder="ABC1D23" maxlength="8" style="text-transform:uppercase"></div>
+    </div>
+    <div class="g2">
+      <div><label class="l" for="cor">Cor</label><input class="in" id="cor" placeholder="Ex.: Prata"></div>
+      <div><label class="l" for="cliente">Cliente</label><input class="in" id="cliente" placeholder="Nome do cliente"></div>
+    </div>
+  </section>
+
+  <!-- 2. estado -->
+  <section class="card">
+    <h2><span class="n">2</span>Estado do veículo</h2>
+    <div id="estado"></div>
+  </section>
+
+  <!-- 3. fotos -->
+  <section class="card">
+    <h2><span class="n">3</span>Fotos</h2>
+    <div class="fotos" id="fotos"></div>
+    <p class="nota">Tire fotos da frente, traseira, laterais, painel (com km), bancos, pneus e de cada avaria.</p>
+  </section>
+
+  <!-- 4. resultado -->
+  <section class="card res">
+    <h2><span class="n">4</span>Resultado</h2>
+    <div id="calc"><p class="vazio">Escolha marca, modelo e ano para buscar a FIPE.</p></div>
+    <div class="alerta" id="alerta"></div>
+    <label class="l" for="proposta">Proposta final ao cliente (opcional)</label>
+    <input class="in" id="proposta" inputmode="numeric" placeholder="R$">
+    <label class="l" for="obs">Observações</label>
+    <textarea class="in" id="obs" placeholder="Ex.: dono único, revisões na concessionária, quer usar na troca do Compass…"></textarea>
+  </section>
+</main>
+
+<div class="barra">
+  <button class="b3" id="bNova">Nova</button>
+  <button class="b1" id="bSalvar">Salvar</button>
+  <button class="b2" id="bShare">Enviar</button>
+</div>
+
+<div class="dlg" id="dHist"><div class="box"><h3>Avaliações salvas <button class="x" data-fecha>×</button></h3><div id="histLista"></div><p class="nota">As avaliações ficam salvas neste aparelho e navegador.</p></div></div>
+<div class="dlg" id="dCfg"><div class="box"><h3>Valores de referência <button class="x" data-fecha>×</button></h3><div id="cfgLista"></div><p class="nota">Ajuste com a gerência. Os valores ficam salvos neste aparelho.</p><div style="margin-top:12px"><button class="mini" id="cfgPadrao">Voltar aos valores padrão</button></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+{
+const API = 'https://parallelum.com.br/fipe/api/v1/';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
+const brl = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+const num = s => +String(s || '').replace(/\D/g, '') || 0;
+const N = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+function toast(t) { const e = $('#toast'); e.textContent = t; e.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove('on'), 2300); }
+const ler = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } };
+const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } };
+
+/* ---------- valores de referência (editáveis) ---------- */
+const PADRAO = {
+  margem: { r: 'Margem da loja', u: '%', v: 12 },
+  preparo: { r: 'Preparo (lavagem, polimento, higienização)', u: 'R$', v: 600 },
+  documentacao: { r: 'Documentação / transferência', u: 'R$', v: 350 },
+  kmAno: { r: 'Km esperado por ano', u: 'km', v: 12000 },
+  kmFator: { r: 'Ajuste a cada 10.000 km de diferença', u: '%', v: 1.5 },
+  pintura: { r: 'Pintura / retoque (por peça)', u: 'R$', v: 650 },
+  martelinho: { r: 'Martelinho de ouro (por amassado)', u: 'R$', v: 300 },
+  pneu: { r: 'Pneu (por unidade)', u: 'R$', v: 450 },
+  parabrisa: { r: 'Para-brisa', u: 'R$', v: 900 },
+  revisao: { r: 'Revisão atrasada', u: 'R$', v: 1200 },
+  chave: { r: 'Chave reserva', u: 'R$', v: 700 },
+  interiorReg: { r: 'Interior regular', u: 'R$', v: 500 },
+  interiorRuim: { r: 'Interior ruim', u: 'R$', v: 1500 },
+  sinistro: { r: 'Desconto por sinistro / leilão', u: '%', v: 25 }
+};
+let CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, (ler('aval-cfg', {}) || {})[k] ?? o.v]));
+
+/* ---------- estado da avaliação ---------- */
+const novo = () => ({ id: 'a' + Date.now(), criado: new Date().toISOString(), tipo: 'carros', marca: null, modelo: null, ano: null, fipe: null,
+  km: '', placa: '', cor: '', cliente: '', proposta: '', obs: '',
+  e: { pintura: 0, martelinho: 0, pneu: 0, parabrisa: false, revisao: true, chave: true, interior: 'bom', mecanica: 'ok', mecanicaValor: 0, sinistro: false, outros: 0 },
+  fotos: [] });
+let A = novo();
+
+/* ---------- FIPE ---------- */
+let MARCAS = [], MODELOS = [];
+const cacheF = {};
+async function api(p) { if (cacheF[p]) return cacheF[p]; const r = await fetch(API + p); if (!r.ok) throw new Error(r.status); return (cacheF[p] = await r.json()); }
+function listaBusca(inp, box, itens, onPick) {
+  const draw = () => { const q = N(inp.value); const v = itens().filter(i => N(i.nome).includes(q)).slice(0, 60);
+    box.innerHTML = v.length ? v.map(i => `<button data-c="${esc(i.codigo)}">${esc(i.nome)}</button>`).join('') : '<p class="vazio">Nada encontrado</p>'; box.classList.add('on'); };
+  inp.addEventListener('focus', draw); inp.addEventListener('input', draw);
+  box.addEventListener('mousedown', e => e.preventDefault());
+  box.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const it = itens().find(i => String(i.codigo) === b.dataset.c); inp.value = it.nome; box.classList.remove('on'); inp.blur(); onPick(it); });
+  inp.addEventListener('blur', () => setTimeout(() => box.classList.remove('on'), 150));
+}
+async function carregarMarcas() {
+  $('#marca').placeholder = 'Carregando marcas…';
+  try { MARCAS = await api(A.tipo + '/marcas'); $('#marca').placeholder = 'Digite para buscar (ex.: Jeep)'; }
+  catch (e) { $('#marca').placeholder = 'FIPE fora do ar. Tente de novo.'; toast('Não consegui acessar a tabela FIPE agora'); }
+}
+listaBusca($('#marca'), $('#lMarca'), () => MARCAS, async m => {
+  A.marca = { codigo: m.codigo, nome: m.nome }; A.modelo = null; A.ano = null; A.fipe = null;
+  $('#modelo').value = ''; $('#modelo').disabled = true; $('#modelo').placeholder = 'Carregando modelos…'; $('#ano').disabled = true; $('#ano').innerHTML = '<option value="">Escolha o modelo primeiro</option>'; mostrarFipe(); calcular();
+  try { MODELOS = (await api(`${A.tipo}/marcas/${m.codigo}/modelos`)).modelos; $('#modelo').disabled = false; $('#modelo').placeholder = 'Digite parte do nome (ex.: Compass 1.3)'; $('#modelo').focus(); }
+  catch (e) { $('#modelo').placeholder = 'Erro ao carregar. Escolha a marca de novo.'; }
+});
+listaBusca($('#modelo'), $('#lModelo'), () => MODELOS, async m => {
+  A.modelo = { codigo: m.codigo, nome: m.nome }; A.ano = null; A.fipe = null; mostrarFipe(); calcular();
+  $('#ano').disabled = true; $('#ano').innerHTML = '<option>Carregando anos…</option>';
+  try { const anos = await api(`${A.tipo}/marcas/${A.marca.codigo}/modelos/${m.codigo}/anos`);
+    $('#ano').innerHTML = '<option value="">Escolha o ano</option>' + anos.map(a => `<option value="${esc(a.codigo)}">${esc(a.nome.replace(/^32000/, '0 km'))}</option>`).join(''); $('#ano').disabled = false; }
+  catch (e) { $('#ano').innerHTML = '<option value="">Erro. Escolha o modelo de novo.</option>'; }
+});
+$('#ano').addEventListener('change', async () => {
+  const cod = $('#ano').value; if (!cod) return;
+  A.ano = { codigo: cod, nome: $('#ano').selectedOptions[0].textContent }; A.fipe = null; mostrarFipe(true);
+  try { const f = await api(`${A.tipo}/marcas/${A.marca.codigo}/modelos/${A.modelo.codigo}/anos/${cod}`);
+    A.fipe = { valor: num(f.Valor) / (/,\d\d$/.test(f.Valor) ? 100 : 1), codigo: f.CodigoFipe, ref: f.MesReferencia, anoModelo: f.AnoModelo, comb: f.Combustivel, texto: f.Valor };
+    mostrarFipe(); calcular(); }
+  catch (e) { toast('Não consegui buscar o valor FIPE. Tente de novo.'); mostrarFipe(); }
+});
+function mostrarFipe(carregando) {
+  const b = $('#fipe');
+  if (carregando) { b.classList.add('on'); $('#fVal').textContent = 'Buscando…'; $('#fMod').textContent = ''; $('#fRef').textContent = 'Tabela FIPE'; return; }
+  if (!A.fipe) { b.classList.remove('on'); return; }
+  b.classList.add('on'); $('#fVal').textContent = A.fipe.texto || brl(A.fipe.valor);
+  $('#fRef').textContent = `Tabela FIPE · ${A.fipe.ref} · código ${A.fipe.codigo}`;
+  $('#fMod').textContent = `${A.marca.nome} ${A.modelo.nome} · ${A.ano.nome}`;
+}
+$('#tipo').addEventListener('click', async e => {
+  const b = e.target.closest('button'); if (!b || b.dataset.t === A.tipo) return;
+  A.tipo = b.dataset.t; $('#tipo').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+  A.marca = A.modelo = A.ano = A.fipe = null; $('#marca').value = ''; $('#modelo').value = ''; $('#modelo').disabled = true; $('#ano').disabled = true; mostrarFipe(); calcular();
+  await carregarMarcas();
+});
+
+/* ---------- estado do veículo ---------- */
+const ITENS = [
+  { k: 'pintura', t: 'Peças com pintura / retoque', s: () => `${brl(CFG.pintura)} por peça`, tipo: 'cont', max: 12 },
+  { k: 'martelinho', t: 'Amassados (martelinho)', s: () => `${brl(CFG.martelinho)} cada`, tipo: 'cont', max: 12 },
+  { k: 'pneu', t: 'Pneus a trocar', s: () => `${brl(CFG.pneu)} cada`, tipo: 'cont', max: 5 },
+  { k: 'parabrisa', t: 'Para-brisa trincado', s: () => brl(CFG.parabrisa), tipo: 'sim' },
+  { k: 'revisao', t: 'Revisões em dia', s: () => `Se não: −${brl(CFG.revisao)}`, tipo: 'sim' },
+  { k: 'chave', t: 'Tem chave reserva', s: () => `Se não: −${brl(CFG.chave)}`, tipo: 'sim' },
+  { k: 'interior', t: 'Interior (bancos, forros, painel)', tipo: 'op', ops: [['bom', 'Bom'], ['regular', 'Regular'], ['ruim', 'Ruim']] },
+  { k: 'mecanica', t: 'Motor e câmbio', tipo: 'op', ops: [['ok', 'OK'], ['atencao', 'Atenção'], ['problema', 'Problema']], extra: true },
+  { k: 'sinistro', t: 'Sinistro / leilão / remarcado', s: () => `Desconta ${CFG.sinistro}% do valor`, tipo: 'sim' },
+  { k: 'outros', t: 'Outros reparos', s: () => 'Valor estimado', tipo: 'valor' }
+];
+function desenharEstado() {
+  $('#estado').innerHTML = ITENS.map(i => {
+    let ctl = '';
+    if (i.tipo === 'cont') ctl = `<div class="step"><button data-k="${i.k}" data-d="-1" aria-label="Menos">−</button><span id="v-${i.k}">${A.e[i.k]}</span><button data-k="${i.k}" data-d="1" aria-label="Mais">+</button></div>`;
+    if (i.tipo === 'sim') ctl = `<label class="sw"><input type="checkbox" data-k="${i.k}" ${A.e[i.k] ? 'checked' : ''} aria-label="${esc(i.t)}"><i></i></label>`;
+    if (i.tipo === 'valor') ctl = `<input class="money" data-k="${i.k}" inputmode="numeric" placeholder="R$ 0" value="${A.e[i.k] ? brl(A.e[i.k]) : ''}">`;
+    if (i.tipo === 'op') ctl = `<div class="chips" data-k="${i.k}">${i.ops.map(([v, r]) => `<button data-v="${v}" class="${A.e[i.k] === v ? 'on' : ''}">${r}</button>`).join('')}</div>`;
+    const extra = i.extra && A.e.mecanica !== 'ok' ? `<div style="margin-top:8px;display:flex;align-items:center;gap:8px"><small style="color:var(--mut)">Custo estimado do reparo</small><input class="money" data-k="mecanicaValor" inputmode="numeric" placeholder="R$ 0" value="${A.e.mecanicaValor ? brl(A.e.mecanicaValor) : ''}"></div>` : '';
+    return `<div class="item" style="${i.tipo === 'op' ? 'flex-wrap:wrap' : ''}"><div class="t"><b>${esc(i.t)}</b>${i.s ? `<small>${esc(i.s())}</small>` : ''}${extra}</div>${ctl}</div>`;
+  }).join('');
+}
+$('#estado').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.d) { const it = ITENS.find(x => x.k === b.dataset.k); A.e[it.k] = Math.max(0, Math.min(it.max, A.e[it.k] + +b.dataset.d)); $('#v-' + it.k).textContent = A.e[it.k]; calcular(); }
+  const ch = b.closest('.chips'); if (ch) { A.e[ch.dataset.k] = b.dataset.v; desenharEstado(); calcular(); }
+});
+$('#estado').addEventListener('change', e => { if (e.target.type === 'checkbox') { A.e[e.target.dataset.k] = e.target.checked; calcular(); } });
+$('#estado').addEventListener('input', e => { if (e.target.classList.contains('money')) { const v = num(e.target.value); A.e[e.target.dataset.k] = v; e.target.value = v ? brl(v) : ''; calcular(); } });
+
+/* ---------- cálculo ---------- */
+function calcular() {
+  const box = $('#calc'), al = $('#alerta');
+  if (!A.fipe) { box.innerHTML = '<p class="vazio">Escolha marca, modelo e ano para buscar a FIPE.</p>'; al.classList.remove('on'); return null; }
+  const fipe = A.fipe.valor, km = num(A.km), zero = A.fipe.anoModelo >= 32000;
+  const anoM = zero ? new Date().getFullYear() : A.fipe.anoModelo;
+  const idade = Math.max(0.5, new Date().getFullYear() + new Date().getMonth() / 12 - (anoM - 0.5));
+  const esperado = Math.round(CFG.kmAno * idade);
+  let ajKm = 0;
+  if (km && !zero) { ajKm = -((km - esperado) / 10000) * (CFG.kmFator / 100); ajKm = Math.max(-0.15, Math.min(0.05, ajKm)); }
+  const vKm = fipe * ajKm;
+  let mercado = fipe + vKm;
+  const vSin = A.e.sinistro ? -mercado * CFG.sinistro / 100 : 0; mercado += vSin;
+  const rep = [
+    ['Pintura / retoque', A.e.pintura * CFG.pintura], ['Martelinho', A.e.martelinho * CFG.martelinho], ['Pneus', A.e.pneu * CFG.pneu],
+    ['Para-brisa', A.e.parabrisa ? CFG.parabrisa : 0], ['Revisão atrasada', A.e.revisao ? 0 : CFG.revisao], ['Chave reserva', A.e.chave ? 0 : CFG.chave],
+    ['Interior', A.e.interior === 'regular' ? CFG.interiorReg : A.e.interior === 'ruim' ? CFG.interiorRuim : 0],
+    ['Motor / câmbio', A.e.mecanica !== 'ok' ? A.e.mecanicaValor : 0], ['Outros reparos', A.e.outros]
+  ].filter(r => r[1] > 0);
+  const totRep = rep.reduce((s, r) => s + r[1], 0);
+  const fixos = CFG.preparo + CFG.documentacao, margem = mercado * CFG.margem / 100;
+  const sug = Math.max(0, mercado - totRep - fixos - margem);
+  const r5 = v => Math.round(v / 500) * 500;
+  const L = (t, v, cls) => `<div class="linha ${cls || ''}"><span>${t}</span><span>${v}</span></div>`;
+  box.innerHTML =
+    L('Valor FIPE', brl(fipe)) +
+    (km && !zero ? L(`Ajuste por km (${km.toLocaleString('pt-BR')} km; esperado ~${esperado.toLocaleString('pt-BR')})`, (vKm >= 0 ? '+' : '−') + brl(Math.abs(vKm)).replace('R$ ', 'R$ ') + ` (${(ajKm * 100).toFixed(1).replace('.', ',')}%)`, vKm >= 0 ? 'pos' : 'neg') : '') +
+    (vSin ? L(`Sinistro / leilão (−${CFG.sinistro}%)`, '−' + brl(-vSin), 'neg') : '') +
+    L('<b>Valor de mercado estimado</b>', brl(mercado)) +
+    rep.map(r => L(r[0], '−' + brl(r[1]), 'neg')).join('') +
+    L('Preparo + documentação', '−' + brl(fixos), 'neg') +
+    L(`Margem da loja (${CFG.margem}%)`, '−' + brl(margem), 'neg') +
+    `<div class="total"><small>Valor sugerido de compra</small><b>${brl(r5(sug))}</b><span class="fx">Faixa de negociação: ${brl(r5(sug * 0.97))} a ${brl(r5(sug * 1.03))} · ${(sug / fipe * 100).toFixed(0)}% da FIPE</span></div>`;
+  const avisos = [];
+  if (!km && !zero) avisos.push('Informe a quilometragem para ajustar o valor.');
+  if (A.e.mecanica === 'problema' && !A.e.mecanicaValor) avisos.push('Marcou problema no motor/câmbio: informe o custo estimado do reparo.');
+  if (A.e.sinistro) avisos.push('Carro com sinistro/leilão: confirme a política da loja antes de fazer proposta.');
+  if (!A.fotos.length) avisos.push('Nenhuma foto ainda.');
+  al.innerHTML = avisos.join('<br>'); al.classList.toggle('on', avisos.length > 0);
+  return { fipe, km, esperado, ajKm, mercado, totRep, fixos, margem, sug: r5(sug), min: r5(sug * 0.97), max: r5(sug * 1.03), rep };
+}
+['km', 'placa', 'cor', 'cliente', 'obs'].forEach(k => $('#' + k).addEventListener('input', e => {
+  if (k === 'km') { const v = num(e.target.value); e.target.value = v ? v.toLocaleString('pt-BR') : ''; A.km = v; calcular(); }
+  else if (k === 'placa') { e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); A.placa = e.target.value; }
+  else A[k] = e.target.value;
+}));
+$('#proposta').addEventListener('input', e => { const v = num(e.target.value); e.target.value = v ? brl(v) : ''; A.proposta = v; });
+
+/* ---------- fotos (guardadas no aparelho) ---------- */
+let DB = null;
+const idb = () => DB || (DB = new Promise((ok, no) => { const r = indexedDB.open('carmax-aval', 1); r.onupgradeneeded = () => r.result.createObjectStore('fotos'); r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); }));
+const fotoPut = async (k, b) => { const d = await idb(); return new Promise((ok, no) => { const t = d.transaction('fotos', 'readwrite'); t.objectStore('fotos').put(b, k); t.oncomplete = ok; t.onerror = () => no(t.error); }); };
+const fotoGet = async k => { const d = await idb(); return new Promise(ok => { const r = d.transaction('fotos').objectStore('fotos').get(k); r.onsuccess = () => ok(r.result); r.onerror = () => ok(null); }); };
+const fotoDel = async k => { const d = await idb(); d.transaction('fotos', 'readwrite').objectStore('fotos').delete(k); };
+async function reduzir(file) {
+  const img = await createImageBitmap(file); const s = Math.min(1, 1600 / Math.max(img.width, img.height));
+  const cv = document.createElement('canvas'); cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s);
+  cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+  return new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.82));
+}
+const urls = new Map();
+async function desenharFotos() {
+  const parts = [];
+  for (const k of A.fotos) { if (!urls.has(k)) { const b = await fotoGet(k); if (b) urls.set(k, URL.createObjectURL(b)); } if (urls.has(k)) parts.push(`<div class="f"><img src="${urls.get(k)}" alt=""><button data-del="${esc(k)}" aria-label="Apagar foto">×</button></div>`); }
+  $('#fotos').innerHTML = parts.join('') + `<label class="add">＋<br>Adicionar fotos<input type="file" id="fIn" accept="image/*" multiple></label>`;
+}
+$('#fotos').addEventListener('change', async e => {
+  if (e.target.id !== 'fIn') return; const fs = [...e.target.files]; if (!fs.length) return;
+  toast('Guardando fotos…');
+  for (const f of fs) { try { const b = await reduzir(f); const k = A.id + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6); await fotoPut(k, b); A.fotos.push(k); } catch (x) { toast('Uma foto não pôde ser lida'); } }
+  await desenharFotos(); calcular(); autosalvar();
+});
+$('#fotos').addEventListener('click', async e => { const b = e.target.closest('[data-del]'); if (!b) return; const k = b.dataset.del; A.fotos = A.fotos.filter(x => x !== k); await fotoDel(k); urls.delete(k); await desenharFotos(); calcular(); autosalvar(); });
+
+/* ---------- salvar / histórico ---------- */
+const HK = 'aval-lista';
+function resumo() { const r = calcular(); return { ...A, resultado: r, atualizado: new Date().toISOString() }; }
+function autosalvar() { if (A.fipe) salvar(true); }
+function salvar(silencioso) {
+  if (!A.fipe) { if (!silencioso) toast('Escolha o veículo e o ano antes de salvar'); return; }
+  const l = ler(HK, []).filter(x => x.id !== A.id); l.unshift(resumo());
+  if (!gravar(HK, l.slice(0, 300))) { toast('Memória do navegador cheia'); return; }
+  if (!silencioso) toast('Avaliação salva');
+}
+$('#bSalvar').onclick = () => salvar(false);
+$('#bNova').onclick = () => { if (A.fipe) salvar(true); A = novo(); preencher(); toast('Nova avaliação'); window.scrollTo({ top: 0 }); };
+function preencher() {
+  $('#tipo').querySelectorAll('button').forEach(x => x.classList.toggle('on', x.dataset.t === A.tipo));
+  $('#marca').value = A.marca ? A.marca.nome : ''; $('#modelo').value = A.modelo ? A.modelo.nome : ''; $('#modelo').disabled = !A.marca;
+  $('#ano').innerHTML = A.ano ? `<option value="${esc(A.ano.codigo)}">${esc(A.ano.nome)}</option>` : '<option value="">Escolha o modelo primeiro</option>'; $('#ano').disabled = !A.modelo;
+  $('#km').value = A.km ? (+A.km).toLocaleString('pt-BR') : ''; $('#placa').value = A.placa || ''; $('#cor').value = A.cor || ''; $('#cliente').value = A.cliente || '';
+  $('#proposta').value = A.proposta ? brl(A.proposta) : ''; $('#obs').value = A.obs || '';
+  mostrarFipe(); desenharEstado(); desenharFotos(); calcular();
+  if (A.marca) api(`${A.tipo}/marcas/${A.marca.codigo}/modelos`).then(r => { MODELOS = r.modelos; }).catch(() => {});
+  if (A.modelo) api(`${A.tipo}/marcas/${A.marca.codigo}/modelos/${A.modelo.codigo}/anos`).then(anos => { $('#ano').innerHTML = anos.map(a => `<option value="${esc(a.codigo)}"${A.ano && a.codigo === A.ano.codigo ? ' selected' : ''}>${esc(a.nome.replace(/^32000/, '0 km'))}</option>`).join(''); }).catch(() => {});
+  carregarMarcas();
+}
+function abrirHist() {
+  const l = ler(HK, []);
+  $('#histLista').innerHTML = l.length ? l.map(x => `<div class="hist"><div class="t"><b>${esc(x.marca?.nome || '')} ${esc(x.modelo?.nome || '')}</b><small>${esc(x.ano?.nome || '')}${x.placa ? ' · ' + esc(x.placa) : ''}${x.cliente ? ' · ' + esc(x.cliente) : ''} · ${new Date(x.atualizado).toLocaleDateString('pt-BR')}</small></div><span class="v">${x.resultado ? brl(x.resultado.sug) : ''}</span><button class="mini" data-abre="${esc(x.id)}">Abrir</button><button class="mini" data-apaga="${esc(x.id)}" aria-label="Apagar">🗑</button></div>`).join('') : '<p class="vazio">Nenhuma avaliação salva ainda.</p>';
+  $('#dHist').classList.add('on');
+}
+$('#bHist').onclick = abrirHist;
+$('#histLista').addEventListener('click', async e => {
+  const a = e.target.closest('[data-abre]'), d = e.target.closest('[data-apaga]');
+  if (a) { const x = ler(HK, []).find(i => i.id === a.dataset.abre); if (x) { if (A.fipe) salvar(true); A = { ...novo(), ...x }; delete A.resultado; preencher(); $('#dHist').classList.remove('on'); window.scrollTo({ top: 0 }); } }
+  if (d) { const l = ler(HK, []); const x = l.find(i => i.id === d.dataset.apaga); if (x && confirmarApagar(d)) { (x.fotos || []).forEach(fotoDel); gravar(HK, l.filter(i => i.id !== x.id)); abrirHist(); } }
+});
+function confirmarApagar(btn) { if (btn.dataset.ok) return true; btn.dataset.ok = '1'; btn.textContent = 'Apagar?'; setTimeout(() => { if (btn.isConnected) { delete btn.dataset.ok; btn.textContent = '🗑'; } }, 2500); return false; }
+document.querySelectorAll('[data-fecha]').forEach(b => b.onclick = () => b.closest('.dlg').classList.remove('on'));
+document.querySelectorAll('.dlg').forEach(d => d.addEventListener('click', e => { if (e.target === d) d.classList.remove('on'); }));
+
+/* ---------- configurações ---------- */
+function abrirCfg() {
+  $('#cfgLista').innerHTML = Object.entries(PADRAO).map(([k, o]) => `<div class="item"><div class="t"><b>${esc(o.r)}</b><small>Padrão: ${o.u === 'R$' ? brl(o.v) : o.v + ' ' + o.u}</small></div><input class="money" data-cfg="${k}" inputmode="decimal" value="${CFG[k]}"><small style="width:24px;color:var(--mut)">${o.u === 'R$' ? '' : esc(o.u)}</small></div>`).join('');
+  $('#dCfg').classList.add('on');
+}
+$('#bCfg').onclick = abrirCfg;
+$('#cfgLista').addEventListener('change', e => { const k = e.target.dataset.cfg; if (!k) return; const v = parseFloat(String(e.target.value).replace(/\./g, '').replace(',', '.')); if (isFinite(v) && v >= 0) { CFG[k] = v; gravar('aval-cfg', CFG); desenharEstado(); calcular(); toast('Valor atualizado'); } else e.target.value = CFG[k]; });
+$('#cfgPadrao').onclick = () => { CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, o.v])); gravar('aval-cfg', CFG); abrirCfg(); desenharEstado(); calcular(); toast('Valores padrão restaurados'); };
+
+/* ---------- enviar (WhatsApp / compartilhar) ---------- */
+$('#bShare').onclick = async () => {
+  const r = calcular(); if (!r) { toast('Escolha o veículo e o ano primeiro'); return; }
+  salvar(true);
+  const linhas = [
+    `*Avaliação de veículo · Carmax*`,
+    `${A.marca.nome} ${A.modelo.nome} · ${A.ano.nome}`,
+    [A.placa && 'Placa ' + A.placa, A.cor, A.km && (+A.km).toLocaleString('pt-BR') + ' km'].filter(Boolean).join(' · '),
+    A.cliente ? 'Cliente: ' + A.cliente : '',
+    '',
+    `FIPE (${A.fipe.ref}): ${brl(r.fipe)}`,
+    `Mercado estimado: ${brl(r.mercado)}`,
+    r.rep.length ? 'Reparos: ' + r.rep.map(x => `${x[0]} ${brl(x[1])}`).join('; ') : 'Sem reparos apontados',
+    `*Valor sugerido: ${brl(r.sug)}* (faixa ${brl(r.min)} a ${brl(r.max)})`,
+    A.proposta ? `Proposta ao cliente: ${brl(A.proposta)}` : '',
+    A.obs ? 'Obs.: ' + A.obs : ''
+  ].filter((l, i, a) => l !== '' || (i > 0 && a[i - 1] !== '')).join('\n');
+  const arqs = [];
+  for (const [i, k] of A.fotos.entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `avaliacao-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
+  try {
+    if (arqs.length && navigator.canShare && navigator.canShare({ files: arqs, text: linhas })) { await navigator.share({ files: arqs, text: linhas }); return; }
+    if (navigator.share) { await navigator.share({ text: linhas }); return; }
+  } catch (e) { if (e.name === 'AbortError') return; }
+  location.href = 'https://wa.me/?text=' + encodeURIComponent(linhas);
+};
+
+/* ---------- início ---------- */
+desenharEstado(); desenharFotos(); carregarMarcas(); calcular();
+}
+</script>
+</body>
+</html>
