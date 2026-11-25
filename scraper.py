@@ -102,10 +102,12 @@ def ler_detalhe(c):
     m = re.search(r"<h1[^>]*>(.*?)</h1>", h, re.S)
     c["marca_modelo"] = texto(m.group(1)) if m else ""
 
+    # bloco "2023/2024 - 7659 Km · Elétrico · Automático · R$ ..." logo após o título
     trecho = ""
-    if carrossel:
-        fim = h.find("Compartilhe", carrossel.end())
-        trecho = texto(h[carrossel.end(): fim if fim > 0 else carrossel.end() + 5000])
+    m = re.search(r"\d{4}\s*/\s*\d{4}\s*-\s*[\d.]+\s*Km", h)
+    if m:
+        fim = h.find("R$", m.end())
+        trecho = texto(h[m.end(): fim if fim > 0 else m.end() + 3000])
     c["cambio"] = next((x for x in CAMBIOS if x in trecho), "")
 
     m = re.search(r'<ShareNetwork[^>]*description="([^"]*)"', h, re.I)
