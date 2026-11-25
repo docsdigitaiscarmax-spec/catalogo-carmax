@@ -108,6 +108,19 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(2
 .zoom .track{height:100%}
 .zoom .track img{height:100%;max-height:none;aspect-ratio:auto;object-fit:contain}
 .zoom .rb{position:absolute;top:calc(12px + var(--top));right:12px;z-index:2}
+.zoom .track{overscroll-behavior:contain}
+.zoom .track img{transform-origin:0 0;transition:transform .12s ease-out;cursor:zoom-in;user-select:none;-webkit-user-drag:none}
+.zoom.ampliada .track{overflow:hidden;touch-action:none}
+.zoom.ampliada .track img{cursor:grab;transition:none}
+.zctl{position:absolute;left:50%;bottom:calc(16px + var(--bot));transform:translateX(-50%);z-index:2;display:flex;align-items:center;gap:6px;background:rgba(20,20,22,.82);border-radius:999px;padding:6px}
+.zctl button{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;cursor:pointer}
+.zctl button:disabled{opacity:.35;cursor:default}
+.zctl span{color:#fff;font-size:13px;font-weight:700;min-width:64px;text-align:center}
+.znav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:26px;cursor:pointer;display:none}
+.znav.p{left:12px}.znav.n{right:12px}
+@media(hover:hover){.znav{display:block}}
+.zoom.ampliada .znav{display:none}
+.glupa{position:absolute;right:12px;top:calc(62px + var(--top));width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.55);display:grid;place-items:center;cursor:pointer;z-index:2}
 /* selos */
 .badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;align-items:flex-start;gap:5px}
 .badges .tag{position:static}
@@ -190,7 +203,9 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(2
 </section>
 <div class="cta" id="cta"><div class="pv">Preço<b id="ctaP"></b></div><a id="ctaA" href="#" target="_blank" rel="noopener">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>Tenho interesse</a></div>
-<div class="zoom" id="zoom"><button class="rb" id="zx" aria-label="Fechar fotos"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="track" id="ztrack"></div></div>
+<div class="zoom" id="zoom" role="dialog" aria-label="Fotos em tela cheia"><button class="rb" id="zx" aria-label="Fechar fotos"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="track" id="ztrack"></div>
+  <button class="znav p" id="zp" aria-label="Foto anterior">‹</button><button class="znav n" id="zn" aria-label="Próxima foto">›</button>
+  <div class="zctl"><button id="zmenos" aria-label="Diminuir zoom"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8M7.5 10.5h6"/></svg></button><span id="zinfo">1 / 1</span><button id="zmais" aria-label="Aumentar zoom"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8M7.5 10.5h6M10.5 7.5v6"/></svg></button></div></div>
 <div class="promo" id="promo" role="dialog" aria-modal="true" aria-labelledby="promoT">
   <div class="pbox">
     <button class="pclose" id="promoX" aria-label="Fechar">×</button>
@@ -305,6 +320,7 @@ function abrir(id, push) {
     <div class="gal">${galeria(fotos, c.nome, 'gtrack')}
       <button class="gnav p" data-d="-1" aria-label="Foto anterior">‹</button><button class="gnav n" data-d="1" aria-label="Próxima foto">›</button>
       <span class="gcount" id="gc">1 / ${fotos.length}</span>
+      <button class="glupa" id="glupa" aria-label="Ampliar foto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8M7.5 10.5h6M10.5 7.5v6"/></svg></button>
       <button class="gdl" id="gdl" aria-label="Baixar todas as fotos"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>Baixar ${fotos.length > 1 ? fotos.length + ' fotos' : 'foto'}</span></button></div>
     ${fotos.length > 1 ? `<div class="thumbs" id="th">${fotos.map((f, i) => `<img ${imgAttr} loading="lazy" src="${esc(f)}" alt="" data-i="${i}" class="${i ? '' : 'on'}">`).join('')}</div>` : ''}
     <div class="dt">
@@ -414,19 +430,68 @@ async function baixarFotos() {
 }
 $('#detail').addEventListener('click', e => {
   if (e.target.closest('#gdl')) { e.stopPropagation(); return baixarFotos(); }
+  if (e.target.closest('#glupa')) { const tr = $('#gtrack'); return abrirZoom(Math.round(tr.scrollLeft / tr.clientWidth)); }
   const nav = e.target.closest('.gnav');
   const tr = $('#gtrack');
   if (nav) return irFoto(Math.round(tr.scrollLeft / tr.clientWidth) + +nav.dataset.d);
   const th = e.target.closest('#th img'); if (th) return irFoto(+th.dataset.i);
   const gi = e.target.closest('#gtrack img'); if (gi) abrirZoom(+gi.dataset.i);
 });
+/* ---- tela cheia com zoom ---- */
+const ZT = () => $('#ztrack');
+const Z = { s: 1, x: 0, y: 0, img: null, ptrs: new Map(), d0: 0, s0: 1, arrastou: false };
+const zIdx = () => Math.round(ZT().scrollLeft / ZT().clientWidth);
+function zInfo() { const n = ZT().children.length; $('#zinfo').textContent = Z.s > 1 ? Math.round(Z.s * 100) + '%' : (zIdx() + 1) + ' / ' + n; $('#zmenos').disabled = Z.s <= 1; $('#zmais').disabled = Z.s >= 5; }
+function zAplicar() {
+  const img = Z.img; if (!img) return;
+  const W = img.clientWidth, H = img.clientHeight;
+  Z.x = Math.min(0, Math.max(W - W * Z.s, Z.x)); Z.y = Math.min(0, Math.max(H - H * Z.s, Z.y));
+  img.style.transform = Z.s > 1 ? `translate(${Z.x}px,${Z.y}px) scale(${Z.s})` : '';
+  $('#zoom').classList.toggle('ampliada', Z.s > 1); zInfo();
+}
+function zPara(novo, cx, cy) {
+  const img = Z.img || (Z.img = ZT().children[zIdx()]); if (!img) return;
+  const r = img.getBoundingClientRect();
+  if (cx == null) { cx = r.left + r.width / 2; cy = r.top + r.height / 2; }
+  novo = Math.min(5, Math.max(1, novo));
+  const px = cx - r.left, py = cy - r.top; // ponto na tela dentro da imagem (já transformada)
+  const k = novo / Z.s;
+  Z.x = Z.x + px * (1 - k); Z.y = Z.y + py * (1 - k); // mantém fixo o ponto sob o dedo/cursor
+  Z.s = novo; if (Z.s === 1) { Z.x = 0; Z.y = 0; }
+  zAplicar();
+}
+function zReset() { if (Z.img) Z.img.style.transform = ''; Z.s = 1; Z.x = 0; Z.y = 0; Z.img = null; $('#zoom').classList.remove('ampliada'); zInfo(); }
 function abrirZoom(i) {
   const fotos = atual.fotos.length ? atual.fotos : [atual.capa];
-  $('#ztrack').innerHTML = fotos.map(f => `<img ${imgAttr} src="${esc(f)}" alt="">`).join('');
-  $('#zoom').classList.add('open');
-  requestAnimationFrame(() => { $('#ztrack').scrollLeft = i * $('#ztrack').clientWidth; });
+  ZT().innerHTML = fotos.map(f => `<img ${imgAttr} src="${esc(f)}" alt="" draggable="false">`).join('');
+  $('#zoom').classList.add('open'); zReset();
+  requestAnimationFrame(() => { ZT().scrollLeft = i * ZT().clientWidth; zInfo(); });
 }
-$('#zx').onclick = () => $('#zoom').classList.remove('open');
+function zIr(d) { zReset(); ZT().scrollTo({ left: (zIdx() + d) * ZT().clientWidth, behavior: 'smooth' }); }
+ZT().addEventListener('scroll', () => { if (Z.s === 1) zInfo(); }, { passive: true });
+$('#zmais').onclick = () => { Z.img = Z.img || ZT().children[zIdx()]; zPara(Z.s * 1.6); };
+$('#zmenos').onclick = () => { zPara(Z.s / 1.6 < 1.15 ? 1 : Z.s / 1.6); if (Z.s === 1) zReset(); };
+$('#zp').onclick = () => zIr(-1); $('#zn').onclick = () => zIr(1);
+ZT().addEventListener('dblclick', e => { if (e.target.tagName !== 'IMG') return; Z.img = e.target; if (Z.s > 1) zReset(); else zPara(2.5, e.clientX, e.clientY); });
+ZT().addEventListener('wheel', e => { if (e.target.tagName !== 'IMG') return; e.preventDefault(); Z.img = Z.img || e.target; zPara(Z.s * Math.exp(-e.deltaY * 0.0025), e.clientX, e.clientY); if (Z.s === 1) zReset(); }, { passive: false });
+let ultToque = 0;
+ZT().addEventListener('pointerdown', e => {
+  if (e.target.tagName !== 'IMG') return;
+  Z.ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY }); Z.arrastou = false;
+  if (Z.ptrs.size === 2) { const [a, b] = [...Z.ptrs.values()]; Z.d0 = Math.hypot(a.x - b.x, a.y - b.y); Z.s0 = Z.s; Z.img = Z.img || e.target; ZT().style.overflow = 'hidden'; }
+  if (Z.s > 1 || Z.ptrs.size === 2) e.target.setPointerCapture(e.pointerId);
+  if (e.pointerType === 'touch' && Z.ptrs.size === 1) { const t = Date.now(); if (t - ultToque < 300) { Z.img = e.target; if (Z.s > 1) zReset(); else zPara(2.5, e.clientX, e.clientY); ultToque = 0; } else ultToque = t; }
+});
+ZT().addEventListener('pointermove', e => {
+  if (!Z.ptrs.has(e.pointerId)) return;
+  const ant = Z.ptrs.get(e.pointerId); Z.ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (Z.ptrs.size === 2) { const [a, b] = [...Z.ptrs.values()]; const d = Math.hypot(a.x - b.x, a.y - b.y); zPara(Z.s0 * d / Z.d0, (a.x + b.x) / 2, (a.y + b.y) / 2); e.preventDefault(); return; }
+  if (Z.s > 1) { Z.x += e.clientX - ant.x; Z.y += e.clientY - ant.y; Z.arrastou = true; zAplicar(); e.preventDefault(); }
+});
+const zSolta = e => { Z.ptrs.delete(e.pointerId); if (Z.ptrs.size < 2) ZT().style.overflow = ''; if (Z.s <= 1.02 && Z.img) zReset(); };
+ZT().addEventListener('pointerup', zSolta); ZT().addEventListener('pointercancel', zSolta);
+document.addEventListener('keydown', e => { if (!$('#zoom').classList.contains('open')) return; if (e.key === 'Escape') $('#zx').click(); if (e.key === 'ArrowRight' && Z.s === 1) zIr(1); if (e.key === 'ArrowLeft' && Z.s === 1) zIr(-1); if (e.key === '+' || e.key === '=') $('#zmais').click(); if (e.key === '-') $('#zmenos').click(); });
+$('#zx').onclick = () => { zReset(); $('#zoom').classList.remove('open'); };
 
 $('#list').addEventListener('click', e => { const c = e.target.closest('.card'); if (c) abrir(c.dataset.id, true); });
 $('#back').onclick = () => { if (history.state && history.state.carro) history.back(); else { fechar(); history.replaceState(null, '', loja === 'outlet' ? '#outlet' : location.pathname); } };
