@@ -1,8 +1,9 @@
 {
- "atualizado": "25/11/2026 10:33",
- "total": 80,
+ "atualizado": "25/11/2026 10:44",
+ "total": 128,
  "carros": [
   {
+   "loja": "carmax",
    "id": "2330520",
    "link": "https://carmaxsantos.com.br/veiculo/2330520-volvo-xc40-p6-recharge-electric-plus",
    "nome": "VOLVO XC40 P6 Recharge Electric Plus",
@@ -47,6 +48,7 @@
    "modelo": "XC40 P6 Recharge Electric Plus"
   },
   {
+   "loja": "carmax",
    "id": "2133788",
    "link": "https://carmaxsantos.com.br/veiculo/2133788-volkswagen-tiguan-20-350-tsi-allspace-r-line-4motion",
    "nome": "VOLKSWAGEN TIGUAN 2.0 350 TSI Allspace R-line 4motion",
@@ -95,6 +97,7 @@
    "modelo": "TIGUAN 2.0 350 TSI Allspace R-line 4motion"
   },
   {
+   "loja": "carmax",
    "id": "2321305",
    "link": "https://carmaxsantos.com.br/veiculo/2321305-volkswagen-t-cross-14-250-tsi-highline",
    "nome": "VOLKSWAGEN T-CROSS 1.4 250 TSI Highline",
@@ -141,6 +144,7 @@
    "modelo": "T-CROSS 1.4 250 TSI Highline"
   },
   {
+   "loja": "carmax",
    "id": "2231027",
    "link": "https://carmaxsantos.com.br/veiculo/2231027-volkswagen-t-cross-14-250-tsi-highline",
    "nome": "VOLKSWAGEN T-CROSS 1.4 250 TSI Highline",
@@ -190,6 +194,7 @@
    "modelo": "T-CROSS 1.4 250 TSI Highline"
   },
   {
+   "loja": "carmax",
    "id": "2333338",
    "link": "https://carmaxsantos.com.br/veiculo/2333338-volkswagen-saveiro-16-msi-extreme-cd-16v",
    "nome": "VOLKSWAGEN SAVEIRO 1.6 MSI Extreme CD 16V",
@@ -224,6 +229,7 @@
    "modelo": "SAVEIRO 1.6 MSI Extreme CD 16V"
   },
   {
+   "loja": "carmax",
    "id": "2328518",
    "link": "https://carmaxsantos.com.br/veiculo/2328518-volkswagen-nivus-10-200-tsi-highline",
    "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Highline",
@@ -270,6 +276,7 @@
    "modelo": "NIVUS 1.0 200 TSI Highline"
   },
   {
+   "loja": "carmax",
    "id": "2171261",
    "link": "https://carmaxsantos.com.br/veiculo/2171261-volkswagen-nivus-10-200-tsi-highline",
    "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Highline",
@@ -319,6 +326,7 @@
    "modelo": "NIVUS 1.0 200 TSI Highline"
   },
   {
+   "loja": "carmax",
    "id": "2330500",
    "link": "https://carmaxsantos.com.br/veiculo/2330500-volkswagen-nivus-10-200-tsi-highline",
    "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Highline",
@@ -365,6 +373,7 @@
    "modelo": "NIVUS 1.0 200 TSI Highline"
   },
   {
+   "loja": "carmax",
    "id": "2297355",
    "link": "https://carmaxsantos.com.br/veiculo/2297355-volkswagen-nivus-10-200-tsi-highline",
    "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Highline",
@@ -412,6 +421,7 @@
    "modelo": "NIVUS 1.0 200 TSI Highline"
   },
   {
+   "loja": "carmax",
    "id": "2330505",
    "link": "https://carmaxsantos.com.br/veiculo/2330505-volkswagen-nivus-10-200-tsi-comfortline",
    "nome": "VOLKSWAGEN NIVUS 1.0 200 TSI Comfortline",
@@ -457,6 +467,7 @@
    "modelo": "NIVUS 1.0 200 TSI Comfortline"
   },
   {
+   "loja": "carmax",
    "id": "2332420",
    "link": "https://carmaxsantos.com.br/veiculo/2332420-toyota-yaris-15-16v-sedan-xl-live",
    "nome": "TOYOTA YARIS 1.5 16V Sedan XL Live",
@@ -500,6 +511,7 @@
    "modelo": "YARIS 1.5 16V Sedan XL Live"
   },
   {
+   "loja": "carmax",
    "id": "2301185",
    "link": "https://carmaxsantos.com.br/veiculo/2301185-toyota-yaris-15-16v-sedan-xls",
    "nome": "TOYOTA YARIS 1.5 16V Sedan XLS",
@@ -544,6 +556,7 @@
    "modelo": "YARIS 1.5 16V Sedan XLS"
   },
   {
+   "loja": "carmax",
    "id": "2243991",
    "link": "https://carmaxsantos.com.br/veiculo/2243991-toyota-yaris-15-16v-xls",
    "nome": "TOYOTA YARIS 1.5 16V XLS",
@@ -588,6 +601,7 @@
    "modelo": "YARIS 1.5 16V XLS"
   },
   {
+   "loja": "carmax",
    "id": "2331388",
    "link": "https://carmaxsantos.com.br/veiculo/2331388-toyota-yaris-15-16v-xs-connect",
    "nome": "TOYOTA YARIS 1.5 16V XS Connect",
@@ -632,6 +646,7 @@
    "modelo": "YARIS 1.5 16V XS Connect"
   },
   {
+   "loja": "carmax",
    "id": "2252098",
    "link": "https://carmaxsantos.com.br/veiculo/2252098-toyota-yaris-15-16v-xs",
    "nome": "TOYOTA YARIS 1.5 16V XS",
@@ -675,6 +690,7 @@
    "modelo": "YARIS 1.5 16V XS"
   },
   {
+   "loja": "carmax",
    "id": "2325393",
    "link": "https://carmaxsantos.com.br/veiculo/2325393-toyota-corolla-cross-20-vvt-ie-xre",
    "nome": "TOYOTA COROLLA CROSS 2.0 Vvt-ie XRE",
@@ -720,6 +736,7 @@
    "modelo": "COROLLA CROSS 2.0 Vvt-ie XRE"
   },
   {
+   "loja": "carmax",
    "id": "2330531",
    "link": "https://carmaxsantos.com.br/veiculo/2330531-toyota-hilux-sw4-28-srx-diamond-4x4-7-lugares-16v-turbo-intercooler",
    "nome": "TOYOTA HILUX SW4 2.8 SRX Diamond 4X4 7 Lugares 16V Turbo Intercooler",
@@ -763,6 +780,7 @@
    "modelo": "HILUX SW4 2.8 SRX Diamond 4X4 7 Lugares 16V Turbo Intercooler"
   },
   {
+   "loja": "carmax",
    "id": "2260437",
    "link": "https://carmaxsantos.com.br/veiculo/2260437-toyota-hilux-sw4-28-d-4d-turbo-srx-platinum-7l-4x4",
    "nome": "TOYOTA HILUX SW4 2.8 D-4d Turbo SRX Platinum 7L 4X4",
@@ -812,6 +830,7 @@
    "modelo": "HILUX SW4 2.8 D-4d Turbo SRX Platinum 7L 4X4"
   },
   {
+   "loja": "carmax",
    "id": "2335243",
    "link": "https://carmaxsantos.com.br/veiculo/2335243-toyota-corolla-cross-20-vvt-ie-xre",
    "nome": "TOYOTA COROLLA CROSS 2.0 Vvt-ie XRE",
@@ -843,6 +862,7 @@
    "modelo": "COROLLA CROSS 2.0 Vvt-ie XRE"
   },
   {
+   "loja": "carmax",
    "id": "2311457",
    "link": "https://carmaxsantos.com.br/veiculo/2311457-toyota-corolla-20-vvt-ie-xei",
    "nome": "TOYOTA COROLLA 2.0 Vvt-ie XEI",
@@ -888,6 +908,7 @@
    "modelo": "COROLLA 2.0 Vvt-ie XEI"
   },
   {
+   "loja": "carmax",
    "id": "2260857",
    "link": "https://carmaxsantos.com.br/veiculo/2260857-toyota-corolla-20-vvt-ie-gli",
    "nome": "TOYOTA COROLLA 2.0 Vvt-ie GLI",
@@ -932,6 +953,7 @@
    "modelo": "COROLLA 2.0 Vvt-ie GLI"
   },
   {
+   "loja": "carmax",
    "id": "2286852",
    "link": "https://carmaxsantos.com.br/veiculo/2286852-toyota-corolla-20-vvt-ie-xei",
    "nome": "TOYOTA COROLLA 2.0 Vvt-ie XEI",
@@ -976,6 +998,7 @@
    "modelo": "COROLLA 2.0 Vvt-ie XEI"
   },
   {
+   "loja": "carmax",
    "id": "2316685",
    "link": "https://carmaxsantos.com.br/veiculo/2316685-porsche-718-20-16v-h4-boxster",
    "nome": "PORSCHE 718 2.0 16V H4 Boxster",
@@ -1023,6 +1046,7 @@
    "modelo": "718 2.0 16V H4 Boxster"
   },
   {
+   "loja": "carmax",
    "id": "2337442",
    "link": "https://carmaxsantos.com.br/veiculo/2337442-peugeot-208-10-turbo-200-style",
    "nome": "PEUGEOT 208 1.0 Turbo 200 Style",
@@ -1062,6 +1086,7 @@
    "modelo": "208 1.0 Turbo 200 Style"
   },
   {
+   "loja": "carmax",
    "id": "2190189",
    "link": "https://carmaxsantos.com.br/veiculo/2190189-porsche-cayenne-36-4x4-v6-24v",
    "nome": "PORSCHE CAYENNE 3.6 4X4 V6 24V",
@@ -1110,6 +1135,7 @@
    "modelo": "CAYENNE 3.6 4X4 V6 24V"
   },
   {
+   "loja": "carmax",
    "id": "2323386",
    "link": "https://carmaxsantos.com.br/veiculo/2323386-renault-duster-16-16v-sce-iconic",
    "nome": "RENAULT DUSTER 1.6 16V SCE Iconic",
@@ -1154,6 +1180,7 @@
    "modelo": "DUSTER 1.6 16V SCE Iconic"
   },
   {
+   "loja": "carmax",
    "id": "2051391",
    "link": "https://carmaxsantos.com.br/veiculo/2051391-porsche-macan-20-16v",
    "nome": "PORSCHE MACAN 2.0 16V",
@@ -1204,6 +1231,7 @@
    "modelo": "MACAN 2.0 16V"
   },
   {
+   "loja": "carmax",
    "id": "2334817",
    "link": "https://carmaxsantos.com.br/veiculo/2334817-jeep-renegade-18-16v-sport",
    "nome": "JEEP RENEGADE 1.8 16V Sport",
@@ -1232,6 +1260,7 @@
    "modelo": "RENEGADE 1.8 16V Sport"
   },
   {
+   "loja": "carmax",
    "id": "2275665",
    "link": "https://carmaxsantos.com.br/veiculo/2275665-nissan-kicks-16-16vstart-advance",
    "nome": "NISSAN KICKS 1.6 16vstart Advance",
@@ -1274,6 +1303,7 @@
    "modelo": "KICKS 1.6 16vstart Advance"
   },
   {
+   "loja": "carmax",
    "id": "2335842",
    "link": "https://carmaxsantos.com.br/veiculo/2335842-kia-sportage-16-tgdi-mhev-ex-prestige",
    "nome": "KIA SPORTAGE 1.6 Tgdi Mhev EX Prestige",
@@ -1302,6 +1332,7 @@
    "modelo": "SPORTAGE 1.6 Tgdi Mhev EX Prestige"
   },
   {
+   "loja": "carmax",
    "id": "2336534",
    "link": "https://carmaxsantos.com.br/veiculo/2336534-nissan-kicks-16-16vstart-advance",
    "nome": "NISSAN KICKS 1.6 16vstart Advance",
@@ -1332,6 +1363,7 @@
    "modelo": "KICKS 1.6 16vstart Advance"
   },
   {
+   "loja": "carmax",
    "id": "2310717",
    "link": "https://carmaxsantos.com.br/veiculo/2310717-nissan-kicks-16-16vstart-advance",
    "nome": "NISSAN KICKS 1.6 16vstart Advance",
@@ -1378,6 +1410,7 @@
    "modelo": "KICKS 1.6 16vstart Advance"
   },
   {
+   "loja": "carmax",
    "id": "2333964",
    "link": "https://carmaxsantos.com.br/veiculo/2333964-nissan-kicks-16-16vstart-sense",
    "nome": "NISSAN KICKS 1.6 16vstart Sense",
@@ -1422,6 +1455,7 @@
    "modelo": "KICKS 1.6 16vstart Sense"
   },
   {
+   "loja": "carmax",
    "id": "2330958",
    "link": "https://carmaxsantos.com.br/veiculo/2330958-nissan-kicks-play-16-16vstart-advance-plus",
    "nome": "NISSAN KICKS PLAY 1.6 16vstart Advance Plus",
@@ -1466,6 +1500,7 @@
    "modelo": "KICKS PLAY 1.6 16vstart Advance Plus"
   },
   {
+   "loja": "carmax",
    "id": "2312496",
    "link": "https://carmaxsantos.com.br/veiculo/2312496-nissan-sentra-20-16v-exclusive",
    "nome": "NISSAN SENTRA 2.0 16V Exclusive",
@@ -1510,6 +1545,7 @@
    "modelo": "SENTRA 2.0 16V Exclusive"
   },
   {
+   "loja": "carmax",
    "id": "2306769",
    "link": "https://carmaxsantos.com.br/veiculo/2306769-omoda-5-15-tgdi-hev-luxury-dht",
    "nome": "OMODA 5 1.5 Tgdi HEV Luxury DHT",
@@ -1558,6 +1594,7 @@
    "modelo": "5 1.5 Tgdi HEV Luxury DHT"
   },
   {
+   "loja": "carmax",
    "id": "2330498",
    "link": "https://carmaxsantos.com.br/veiculo/2330498-jeep-compass-20-td350-turbo-longitude",
    "nome": "JEEP COMPASS 2.0 Td350 Turbo Longitude",
@@ -1603,6 +1640,7 @@
    "modelo": "COMPASS 2.0 Td350 Turbo Longitude"
   },
   {
+   "loja": "carmax",
    "id": "2333445",
    "link": "https://carmaxsantos.com.br/veiculo/2333445-jeep-renegade-13-t270-turbo-longitude",
    "nome": "JEEP RENEGADE 1.3 T270 Turbo Longitude",
@@ -1647,6 +1685,7 @@
    "modelo": "RENEGADE 1.3 T270 Turbo Longitude"
   },
   {
+   "loja": "carmax",
    "id": "2309787",
    "link": "https://carmaxsantos.com.br/veiculo/2309787-jeep-compass-13-t270-turbo-s",
    "nome": "JEEP COMPASS 1.3 T270 Turbo S",
@@ -1698,6 +1737,7 @@
    "modelo": "COMPASS 1.3 T270 Turbo S"
   },
   {
+   "loja": "carmax",
    "id": "2327808",
    "link": "https://carmaxsantos.com.br/veiculo/2327808-jeep-compass-13-t270-turbo-longitude",
    "nome": "JEEP COMPASS 1.3 T270 Turbo Longitude",
@@ -1744,6 +1784,7 @@
    "modelo": "COMPASS 1.3 T270 Turbo Longitude"
   },
   {
+   "loja": "carmax",
    "id": "2211280",
    "link": "https://carmaxsantos.com.br/veiculo/2211280-jeep-commander-20-hurricane-4-turbo-blackhawk",
    "nome": "JEEP COMMANDER 2.0 Hurricane 4 Turbo Blackhawk",
@@ -1793,6 +1834,7 @@
    "modelo": "COMMANDER 2.0 Hurricane 4 Turbo Blackhawk"
   },
   {
+   "loja": "carmax",
    "id": "2296447",
    "link": "https://carmaxsantos.com.br/veiculo/2296447-jaecoo-7-15-tgdi-phev-elite-dht",
    "nome": "JAECOO 7 1.5 Tgdi Phev Elite DHT",
@@ -1834,6 +1876,7 @@
    "modelo": "7 1.5 Tgdi Phev Elite DHT"
   },
   {
+   "loja": "carmax",
    "id": "2329226",
    "link": "https://carmaxsantos.com.br/veiculo/2329226-jaecoo-5-15-tgdi-hev-comfort-dht",
    "nome": "JAECOO 5 1.5 TGDI HEV COMFORT DHT",
@@ -1862,6 +1905,7 @@
    "modelo": "5 1.5 TGDI HEV COMFORT DHT"
   },
   {
+   "loja": "carmax",
    "id": "2302349",
    "link": "https://carmaxsantos.com.br/veiculo/2302349-hyundai-ix35-20-mpfi-gl-16v",
    "nome": "HYUNDAI IX35 2.0 MPFI GL 16V",
@@ -1907,6 +1951,7 @@
    "modelo": "IX35 2.0 MPFI GL 16V"
   },
   {
+   "loja": "carmax",
    "id": "2335265",
    "link": "https://carmaxsantos.com.br/veiculo/2335265-hyundai-ix35-20-mpfi-gl-16v",
    "nome": "HYUNDAI IX35 2.0 MPFI GL 16V",
@@ -1935,6 +1980,7 @@
    "modelo": "IX35 2.0 MPFI GL 16V"
   },
   {
+   "loja": "carmax",
    "id": "2333444",
    "link": "https://carmaxsantos.com.br/veiculo/2333444-hyundai-hb20-10-tgdi-platinum",
    "nome": "HYUNDAI HB20 1.0 Tgdi Platinum",
@@ -1964,6 +2010,7 @@
    "modelo": "HB20 1.0 Tgdi Platinum"
   },
   {
+   "loja": "carmax",
    "id": "2337446",
    "link": "https://carmaxsantos.com.br/veiculo/2337446-hyundai-creta-20-16v-prestige",
    "nome": "HYUNDAI CRETA 2.0 16V Prestige",
@@ -1990,6 +2037,7 @@
    "modelo": "CRETA 2.0 16V Prestige"
   },
   {
+   "loja": "carmax",
    "id": "2337461",
    "link": "https://carmaxsantos.com.br/veiculo/2337461-honda-hr-v-15-di-i-vtec-exl",
    "nome": "HONDA HR-V 1.5 DI I-vtec EXL",
@@ -2028,6 +2076,7 @@
    "modelo": "HR-V 1.5 DI I-vtec EXL"
   },
   {
+   "loja": "carmax",
    "id": "2320096",
    "link": "https://carmaxsantos.com.br/veiculo/2320096-honda-hr-v-15-di-i-vtec-turbo-touring",
    "nome": "HONDA HR-V 1.5 DI I-vtec Turbo Touring",
@@ -2073,6 +2122,7 @@
    "modelo": "HR-V 1.5 DI I-vtec Turbo Touring"
   },
   {
+   "loja": "carmax",
    "id": "2336735",
    "link": "https://carmaxsantos.com.br/veiculo/2336735-hyundai-creta-10-tgdi-limited-safety",
    "nome": "HYUNDAI CRETA 1.0 Tgdi Limited Safety",
@@ -2102,6 +2152,7 @@
    "modelo": "CRETA 1.0 Tgdi Limited Safety"
   },
   {
+   "loja": "carmax",
    "id": "2321299",
    "link": "https://carmaxsantos.com.br/veiculo/2321299-fiat-strada-10-turbo-200-ultra-cd",
    "nome": "FIAT STRADA 1.0 Turbo 200 Ultra CD",
@@ -2146,6 +2197,7 @@
    "modelo": "STRADA 1.0 Turbo 200 Ultra CD"
   },
   {
+   "loja": "carmax",
    "id": "2335248",
    "link": "https://carmaxsantos.com.br/veiculo/2335248-fiat-fastback-13-turbo-270-limited-edition",
    "nome": "FIAT FASTBACK 1.3 Turbo 270 Limited Edition",
@@ -2176,6 +2228,7 @@
    "modelo": "FASTBACK 1.3 Turbo 270 Limited Edition"
   },
   {
+   "loja": "carmax",
    "id": "2336536",
    "link": "https://carmaxsantos.com.br/veiculo/2336536-fiat-pulse-10-turbo-200-hybrid-audace",
    "nome": "FIAT PULSE 1.0 Turbo 200 Hybrid Audace",
@@ -2205,6 +2258,7 @@
    "modelo": "PULSE 1.0 Turbo 200 Hybrid Audace"
   },
   {
+   "loja": "carmax",
    "id": "2294605",
    "link": "https://carmaxsantos.com.br/veiculo/2294605-fiat-pulse-13-turbo-270-abarth",
    "nome": "FIAT PULSE 1.3 Turbo 270 Abarth",
@@ -2249,6 +2303,7 @@
    "modelo": "PULSE 1.3 Turbo 270 Abarth"
   },
   {
+   "loja": "carmax",
    "id": "2335271",
    "link": "https://carmaxsantos.com.br/veiculo/2335271-ford-ecosport-15-tivct-se",
    "nome": "FORD ECOSPORT 1.5 Tivct SE",
@@ -2277,6 +2332,7 @@
    "modelo": "ECOSPORT 1.5 Tivct SE"
   },
   {
+   "loja": "carmax",
    "id": "2334022",
    "link": "https://carmaxsantos.com.br/veiculo/2334022-ford-mustang-mach-e-91-kw-gt-performance-e-awd",
    "nome": "FORD MUSTANG MACH-E 91 KW GT Performance E-awd",
@@ -2308,6 +2364,7 @@
    "modelo": "MUSTANG MACH-E 91 KW GT Performance E-awd"
   },
   {
+   "loja": "carmax",
    "id": "2334822",
    "link": "https://carmaxsantos.com.br/veiculo/2334822-geely-ex2-394-kw-max",
    "nome": "GEELY EX2 39,4 KW MAX",
@@ -2336,6 +2393,7 @@
    "modelo": "EX2 39,4 KW MAX"
   },
   {
+   "loja": "carmax",
    "id": "2334825",
    "link": "https://carmaxsantos.com.br/veiculo/2334825-geely-ex2-394-kw-max",
    "nome": "GEELY EX2 39,4 KW MAX",
@@ -2359,6 +2417,7 @@
    "modelo": "EX2 39,4 KW MAX"
   },
   {
+   "loja": "carmax",
    "id": "2331385",
    "link": "https://carmaxsantos.com.br/veiculo/2331385-geely-ex2-394-kw-max",
    "nome": "GEELY EX2 39,4 KW MAX",
@@ -2388,6 +2447,7 @@
    "modelo": "EX2 39,4 KW MAX"
   },
   {
+   "loja": "carmax",
    "id": "2331386",
    "link": "https://carmaxsantos.com.br/veiculo/2331386-geely-ex2-394-kw-max",
    "nome": "GEELY EX2 39,4 KW MAX",
@@ -2415,6 +2475,7 @@
    "modelo": "EX2 39,4 KW MAX"
   },
   {
+   "loja": "carmax",
    "id": "2316694",
    "link": "https://carmaxsantos.com.br/veiculo/2316694-gurgel-xavante-13-8v",
    "nome": "GURGEL XAVANTE 1.3 8V",
@@ -2449,6 +2510,7 @@
    "modelo": "XAVANTE 1.3 8V"
   },
   {
+   "loja": "carmax",
    "id": "2288420",
    "link": "https://carmaxsantos.com.br/veiculo/2288420-honda-city-15-i-vtec-exl",
    "nome": "HONDA CITY 1.5 I-vtec EXL",
@@ -2492,6 +2554,7 @@
    "modelo": "CITY 1.5 I-vtec EXL"
   },
   {
+   "loja": "carmax",
    "id": "2335850",
    "link": "https://carmaxsantos.com.br/veiculo/2335850-chevrolet-onix-10-lt",
    "nome": "CHEVROLET ONIX 1.0 LT",
@@ -2521,6 +2584,7 @@
    "modelo": "ONIX 1.0 LT"
   },
   {
+   "loja": "carmax",
    "id": "2335846",
    "link": "https://carmaxsantos.com.br/veiculo/2335846-chevrolet-onix-10",
    "nome": "CHEVROLET ONIX 1.0",
@@ -2549,6 +2613,7 @@
    "modelo": "ONIX 1.0"
   },
   {
+   "loja": "carmax",
    "id": "2335849",
    "link": "https://carmaxsantos.com.br/veiculo/2335849-chevrolet-onix-10",
    "nome": "CHEVROLET ONIX 1.0",
@@ -2578,6 +2643,7 @@
    "modelo": "ONIX 1.0"
   },
   {
+   "loja": "carmax",
    "id": "2335851",
    "link": "https://carmaxsantos.com.br/veiculo/2335851-chevrolet-onix-10-turbo-ltz",
    "nome": "CHEVROLET ONIX 1.0 Turbo LTZ",
@@ -2606,6 +2672,7 @@
    "modelo": "ONIX 1.0 Turbo LTZ"
   },
   {
+   "loja": "carmax",
    "id": "2265524",
    "link": "https://carmaxsantos.com.br/veiculo/2265524-bmw-x4-20-16v-30i-m-sport",
    "nome": "BMW X4 2.0 16V 30I M Sport",
@@ -2652,6 +2719,7 @@
    "modelo": "X4 2.0 16V 30I M Sport"
   },
   {
+   "loja": "carmax",
    "id": "2310703",
    "link": "https://carmaxsantos.com.br/veiculo/2310703-bmw-x6-30-twinpower-40i-m-sport",
    "nome": "BMW X6 3.0 Twinpower 40I M Sport",
@@ -2706,6 +2774,7 @@
    "modelo": "X6 3.0 Twinpower 40I M Sport"
   },
   {
+   "loja": "carmax",
    "id": "2329767",
    "link": "https://carmaxsantos.com.br/veiculo/2329767-byd-atto-2-15-dm-i-phev-gl",
    "nome": "BYD ATTO 2 1.5 Dm-i Phev GL",
@@ -2734,6 +2803,7 @@
    "modelo": "ATTO 2 1.5 Dm-i Phev GL"
   },
   {
+   "loja": "carmax",
    "id": "2329228",
    "link": "https://carmaxsantos.com.br/veiculo/2329228-byd-dolphin-449-kw-gs",
    "nome": "BYD DOLPHIN 44,9 KW GS",
@@ -2775,6 +2845,7 @@
    "modelo": "DOLPHIN 44,9 KW GS"
   },
   {
+   "loja": "carmax",
    "id": "2329239",
    "link": "https://carmaxsantos.com.br/veiculo/2329239-byd-dolphin-mini-38-kw-gl",
    "nome": "BYD DOLPHIN MINI 38 KW GL",
@@ -2804,6 +2875,7 @@
    "modelo": "DOLPHIN MINI 38 KW GL"
   },
   {
+   "loja": "carmax",
    "id": "2305209",
    "link": "https://carmaxsantos.com.br/veiculo/2305209-byd-dolphin-mini-38-kw-gl",
    "nome": "BYD DOLPHIN MINI 38 KW GL",
@@ -2835,6 +2907,7 @@
    "modelo": "DOLPHIN MINI 38 KW GL"
   },
   {
+   "loja": "carmax",
    "id": "2296450",
    "link": "https://carmaxsantos.com.br/veiculo/2296450-byd-dolphin-mini-38-kw-gl",
    "nome": "BYD DOLPHIN MINI 38 KW GL",
@@ -2883,6 +2956,7 @@
    "modelo": "DOLPHIN MINI 38 KW GL"
   },
   {
+   "loja": "carmax",
    "id": "2296453",
    "link": "https://carmaxsantos.com.br/veiculo/2296453-byd-song-plus-15-dm-i-turbo",
    "nome": "BYD SONG PLUS 1.5 Dm-i Turbo",
@@ -2931,6 +3005,7 @@
    "modelo": "SONG PLUS 1.5 Dm-i Turbo"
   },
   {
+   "loja": "carmax",
    "id": "2298530",
    "link": "https://carmaxsantos.com.br/veiculo/2298530-byd-song-plus-15-dm-i-turbo",
    "nome": "BYD SONG PLUS 1.5 Dm-i Turbo",
@@ -2979,6 +3054,7 @@
    "modelo": "SONG PLUS 1.5 Dm-i Turbo"
   },
   {
+   "loja": "carmax",
    "id": "2335858",
    "link": "https://carmaxsantos.com.br/veiculo/2335858-chery-tiggo-8-16-tgdi-txs",
    "nome": "CHERY TIGGO 8 1.6 Tgdi TXS",
@@ -3009,6 +3085,7 @@
    "modelo": "TIGGO 8 1.6 Tgdi TXS"
   },
   {
+   "loja": "carmax",
    "id": "2336239",
    "link": "https://carmaxsantos.com.br/veiculo/2336239-chery-tiggo-8-pro-16-tgdi",
    "nome": "CHERY TIGGO 8 PRO 1.6 Tgdi",
@@ -3045,6 +3122,7 @@
    "modelo": "TIGGO 8 PRO 1.6 Tgdi"
   },
   {
+   "loja": "carmax",
    "id": "2333443",
    "link": "https://carmaxsantos.com.br/veiculo/2333443-chevrolet-montana-12-turbo-lt",
    "nome": "CHEVROLET MONTANA 1.2 Turbo LT",
@@ -3076,6 +3154,7 @@
    "modelo": "MONTANA 1.2 Turbo LT"
   },
   {
+   "loja": "carmax",
    "id": "2333056",
    "link": "https://carmaxsantos.com.br/veiculo/2333056-chevrolet-onix-10",
    "nome": "CHEVROLET ONIX 1.0",
@@ -3106,6 +3185,7 @@
    "modelo": "ONIX 1.0"
   },
   {
+   "loja": "carmax",
    "id": "2129007",
    "link": "https://carmaxsantos.com.br/veiculo/2129007-bmw-320i-20-16v-turbo-m-sport",
    "nome": "BMW 320I 2.0 16V Turbo M Sport",
@@ -3152,6 +3232,1776 @@
    ],
    "marca": "BMW",
    "modelo": "320I 2.0 16V Turbo M Sport"
+  },
+  {
+   "loja": "outlet",
+   "id": "2329764",
+   "link": "https://www.outletcarmax.com.br/veiculo/2329764-jaguar-xe-20-16v-si4-turbo-r-sport",
+   "nome": "JAGUAR XE 2.0 16V SI4 Turbo R-sport",
+   "ano": "2015/2016",
+   "km": 139835,
+   "cor": "Preto",
+   "combustivel": "Gasolina",
+   "preco": 113790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GAO-3I55_01.jpg?u=20261024142912",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GAO-3I55_01.jpg?u=20261024142912"
+   ],
+   "marca_modelo": "JAGUAR XE",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Bancos de couro",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "JAGUAR",
+   "modelo": "XE 2.0 16V SI4 Turbo R-sport"
+  },
+  {
+   "loja": "outlet",
+   "id": "2333336",
+   "link": "https://www.outletcarmax.com.br/veiculo/2333336-kawasaki-er-6n",
+   "nome": "KAWASAKI ER-6N",
+   "ano": "2012/2012",
+   "km": 58576,
+   "cor": "Verde",
+   "combustivel": "Gasolina",
+   "preco": 21790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EXM-2A63_01.jpg?u=20261107110112",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EXM-2A63_01.jpg?u=20261107110112"
+   ],
+   "marca_modelo": "KAWASAKI ER-6N",
+   "cambio": "Manual",
+   "opcionais": [],
+   "marca": "KAWASAKI",
+   "modelo": "ER-6N"
+  },
+  {
+   "loja": "outlet",
+   "id": "2306092",
+   "link": "https://www.outletcarmax.com.br/veiculo/2306092-land-rover-discovery-sport-20-16v-si4-turbo-se",
+   "nome": "LAND ROVER DISCOVERY SPORT 2.0 16V SI4 Turbo SE",
+   "ano": "2017/2017",
+   "km": 100876,
+   "cor": "Cinza",
+   "combustivel": "Gasolina",
+   "preco": 107790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_05.jpg?u=20260826161536",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_05.jpg?u=20260826161536",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_01.jpg?u=20260826161523",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_02.jpg?u=20260826161525",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_04.jpg?u=20260826161532",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_03.jpg?u=20260826161527",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_14.jpg?u=20260826161609",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_06.jpg?u=20260826161537",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_08.jpg?u=20260826161543",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_09.jpg?u=20260826161553",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_10.jpg?u=20260826161557",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_13.jpg?u=20260826161607",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_15.jpg?u=20260826161612",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_17.jpg?u=20260826161618",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_07.jpg?u=20260826161541",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_12.jpg?u=20260826161604",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_11.jpg?u=20260826161601",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_16.jpg?u=20260826161615",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_19.jpg?u=20260826161623",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FJR-4G54_18.jpg?u=20260826161620"
+   ],
+   "marca_modelo": "LAND ROVER DISCOVERY SPORT",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Bancos de couro",
+    "Direção elétrica",
+    "Freios ABS",
+    "Retrovisores elétricos",
+    "Rodas de liga leve",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "LAND",
+   "modelo": "ROVER DISCOVERY SPORT 2.0 16V SI4 Turbo SE"
+  },
+  {
+   "loja": "outlet",
+   "id": "2321766",
+   "link": "https://www.outletcarmax.com.br/veiculo/2321766-nissan-versa-16-16v-sl",
+   "nome": "NISSAN VERSA 1.6 16V SL",
+   "ano": "2018/2018",
+   "km": 120000,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "preco": 63790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_02.jpg?u=20261022173857",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_02.jpg?u=20261022173857",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_04.jpg?u=20261022173901",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_12.jpg?u=20261022173915",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_07.jpg?u=20261022173907",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_05.jpg?u=20261022173903",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_03.jpg?u=20261022173859",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_09.jpg?u=20261022173910",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_01.jpg?u=20261022173855",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_06.jpg?u=20261022173905",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_08.jpg?u=20261022173909",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_10.jpg?u=20261022173911",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_11.jpg?u=20261022173913",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_13.jpg?u=20261022173917",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_16.jpg?u=20261022173924",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_17.jpg?u=20261022173926",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_14.jpg?u=20261022173919",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_20.jpg?u=20261022173935",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_15.jpg?u=20261022173922",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_19.jpg?u=20261022173929",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FPY-2B97_18.jpg?u=20261022173928"
+   ],
+   "marca_modelo": "NISSAN VERSA",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "NISSAN",
+   "modelo": "VERSA 1.6 16V SL"
+  },
+  {
+   "loja": "outlet",
+   "id": "2319607",
+   "link": "https://www.outletcarmax.com.br/veiculo/2319607-renault-duster-20-dynamique-4x2-16v",
+   "nome": "RENAULT DUSTER 2.0 Dynamique 4X2 16V",
+   "ano": "2016/2016",
+   "km": 79000,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 62790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_05.jpg?u=20261002114422",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_05.jpg?u=20261002114422",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_01.jpg?u=20261002114416",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_06.jpg?u=20261002114424",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_03.jpg?u=20261002114419",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_02.jpg?u=20261002114418",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_04.jpg?u=20261002114420",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_20.jpg?u=20261002114454",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_08.jpg?u=20261002114429",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_07.jpg?u=20261002114427",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_09.jpg?u=20261002114430",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_11.jpg?u=20261002114434",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_17.jpg?u=20261002114446",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_14.jpg?u=20261002114440",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_19.jpg?u=20261002114451",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_13.jpg?u=20261002114438",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_15.jpg?u=20261002114442",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_18.jpg?u=20261002114447",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_10.jpg?u=20261002114432",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_12.jpg?u=20261002114436",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOM-7677_16.jpg?u=20261002114444"
+   ],
+   "marca_modelo": "RENAULT DUSTER",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "RENAULT",
+   "modelo": "DUSTER 2.0 Dynamique 4X2 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2307486",
+   "link": "https://www.outletcarmax.com.br/veiculo/2307486-renault-kwid-10-12v-sce-zen",
+   "nome": "RENAULT KWID 1.0 12V SCE ZEN",
+   "ano": "2025/2026",
+   "km": 19539,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 69790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_02.jpg?u=20260820095922",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_02.jpg?u=20260820095922",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_19.jpg?u=20260820095951",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_03.jpg?u=20260820095923",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_04.jpg?u=20260820095924",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_05.jpg?u=20260820095925",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_06.jpg?u=20260820095927",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_01.jpg?u=20260820095920",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_07.jpg?u=20260820095929",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_08.jpg?u=20260820095931",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_09.jpg?u=20260820095933",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_10.jpg?u=20260820095935",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_11.jpg?u=20260820095936",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_12.jpg?u=20260820095938",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_13.jpg?u=20260820095939",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_14.jpg?u=20260820095940",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_15.jpg?u=20260820095942",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_16.jpg?u=20260820095944",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_17.jpg?u=20260820095946",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDY-1G08_18.jpg?u=20260820095948"
+   ],
+   "marca_modelo": "RENAULT KWID",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "RENAULT",
+   "modelo": "KWID 1.0 12V SCE ZEN"
+  },
+  {
+   "loja": "outlet",
+   "id": "2321822",
+   "link": "https://www.outletcarmax.com.br/veiculo/2321822-suzuki-gsx-r1100-w",
+   "nome": "SUZUKI GSX-R1100 W",
+   "ano": "1996/1996",
+   "km": 39300,
+   "cor": "Azul",
+   "combustivel": "Gasolina",
+   "preco": 19790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BSA-8J35_03.jpg?u=20260929131424",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BSA-8J35_03.jpg?u=20260929131424",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BSA-8J35_01.jpg?u=20260929131422",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BSA-8J35_02.jpg?u=20260929131423",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BSA-8J35_04.jpg?u=20260929131424",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BSA-8J35_06.jpg?u=20260929131427"
+   ],
+   "marca_modelo": "SUZUKI GSX-R1100 W",
+   "cambio": "Manual",
+   "opcionais": [],
+   "marca": "SUZUKI",
+   "modelo": "GSX-R1100 W"
+  },
+  {
+   "loja": "outlet",
+   "id": "2321788",
+   "link": "https://www.outletcarmax.com.br/veiculo/2321788-toyota-hilux-27-sr-4x2-cd-16v",
+   "nome": "TOYOTA HILUX 2.7 SR 4X2 CD 16V",
+   "ano": "2012/2012",
+   "km": 225042,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "preco": 94790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AVK-0I45_01.jpg?u=20260929114221",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AVK-0I45_01.jpg?u=20260929114221"
+   ],
+   "marca_modelo": "TOYOTA HILUX",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "TOYOTA",
+   "modelo": "HILUX 2.7 SR 4X2 CD 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2306127",
+   "link": "https://www.outletcarmax.com.br/veiculo/2306127-toyota-hilux-28-srv-4x4-cd-16v",
+   "nome": "TOYOTA HILUX 2.8 SRV 4X4 CD 16V",
+   "ano": "2018/2019",
+   "km": 220120,
+   "cor": "Prata",
+   "combustivel": "Diesel",
+   "preco": 169790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_03.jpg?u=20260820091439",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_03.jpg?u=20260820091439",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_05.jpg?u=20260820091442",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_01.jpg?u=20260820091436",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_02.jpg?u=20260820091438",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_04.jpg?u=20260820091440",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_20.jpg?u=20260820091509",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_09.jpg?u=20260820091449",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_07.jpg?u=20260820091445",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_06.jpg?u=20260820091444",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_08.jpg?u=20260820091447",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_10.jpg?u=20260820091451",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_11.jpg?u=20260820091453",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_12.jpg?u=20260820091455",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_13.jpg?u=20260820091456",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_18.jpg?u=20260820091505",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_14.jpg?u=20260820091458",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_16.jpg?u=20260820091502",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_19.jpg?u=20260820091507",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_17.jpg?u=20260820091503",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBG-9116_15.jpg?u=20260820091500"
+   ],
+   "marca_modelo": "TOYOTA HILUX",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Rodas de liga leve",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "TOYOTA",
+   "modelo": "HILUX 2.8 SRV 4X4 CD 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2317334",
+   "link": "https://www.outletcarmax.com.br/veiculo/2317334-volkswagen-polo-10-mpi-track",
+   "nome": "VOLKSWAGEN POLO 1.0 MPI Track",
+   "ano": "2025/2026",
+   "km": 40094,
+   "cor": "Branco",
+   "combustivel": "Gasolina",
+   "preco": 82790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_05.jpg?u=20260917094538",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_05.jpg?u=20260917094538",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_19.jpg?u=20260917094609",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_07.jpg?u=20260917094542",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_08.jpg?u=20260917094544",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_02.jpg?u=20260917094533",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_06.jpg?u=20260917094540",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_01.jpg?u=20260917094531",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_03.jpg?u=20260917094535",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_12.jpg?u=20260917094553",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_04.jpg?u=20260917094536",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_09.jpg?u=20260917094546",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_11.jpg?u=20260917094551",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_13.jpg?u=20260917094555",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_14.jpg?u=20260917094557",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_15.jpg?u=20260917094559",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_17.jpg?u=20260917094604",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_18.jpg?u=20260917094606",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_10.jpg?u=20260917094548",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEP-0F67_16.jpg?u=20260917094602"
+   ],
+   "marca_modelo": "VOLKSWAGEN POLO",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "VOLKSWAGEN",
+   "modelo": "POLO 1.0 MPI Track"
+  },
+  {
+   "loja": "outlet",
+   "id": "2306076",
+   "link": "https://www.outletcarmax.com.br/veiculo/2306076-volkswagen-polo-10-mpi-track",
+   "nome": "VOLKSWAGEN POLO 1.0 MPI Track",
+   "ano": "2025/2026",
+   "km": 34950,
+   "cor": "Branco",
+   "combustivel": "Gasolina",
+   "preco": 82790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_01.jpg?u=20260731154456",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_01.jpg?u=20260731154456",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_03.jpg?u=20260731154457",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_02.jpg?u=20260731154457",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_04.jpg?u=20260731154458",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_07.jpg?u=20260731154501",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_09.jpg?u=20260731154503",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_13.jpg?u=20260731154506",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_10.jpg?u=20260731154504",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_06.jpg?u=20260731154500",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_05.jpg?u=20260731154459",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_08.jpg?u=20260731154502",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_11.jpg?u=20260731154504",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_12.jpg?u=20260731154505",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_14.jpg?u=20260731154507",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_15.jpg?u=20260731154508",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_16.jpg?u=20260731154508",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDZ-6E75_17.jpg?u=20260731154510"
+   ],
+   "marca_modelo": "VOLKSWAGEN POLO",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "VOLKSWAGEN",
+   "modelo": "POLO 1.0 MPI Track"
+  },
+  {
+   "loja": "outlet",
+   "id": "2317499",
+   "link": "https://www.outletcarmax.com.br/veiculo/2317499-volkswagen-polo-10-mpi-track",
+   "nome": "VOLKSWAGEN POLO 1.0 MPI Track",
+   "ano": "2025/2026",
+   "km": 47701,
+   "cor": "Preto",
+   "combustivel": "Gasolina",
+   "preco": 82790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_01.jpg?u=20261022175553",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_01.jpg?u=20261022175553",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_02.jpg?u=20261022175554",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_13.jpg?u=20261022175615",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_03.jpg?u=20261022175557",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_12.jpg?u=20261022175613",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_16.jpg?u=20261022175621",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_11.jpg?u=20261022175611",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_07.jpg?u=20261022175604",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_04.jpg?u=20261022175559",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_06.jpg?u=20261022175603",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_08.jpg?u=20261022175606",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_05.jpg?u=20261022175601",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_10.jpg?u=20261022175610",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_09.jpg?u=20261022175608",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_14.jpg?u=20261022175617",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_15.jpg?u=20261022175619",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_17.jpg?u=20261022175623",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_20.jpg?u=20261022175628",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_18.jpg?u=20261022175625",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEY-9G05_19.jpg?u=20261022175626"
+   ],
+   "marca_modelo": "VOLKSWAGEN POLO",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "VOLKSWAGEN",
+   "modelo": "POLO 1.0 MPI Track"
+  },
+  {
+   "loja": "outlet",
+   "id": "2319053",
+   "link": "https://www.outletcarmax.com.br/veiculo/2319053-volkswagen-saveiro-16-msi-robust-cs-16v",
+   "nome": "VOLKSWAGEN SAVEIRO 1.6 MSI Robust CS 16V",
+   "ano": "2024/2025",
+   "km": 48134,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 81790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EZY-0I52_01.jpg?u=20261019130736",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EZY-0I52_01.jpg?u=20261019130736"
+   ],
+   "marca_modelo": "VOLKSWAGEN SAVEIRO",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Freios ABS",
+    "Vidros elétricos"
+   ],
+   "marca": "VOLKSWAGEN",
+   "modelo": "SAVEIRO 1.6 MSI Robust CS 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2319054",
+   "link": "https://www.outletcarmax.com.br/veiculo/2319054-volkswagen-saveiro-16-msi-robust-cs-16v",
+   "nome": "VOLKSWAGEN SAVEIRO 1.6 MSI Robust CS 16V",
+   "ano": "2024/2025",
+   "km": 40494,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 81790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCU-1H99_01.jpg?u=20260918122124",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCU-1H99_01.jpg?u=20260918122124"
+   ],
+   "marca_modelo": "VOLKSWAGEN SAVEIRO",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção hidráulica",
+    "Freios ABS",
+    "Vidros elétricos"
+   ],
+   "marca": "VOLKSWAGEN",
+   "modelo": "SAVEIRO 1.6 MSI Robust CS 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2073548",
+   "link": "https://www.outletcarmax.com.br/veiculo/2073548-volkswagen-t-cross-10-200-tsi-comfortline",
+   "nome": "VOLKSWAGEN T-CROSS 1.0 200 TSI Comfortline",
+   "ano": "2020/2021",
+   "km": 128000,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "preco": 97790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RFL-0I64_01.jpg?u=20260731160401",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RFL-0I64_01.jpg?u=20260731160401"
+   ],
+   "marca_modelo": "VOLKSWAGEN T-CROSS",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Bancos de couro",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "VOLKSWAGEN",
+   "modelo": "T-CROSS 1.0 200 TSI Comfortline"
+  },
+  {
+   "loja": "outlet",
+   "id": "2334792",
+   "link": "https://www.outletcarmax.com.br/veiculo/2334792-volkswagen-tiguan-14-250-tsi-allspace-comfortline",
+   "nome": "VOLKSWAGEN TIGUAN 1.4 250 TSI Allspace Comfortline",
+   "ano": "2019/2020",
+   "km": 109000,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "preco": 114790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_05.jpg?u=20261113115136",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_05.jpg?u=20261113115136",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_06.jpg?u=20261113115137",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_01.jpg?u=20261113115130",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_03.jpg?u=20261113115134",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_02.jpg?u=20261113115133",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_04.jpg?u=20261113115135",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_08.jpg?u=20261113115140",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_07.jpg?u=20261113115138",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_20.jpg?u=20261113115155",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_09.jpg?u=20261113115141",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_14.jpg?u=20261113115147",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_12.jpg?u=20261113115144",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_17.jpg?u=20261113115151",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_11.jpg?u=20261113115143",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_15.jpg?u=20261113115148",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_18.jpg?u=20261113115152",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_16.jpg?u=20261113115149",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_10.jpg?u=20261113115142",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_13.jpg?u=20261113115146",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QXF-7E54_19.jpg?u=20261113115154"
+   ],
+   "marca_modelo": "VOLKSWAGEN TIGUAN",
+   "cambio": "",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Rodas de liga leve",
+    "Start / Stop Engine",
+    "Teto solar",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "VOLKSWAGEN",
+   "modelo": "TIGUAN 1.4 250 TSI Allspace Comfortline"
+  },
+  {
+   "loja": "outlet",
+   "id": "2317332",
+   "link": "https://www.outletcarmax.com.br/veiculo/2317332-volkswagen-virtus-10-200-tsi-comfortline",
+   "nome": "VOLKSWAGEN VIRTUS 1.0 200 TSI Comfortline",
+   "ano": "2024/2025",
+   "km": 35259,
+   "cor": "Azul",
+   "combustivel": "Gasolina",
+   "preco": 115790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_03.jpg?u=20260917095216",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_03.jpg?u=20260917095216",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_04.jpg?u=20260917095217",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_07.jpg?u=20260917095221",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_01.jpg?u=20260917095213",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_06.jpg?u=20260917095220",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_02.jpg?u=20260917095215",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_05.jpg?u=20260917095219",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_08.jpg?u=20260917095223",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_09.jpg?u=20260917095224",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_20.jpg?u=20260917095242",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_10.jpg?u=20260917095225",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_12.jpg?u=20260917095228",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_13.jpg?u=20260917095229",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_15.jpg?u=20260917095232",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_16.jpg?u=20260917095234",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_17.jpg?u=20260917095236",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_14.jpg?u=20260917095230",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_18.jpg?u=20260917095238",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_11.jpg?u=20260917095227",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TCX-8H99_19.jpg?u=20260917095240"
+   ],
+   "marca_modelo": "VOLKSWAGEN VIRTUS",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "VOLKSWAGEN",
+   "modelo": "VIRTUS 1.0 200 TSI Comfortline"
+  },
+  {
+   "loja": "outlet",
+   "id": "2317326",
+   "link": "https://www.outletcarmax.com.br/veiculo/2317326-chevrolet-onix-10-turbo-plus-lt",
+   "nome": "CHEVROLET ONIX 1.0 Turbo Plus LT",
+   "ano": "2024/2025",
+   "km": 39298,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "preco": 81790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_18.jpg?u=20260917093702",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_18.jpg?u=20260917093702",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_07.jpg?u=20260917093641",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_03.jpg?u=20260917093634",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_04.jpg?u=20260917093635",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_01.jpg?u=20260917093631",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_06.jpg?u=20260917093639",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_02.jpg?u=20260917093633",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_05.jpg?u=20260917093637",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_08.jpg?u=20260917093643",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_20.jpg?u=20260917093705",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_11.jpg?u=20260917093648",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_09.jpg?u=20260917093644",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_12.jpg?u=20260917093650",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_16.jpg?u=20260917093658",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_14.jpg?u=20260917093654",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_13.jpg?u=20260917093652",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_10.jpg?u=20260917093646",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_15.jpg?u=20260917093656",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_17.jpg?u=20260917093700",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F32_19.jpg?u=20260917093703"
+   ],
+   "marca_modelo": "CHEVROLET ONIX",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "CHEVROLET",
+   "modelo": "ONIX 1.0 Turbo Plus LT"
+  },
+  {
+   "loja": "outlet",
+   "id": "2317501",
+   "link": "https://www.outletcarmax.com.br/veiculo/2317501-chevrolet-onix-10-turbo-plus-lt",
+   "nome": "CHEVROLET ONIX 1.0 Turbo Plus LT",
+   "ano": "2024/2025",
+   "km": 35641,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "preco": 81790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_18.jpg?u=20260917093847",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_18.jpg?u=20260917093847",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_07.jpg?u=20260917093834",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_03.jpg?u=20260917093829",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_04.jpg?u=20260917093831",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_01.jpg?u=20260917093826",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_06.jpg?u=20260917093833",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_02.jpg?u=20260917093828",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_05.jpg?u=20260917093832",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_08.jpg?u=20260917093835",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_20.jpg?u=20260917093850",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_11.jpg?u=20260917093839",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_09.jpg?u=20260917093837",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_12.jpg?u=20260917093840",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_16.jpg?u=20260917093845",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_14.jpg?u=20260917093843",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_13.jpg?u=20260917093841",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_10.jpg?u=20260917093838",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_15.jpg?u=20260917093844",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_17.jpg?u=20260917093846",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0F34_19.jpg?u=20260917093849"
+   ],
+   "marca_modelo": "CHEVROLET ONIX",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "CHEVROLET",
+   "modelo": "ONIX 1.0 Turbo Plus LT"
+  },
+  {
+   "loja": "outlet",
+   "id": "2320407",
+   "link": "https://www.outletcarmax.com.br/veiculo/2320407-chevrolet-onix-10-turbo-plus-lt",
+   "nome": "CHEVROLET ONIX 1.0 Turbo Plus LT",
+   "ano": "2024/2025",
+   "km": 27130,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "preco": 83790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_18.jpg?u=20260924090852",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_18.jpg?u=20260924090852",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_07.jpg?u=20260924090843",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_03.jpg?u=20260924090840",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_04.jpg?u=20260924090840",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_01.jpg?u=20260924090838",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_06.jpg?u=20260924090842",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_02.jpg?u=20260924090839",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_05.jpg?u=20260924090841",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_08.jpg?u=20260924090844",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_20.jpg?u=20260924090853",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_12.jpg?u=20260924090847",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_11.jpg?u=20260924090846",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_09.jpg?u=20260924090844",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_16.jpg?u=20260924090850",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_14.jpg?u=20260924090849",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_13.jpg?u=20260924090848",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_10.jpg?u=20260924090845",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_15.jpg?u=20260924090849",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_17.jpg?u=20260924090851",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDX-6A20_19.jpg?u=20260924090853"
+   ],
+   "marca_modelo": "CHEVROLET ONIX",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Rodas de liga leve",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "CHEVROLET",
+   "modelo": "ONIX 1.0 Turbo Plus LT"
+  },
+  {
+   "loja": "outlet",
+   "id": "2317329",
+   "link": "https://www.outletcarmax.com.br/veiculo/2317329-chevrolet-spin-18-premier-8v",
+   "nome": "CHEVROLET SPIN 1.8 Premier 8V",
+   "ano": "2024/2025",
+   "km": 42622,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 121790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_03.jpg?u=20261016110507",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_03.jpg?u=20261016110507",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_02.jpg?u=20261016110505",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_01.jpg?u=20261016110503",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_04.jpg?u=20261016110509",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_06.jpg?u=20261016110512",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_05.jpg?u=20261016110510",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_07.jpg?u=20261016110514",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_08.jpg?u=20261016110516",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_09.jpg?u=20261016110518",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_12.jpg?u=20261016110524",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_10.jpg?u=20261016110520",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_11.jpg?u=20261016110522",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_18.jpg?u=20261016110536",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_13.jpg?u=20261016110525",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_14.jpg?u=20261016110527",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_17.jpg?u=20261016110533",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_16.jpg?u=20261016110531",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_15.jpg?u=20261016110529",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDG-3C54_19.jpg?u=20261016110538"
+   ],
+   "marca_modelo": "CHEVROLET SPIN",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "CHEVROLET",
+   "modelo": "SPIN 1.8 Premier 8V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2329780",
+   "link": "https://www.outletcarmax.com.br/veiculo/2329780-chevrolet-trailblazer-36-ltz-4x4-v6",
+   "nome": "CHEVROLET TRAILBLAZER 3.6 LTZ 4X4 V6",
+   "ano": "2018/2018",
+   "km": 145200,
+   "cor": "Branco",
+   "combustivel": "Gasolina",
+   "preco": 135790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBR-5C82_01.jpg?u=20261024144032",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBR-5C82_01.jpg?u=20261024144032"
+   ],
+   "marca_modelo": "CHEVROLET TRAILBLAZER",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Freios ABS"
+   ],
+   "marca": "CHEVROLET",
+   "modelo": "TRAILBLAZER 3.6 LTZ 4X4 V6"
+  },
+  {
+   "loja": "outlet",
+   "id": "2335282",
+   "link": "https://www.outletcarmax.com.br/veiculo/2335282-citroen-c3-16-exclusive-16v",
+   "nome": "CITROËN C3 1.6 Exclusive 16V",
+   "ano": "2016/2017",
+   "km": 48300,
+   "cor": "Cinza",
+   "combustivel": "Flex",
+   "preco": 54790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FKF-1I17_01.jpg?u=20261118122507",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FKF-1I17_01.jpg?u=20261118122507"
+   ],
+   "marca_modelo": "CITROËN C3",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Limpador traseiro",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "CITROËN",
+   "modelo": "C3 1.6 Exclusive 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2336235",
+   "link": "https://www.outletcarmax.com.br/veiculo/2336235-effa-v22-13-16v-cd",
+   "nome": "EFFA V22 1.3 16V CD",
+   "ano": "2021/2021",
+   "km": 23218,
+   "cor": "Branco",
+   "combustivel": "Gasolina",
+   "preco": 73790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_07.jpg?u=20261119112713",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_07.jpg?u=20261119112713",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_02.jpg?u=20261119112708",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_11.jpg?u=20261119112717",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_06.jpg?u=20261119112712",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_09.jpg?u=20261119112715",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_10.jpg?u=20261119112716",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_08.jpg?u=20261119112714",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_05.jpg?u=20261119112711",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_04.jpg?u=20261119112709",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_01.jpg?u=20261119112707",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CUE-8H28_03.jpg?u=20261119112709"
+   ],
+   "marca_modelo": "EFFA V22",
+   "cambio": "Manual",
+   "opcionais": [],
+   "marca": "EFFA",
+   "modelo": "V22 1.3 16V CD"
+  },
+  {
+   "loja": "outlet",
+   "id": "2335273",
+   "link": "https://www.outletcarmax.com.br/veiculo/2335273-fiat-argo-10-firefly-drive",
+   "nome": "FIAT ARGO 1.0 Firefly Drive",
+   "ano": "2017/2018",
+   "km": 78315,
+   "cor": "Vermelho",
+   "combustivel": "Flex",
+   "preco": 54790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FLW-9179_01.jpg?u=20261116111630",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FLW-9179_01.jpg?u=20261116111630"
+   ],
+   "marca_modelo": "FIAT ARGO",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "FIAT",
+   "modelo": "ARGO 1.0 Firefly Drive"
+  },
+  {
+   "loja": "outlet",
+   "id": "2317322",
+   "link": "https://www.outletcarmax.com.br/veiculo/2317322-fiat-cronos-10-firefly-drive",
+   "nome": "FIAT CRONOS 1.0 Firefly Drive",
+   "ano": "2024/2025",
+   "km": 32989,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 82790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_05.jpg?u=20261022175227",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_05.jpg?u=20261022175227",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_06.jpg?u=20261022175229",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_01.jpg?u=20261022175220",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_02.jpg?u=20261022175222",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_03.jpg?u=20261022175223",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_04.jpg?u=20261022175225",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_07.jpg?u=20261022175231",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_15.jpg?u=20261022175245",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_08.jpg?u=20261022175233",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_10.jpg?u=20261022175235",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_20.jpg?u=20261022175254",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_12.jpg?u=20261022175239",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_09.jpg?u=20261022175234",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_11.jpg?u=20261022175237",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_14.jpg?u=20261022175243",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_13.jpg?u=20261022175241",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_16.jpg?u=20261022175247",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_18.jpg?u=20261022175250",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_17.jpg?u=20261022175249",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDH-9E10_19.jpg?u=20261022175252"
+   ],
+   "marca_modelo": "FIAT CRONOS",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "FIAT",
+   "modelo": "CRONOS 1.0 Firefly Drive"
+  },
+  {
+   "loja": "outlet",
+   "id": "2321783",
+   "link": "https://www.outletcarmax.com.br/veiculo/2321783-fiat-cronos-10-firefly-drive",
+   "nome": "FIAT CRONOS 1.0 Firefly Drive",
+   "ano": "2022/2023",
+   "km": 116000,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 61790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RVR-0B75_01.jpg?u=20260929113858",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RVR-0B75_01.jpg?u=20260929113858"
+   ],
+   "marca_modelo": "FIAT CRONOS",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "FIAT",
+   "modelo": "CRONOS 1.0 Firefly Drive"
+  },
+  {
+   "loja": "outlet",
+   "id": "2305805",
+   "link": "https://www.outletcarmax.com.br/veiculo/2305805-fiat-cronos-10-firefly-drive",
+   "nome": "FIAT CRONOS 1.0 Firefly Drive",
+   "ano": "2025/2025",
+   "km": 37229,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 81790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_07.jpg?u=20260730181120",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_07.jpg?u=20260730181120",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_06.jpg?u=20260730181119",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_09.jpg?u=20260730181121",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_01.jpg?u=20260730181115",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_02.jpg?u=20260730181116",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_04.jpg?u=20260730181117",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_05.jpg?u=20260730181118",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_03.jpg?u=20260730181116",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_08.jpg?u=20260730181121",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_13.jpg?u=20260730181125",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_11.jpg?u=20260730181123",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_12.jpg?u=20260730181124",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_10.jpg?u=20260730181122",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_14.jpg?u=20260730181126",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_16.jpg?u=20260730181128",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_19.jpg?u=20260730181131",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_18.jpg?u=20260730181130",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_17.jpg?u=20260730181129",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TEA-1F31_15.jpg?u=20260730181127"
+   ],
+   "marca_modelo": "FIAT CRONOS",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "FIAT",
+   "modelo": "CRONOS 1.0 Firefly Drive"
+  },
+  {
+   "loja": "outlet",
+   "id": "2327872",
+   "link": "https://www.outletcarmax.com.br/veiculo/2327872-fiat-mobi-10-evo-like",
+   "nome": "FIAT MOBI 1.0 EVO Like.",
+   "ano": "2023/2023",
+   "km": 65000,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 55790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RVP-9E67_01.jpg?u=20261019101942",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RVP-9E67_01.jpg?u=20261019101942"
+   ],
+   "marca_modelo": "FIAT MOBI",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "FIAT",
+   "modelo": "MOBI 1.0 EVO Like."
+  },
+  {
+   "loja": "outlet",
+   "id": "2335845",
+   "link": "https://www.outletcarmax.com.br/veiculo/2335845-fiat-punto-16-essence-16v",
+   "nome": "FIAT PUNTO 1.6 Essence 16V",
+   "ano": "2014/2014",
+   "km": 99000,
+   "cor": "Vermelho",
+   "combustivel": "Flex",
+   "preco": 38790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GRN-0G78_01.jpg?u=20261118095350",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GRN-0G78_01.jpg?u=20261118095350"
+   ],
+   "marca_modelo": "FIAT PUNTO",
+   "cambio": "Manual",
+   "opcionais": [],
+   "marca": "FIAT",
+   "modelo": "PUNTO 1.6 Essence 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2336174",
+   "link": "https://www.outletcarmax.com.br/veiculo/2336174-fiat-strada-14-mpi-working-cs-8v",
+   "nome": "FIAT STRADA 1.4 MPI Working CS 8V",
+   "ano": "2018/2018",
+   "km": 171629,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 49790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOA-9H91_01.jpg?u=20261119100430",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FOA-9H91_01.jpg?u=20261119100430"
+   ],
+   "marca_modelo": "FIAT STRADA",
+   "cambio": "Manual",
+   "opcionais": [],
+   "marca": "FIAT",
+   "modelo": "STRADA 1.4 MPI Working CS 8V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2305896",
+   "link": "https://www.outletcarmax.com.br/veiculo/2305896-fiat-tipo-20-ie-slx-8v",
+   "nome": "FIAT TIPO 2.0 IE SLX 8V",
+   "ano": "1995/1995",
+   "km": 204000,
+   "cor": "Azul",
+   "combustivel": "Gasolina",
+   "preco": 37790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_07.jpg?u=20260731103516",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_07.jpg?u=20260731103516",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_02.jpg?u=20260731103510",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_01.jpg?u=20260731103508",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_06.jpg?u=20260731103515",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_03.jpg?u=20260731103511",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_05.jpg?u=20260731103514",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_04.jpg?u=20260731103512",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_08.jpg?u=20260731103517",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_09.jpg?u=20260731103518",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_10.jpg?u=20260731103520",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_13.jpg?u=20260731103523",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_14.jpg?u=20260731103524",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_15.jpg?u=20260731103525",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_16.jpg?u=20260731103527",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_17.jpg?u=20260731103529",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_18.jpg?u=20260731103531",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_19.jpg?u=20260731103533",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_20.jpg?u=20260731103536",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_12.jpg?u=20260731103522",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/AFB-0A99_11.jpg?u=20260731103521"
+   ],
+   "marca_modelo": "FIAT TIPO",
+   "cambio": "Manual",
+   "opcionais": [
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "FIAT",
+   "modelo": "TIPO 2.0 IE SLX 8V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2336169",
+   "link": "https://www.outletcarmax.com.br/veiculo/2336169-ford-ranger-32-limited-4x4-cd-20v",
+   "nome": "FORD RANGER 3.2 Limited 4X4 CD 20V",
+   "ano": "2019/2020",
+   "km": 91458,
+   "cor": "Cinza",
+   "combustivel": "Diesel",
+   "preco": 139790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_05.jpg?u=20261119095730",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_05.jpg?u=20261119095730",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_12.jpg?u=20261119095744",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_01.jpg?u=20261119095725",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_02.jpg?u=20261119095725",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_14.jpg?u=20261119095746",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_04.jpg?u=20261119095727",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_13.jpg?u=20261119095745",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_06.jpg?u=20261119095731",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_10.jpg?u=20261119095739",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_07.jpg?u=20261119095733",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_09.jpg?u=20261119095737",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_11.jpg?u=20261119095740",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_15.jpg?u=20261119095749",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_17.jpg?u=20261119095753",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_16.jpg?u=20261119095751",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_08.jpg?u=20261119095736",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/PLR-3A74_03.jpg?u=20261119095726"
+   ],
+   "marca_modelo": "FORD RANGER",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "FORD",
+   "modelo": "RANGER 3.2 Limited 4X4 CD 20V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2327874",
+   "link": "https://www.outletcarmax.com.br/veiculo/2327874-honda-city-15-personal-16v",
+   "nome": "HONDA CITY 1.5 Personal 16V",
+   "ano": "2020/2021",
+   "km": 70350,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 83790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZF-8E28_01.jpg?u=20261019102053",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZF-8E28_01.jpg?u=20261019102053"
+   ],
+   "marca_modelo": "HONDA CITY",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HONDA",
+   "modelo": "CITY 1.5 Personal 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2305915",
+   "link": "https://www.outletcarmax.com.br/veiculo/2305915-honda-civic-15-lx-16v",
+   "nome": "HONDA CIVIC 1.5 LX 16V",
+   "ano": "1995/1995",
+   "km": 155000,
+   "cor": "Azul",
+   "combustivel": "Gasolina",
+   "preco": 43790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_12.jpg?u=20260731110224",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_12.jpg?u=20260731110224",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_01.jpg?u=20260731110215",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_06.jpg?u=20260731110219",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_07.jpg?u=20260731110220",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_03.jpg?u=20260731110217",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_08.jpg?u=20260731110221",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_02.jpg?u=20260731110216",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_04.jpg?u=20260731110218",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_10.jpg?u=20260731110222",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_09.jpg?u=20260731110222",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_11.jpg?u=20260731110223",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_05.jpg?u=20260731110218",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_13.jpg?u=20260731110226",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_14.jpg?u=20260731110227",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_18.jpg?u=20260731110230",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_15.jpg?u=20260731110228",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_17.jpg?u=20260731110229",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/CCG-7E29_16.jpg?u=20260731110228"
+   ],
+   "marca_modelo": "HONDA CIVIC",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Direção elétrica",
+    "Freios ABS",
+    "Retrovisores elétricos",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HONDA",
+   "modelo": "CIVIC 1.5 LX 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2307123",
+   "link": "https://www.outletcarmax.com.br/veiculo/2307123-honda-fit-15-personal-16v",
+   "nome": "HONDA FIT 1.5 Personal 16V",
+   "ano": "2019/2019",
+   "km": 29022,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 84790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EXW-8J89_01.jpg?u=20260804184016",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EXW-8J89_01.jpg?u=20260804184016"
+   ],
+   "marca_modelo": "HONDA FIT",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HONDA",
+   "modelo": "FIT 1.5 Personal 16V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2316139",
+   "link": "https://www.outletcarmax.com.br/veiculo/2316139-honda-hr-v-15-16v-turbo-touring",
+   "nome": "HONDA HR-V 1.5 16V Turbo Touring",
+   "ano": "2019/2020",
+   "km": 93000,
+   "cor": "Prata",
+   "combustivel": "Gasolina",
+   "preco": 117790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_05.jpg?u=20260911174347",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_05.jpg?u=20260911174347",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_07.jpg?u=20260911174351",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_06.jpg?u=20260911174349",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_04.jpg?u=20260911174346",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_03.jpg?u=20260911174345",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_01.jpg?u=20260911174342",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_02.jpg?u=20260911174344",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_08.jpg?u=20260911174353",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_09.jpg?u=20260911174354",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_12.jpg?u=20260911174359",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_13.jpg?u=20260911174401",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_15.jpg?u=20260911174405",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_17.jpg?u=20260911174409",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_20.jpg?u=20260911174414",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_16.jpg?u=20260911174407",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_18.jpg?u=20260911174411",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_11.jpg?u=20260911174358",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_14.jpg?u=20260911174403",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_10.jpg?u=20260911174357",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/BZG-0I09_19.jpg?u=20260911174412"
+   ],
+   "marca_modelo": "HONDA HR-V",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Retrovisores elétricos",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HONDA",
+   "modelo": "HR-V 1.5 16V Turbo Touring"
+  },
+  {
+   "loja": "outlet",
+   "id": "2308776",
+   "link": "https://www.outletcarmax.com.br/veiculo/2308776-honda-hr-v-18-16v-ex",
+   "nome": "HONDA HR-V 1.8 16V EX",
+   "ano": "2018/2018",
+   "km": 105000,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 94790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_04.jpg?u=20261019130346",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_04.jpg?u=20261019130346",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_02.jpg?u=20261019130342",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_01.jpg?u=20261019130340",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_05.jpg?u=20261019130347",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_03.jpg?u=20261019130344",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_11.jpg?u=20261019130358",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_09.jpg?u=20261019130354",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_08.jpg?u=20261019130352",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_07.jpg?u=20261019130350",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_06.jpg?u=20261019130348",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_14.jpg?u=20261019130404",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_15.jpg?u=20261019130406",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_16.jpg?u=20261019130407",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_10.jpg?u=20261019130356",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_12.jpg?u=20261019130400",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_17.jpg?u=20261019130409",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_18.jpg?u=20261019130411",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_13.jpg?u=20261019130402",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_20.jpg?u=20261019130414",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FSI-6J99_19.jpg?u=20261019130412"
+   ],
+   "marca_modelo": "HONDA HR-V",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HONDA",
+   "modelo": "HR-V 1.8 16V EX"
+  },
+  {
+   "loja": "outlet",
+   "id": "2305957",
+   "link": "https://www.outletcarmax.com.br/veiculo/2305957-honda-hr-v-18-16v-ex",
+   "nome": "HONDA HR-V 1.8 16V EX",
+   "ano": "2021/2021",
+   "km": 107000,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "preco": 105790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_04.jpg?u=20260731122800",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_04.jpg?u=20260731122800",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_03.jpg?u=20260731122758",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_01.jpg?u=20260731122756",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_05.jpg?u=20260731122802",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_02.jpg?u=20260731122754",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_08.jpg?u=20260731122805",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_07.jpg?u=20260731122804",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_06.jpg?u=20260731122803",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_11.jpg?u=20260731122808",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_09.jpg?u=20260731122806",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_12.jpg?u=20260731122809",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_13.jpg?u=20260731122811",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_15.jpg?u=20260731122813",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_14.jpg?u=20260731122812",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_10.jpg?u=20260731122807",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_18.jpg?u=20260731122816",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_17.jpg?u=20260731122815",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_16.jpg?u=20260731122814",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/EFV-3E03_19.jpg?u=20260731122817"
+   ],
+   "marca_modelo": "HONDA HR-V",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HONDA",
+   "modelo": "HR-V 1.8 16V EX"
+  },
+  {
+   "loja": "outlet",
+   "id": "2335245",
+   "link": "https://www.outletcarmax.com.br/veiculo/2335245-honda-hr-v-18-16v-exl",
+   "nome": "HONDA HR-V 1.8 16V EXL",
+   "ano": "2016/2017",
+   "km": 106234,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "preco": 87790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FXE-6J02_01.jpg?u=20261123102113",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FXE-6J02_01.jpg?u=20261123102113"
+   ],
+   "marca_modelo": "HONDA HR-V",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HONDA",
+   "modelo": "HR-V 1.8 16V EXL"
+  },
+  {
+   "loja": "outlet",
+   "id": "2333447",
+   "link": "https://www.outletcarmax.com.br/veiculo/2333447-honda-wr-v-15-16vone-ex",
+   "nome": "HONDA WR-V 1.5 16vone EX",
+   "ano": "2018/2018",
+   "km": 69345,
+   "cor": "Prata",
+   "combustivel": "Flex",
+   "preco": 79790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FUO-0G59_01.jpg?u=20261109120657",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FUO-0G59_01.jpg?u=20261109120657"
+   ],
+   "marca_modelo": "HONDA WR-V",
+   "cambio": "CVT",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HONDA",
+   "modelo": "WR-V 1.5 16vone EX"
+  },
+  {
+   "loja": "outlet",
+   "id": "2305965",
+   "link": "https://www.outletcarmax.com.br/veiculo/2305965-hyundai-creta-10-tgdi-comfort-plus",
+   "nome": "HYUNDAI CRETA 1.0 Tgdi Comfort Plus",
+   "ano": "2024/2025",
+   "km": 41691,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "preco": 119790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_03.jpg?u=20260731123947",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_03.jpg?u=20260731123947",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_01.jpg?u=20260731123946",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_02.jpg?u=20260731123946",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_05.jpg?u=20260731123948",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_08.jpg?u=20260731123950",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_06.jpg?u=20260731123949",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_18.jpg?u=20260731123957",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_13.jpg?u=20260731123954",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_04.jpg?u=20260731123948",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_07.jpg?u=20260731123950",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_10.jpg?u=20260731123952",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_11.jpg?u=20260731123952",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_12.jpg?u=20260731123953",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_16.jpg?u=20260731123956",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_09.jpg?u=20260731123951",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_17.jpg?u=20260731123957",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_14.jpg?u=20260731123954",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_15.jpg?u=20260731123955",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SYW-1F05_19.jpg?u=20260731123958"
+   ],
+   "marca_modelo": "HYUNDAI CRETA",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HYUNDAI",
+   "modelo": "CRETA 1.0 Tgdi Comfort Plus"
+  },
+  {
+   "loja": "outlet",
+   "id": "2336742",
+   "link": "https://www.outletcarmax.com.br/veiculo/2336742-hyundai-hb20-10-12v-comfort",
+   "nome": "HYUNDAI HB20 1.0 12V Comfort",
+   "ano": "2025/2026",
+   "km": 24209,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "preco": 80790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_02.jpg?u=20261125095845",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_02.jpg?u=20261125095845",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_01.jpg?u=20261125095842",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_06.jpg?u=20261125095900",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_05.jpg?u=20261125095858",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_04.jpg?u=20261125095853",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_03.jpg?u=20261125095848",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_13.jpg?u=20261125095921",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_07.jpg?u=20261125095903",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_09.jpg?u=20261125095907",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_10.jpg?u=20261125095910",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_08.jpg?u=20261125095904",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_11.jpg?u=20261125095913",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/UAB-1D10_12.jpg?u=20261125095918"
+   ],
+   "marca_modelo": "HYUNDAI HB20",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Rodas de liga leve",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HYUNDAI",
+   "modelo": "HB20 1.0 12V Comfort"
+  },
+  {
+   "loja": "outlet",
+   "id": "2336749",
+   "link": "https://www.outletcarmax.com.br/veiculo/2336749-hyundai-hb20s-10-12v-comfort",
+   "nome": "HYUNDAI HB20S 1.0 12V Comfort",
+   "ano": "2025/2026",
+   "km": 33163,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "preco": 84790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TXI-2F02_01.jpg?u=20261123092758",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TXI-2F02_01.jpg?u=20261123092758"
+   ],
+   "marca_modelo": "HYUNDAI HB20S",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HYUNDAI",
+   "modelo": "HB20S 1.0 12V Comfort"
+  },
+  {
+   "loja": "outlet",
+   "id": "2253375",
+   "link": "https://www.outletcarmax.com.br/veiculo/2253375-hyundai-hb20x-16-16v-vision",
+   "nome": "HYUNDAI HB20X 1.6 16V Vision",
+   "ano": "2021/2022",
+   "km": 69258,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 80790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_05.jpg?u=20260731143621",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_05.jpg?u=20260731143621",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_07.jpg?u=20260731143627",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_02.jpg?u=20260731143610",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_06.jpg?u=20260731143623",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_04.jpg?u=20260731143618",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_01.jpg?u=20260731143606",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_03.jpg?u=20260731143614",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_12.jpg?u=20260731143643",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_08.jpg?u=20260731143632",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_10.jpg?u=20260731143637",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_20.jpg?u=20260731143731",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_14.jpg?u=20260731143653",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_09.jpg?u=20260731143635",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_11.jpg?u=20260731143640",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_13.jpg?u=20260731143649",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_19.jpg?u=20260731143726",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_15.jpg?u=20260731143656",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_16.jpg?u=20260731143709",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_18.jpg?u=20260731143719",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FFC-9H37_17.jpg?u=20260731143716"
+   ],
+   "marca_modelo": "HYUNDAI HB20X",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Retrovisores elétricos",
+    "Rodas de liga leve",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "HYUNDAI",
+   "modelo": "HB20X 1.6 16V Vision"
+  },
+  {
+   "loja": "outlet",
+   "id": "2336760",
+   "link": "https://www.outletcarmax.com.br/veiculo/2336760-chevrolet-onix-10",
+   "nome": "CHEVROLET ONIX 1.0",
+   "ano": "2025/2026",
+   "km": 31407,
+   "cor": "Preto",
+   "combustivel": "Flex",
+   "preco": 79790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TXH-6A78_01.jpg?u=20261123093133",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TXH-6A78_01.jpg?u=20261123093133"
+   ],
+   "marca_modelo": "CHEVROLET ONIX",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "CHEVROLET",
+   "modelo": "ONIX 1.0"
+  },
+  {
+   "loja": "outlet",
+   "id": "2321298",
+   "link": "https://www.outletcarmax.com.br/veiculo/2321298-chevrolet-onix-10-mpfi-joy-8v",
+   "nome": "CHEVROLET ONIX 1.0 MPFI JOY 8V",
+   "ano": "2018/2018",
+   "km": 150340,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 44790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QOX-9F40_01.jpg?u=20260926132219",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/QOX-9F40_01.jpg?u=20260926132219"
+   ],
+   "marca_modelo": "CHEVROLET ONIX",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "CHEVROLET",
+   "modelo": "ONIX 1.0 MPFI JOY 8V"
+  },
+  {
+   "loja": "outlet",
+   "id": "2317504",
+   "link": "https://www.outletcarmax.com.br/veiculo/2317504-chevrolet-onix-10-turbo-plus-lt",
+   "nome": "CHEVROLET ONIX 1.0 Turbo Plus LT",
+   "ano": "2024/2025",
+   "km": 35620,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 81790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_01.jpg?u=20261016110810",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_01.jpg?u=20261016110810",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_02.jpg?u=20261016110812",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_03.jpg?u=20261016110813",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_04.jpg?u=20261016110815",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_06.jpg?u=20261016110819",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_07.jpg?u=20261016110820",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_08.jpg?u=20261016110822",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_05.jpg?u=20261016110817",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_12.jpg?u=20261016110830",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_11.jpg?u=20261016110828",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_14.jpg?u=20261016110835",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_09.jpg?u=20261016110824",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_15.jpg?u=20261016110837",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_13.jpg?u=20261016110833",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_17.jpg?u=20261016110841",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_10.jpg?u=20261016110826",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_20.jpg?u=20261016110846",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_19.jpg?u=20261016110844",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_16.jpg?u=20261016110839",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/TDV-0D84_18.jpg?u=20261016110842"
+   ],
+   "marca_modelo": "CHEVROLET ONIX",
+   "cambio": "Manual",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "CHEVROLET",
+   "modelo": "ONIX 1.0 Turbo Plus LT"
   }
  ]
 }
