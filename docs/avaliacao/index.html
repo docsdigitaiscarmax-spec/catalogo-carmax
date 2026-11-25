@@ -38,6 +38,9 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 .fipe small{color:#a9a9b2;font-size:12px;display:block}
 .fipe b{font-size:26px;display:block;line-height:1.15;margin:2px 0}
 .fipe .m{font-size:13px;color:#d9d9de}
+.wm{display:none;margin-top:10px;background:var(--soft);border-radius:14px;padding:12px 14px}
+.wm.on{display:block}
+.wmb{display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:#fff;border:1px solid #d6d6dc;color:#c8102e;font-weight:800;text-decoration:none}
 .item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--soft)}
 .item:last-child{border-bottom:0}
 .item .t{flex:1}.item .t b{display:block;font-size:14.5px}.item .t small{color:var(--mut);font-size:12.5px}
@@ -105,6 +108,12 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
     <label class="l" for="ano">Ano modelo</label>
     <select class="in" id="ano" disabled><option value="">Escolha o modelo primeiro</option></select>
     <div class="fipe" id="fipe"><small id="fRef">Tabela FIPE</small><b id="fVal">—</b><div class="m" id="fMod"></div></div>
+    <div class="wm" id="wm">
+      <a class="wmb" id="wmLink" href="#" target="_blank" rel="noopener">Ver na Webmotors ↗</a>
+      <label class="l" for="wmVal">Média de venda na Webmotors</label>
+      <input class="in" id="wmVal" inputmode="numeric" placeholder="Digite a média que aparece lá (R$)">
+      <p class="nota" id="wmCmp"></p>
+    </div>
     <div class="g2">
       <div><label class="l" for="km">Quilometragem</label><input class="in" id="km" inputmode="numeric" placeholder="Ex.: 45.000"></div>
       <div><label class="l" for="placa">Placa</label><input class="in" id="placa" placeholder="ABC1D23" maxlength="8" style="text-transform:uppercase"></div>
@@ -183,7 +192,7 @@ let CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, (ler('av
 
 /* ---------- estado da avaliação ---------- */
 const novo = () => ({ id: 'a' + Date.now(), criado: new Date().toISOString(), tipo: 'carros', marca: null, modelo: null, ano: null, fipe: null,
-  km: '', placa: '', cor: '', cliente: '', proposta: '', obs: '',
+  km: '', webmotors: 0, placa: '', cor: '', cliente: '', proposta: '', obs: '',
   e: { pintura: 0, martelinho: 0, pneu: 0, parabrisa: false, revisao: true, chave: true, interior: 'bom', mecanica: 'ok', mecanicaValor: 0, sinistro: false, outros: 0 },
   fotos: [] });
 let A = novo();
@@ -220,7 +229,7 @@ listaBusca($('#modelo'), $('#lModelo'), () => MODELOS, async m => {
 });
 $('#ano').addEventListener('change', async () => {
   const cod = $('#ano').value; if (!cod) return;
-  A.ano = { codigo: cod, nome: $('#ano').selectedOptions[0].textContent }; A.fipe = null; mostrarFipe(true);
+  A.ano = { codigo: cod, nome: $('#ano').selectedOptions[0].textContent }; A.fipe = null; A.webmotors = 0; $('#wmVal').value = ''; mostrarFipe(true);
   try { const f = await api(`${A.tipo}/marcas/${A.marca.codigo}/modelos/${A.modelo.codigo}/anos/${cod}`);
     A.fipe = { valor: num(f.Valor) / (/,\d\d$/.test(f.Valor) ? 100 : 1), codigo: f.CodigoFipe, ref: f.MesReferencia, anoModelo: f.AnoModelo, comb: f.Combustivel, texto: f.Valor };
     mostrarFipe(); calcular(); }
@@ -229,11 +238,22 @@ $('#ano').addEventListener('change', async () => {
 function mostrarFipe(carregando) {
   const b = $('#fipe');
   if (carregando) { b.classList.add('on'); $('#fVal').textContent = 'Buscando…'; $('#fMod').textContent = ''; $('#fRef').textContent = 'Tabela FIPE'; return; }
-  if (!A.fipe) { b.classList.remove('on'); return; }
-  b.classList.add('on'); $('#fVal').textContent = A.fipe.texto || brl(A.fipe.valor);
+  if (!A.fipe) { b.classList.remove('on'); $('#wm').classList.remove('on'); return; }
+  b.classList.add('on'); $('#wm').classList.add('on'); $('#wmLink').href = linkWebmotors(); $('#fVal').textContent = A.fipe.texto || brl(A.fipe.valor);
   $('#fRef').textContent = `Tabela FIPE · ${A.fipe.ref} · código ${A.fipe.codigo}`;
   $('#fMod').textContent = `${A.marca.nome} ${A.modelo.nome} · ${A.ano.nome}`;
 }
+const slug = s => N(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function linkWebmotors() {
+  let m = A.marca.nome.replace(/^(VW|GM)\s*-\s*/i, '');
+  const dois = /^(range rover|grand |new |gran |space |sw4|up!)/i;
+  const pal = A.modelo.nome.replace(/[!]/g, '').split(/\s+/);
+  const mod = dois.test(A.modelo.nome) && pal[1] ? pal[0] + ' ' + pal[1] : pal[0];
+  const ano = A.fipe.anoModelo >= 32000 ? new Date().getFullYear() : A.fipe.anoModelo;
+  const tipo = A.tipo === 'motos' ? 'motos' : 'carros';
+  return `https://www.webmotors.com.br/${tipo}/estoque/${slug(m)}/${slug(mod)}/de.${ano}/ate.${ano}`;
+}
+$('#wmVal').addEventListener('input', e => { const v = num(e.target.value); e.target.value = v ? brl(v) : ''; A.webmotors = v; calcular(); });
 $('#tipo').addEventListener('click', async e => {
   const b = e.target.closest('button'); if (!b || b.dataset.t === A.tipo) return;
   A.tipo = b.dataset.t; $('#tipo').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
@@ -283,8 +303,10 @@ function calcular() {
   const esperado = Math.round(CFG.kmAno * idade);
   let ajKm = 0;
   if (km && !zero) { ajKm = -((km - esperado) / 10000) * (CFG.kmFator / 100); ajKm = Math.max(-0.15, Math.min(0.05, ajKm)); }
-  const vKm = fipe * ajKm;
-  let mercado = fipe + vKm;
+  const wm = +A.webmotors || 0, base = wm || fipe;
+  $('#wmCmp').textContent = wm ? `Webmotors está ${Math.abs((wm / fipe - 1) * 100).toFixed(1).replace('.', ',')}% ${wm >= fipe ? 'acima' : 'abaixo'} da FIPE. A conta usa a média da Webmotors.` : 'Sem a média, a conta usa só a FIPE.';
+  const vKm = base * ajKm;
+  let mercado = base + vKm;
   const vSin = A.e.sinistro ? -mercado * CFG.sinistro / 100 : 0; mercado += vSin;
   const rep = [
     ['Pintura / retoque', A.e.pintura * CFG.pintura], ['Martelinho', A.e.martelinho * CFG.martelinho], ['Pneus', A.e.pneu * CFG.pneu],
@@ -299,6 +321,7 @@ function calcular() {
   const L = (t, v, cls) => `<div class="linha ${cls || ''}"><span>${t}</span><span>${v}</span></div>`;
   box.innerHTML =
     L('Valor FIPE', brl(fipe)) +
+    (wm ? L(`Média Webmotors (${wm >= fipe ? '+' : '−'}${Math.abs((wm / fipe - 1) * 100).toFixed(1).replace('.', ',')}% da FIPE)`, brl(wm)) : '') +
     (km && !zero ? L(`Ajuste por km (${km.toLocaleString('pt-BR')} km; esperado ~${esperado.toLocaleString('pt-BR')})`, (vKm >= 0 ? '+' : '−') + brl(Math.abs(vKm)).replace('R$ ', 'R$ ') + ` (${(ajKm * 100).toFixed(1).replace('.', ',')}%)`, vKm >= 0 ? 'pos' : 'neg') : '') +
     (vSin ? L(`Sinistro / leilão (−${CFG.sinistro}%)`, '−' + brl(-vSin), 'neg') : '') +
     L('<b>Valor de mercado estimado</b>', brl(mercado)) +
@@ -308,11 +331,12 @@ function calcular() {
     `<div class="total"><small>Valor sugerido de compra</small><b>${brl(r5(sug))}</b><span class="fx">Faixa de negociação: ${brl(r5(sug * 0.97))} a ${brl(r5(sug * 1.03))} · ${(sug / fipe * 100).toFixed(0)}% da FIPE</span></div>`;
   const avisos = [];
   if (!km && !zero) avisos.push('Informe a quilometragem para ajustar o valor.');
+  if (!wm) avisos.push('Toque em "Ver na Webmotors" e digite a média de venda para uma conta mais real.');
   if (A.e.mecanica === 'problema' && !A.e.mecanicaValor) avisos.push('Marcou problema no motor/câmbio: informe o custo estimado do reparo.');
   if (A.e.sinistro) avisos.push('Carro com sinistro/leilão: confirme a política da loja antes de fazer proposta.');
   if (!A.fotos.length) avisos.push('Nenhuma foto ainda.');
   al.innerHTML = avisos.join('<br>'); al.classList.toggle('on', avisos.length > 0);
-  return { fipe, km, esperado, ajKm, mercado, totRep, fixos, margem, sug: r5(sug), min: r5(sug * 0.97), max: r5(sug * 1.03), rep };
+  return { fipe, wm, km, esperado, ajKm, mercado, totRep, fixos, margem, sug: r5(sug), min: r5(sug * 0.97), max: r5(sug * 1.03), rep };
 }
 ['km', 'placa', 'cor', 'cliente', 'obs'].forEach(k => $('#' + k).addEventListener('input', e => {
   if (k === 'km') { const v = num(e.target.value); e.target.value = v ? v.toLocaleString('pt-BR') : ''; A.km = v; calcular(); }
@@ -364,7 +388,7 @@ function preencher() {
   $('#marca').value = A.marca ? A.marca.nome : ''; $('#modelo').value = A.modelo ? A.modelo.nome : ''; $('#modelo').disabled = !A.marca;
   $('#ano').innerHTML = A.ano ? `<option value="${esc(A.ano.codigo)}">${esc(A.ano.nome)}</option>` : '<option value="">Escolha o modelo primeiro</option>'; $('#ano').disabled = !A.modelo;
   $('#km').value = A.km ? (+A.km).toLocaleString('pt-BR') : ''; $('#placa').value = A.placa || ''; $('#cor').value = A.cor || ''; $('#cliente').value = A.cliente || '';
-  $('#proposta').value = A.proposta ? brl(A.proposta) : ''; $('#obs').value = A.obs || '';
+  $('#proposta').value = A.proposta ? brl(A.proposta) : ''; $('#wmVal').value = A.webmotors ? brl(A.webmotors) : ''; $('#obs').value = A.obs || '';
   mostrarFipe(); desenharEstado(); desenharFotos(); calcular();
   if (A.marca) api(`${A.tipo}/marcas/${A.marca.codigo}/modelos`).then(r => { MODELOS = r.modelos; }).catch(() => {});
   if (A.modelo) api(`${A.tipo}/marcas/${A.marca.codigo}/modelos/${A.modelo.codigo}/anos`).then(anos => { $('#ano').innerHTML = anos.map(a => `<option value="${esc(a.codigo)}"${A.ano && a.codigo === A.ano.codigo ? ' selected' : ''}>${esc(a.nome.replace(/^32000/, '0 km'))}</option>`).join(''); }).catch(() => {});
@@ -405,6 +429,7 @@ $('#bShare').onclick = async () => {
     A.cliente ? 'Cliente: ' + A.cliente : '',
     '',
     `FIPE (${A.fipe.ref}): ${brl(r.fipe)}`,
+    r.wm ? `Média Webmotors: ${brl(r.wm)}` : '',
     `Mercado estimado: ${brl(r.mercado)}`,
     r.rep.length ? 'Reparos: ' + r.rep.map(x => `${x[0]} ${brl(x[1])}`).join('; ') : 'Sem reparos apontados',
     `*Valor sugerido: ${brl(r.sug)}* (faixa ${brl(r.min)} a ${brl(r.max)})`,
