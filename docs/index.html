@@ -29,6 +29,12 @@ img{display:block}
 .search input{flex:1;background:none;border:0;outline:0;color:#fff;font-size:16px;height:100%}
 .search input::placeholder{color:#8d8d96}
 .search .clear{border:0;background:none;color:#aaa;font-size:20px;width:28px;display:none}
+.tabs{display:flex;gap:4px;margin-top:12px;background:#1f1f22;border-radius:12px;padding:4px}
+.tabs button{flex:1;border:0;background:none;color:#b8b8c0;font-weight:700;font-size:14.5px;padding:9px 6px;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.tabs button.on{background:#fff;color:var(--ink)}
+.tabs button.on[data-l="outlet"]{background:var(--red);color:#fff}
+.tabs .n{font-size:12px;opacity:.7;font-weight:600}
+.otag{display:inline-block;background:var(--ink);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.06em;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:2px}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:12px 16px 4px;scrollbar-width:none;background:var(--bg)}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;color:#33333a;cursor:pointer}
@@ -115,6 +121,10 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 16px calc(2
     <input id="q" type="search" placeholder="Buscar modelo, marca, cor…" autocomplete="off" aria-label="Buscar">
     <button class="clear" id="qx" aria-label="Limpar busca">×</button>
   </label>
+  <div class="tabs" id="tabs" role="tablist">
+    <button data-l="carmax" class="on" role="tab">Carmax <span class="n" id="nC"></span></button>
+    <button data-l="outlet" role="tab">Outlet <span class="n" id="nO"></span></button>
+  </div>
 </header>
 <nav class="chips" id="chips" aria-label="Marcas"></nav>
 <div class="toolbar"><span id="count">Carregando estoque…</span>
@@ -152,7 +162,8 @@ const cap = s => s.toLowerCase().replace(/(^|[\s-])\S/g, m => m.toUpperCase());
 const wa = t => `https://wa.me/${FONE}?text=${encodeURIComponent(t)}`;
 const anoMod = c => +String(c.ano).split('/').pop() || 0;
 const imgAttr = 'referrerpolicy="no-referrer" decoding="async"';
-let CARS = [], marca = '', busca = '';
+let CARS = [], marca = '', busca = '', loja = location.hash === '#outlet' ? 'outlet' : 'carmax';
+const daLoja = () => CARS.filter(c => (c.loja || 'carmax') === loja);
 
 $('#waTop').href = wa(`Olá, ${VENDEDOR.split(' ')[0]}! Vi o catálogo da Carmax e queria mais informações.`);
 
@@ -160,7 +171,7 @@ function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add
 
 function filtrados() {
   const q = busca.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-  let v = CARS.filter(c => (!marca || c.marca === marca) &&
+  let v = daLoja().filter(c => (!marca || c.marca === marca) &&
     (!q || (c.nome + ' ' + c.cor + ' ' + c.combustivel + ' ' + c.ano + ' ' + (c.cambio || '')).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(q)));
   const s = $('#sort').value;
   if (s === 'asc') v.sort((a, b) => a.preco - b.preco);
@@ -171,9 +182,9 @@ function filtrados() {
 }
 
 function chips() {
-  const cont = {}; CARS.forEach(c => cont[c.marca] = (cont[c.marca] || 0) + 1);
+  const L = daLoja(), cont = {}; L.forEach(c => cont[c.marca] = (cont[c.marca] || 0) + 1);
   const ms = Object.keys(cont).sort();
-  $('#chips').innerHTML = [['', 'Todos', CARS.length], ...ms.map(m => [m, cap(m), cont[m]])]
+  $('#chips').innerHTML = [['', 'Todos', L.length], ...ms.map(m => [m, cap(m), cont[m]])]
     .map(([v, t, n]) => `<button class="chip${v === marca ? ' on' : ''}" data-m="${esc(v)}">${esc(t)}<span class="n">${n}</span></button>`).join('');
 }
 
@@ -206,7 +217,7 @@ function abrir(id, push) {
       <span class="gcount" id="gc">1 / ${fotos.length}</span></div>
     ${fotos.length > 1 ? `<div class="thumbs" id="th">${fotos.map((f, i) => `<img ${imgAttr} loading="lazy" src="${esc(f)}" alt="" data-i="${i}" class="${i ? '' : 'on'}">`).join('')}</div>` : ''}
     <div class="dt">
-      <span class="mk">${esc(c.marca)}</span>
+      <span class="mk">${esc(c.marca)}</span>${c.loja === 'outlet' ? '<span class="otag">OUTLET</span>' : ''}
       <h1>${esc(c.modelo)}</h1>
       <div class="pr">${brl(c.preco)}</div>
       <div class="specs">
@@ -255,7 +266,7 @@ function abrirZoom(i) {
 $('#zx').onclick = () => $('#zoom').classList.remove('open');
 
 $('#list').addEventListener('click', e => { const c = e.target.closest('.card'); if (c) abrir(c.dataset.id, true); });
-$('#back').onclick = () => { if (history.state && history.state.carro) history.back(); else { fechar(); history.replaceState(null, '', location.pathname); } };
+$('#back').onclick = () => { if (history.state && history.state.carro) history.back(); else { fechar(); history.replaceState(null, '', loja === 'outlet' ? '#outlet' : location.pathname); } };
 window.addEventListener('popstate', () => { const m = location.hash.match(/^#carro-(\w+)/); if (m) abrir(m[1], false); else { fechar(); $('#zoom').classList.remove('open'); } });
 $('#share').onclick = async () => {
   if (!atual) return;
@@ -267,12 +278,24 @@ $('#share').onclick = async () => {
 
 $('#chips').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; marca = b.dataset.m; chips(); render(); window.scrollTo({ top: 0 }); });
 $('#sort').onchange = render;
+function setLoja(l, hist) {
+  loja = l; marca = '';
+  $('#tabs').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.l === l));
+  chips(); render(); window.scrollTo({ top: 0 });
+  if (hist) history.replaceState(null, '', l === 'outlet' ? '#outlet' : location.pathname);
+}
+$('#tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.l !== loja) setLoja(b.dataset.l, true); });
 $('#q').addEventListener('input', e => { busca = e.target.value; $('#qx').style.display = busca ? 'block' : 'none'; render(); });
 $('#qx').onclick = e => { e.preventDefault(); $('#q').value = ''; busca = ''; $('#qx').style.display = 'none'; render(); };
 
 fetch('estoque.json?v=' + Date.now()).then(r => r.json()).then(d => {
   CARS = d.carros.map(c => ({ ...c, fotos: (c.fotos && c.fotos.length ? c.fotos : [c.capa]).filter(Boolean) }));
-  $('#foot').innerHTML = `Atualizado automaticamente em ${esc(d.atualizado)} · ${d.total} veículos<br>Preços e disponibilidade sujeitos a alteração. Fale com ${esc(VENDEDOR)} · <a href="${wa('Olá!')}" target="_blank" rel="noopener">${FONE_TXT}</a>`;
+  $('#foot').innerHTML = `Atualizado automaticamente em ${esc(d.atualizado)}<br>Preços e disponibilidade sujeitos a alteração. Fale com ${esc(VENDEDOR)} · <a href="${wa('Olá!')}" target="_blank" rel="noopener">${FONE_TXT}</a>`;
+  $('#nC').textContent = CARS.filter(c => (c.loja || 'carmax') === 'carmax').length;
+  $('#nO').textContent = CARS.filter(c => c.loja === 'outlet').length;
+  const m0 = location.hash.match(/^#carro-(\w+)/), c0 = m0 && CARS.find(c => c.id === m0[1]);
+  if (c0) loja = c0.loja || 'carmax';
+  $('#tabs').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.l === loja));
   chips(); render();
   const m = location.hash.match(/^#carro-(\w+)/); if (m) abrir(m[1], false);
 }).catch(() => { $('#list').innerHTML = '<p class="empty">Não foi possível carregar o estoque agora. Tente de novo em instantes.</p>'; $('#count').textContent = ''; });

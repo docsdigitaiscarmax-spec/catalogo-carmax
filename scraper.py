@@ -13,7 +13,10 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-BASE = "https://carmaxsantos.com.br"
+LOJAS = [
+    ("carmax", "https://carmaxsantos.com.br"),
+    ("outlet", "https://www.outletcarmax.com.br"),
+]
 UA = {"User-Agent": "Mozilla/5.0 (catalogo-carmax; +https://github.com)"}
 SAIDA = Path(__file__).parent / "docs" / "estoque.json"
 
@@ -41,7 +44,7 @@ def numero(s):
     return int(d) if d else 0
 
 
-def ler_listagem():
+def ler_listagem(loja, BASE):
     carros, vistos = [], set()
     for pagina in range(1, 40):
         url = f"{BASE}/estoque" + (f"?page={pagina}" if pagina > 1 else "")
@@ -49,7 +52,7 @@ def ler_listagem():
         artigos = re.findall(r"<article\b.*?</article>", h, re.S | re.I)
         novos = 0
         for art in artigos:
-            m = re.search(r'href="(https://carmaxsantos\.com\.br/veiculo/[^"?#]+)', art)
+            m = re.search(r'href="(https?://[^"]+/veiculo/[^"?#]+)', art)
             if not m or m.group(1) in vistos:
                 continue
             link = m.group(1)
@@ -64,6 +67,7 @@ def ler_listagem():
             preco = next((p for p in ps if p.startswith("R$")), "")
             capa = re.search(r'<img[^>]+src="([^"]+)"', art)
             carros.append({
+                "loja": loja,
                 "id": link.rsplit("/", 1)[1].split("-")[0],
                 "link": link,
                 "nome": nome,
@@ -74,7 +78,7 @@ def ler_listagem():
                 "preco": numero(preco) // 100 if "," in preco else numero(preco),
                 "capa": capa.group(1) if capa else "",
             })
-        print(f"página {pagina}: {novos} carros")
+        print(f"{loja} página {pagina}: {novos} carros")
         if novos == 0:
             break
     return carros
@@ -117,9 +121,16 @@ def ler_detalhe(c):
 
 
 def principal():
-    carros = ler_listagem()
-    if len(carros) < 5:
-        sys.exit(f"Só achei {len(carros)} carros; o site pode ter mudado. Não vou sobrescrever o catálogo.")
+    por_id = {}
+    for loja, base in LOJAS:
+        lista = ler_listagem(loja, base)
+        if len(lista) < 3:
+            sys.exit(f"Só achei {len(lista)} carros em {base}; o site pode ter mudado. Não vou sobrescrever o catálogo.")
+        for c in lista:
+            # carro que aparece nos dois sites fica na aba do Outlet
+            if c["id"] not in por_id or loja == "outlet":
+                por_id[c["id"]] = c
+    carros = list(por_id.values())
     with ThreadPoolExecutor(max_workers=6) as ex:
         carros = list(ex.map(ler_detalhe, carros))
     for c in carros:
