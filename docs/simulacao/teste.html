@@ -1,0 +1,8 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>teste</title></head><body>
+<div><label>CPF/CNPJ</label><input id="a"></div>
+<div><label>Placa</label><input id="b" disabled></div>
+<div id="w" style="display:none"><label>Valor do veículo</label><input id="c"></div>
+<script>
+a.addEventListener('input',()=>{if(a.value.replace(/\D/g,'').length===11)setTimeout(()=>b.disabled=false,1200)});
+b.addEventListener('input',()=>{if(b.value.length===7)setTimeout(()=>w.style.display='',1500)});
+</script></body></html>

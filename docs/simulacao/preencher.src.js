@@ -29,14 +29,19 @@ const kp=new KeyboardEvent('keypress',{key:ch,charCode:c,keyCode:c,which:c,bubbl
 if(!kp.defaultPrevented){const ml=el.maxLength>0?el.maxLength:9999;if(el.value.length<ml){set.call(el,el.value+ch);}el.dispatchEvent(new InputEvent('input',{data:ch,inputType:'insertText',bubbles:true}));}
 el.dispatchEvent(new KeyboardEvent('keyup',{key:ch,keyCode:c,bubbles:true}));}
 el.dispatchEvent(new Event('change',{bubbles:true}));el.dispatchEvent(new Event('blur',{bubbles:true}));};
-const campos=[...document.querySelectorAll('input')].filter(e=>/^(text|tel|email|number|search|date|)$/i.test(e.type)&&!e.disabled&&!e.readOnly&&vis(e));
-const feitos=[],usado=new Set();
-for(const[nm,re,val]of R){if(!val)continue;
-for(const e of campos){if(usado.has(e)||e.value)continue;const c=ctx(e);if(!re.test(c)||(nm!=='cpf'&&NAO.test(c))||(nm==='cpf'&&/busca|pesquis|search|revenda/i.test(c)))continue;
-let v=val;if(e.type==='date'&&nm==='nascimento'){const m=val.split('/');v=m[2]+'-'+m[1]+'-'+m[0];const set=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set;set.call(e,v);e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));}
-else tipar(e,v);
-usado.add(e);feitos.push(nm);break;}}
-const box=document.createElement('div');box.style.cssText='position:fixed;z-index:2147483647;right:16px;bottom:16px;max-width:320px;background:#111;color:#fff;padding:12px 14px;border-radius:12px;font:14px/1.4 sans-serif;box-shadow:0 8px 30px rgba(0,0,0,.35)';
-box.innerHTML='<b style="color:#ff5a5f">Carmax</b> · '+(feitos.length?'Preenchido: '+feitos.join(', ')+'.<br><small>Confira tudo antes de simular. Se aparecerem campos novos, toque de novo em Preencher Carmax.</small>':'Nenhum campo reconhecido nesta tela. Avance até o formulário e toque de novo.');
-document.body.appendChild(box);setTimeout(()=>box.remove(),9000);
+if(window.__carmaxSim){window.__carmaxSim.parar();}
+const feitos={},cont={};const pend=()=>R.filter(([nm,,val])=>val&&!feitos[nm]).map(r=>r[0]);
+const box=document.createElement('div');box.style.cssText='position:fixed;z-index:2147483647;right:16px;bottom:16px;max-width:330px;background:#111;color:#fff;padding:12px 14px;border-radius:12px;font:14px/1.4 sans-serif;box-shadow:0 8px 30px rgba(0,0,0,.35)';document.body.appendChild(box);
+let fim=Date.now()+120000,timer;
+const desenhar=()=>{const f=Object.keys(feitos),p=pend();box.innerHTML='<b style="color:#ff5a5f">Carmax</b> · '+(p.length&&Date.now()<fim?'preenchendo automaticamente…':'pronto')+'<br>'+(f.length?'✓ '+f.join(', '):'Aguardando os campos aparecerem…')+(p.length&&Date.now()<fim?'<br><small style="opacity:.75">Faltam: '+p.join(', ')+'. Vá avançando no banco que eu completo.</small>':'')+'<br><small style="opacity:.75">Confira tudo antes de simular.</small> <button style="margin-left:6px;background:#333;color:#fff;border:0;border-radius:6px;padding:3px 8px;cursor:pointer">'+(p.length&&Date.now()<fim?'Parar':'Fechar')+'</button>';box.querySelector('button').onclick=parar;};
+const parar=()=>{clearInterval(timer);box.remove();window.__carmaxSim=null;};
+window.__carmaxSim={parar};
+const passada=()=>{const campos=[...document.querySelectorAll('input')].filter(e=>/^(text|tel|email|number|search|date|)$/i.test(e.type)&&!e.disabled&&!e.readOnly&&vis(e)&&e!==document.activeElement&&!e.value&&!e.__carmax);
+for(const[nm,re,val]of R){if(!val||feitos[nm])continue;
+for(const e of campos){if(e.__carmax)continue;const c=ctx(e);if(!re.test(c)||(nm!=='cpf'&&NAO.test(c))||(nm==='cpf'&&/busca|pesquis|search|revenda/i.test(c)))continue;
+if(e.type==='date'&&nm==='nascimento'){const m=val.split('/');const set=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set;set.call(e,m[2]+'-'+m[1]+'-'+m[0]);e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));}
+else tipar(e,val);
+e.__carmax=1;cont[nm]=(cont[nm]||0)+1;feitos[nm]=1;break;}}
+desenhar();if(!pend().length||Date.now()>fim){clearInterval(timer);setTimeout(()=>{if(window.__carmaxSim)parar();},8000);}};
+passada();timer=setInterval(passada,800);
 })();
