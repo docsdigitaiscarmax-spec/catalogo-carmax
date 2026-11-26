@@ -36,12 +36,24 @@ let fim=Date.now()+120000,timer;
 const desenhar=()=>{const f=Object.keys(feitos),p=pend();box.innerHTML='<b style="color:#ff5a5f">Carmax</b> · '+(p.length&&Date.now()<fim?'preenchendo automaticamente…':'pronto')+'<br>'+(f.length?'✓ '+f.join(', '):'Aguardando os campos aparecerem…')+(p.length&&Date.now()<fim?'<br><small style="opacity:.75">Faltam: '+p.join(', ')+'. Vá avançando no banco que eu completo.</small>':'')+'<br><small style="opacity:.75">Confira tudo antes de simular.</small> <button style="margin-left:6px;background:#333;color:#fff;border:0;border-radius:6px;padding:3px 8px;cursor:pointer">'+(p.length&&Date.now()<fim?'Parar':'Fechar')+'</button>';box.querySelector('button').onclick=parar;};
 const parar=()=>{clearInterval(timer);box.remove();window.__carmaxSim=null;};
 window.__carmaxSim={parar};
-const passada=()=>{const campos=[...document.querySelectorAll('input')].filter(e=>/^(text|tel|email|number|search|date|)$/i.test(e.type)&&!e.disabled&&!e.readOnly&&vis(e)&&e!==document.activeElement&&(!e.value||!/[1-9]/.test(e.value))&&!e.__carmax);
+const tok=x=>String(x||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9.]+/g,' ').split(' ').filter(w=>w.length>1);
+let ocupado=false;const tentouSel=new Set();
+const escolher=async()=>{if(ocupado||!d.veiculo||feitos['versão'])return;
+const sels=[...document.querySelectorAll('mat-select,[role=combobox]')].filter(e=>vis(e)&&!tentouSel.has(e)&&e.getAttribute('aria-disabled')!=='true'&&!e.classList.contains('mat-mdc-select-disabled')&&/marca|modelo|vers/i.test(ctx(e)+' '+(e.innerText||''))&&!/km|estado|licenc/i.test(ctx(e)));
+const sel=sels.find(e=>{const t=(e.querySelector('.mat-mdc-select-value-text,.mat-select-value-text')||{}).innerText;return !t;});if(!sel)return;
+ocupado=true;tentouSel.add(sel);sel.click();await new Promise(r=>setTimeout(r,700));
+const ops=[...document.querySelectorAll('[role=option],mat-option')].filter(vis);
+if(ops.length){const alvo=tok(d.veiculo+' '+(d.ano||''));let melhor=null,pt=0,emp=false;
+for(const o of ops){const ot=tok(o.innerText);const sc=alvo.filter(w=>ot.includes(w)).length;if(sc>pt){pt=sc;melhor=o;emp=false;}else if(sc===pt&&sc>0)emp=true;}
+if(ops.length===1){melhor=ops[0];pt=9;emp=false;}
+if(melhor&&pt>=2&&!emp){melhor.click();feitos['versão']=1;}else{document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',keyCode:27,bubbles:true}));document.activeElement&&document.activeElement.blur&&document.activeElement.blur();feitos['versão (escolha você)']=1;}}
+ocupado=false;};
+const els={};const passada=()=>{for(const nm in els){const e=els[nm];if(!e.isConnected||!/[A-Za-z0-9]/.test(e.value)||!/[1-9A-Za-z]/.test(e.value)){if((cont[nm]||0)<4){delete feitos[nm];e.__carmax=0;delete els[nm];}}}const campos=[...document.querySelectorAll('input')].filter(e=>/^(text|tel|email|number|search|date|)$/i.test(e.type)&&!e.disabled&&!e.readOnly&&vis(e)&&e!==document.activeElement&&(!e.value||!/[1-9]/.test(e.value))&&!e.__carmax);
 for(const[nm,re,val]of R){if(!val||feitos[nm])continue;
 for(const e of campos){if(e.__carmax)continue;const c=ctx(e);if(!re.test(c)||(nm!=='cpf'&&NAO.test(c))||(nm==='cpf'&&/busca|pesquis|search|revenda/i.test(c)))continue;
 if(e.type==='date'&&nm==='nascimento'){const m=val.split('/');const set=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set;set.call(e,m[2]+'-'+m[1]+'-'+m[0]);e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));}
 else tipar(e,val);
-e.__carmax=1;cont[nm]=(cont[nm]||0)+1;feitos[nm]=1;break;}}
-desenhar();if(!pend().length||Date.now()>fim){clearInterval(timer);setTimeout(()=>{if(window.__carmaxSim)parar();},8000);}};
+e.__carmax=1;cont[nm]=(cont[nm]||0)+1;feitos[nm]=1;els[nm]=e;break;}}
+escolher();desenhar();if(Date.now()>fim){clearInterval(timer);setTimeout(()=>{if(window.__carmaxSim)parar();},8000);}};
 passada();timer=setInterval(passada,800);
 })();
