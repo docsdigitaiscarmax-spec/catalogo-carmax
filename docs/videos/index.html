@@ -213,7 +213,7 @@ $('#bGerar').onclick = async () => {
   const fontes = [];
   if (VOZ) { const s = ac.createBufferSource(); s.buffer = VOZ; s.connect(dest); fontes.push([s, 0.3]); }
   if (MUS) { const s = ac.createBufferSource(); s.buffer = MUS; s.loop = true; const gn = ac.createGain(); gn.gain.value = VOZ ? 0.16 : 0.6; gn.gain.setValueAtTime(gn.gain.value, ac.currentTime + T - 1.2); gn.gain.linearRampToValueAtTime(0, ac.currentTime + T); s.connect(gn).connect(dest); fontes.push([s, 0]); }
-  const vs = cv.captureStream(30); const tracks = [...vs.getVideoTracks(), ...dest.stream.getAudioTracks()];
+  const vs = cv.captureStream(0); const vt = vs.getVideoTracks()[0]; const tracks = [...vs.getVideoTracks(), ...dest.stream.getAudioTracks()];
   const stream = new MediaStream(tracks);
   const tipos = ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm'];
   const tipo = tipos.find(t => window.MediaRecorder && MediaRecorder.isTypeSupported(t));
@@ -223,9 +223,9 @@ $('#bGerar').onclick = async () => {
   const pronto = new Promise(r => rec.onstop = r);
   $('#bGerar').disabled = true; $('#bBaixar').style.display = 'none'; $('#st').textContent = 'Gravando… deixe esta tela aberta.';
   try { await Promise.race([ac.resume(), sleep(400)]); } catch (e) {}
-  quadro(0, T); rec.start(250); const t0 = ac.currentTime + 0.05, p0 = performance.now() + 50; fontes.forEach(([s, d]) => s.start(t0 + d));
+  quadro(0, T); if (vt.requestFrame) vt.requestFrame(); rec.start(250); const t0 = ac.currentTime + 0.05, p0 = performance.now() + 50; fontes.forEach(([s, d]) => s.start(t0 + d));
   const relogio = () => ac.state === 'running' && ac.currentTime > 0 ? ac.currentTime - t0 : (performance.now() - p0) / 1000;
-  await new Promise(fim => { const passo = () => { const t = relogio(); if (t >= T) return fim(); quadro(Math.max(0, t), T); $('#barra').style.width = (t / T * 100).toFixed(1) + '%'; setTimeout(passo, 1000 / 30); }; passo(); });
+  await new Promise(fim => { const passo = () => { const t = relogio(); if (t >= T) return fim(); quadro(Math.max(0, t), T); if (vt.requestFrame) vt.requestFrame(); $('#barra').style.width = (t / T * 100).toFixed(1) + '%'; setTimeout(passo, 1000 / 30); }; passo(); });
   rec.stop(); await pronto; fontes.forEach(([s]) => { try { s.stop(); } catch (e) {} }); ac.close(); vs.getTracks().forEach(t => t.stop());
   const ext = tipo.includes('mp4') ? 'mp4' : 'webm'; const blob = new Blob(partes, { type: tipo.split(';')[0] });
   SAIDA = new File([blob], `carmax-${String(CAR.nome).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${String(CAR.ano).replace('/', '-')}.${ext}`, { type: blob.type });
