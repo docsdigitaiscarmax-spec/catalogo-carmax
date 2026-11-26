@@ -116,9 +116,9 @@ const prox = u => 'https://wsrv.nl/?url=' + encodeURIComponent(String(u).replace
 function escolheu() {
   SEL = CAR.fotos.slice(0, 8).map((u, i) => i); VERSAO = 0; IMGS = {};
   $('#fotos').innerHTML = CAR.fotos.map((u, i) => `<img src="${esc(u)}" data-i="${i}" class="${SEL.includes(i) ? 'on' : ''}" alt="">`).join('');
-  roteiro(); carregarFotos().then(() => previa(0)); habilitar();
+  roteiro(); carregarFotos().then(() => previa()); habilitar();
 }
-$('#fotos').addEventListener('click', e => { const im = e.target.closest('img'); if (!im) return; const i = +im.dataset.i; if (SEL.includes(i)) { if (SEL.length > 1) SEL = SEL.filter(x => x !== i); } else if (SEL.length < 8) SEL.push(i); SEL.sort((a, b) => a - b); im.parentElement.querySelectorAll('img').forEach(x => x.classList.toggle('on', SEL.includes(+x.dataset.i))); carregarFotos().then(() => previa(0)); });
+$('#fotos').addEventListener('click', e => { const im = e.target.closest('img'); if (!im) return; const i = +im.dataset.i; if (SEL.includes(i)) { if (SEL.length > 1) SEL = SEL.filter(x => x !== i); } else if (SEL.length < 8) SEL.push(i); SEL.sort((a, b) => a - b); im.parentElement.querySelectorAll('img').forEach(x => x.classList.toggle('on', SEL.includes(+x.dataset.i))); carregarFotos().then(() => previa()); });
 
 /* ---------- roteiro ---------- */
 const tit = s => String(s).toLowerCase().replace(/(^|\s)([a-zà-ú])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Gm|Vw|Bmw|Byd|Gwm|Jac|Ram|Suv|Tsi|Tgdi|Gdi|Cvt|Exl|Ex|Lx|Gli|Xei|Xre|Ltz|Lt|Rs|Gt|Hev|Phev)\b/g, m => m.toUpperCase());
@@ -152,7 +152,7 @@ async function carregarFotos() {
 const cv = $('#cv'), g = cv.getContext('2d');
 const DIMS = { 916: [1080, 1920], 45: [1080, 1350], 11: [1080, 1080] };
 function tamanho() { const [w, h] = DIMS[$('#formato').value]; if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; } $('#tela').style.aspectRatio = w + '/' + h; }
-$('#formato').addEventListener('change', () => { tamanho(); previa(0); });
+$('#formato').addEventListener('change', () => { tamanho(); previa(); });
 const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
 function rr(x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
