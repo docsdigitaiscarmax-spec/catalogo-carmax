@@ -66,7 +66,7 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 .cam.on{display:block}
 .cam.flash::after{content:"";position:absolute;inset:0;background:#fff;opacity:.8}
 .cam video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#camMolde{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:90px 14px 120px}
+#camMolde{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:110px 8px 130px}
 .molde{width:100%;height:100%;fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:10 7;stroke-linejoin:round;filter:drop-shadow(0 0 3px rgba(0,0,0,.9));opacity:.9}
 .camTop{position:absolute;left:0;right:0;top:0;display:flex;gap:10px;align-items:flex-start;padding:calc(10px + var(--top)) 12px 18px;background:linear-gradient(rgba(0,0,0,.75),transparent)}
 .camTop button{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:22px}
@@ -241,7 +241,6 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
   <video id="camV" playsinline muted autoplay></video>
   <div id="camMolde"></div>
   <div class="camTop"><button id="camX" aria-label="Fechar">×</button><div class="ct"><small id="camPasso"></small><b id="camT"></b><span id="camD"></span></div><div id="camMapa"></div></div>
-  <p class="vire" id="camVire">↻ Melhor com o celular deitado</p>
   <div class="camErro" id="camErro">Não consegui abrir a câmera aqui. Libere a câmera para este site ou use o botão da galeria/câmera do celular abaixo.</div>
   <div class="camBot"><button id="camPular">Pular</button><button id="camShot" aria-label="Tirar foto"></button><label class="camGal">Galeria<input type="file" id="camFile" accept="image/*" capture="environment"></label></div>
   <div class="camPrev" id="camPrev"><img id="camPrevImg" alt=""><div><button id="camRefazer">Refazer</button><button id="camOk">Usar esta foto</button></div></div>
@@ -565,7 +564,6 @@ function mostrarPasso() {
   $('#camT').textContent = s.t; $('#camD').textContent = s.d;
   $('#camMolde').innerHTML = svgMolde(s, 'molde'); $('#camMapa').innerHTML = mapa(s);
   $('#camPrev').classList.remove('on');
-  $('#camVire').style.display = ['interior', 'painel', 'pneu'].includes(s.s) ? 'none' : '';
 }
 $('#camShot').onclick = async () => {
   const v = $('#camV'); if (!v.videoWidth) return;
