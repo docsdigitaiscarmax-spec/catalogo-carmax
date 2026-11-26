@@ -6,9 +6,9 @@ if(!raw||raw.indexOf(T)!==0){raw=prompt('Cole aqui os dados do cliente copiados 
 if(raw.indexOf(T)!==0){alert('Dados da Carmax não encontrados. No integrador, toque em "Copiar para os bancos" e tente de novo.');return;}
 let d;try{d=JSON.parse(raw.slice(T.length));}catch(e){alert('Dados inválidos.');return;}
 const R=[
-['cpf',/\bcpf\b/i,d.cpf],
-['nascimento',/nasc|birth/i,d.nasc],
-['celular',/celular|telefone|\bfone\b|phone|whats/i,d.tel],
+['cpf',/\bcpf\b|000\.000\.000-00/i,d.cpf],
+['nascimento',/nasc|birth|dd\/mm\/aaaa/i,d.nasc],
+['celular',/celular|telefone|\bfone\b|phone|whats|\(00\)/i,d.tel],
 ['e-mail',/e-?mail/i,d.email],
 ['placa',/placa/i,d.placa],
 ['entrada',/entrada/i,d.entrada],
