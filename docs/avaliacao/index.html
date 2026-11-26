@@ -551,8 +551,8 @@ $('#bShare').onclick = async () => {
     '',
     '🚗 *VEÍCULO DA TROCA:*',
     `🚘 Veículo: ${A.marca.nome} ${A.modelo.nome}${A.detalhe ? ' ' + A.detalhe : ''}`,
-    A.placa ? `* Placa: ${A.placa}` : '',
-    A.cor ? `* Cor: ${A.cor}` : '',
+    A.placa ? `* Placa: ${A.placa}` : null,
+    A.cor ? `* Cor: ${A.cor}` : null,
     `* Ar-condicionado: ${V({ gelado: 'gelado / ok', fraco: 'fraco', nao: 'não funciona', sem: 'não tem' }, 'ar')}`,
     `* Km: ${kmTxt}`,
     `* Ano: ${A.ano.nome}`,
@@ -564,21 +564,21 @@ $('#bShare').onclick = async () => {
     `* Amortecedores: ${V({ top: 'top', ok: 'ok', verificar: 'verificar', trocar: 'trocar' }, 'amort')}`,
     `* Proprietários: ${V({ unico: 'único dono', 2: '2 donos', 3: '3 ou mais' }, 'donos')}`,
     `* Revisões: ${A.e.revTxt || (A.e.revisao ? 'em dia' : 'atrasadas')}`,
-    A.e.interior !== 'bom' ? `* Interior: ${A.e.interior}` : '',
-    A.e.parabrisa ? '* Para-brisa: trincado' : '',
-    !A.e.chave ? '* Chave reserva: não tem' : '',
-    A.e.sinistro ? '* ⚠️ Sinistro / leilão / remarcado' : '',
+    A.e.interior !== 'bom' ? `* Interior: ${A.e.interior}` : null,
+    A.e.parabrisa ? '* Para-brisa: trincado' : null,
+    !A.e.chave ? '* Chave reserva: não tem' : null,
+    A.e.sinistro ? '* ⚠️ Sinistro / leilão / remarcado' : null,
     '',
     '💰 *IDEIA DE PREÇO DO CLIENTE*',
     `* Valor pretendido: ${A.pretendido || ''}`,
     `Minha ideia: *${brl(minha)}*`,
     `FIPE (${A.fipe.ref}): ${brl(r.fipe)}`,
-    r.wm ? `Média Webmotors${A.wmVersao ? ' (' + A.wmVersao + ')' : ''}: ${brl(r.wm)}` : '',
+    r.wm ? `Média Webmotors${A.wmVersao ? ' (' + A.wmVersao + ')' : ''}: ${brl(r.wm)}` : null,
     '',
     `📌 *OBSERVAÇÕES / CONSIDERAÇÕES:* ${A.obs || ''}`,
     '',
     '🔧 *RETORNO DA AVALIAÇÃO*'
-  ].filter((l, i, a) => l !== '' || (i > 0 && a[i - 1] !== '')).join('\n');
+  ].filter(l => l !== null).filter((l, i, a) => l !== '' || (i > 0 && a[i - 1] !== '')).join('\n');
   const arqs = [];
   for (const [i, k] of (A.prints || []).entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `webmotors-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
   for (const [i, k] of A.fotos.entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `avaliacao-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
