@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111114">
+<title>Gerador de vídeos · Carmax</title>
+<style>
+:root{--bg:#f3f3f5;--card:#fff;--ink:#141416;--mut:#6c6c75;--line:#e2e2e7;--soft:#f1f1f4;--red:#d80c15;--ok:#13874a}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding-bottom:40px}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+header{position:sticky;top:0;z-index:20;background:#111114;color:#fff;padding:12px 16px}
+header h1{font-size:17px;font-weight:800}header h1 b{color:#ff3b43}
+main{max-width:980px;margin:0 auto;padding:12px;display:grid;grid-template-columns:1fr 340px;gap:12px;align-items:start}
+@media(max-width:820px){main{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.card h2{font-size:15px;margin-bottom:10px}
+label.l{display:block;font-size:12.5px;font-weight:700;color:var(--mut);margin:10px 0 5px}
+.in,select.in{width:100%;height:46px;border:1px solid #d6d6dc;border-radius:11px;background:#fff;padding:0 12px;font-size:16px}
+textarea.in{height:auto;min-height:150px;padding:10px 12px;resize:vertical;line-height:1.5}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.busca{position:relative}
+.lista{position:absolute;left:0;right:0;top:100%;z-index:10;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.14);max-height:320px;overflow:auto;display:none;margin-top:4px}
+.lista.on{display:block}
+.lista button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:0;background:none;padding:9px 12px;font-size:14px;border-bottom:1px solid var(--soft)}
+.lista button:hover{background:var(--soft)}.lista img{width:56px;height:42px;object-fit:cover;border-radius:7px;background:#eee;flex:none}.lista small{display:block;color:var(--mut);font-size:12px}
+.mini{border:1px solid var(--line);background:#fff;border-radius:10px;height:40px;padding:0 14px;font-weight:700;font-size:14px}
+.big{width:100%;height:54px;border:0;border-radius:13px;background:var(--red);color:#fff;font-weight:800;font-size:16px;margin-top:12px}
+.big:disabled{opacity:.45}
+.ok{background:#1faa52}
+.nota{font-size:12.5px;color:var(--mut);margin-top:6px}
+.prev{position:sticky;top:64px}
+.tela{background:#000;border-radius:16px;overflow:hidden;aspect-ratio:9/16;display:grid;place-items:center}
+.tela canvas,.tela video{width:100%;height:100%;object-fit:contain;display:block}
+.st{font-size:14px;margin-top:8px;min-height:20px}
+.bar{height:6px;background:var(--soft);border-radius:9px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;width:0;background:var(--red);transition:width .2s}
+.fotos{display:flex;gap:6px;overflow-x:auto;margin-top:8px}.fotos img{height:56px;border-radius:6px;cursor:pointer;opacity:.35;border:2px solid transparent}.fotos img.on{opacity:1;border-color:var(--red)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;z-index:60;pointer-events:none}.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<header><h1>Gerador de vídeos · <b>Carmax</b></h1></header>
+<main>
+<div>
+  <section class="card">
+    <h2>1 · Carro</h2>
+    <div class="busca"><input class="in" id="carro" placeholder="Carregando estoque…" autocomplete="off"><div class="lista" id="lCarro"></div></div>
+    <div class="fotos" id="fotos"></div>
+    <p class="nota" id="nFotos">Toque nas fotos para tirar ou colocar no vídeo (até 8).</p>
+  </section>
+  <section class="card">
+    <h2>2 · Roteiro (para o ElevenLabs)</h2>
+    <textarea class="in" id="roteiro" placeholder="Escolha um carro"></textarea>
+    <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button class="mini" id="bCopiar">Copiar roteiro</button><button class="mini" id="bOutro">Outra versão</button><a class="mini" href="https://elevenlabs.io/app/speech-synthesis/text-to-speech" target="_blank" rel="noopener" style="display:inline-grid;place-items:center;text-decoration:none">Abrir ElevenLabs ↗</a></div>
+    <p class="nota" id="nCar"></p>
+  </section>
+  <section class="card">
+    <h2>3 · Áudio e ajustes</h2>
+    <label class="l" for="voz">Sua voz (MP3 do ElevenLabs)</label><input class="in" id="voz" type="file" accept="audio/*" style="padding:10px">
+    <label class="l" for="musica">Música de fundo (opcional, precisa ser liberada para anúncio)</label><input class="in" id="musica" type="file" accept="audio/*" style="padding:10px">
+    <div class="g2">
+      <div><label class="l" for="formato">Formato</label><select class="in" id="formato"><option value="916">Vertical 9:16 (Reels/Stories)</option><option value="45">Feed 4:5</option><option value="11">Quadrado 1:1</option></select></div>
+      <div><label class="l" for="whats">WhatsApp no final</label><input class="in" id="whats" value="(13) 98839-6022"></div>
+    </div>
+    <label class="l" for="chamada">Frase da tela final</label><input class="in" id="chamada" value="Chame no WhatsApp e garanta o seu!">
+    <button class="big" id="bGerar" disabled>Gerar vídeo</button>
+    <p class="nota">O vídeo é gravado em tempo real (leva o tempo do áudio). Deixe esta tela aberta até terminar.</p>
+  </section>
+</div>
+<aside class="prev">
+  <section class="card">
+    <div class="tela" id="tela"><canvas id="cv" width="1080" height="1920"></canvas></div>
+    <div class="st" id="st">Escolha um carro para ver a prévia.</div>
+    <div class="bar"><i id="barra"></i></div>
+    <button class="big ok" id="bBaixar" style="display:none">Baixar / compartilhar vídeo</button>
+  </section>
+</aside>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+{
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
+const brl = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+const N = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+function toast(t) { const e = $('#toast'); e.textContent = t; e.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove('on'), 2400); }
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* ---------- números por extenso ---------- */
+const U = ['', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez', 'onze', 'doze', 'treze', 'quatorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove'];
+const D = ['', '', 'vinte', 'trinta', 'quarenta', 'cinquenta', 'sessenta', 'setenta', 'oitenta', 'noventa'];
+const C = ['', 'cento', 'duzentos', 'trezentos', 'quatrocentos', 'quinhentos', 'seiscentos', 'setecentos', 'oitocentos', 'novecentos'];
+function ate999(n) { if (n === 100) return 'cem'; const c = Math.floor(n / 100), r = n % 100, p = []; if (c) p.push(C[c]); if (r) p.push(r < 20 ? U[r] : D[Math.floor(r / 10)] + (r % 10 ? ' e ' + U[r % 10] : '')); return p.join(' e '); }
+function extenso(n) { n = Math.round(n); if (!n) return 'zero'; const mi = Math.floor(n / 1e6), mil = Math.floor(n % 1e6 / 1000), r = n % 1000, p = [];
+  if (mi) p.push(mi === 1 ? 'um milhão' : ate999(mi) + ' milhões'); if (mil) p.push(mil === 1 ? 'mil' : ate999(mil) + ' mil'); if (r) p.push(ate999(r));
+  if (p.length > 1) { const last = p.pop(); return p.join(', ') + ((v => v < 100 || v % 100 === 0)(r || mil) ? ' e ' : ', ') + last; } return p[0]; }
+const reais = v => extenso(v) + ' reais';
+const anoEx = a => extenso(+a);
+
+/* ---------- estoque ---------- */
+let EST = [], CAR = null, SEL = [], VERSAO = 0;
+fetch('../estoque.json?t=' + Date.now()).then(r => r.json()).then(d => { EST = (d.carros || []).filter(c => (c.fotos || []).length); $('#carro').placeholder = `Buscar no estoque (${EST.length} carros)`; }).catch(() => $('#carro').placeholder = 'Não consegui carregar o estoque');
+const prox = u => 'https://wsrv.nl/?url=' + encodeURIComponent(String(u).replace(/^https?:\/\//, '')) + '&w=1280&output=jpg';
+{
+  const inp = $('#carro'), box = $('#lCarro');
+  const draw = () => { const q = N(inp.value).split(/\s+/).filter(Boolean); const v = EST.filter(c => { const s = N(`${c.nome} ${c.ano} ${c.cor}`); return q.every(w => s.includes(w)); }).slice(0, 40);
+    box.innerHTML = v.length ? v.map(c => `<button data-id="${esc(c.loja + ':' + c.id)}">${c.capa ? `<img src="${esc(c.capa)}" alt="" loading="lazy">` : ''}<span>${esc(c.nome)}<small>${esc(c.ano)} · ${(+c.km || 0).toLocaleString('pt-BR')} km · ${c.preco ? brl(c.preco) : 'Consulte'} · ${c.loja === 'outlet' ? 'Outlet' : 'Carmax'}</small></span></button>`).join('') : '<p class="nota" style="padding:10px">Nada encontrado</p>'; box.classList.add('on'); };
+  inp.addEventListener('focus', () => { inp.select(); draw(); }); inp.addEventListener('input', draw);
+  inp.addEventListener('blur', () => setTimeout(() => { box.classList.remove('on'); if (CAR) inp.value = CAR.nome; }, 150));
+  box.addEventListener('mousedown', e => e.preventDefault());
+  box.addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if (!b) return; CAR = EST.find(x => x.loja + ':' + x.id === b.dataset.id); box.classList.remove('on'); inp.blur(); escolheu(); });
+}
+function escolheu() {
+  SEL = CAR.fotos.slice(0, 8).map((u, i) => i); VERSAO = 0; IMGS = {};
+  $('#fotos').innerHTML = CAR.fotos.map((u, i) => `<img src="${esc(u)}" data-i="${i}" class="${SEL.includes(i) ? 'on' : ''}" alt="">`).join('');
+  roteiro(); carregarFotos().then(() => previa(0)); habilitar();
+}
+$('#fotos').addEventListener('click', e => { const im = e.target.closest('img'); if (!im) return; const i = +im.dataset.i; if (SEL.includes(i)) { if (SEL.length > 1) SEL = SEL.filter(x => x !== i); } else if (SEL.length < 8) SEL.push(i); SEL.sort((a, b) => a - b); im.parentElement.querySelectorAll('img').forEach(x => x.classList.toggle('on', SEL.includes(+x.dataset.i))); carregarFotos().then(() => previa(0)); });
+
+/* ---------- roteiro ---------- */
+const nomeFala = n => String(n).replace(/(\d)\.(\d)/g, '$1 ponto $2').replace(/\b16v\b/ig, '').replace(/\bAut\.?\b/ig, 'automático').replace(/\s+/g, ' ').trim();
+function roteiro() {
+  if (!CAR) return; const c = CAR, ano = String(c.ano || '').split('/').pop(), km = +c.km || 0, loja = c.loja === 'outlet' ? 'no Outlet Carmax' : 'na Carmax';
+  const op = (c.opcionais || []).filter(o => !/air bag|computador/i.test(o)).slice(0, 3).map(o => o.toLowerCase());
+  const kmTxt = km < 100 ? 'zero quilômetro' : (km < 1000 ? 'menos de mil quilômetros' : 'apenas ' + extenso(Math.round(km / 1000)) + ' mil quilômetros');
+  const preco = c.preco ? 'por ' + reais(c.preco) : 'com condição especial';
+  const cam = c.cambio ? ', câmbio ' + c.cambio.toLowerCase() : '';
+  const aberturas = [`Olha que oportunidade chegou ${loja}!`, `Procurando um carro bom e com preço justo? Então olha esse aqui ${loja}!`, `Esse aqui não vai durar muito ${loja}!`];
+  const fechos = ['Financiamos e aceitamos seu usado na troca. Chama no WhatsApp!', 'Corre que carro assim sai rápido! Me chama no WhatsApp que eu te passo tudo.', 'Vem fazer seu test drive! Chama agora no WhatsApp.'];
+  const v = VERSAO % 3;
+  $('#roteiro').value = `${aberturas[v]} ${nomeFala(c.nome)}, modelo ${anoEx(ano)}${cam}, com ${kmTxt}. ${c.cor ? c.cor + (op.length ? ', com ' : '.') : (op.length ? 'Com ' : '')}${op.length ? op.join(', ').replace(/, ([^,]*)$/, ' e $1') + '.' : ''} Tudo isso ${preco}. ${fechos[v]}`.replace(/\s+/g, ' ');
+  $('#nCar').textContent = `${$('#roteiro').value.length} caracteres · confira o texto antes de gerar o áudio.`;
+}
+$('#bOutro').onclick = () => { VERSAO++; roteiro(); };
+$('#roteiro').addEventListener('input', () => $('#nCar').textContent = `${$('#roteiro').value.length} caracteres`);
+$('#bCopiar').onclick = async () => { try { await navigator.clipboard.writeText($('#roteiro').value); toast('Roteiro copiado'); } catch (e) { $('#roteiro').select(); } };
+
+/* ---------- fotos ---------- */
+let IMGS = {};
+const carregaImg = u => new Promise((ok, no) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => ok(im); im.onerror = no; im.src = u; });
+async function carregarFotos() {
+  $('#st').textContent = 'Carregando fotos…';
+  await Promise.all(SEL.map(async i => { if (IMGS[i]) return; for (let t = 0; t < 3; t++) { try { IMGS[i] = await carregaImg(prox(CAR.fotos[i])); return; } catch (e) { await sleep(600); } } }));
+  const ok = SEL.filter(i => IMGS[i]).length; $('#st').textContent = ok ? `${ok} fotos prontas.` : 'Não consegui carregar as fotos.'; return ok;
+}
+
+/* ---------- desenho ---------- */
+const cv = $('#cv'), g = cv.getContext('2d');
+const DIMS = { 916: [1080, 1920], 45: [1080, 1350], 11: [1080, 1080] };
+function tamanho() { const [w, h] = DIMS[$('#formato').value]; if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; } $('#tela').style.aspectRatio = w + '/' + h; }
+$('#formato').addEventListener('change', () => { tamanho(); previa(0); });
+const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+function rr(x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function cover(im, x, y, w, h, z = 1, px = 0, py = 0) { const s = Math.max(w / im.width, h / im.height) * z, iw = im.width * s, ih = im.height * s; g.drawImage(im, x + (w - iw) / 2 + px * (iw - w) / 2, y + (h - ih) / 2 + py * (ih - h) / 2, iw, ih); }
+function texto(t, x, y, size, cor, peso = 800, alinha = 'left', maxW = 9999) { g.font = `${peso} ${size}px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif`; g.fillStyle = cor; g.textAlign = alinha; g.textBaseline = 'alphabetic';
+  let s = size; while (g.measureText(t).width > maxW && s > 20) { s -= 2; g.font = `${peso} ${s}px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif`; } g.fillText(t, x, y); }
+function quebra(t, maxW, size, peso = 900) { g.font = `${peso} ${size}px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif`; const w = String(t).split(' '), L = []; let l = ''; for (const p of w) { const tt = l ? l + ' ' + p : p; if (g.measureText(tt).width > maxW && l) { L.push(l); l = p; } else l = tt; } if (l) L.push(l); return L.slice(0, 3); }
+function quadro(t, T) {
+  const W = cv.width, H = cv.height, fotos = SEL.filter(i => IMGS[i]).map(i => IMGS[i]); if (!fotos.length) return;
+  const fim = 3.6, corpo = Math.max(1, T - fim), per = corpo / fotos.length, x = 0.6;
+  g.fillStyle = '#0d0d10'; g.fillRect(0, 0, W, H);
+  const k = Math.min(fotos.length - 1, Math.floor(Math.min(t, corpo - .001) / per)), lt = (Math.min(t, corpo) - k * per) / per;
+  const desenhaFoto = (im, prog, alpha, idx) => { g.save(); g.globalAlpha = alpha;
+    g.filter = 'blur(28px) brightness(.45)'; cover(im, -40, -40, W + 80, H + 80, 1.05); g.filter = 'none';
+    const ph = Math.min(H * 0.62, W * 0.95), pw = W, py = H * 0.5 - ph * 0.5 + (H > W * 1.3 ? -H * 0.02 : 0);
+    g.save(); rr(0, py, pw, ph, 0); g.clip(); const z = 1.04 + 0.1 * prog, dir = idx % 2 ? 1 : -1; cover(im, 0, py, pw, ph, z, dir * (prog - .5) * 0.6, 0); g.restore(); g.restore(); };
+  if (t < corpo) { desenhaFoto(fotos[k], lt, 1, k); const tr = (lt * per - (per - x)) / x; if (tr > 0 && k + 1 < fotos.length) desenhaFoto(fotos[k + 1], 0, ease(cl(tr)), k + 1); }
+  else desenhaFoto(fotos[fotos.length - 1], 1, 1, fotos.length - 1);
+  // faixas de texto
+  const vert = H > W * 1.3, pad = 64, c = CAR, ano = String(c.ano || ''), km = (+c.km || 0);
+  const a1 = ease(cl((t - .2) / .6)), a2 = ease(cl((t - .7) / .6)), a3 = ease(cl((t - 1.4) / .6));
+  // topo: marca
+  g.save(); g.globalAlpha = a1; const marca = c.loja === 'outlet' ? 'OUTLET CARMAX' : 'CARMAX';
+  texto(marca, pad, pad + 56 - (1 - a1) * 40, 52, '#ffffff', 900); g.fillStyle = '#d80c15'; g.fillRect(pad, pad + 74 - (1 - a1) * 40, 120, 8); g.restore();
+  // nome do carro
+  const topoNome = vert ? H * 0.11 + 80 : pad + 140;
+  g.save(); g.globalAlpha = a2; const linhas = quebra(c.nome.toUpperCase(), W - pad * 2, vert ? 78 : 62);
+  linhas.forEach((l, i) => texto(l, pad + (1 - a2) * -60, topoNome + i * (vert ? 86 : 68), vert ? 78 : 62, '#fff', 900)); 
+  texto(`${ano}  ·  ${km < 100 ? '0 km' : km.toLocaleString('pt-BR') + ' km'}${c.cambio ? '  ·  ' + c.cambio : ''}`, pad + (1 - a2) * -60, topoNome + linhas.length * (vert ? 86 : 68) + 10, vert ? 44 : 36, '#e6e6ea', 600); g.restore();
+  // preço
+  if (c.preco) { g.save(); g.globalAlpha = a3; const ps = vert ? 96 : 76, txt = brl(c.preco); g.font = `900 ${ps}px -apple-system,Roboto,Arial,sans-serif`; const tw = g.measureText(txt).width + 70, by = vert ? H * 0.8 : H - pad - ps - 60;
+    const sc = 0.85 + 0.15 * a3; g.translate(pad + tw / 2, by + ps / 2); g.scale(sc, sc); g.translate(-(pad + tw / 2), -(by + ps / 2));
+    g.fillStyle = '#d80c15'; rr(pad, by - 20, tw, ps + 50, 26); g.fill(); texto(txt, pad + 35, by + ps + 2, ps, '#fff', 900); g.restore(); }
+  // tela final
+  if (t > corpo) { const f = ease(cl((t - corpo) / .5)); g.save(); g.globalAlpha = f * 0.92; g.fillStyle = '#0d0d10'; g.fillRect(0, 0, W, H); g.globalAlpha = f;
+    const cy = H / 2; texto(c.loja === 'outlet' ? 'OUTLET CARMAX' : 'CARMAX', W / 2, cy - (vert ? 260 : 200), vert ? 86 : 70, '#fff', 900, 'center', W - 80);
+    g.fillStyle = '#d80c15'; g.fillRect(W / 2 - 80, cy - (vert ? 225 : 170), 160, 10);
+    const ch = quebra($('#chamada').value, W - 160, vert ? 64 : 54, 800); ch.forEach((l, i) => texto(l, W / 2, cy - 60 + i * (vert ? 76 : 64), vert ? 64 : 54, '#fff', 800, 'center'));
+    const wy = cy + (vert ? 200 : 150); g.fillStyle = '#1faa52'; rr(W / 2 - (W - 160) / 2, wy - 20, W - 160, vert ? 150 : 120, 75); g.fill();
+    texto('WhatsApp ' + $('#whats').value, W / 2, wy + (vert ? 78 : 62), vert ? 60 : 50, '#fff', 900, 'center', W - 220); g.restore(); }
+}
+function previa(t) { if (!CAR) return; tamanho(); quadro(t ?? 1.8, 20); }
+['chamada', 'whats'].forEach(k => $('#' + k).addEventListener('input', () => previa(19)));
+
+/* ---------- áudio ---------- */
+let VOZ = null, MUS = null;
+async function decod(file) { const ac = new (window.AudioContext || window.webkitAudioContext)(); const buf = await ac.decodeAudioData(await file.arrayBuffer()); ac.close(); return buf; }
+$('#voz').addEventListener('change', async e => { const f = e.target.files[0]; VOZ = null; if (f) { try { VOZ = await decod(f); toast(`Áudio: ${VOZ.duration.toFixed(1)} s`); } catch (x) { toast('Não consegui ler esse áudio'); } } habilitar(); });
+$('#musica').addEventListener('change', async e => { const f = e.target.files[0]; MUS = null; if (f) { try { MUS = await decod(f); } catch (x) { toast('Não consegui ler a música'); } } });
+function habilitar() { $('#bGerar').disabled = !CAR; $('#bGerar').textContent = VOZ ? `Gerar vídeo (${Math.ceil(VOZ.duration + 3.6)} s)` : 'Gerar vídeo sem voz (15 s)'; }
+
+/* ---------- gravação ---------- */
+let SAIDA = null;
+$('#bGerar').onclick = async () => {
+  if (!CAR) return; if (!(await carregarFotos())) return; tamanho();
+  const T = VOZ ? VOZ.duration + 3.6 : 15;
+  const ac = new (window.AudioContext || window.webkitAudioContext)(); const dest = ac.createMediaStreamDestination();
+  const fontes = [];
+  if (VOZ) { const s = ac.createBufferSource(); s.buffer = VOZ; s.connect(dest); fontes.push([s, 0.3]); }
+  if (MUS) { const s = ac.createBufferSource(); s.buffer = MUS; s.loop = true; const gn = ac.createGain(); gn.gain.value = VOZ ? 0.16 : 0.6; gn.gain.setValueAtTime(gn.gain.value, ac.currentTime + T - 1.2); gn.gain.linearRampToValueAtTime(0, ac.currentTime + T); s.connect(gn).connect(dest); fontes.push([s, 0]); }
+  const vs = cv.captureStream(30); const tracks = [...vs.getVideoTracks(), ...dest.stream.getAudioTracks()];
+  const stream = new MediaStream(tracks);
+  const tipos = ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm'];
+  const tipo = tipos.find(t => window.MediaRecorder && MediaRecorder.isTypeSupported(t));
+  if (!tipo) { toast('Este navegador não grava vídeo. Use o Chrome.'); return; }
+  const rec = new MediaRecorder(stream, { mimeType: tipo, videoBitsPerSecond: 6_000_000 }); const partes = [];
+  rec.ondataavailable = e => e.data.size && partes.push(e.data);
+  const pronto = new Promise(r => rec.onstop = r);
+  $('#bGerar').disabled = true; $('#bBaixar').style.display = 'none'; $('#st').textContent = 'Gravando… deixe esta tela aberta.';
+  quadro(0, T); rec.start(250); const t0 = ac.currentTime + 0.05; fontes.forEach(([s, d]) => s.start(t0 + d));
+  await new Promise(fim => { const passo = () => { const t = ac.currentTime - t0; if (t >= T) return fim(); quadro(Math.max(0, t), T); $('#barra').style.width = (t / T * 100).toFixed(1) + '%'; requestAnimationFrame(passo); }; requestAnimationFrame(passo); });
+  rec.stop(); await pronto; fontes.forEach(([s]) => { try { s.stop(); } catch (e) {} }); ac.close(); vs.getTracks().forEach(t => t.stop());
+  const ext = tipo.includes('mp4') ? 'mp4' : 'webm'; const blob = new Blob(partes, { type: tipo.split(';')[0] });
+  SAIDA = new File([blob], `carmax-${String(CAR.nome).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${String(CAR.ano).replace('/', '-')}.${ext}`, { type: blob.type });
+  $('#barra').style.width = '100%'; $('#st').textContent = `Pronto! ${(blob.size / 1048576).toFixed(1)} MB · ${ext.toUpperCase()}${ext === 'webm' ? ' (se o Instagram não aceitar, gere pelo celular ou converta para MP4)' : ''}`;
+  const v = document.createElement('video'); v.controls = true; v.playsInline = true; v.src = URL.createObjectURL(blob); $('#tela').replaceChildren(v);
+  $('#bBaixar').style.display = ''; $('#bGerar').disabled = false;
+};
+$('#bBaixar').onclick = async () => { if (!SAIDA) return; try { if (navigator.canShare && navigator.canShare({ files: [SAIDA] })) { await navigator.share({ files: [SAIDA] }); return; } } catch (e) { if (e.name === 'AbortError') return; } const a = document.createElement('a'); a.href = URL.createObjectURL(SAIDA); a.download = SAIDA.name; a.click(); };
+$('#carro').addEventListener('focus', () => { if (!$('#tela canvas')) { $('#tela').replaceChildren(cv); } });
+}
+</script>
+</body>
+</html>
