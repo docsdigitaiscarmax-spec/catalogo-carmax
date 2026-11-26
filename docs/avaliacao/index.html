@@ -55,6 +55,37 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 .sub{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin:18px 0 4px}
 .sv{margin-top:10px;display:inline-block;background:var(--soft);border-radius:99px;padding:6px 12px;font-weight:700;font-size:13px}
 .wm{margin-top:0;background:none;padding:0}
+.guia{width:100%;height:52px;border:0;border-radius:13px;background:var(--red);color:#fff;font-weight:800;font-size:15.5px;margin-bottom:12px}
+.guia.ok{background:#e8f6ee;color:var(--ok)}
+.slots .slot{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden}
+.slots button.slot{border:2px dashed #c9c9d1;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;color:var(--mut)}
+.slots .ic{width:88%;height:58%;fill:none;stroke:#9a9aa5;stroke-width:6;stroke-linejoin:round}
+.slots .sl{font-size:11px;font-weight:700;line-height:1.2;text-align:center}
+.slots .f .sl{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;padding:14px 6px 5px;text-align:left}
+.cam{position:fixed;inset:0;z-index:80;background:#000;display:none;color:#fff}
+.cam.on{display:block}
+.cam.flash::after{content:"";position:absolute;inset:0;background:#fff;opacity:.8}
+.cam video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#camMolde{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:90px 14px 120px}
+.molde{width:100%;height:100%;fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:10 7;stroke-linejoin:round;filter:drop-shadow(0 0 3px rgba(0,0,0,.9));opacity:.9}
+.camTop{position:absolute;left:0;right:0;top:0;display:flex;gap:10px;align-items:flex-start;padding:calc(10px + var(--top)) 12px 18px;background:linear-gradient(rgba(0,0,0,.75),transparent)}
+.camTop button{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:22px}
+.camTop .ct{flex:1}.camTop small{display:block;color:#ff6b70;font-weight:800;font-size:12px}.camTop b{display:block;font-size:17px}.camTop span{font-size:13px;color:#e4e4e8}
+.mapa{width:44px;height:60px;flex:none;fill:none;stroke:#fff;stroke-width:2}.mapa circle{fill:#ff3b43;stroke:#fff}
+.vire{position:absolute;left:0;right:0;top:calc(108px + var(--top));text-align:center;font-size:12.5px;color:#fff;opacity:.85;text-shadow:0 1px 3px #000}
+@media (orientation:landscape){.vire{display:none}}
+.camErro{display:none;position:absolute;left:16px;right:16px;top:40%;background:rgba(0,0,0,.8);border-radius:12px;padding:14px;font-size:14px;text-align:center}
+.camErro.on{display:block}
+.camBot{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-around;padding:16px 12px calc(20px + var(--bot));background:linear-gradient(transparent,rgba(0,0,0,.8))}
+.camBot>button:not(#camShot),.camGal{width:84px;height:40px;border-radius:99px;border:0;background:rgba(255,255,255,.18);color:#fff;font-weight:700;font-size:13.5px;display:grid;place-items:center;cursor:pointer}
+.camGal input{display:none}
+#camShot{width:74px;height:74px;border-radius:50%;border:5px solid #fff;background:#ff3b43;box-shadow:0 0 0 3px rgba(0,0,0,.35)}
+.camPrev{position:absolute;inset:0;background:#000;display:none;flex-direction:column}
+.camPrev.on{display:flex}
+.camPrev img{flex:1;min-height:0;width:100%;object-fit:contain}
+.camPrev div{display:flex;gap:10px;padding:14px 14px calc(18px + var(--bot))}
+.camPrev button{flex:1;height:52px;border-radius:13px;border:0;font-weight:800;font-size:15px}
+#camRefazer{background:#2a2a30;color:#fff}#camOk{background:#1faa52;color:#fff}
 .item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--soft)}
 .item:last-child{border-bottom:0}
 .item .t{flex:1}.item .t b{display:block;font-size:14.5px}.item .t small{color:var(--mut);font-size:12.5px}
@@ -156,8 +187,11 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 
   <section class="card">
     <h2><span class="e">📷</span>Fotos do veículo da troca</h2>
+    <button class="guia" id="bGuia">📸 Tirar fotos guiadas</button>
+    <div class="fotos slots" id="slots"></div>
+    <h3 class="sub">Avarias e fotos extras</h3>
     <div class="fotos" id="fotos"></div>
-    <p class="nota">Tire fotos da frente, traseira, laterais, painel (com km), bancos, pneus e de cada avaria.</p>
+    <p class="nota">Fotografe cada avaria de perto (riscos, amassados, bancos rasgados).</p>
   </section>
 
   <section class="card">
@@ -203,6 +237,15 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 <div class="dlg" id="dHist"><div class="box"><h3>Avaliações salvas <button class="x" data-fecha>×</button></h3><div id="histLista"></div><p class="nota">As avaliações ficam salvas neste aparelho e navegador.</p></div></div>
 <div class="dlg" id="dCfg"><div class="box"><h3>Valores de referência <button class="x" data-fecha>×</button></h3><div id="cfgLista"></div><p class="nota">Ajuste com a gerência. Os valores ficam salvos neste aparelho.</p><div style="margin-top:12px"><button class="mini" id="cfgPadrao">Voltar aos valores padrão</button></div></div></div>
 <div class="toast" id="toast" role="status"></div>
+<div class="cam" id="cam" role="dialog" aria-label="Câmera guiada">
+  <video id="camV" playsinline muted autoplay></video>
+  <div id="camMolde"></div>
+  <div class="camTop"><button id="camX" aria-label="Fechar">×</button><div class="ct"><small id="camPasso"></small><b id="camT"></b><span id="camD"></span></div><div id="camMapa"></div></div>
+  <p class="vire" id="camVire">↻ Melhor com o celular deitado</p>
+  <div class="camErro" id="camErro">Não consegui abrir a câmera aqui. Libere a câmera para este site ou use o botão da galeria/câmera do celular abaixo.</div>
+  <div class="camBot"><button id="camPular">Pular</button><button id="camShot" aria-label="Tirar foto"></button><label class="camGal">Galeria<input type="file" id="camFile" accept="image/*" capture="environment"></label></div>
+  <div class="camPrev" id="camPrev"><img id="camPrevImg" alt=""><div><button id="camRefazer">Refazer</button><button id="camOk">Usar esta foto</button></div></div>
+</div>
 
 <script>
 {
@@ -239,7 +282,7 @@ let CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, (ler('av
 const novo = () => ({ id: 'a' + Date.now(), criado: new Date().toISOString(), tipo: 'carros', marca: null, modelo: null, ano: null, fipe: null,
   km: '', webmotors: 0, wmVersao: '', placa: '', cor: '', detalhe: '', cliente: '', telefone: '', origem: '', vendedor: ler('aval-vendedor', 'Nickolas'), pretendido: '', proposta: '', obs: '',
   e: { ar: 'gelado', freios: 'ok', motor: 'ok', cambio: 'ok', amort: 'top', donos: 'unico', pintura: 0, martelinho: 0, pneu: 0, parabrisa: false, revisao: true, revTxt: '', pneuTxt: '', chave: true, interior: 'bom', mecanicaValor: 0, sinistro: false, outros: 0 },
-  fotos: [], prints: [], troca: null });
+  fotos: [], prints: [], slot: {}, troca: null });
 let A = novo();
 
 /* ---------- FIPE ---------- */
@@ -403,7 +446,7 @@ function calcular() {
   if (!km && !zero) avisos.push('Informe a quilometragem para ajustar o valor.');
   if (!mecOk() && !A.e.mecanicaValor) avisos.push('Motor, câmbio ou freios com atenção/problema: informe o custo estimado do reparo.');
   if (A.e.sinistro) avisos.push('Carro com sinistro/leilão: confirme a política da loja antes de fazer proposta.');
-  if (!A.fotos.length) avisos.push('Nenhuma foto ainda.');
+  if (typeof SLOTS !== 'undefined' && slotsFeitos() < SLOTS.length) avisos.push(`Fotos guiadas: ${slotsFeitos()}/${SLOTS.length}.`);
   al.innerHTML = avisos.join('<br>'); al.classList.toggle('on', avisos.length > 0);
   return { fipe, wm, km, esperado, ajKm, mercado, totRep, fixos, margem, sug: r5(sug), min: r5(sug * 0.97), max: r5(sug * 1.03), rep };
 }
@@ -427,13 +470,13 @@ async function reduzir(file, max = 1600) {
   return new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.82));
 }
 const urls = new Map();
-const GR = { fotos: { el: '#fotos', txt: 'Adicionar fotos', max: 1600, pref: 'f' }, prints: { el: '#prints', txt: 'Adicionar prints', max: 2400, pref: 'p' } };
+const GR = { fotos: { el: '#fotos', txt: 'Adicionar avaria / extra', max: 1600, pref: 'f' }, prints: { el: '#prints', txt: 'Adicionar prints', max: 2400, pref: 'p' } };
 async function desenharGrade(q) {
   const g = GR[q], lista = A[q] || (A[q] = []), parts = [];
   for (const k of lista) { if (!urls.has(k)) { const b = await fotoGet(k); if (b) urls.set(k, URL.createObjectURL(b)); } if (urls.has(k)) parts.push(`<div class="f"><img src="${urls.get(k)}" alt=""><button data-del="${esc(k)}" aria-label="Apagar">×</button></div>`); }
   $(g.el).innerHTML = parts.join('') + `<label class="add">＋<br>${g.txt}<input type="file" accept="image/*" multiple></label>`;
 }
-const desenharFotos = () => Promise.all([desenharGrade('fotos'), desenharGrade('prints')]);
+const desenharFotos = () => Promise.all([desenharGrade('fotos'), desenharGrade('prints'), desenharSlots()]);
 Object.entries(GR).forEach(([q, g]) => {
   $(g.el).addEventListener('change', async e => {
     if (e.target.type !== 'file') return; const fs = [...e.target.files]; if (!fs.length) return;
@@ -443,6 +486,111 @@ Object.entries(GR).forEach(([q, g]) => {
   });
   $(g.el).addEventListener('click', async e => { const b = e.target.closest('[data-del]'); if (!b) return; const k = b.dataset.del; A[q] = A[q].filter(x => x !== k); await fotoDel(k); urls.delete(k); await desenharGrade(q); calcular(); autosalvar(); });
 });
+
+/* ---------- fotos guiadas (molde na câmera) ---------- */
+const SV = {
+  frente: `<path d="M70 205V150q2-18 22-22l28-48q6-12 25-14h110q19 2 25 14l28 48q20 4 22 22v55z"/><path d="M132 84h136l24 40H108z"/><path d="M84 140h52l-6 16H90zM316 140h-52l6 16h40z"/><rect x="150" y="146" width="100" height="34" rx="8"/><rect x="176" y="186" width="48" height="12" rx="2"/><rect x="78" y="205" width="40" height="26" rx="6"/><rect x="282" y="205" width="40" height="26" rx="6"/>`,
+  traseira: `<path d="M70 205V150q2-18 22-22l28-48q6-12 25-14h110q19 2 25 14l28 48q20 4 22 22v55z"/><path d="M138 86h124l20 36H118z"/><path d="M82 136h56v18H82zM318 136h-56v18h56z"/><rect x="170" y="160" width="60" height="14" rx="2"/><path d="M80 186h240"/><rect x="78" y="205" width="40" height="26" rx="6"/><rect x="282" y="205" width="40" height="26" rx="6"/>`,
+  diagF: `<path d="M30 200v-42q0-18 18-22l32-40q8-10 24-12l146-6q26 0 46 16l50 38q24 6 26 26v42z"/><path d="M132 200v-50l-14-50"/><path d="M86 100h32l12 36H54z"/><path d="M144 98l102-6q22 0 38 14l26 26H152z"/><path d="M42 150l78-4v14l-74 4zM56 168h62v20H56z"/><ellipse cx="170" cy="204" rx="26" ry="28"/><ellipse cx="320" cy="204" rx="26" ry="28"/>`,
+  diagT: `<path d="M30 200v-46q0-16 16-20l34-40q8-10 24-12l146-6q26 0 46 16l50 38q24 6 26 26v44z"/><path d="M132 200v-56l-12-50"/><path d="M90 98h30l10 34H58z"/><path d="M144 96l102-6q22 0 38 14l26 26H152z"/><path d="M40 142h78v16H40zM60 172h50v12H60z"/><ellipse cx="172" cy="204" rx="26" ry="28"/><ellipse cx="322" cy="204" rx="26" ry="28"/>`,
+  interior: `<rect x="40" y="30" width="320" height="190" rx="18"/><circle cx="120" cy="105" r="38"/><path d="M90 150h60l10 60H80zM230 150h70l8 60h-86z"/><path d="M60 70h280"/>`,
+  painel: `<circle cx="200" cy="130" r="92"/><circle cx="200" cy="130" r="30"/><path d="M110 70h180"/>`,
+  pneu: `<circle cx="200" cy="125" r="100"/><circle cx="200" cy="125" r="62"/><circle cx="200" cy="125" r="14"/>`
+};
+const SLOTS = [
+  { id: 'frente', t: 'Frente', d: 'De frente para o carro, centralizado. Pegue o carro inteiro e a placa.', s: 'frente', p: [30, 4] },
+  { id: 'dde', t: 'Diagonal dianteira esquerda', d: 'Canto da frente, lado do motorista. Frente e lateral aparecendo.', s: 'diagF', p: [5, 8] },
+  { id: 'ddd', t: 'Diagonal dianteira direita', d: 'Canto da frente, lado do passageiro.', s: 'diagF', m: 1, p: [55, 8] },
+  { id: 'dtd', t: 'Diagonal traseira direita', d: 'Canto de trás, lado do passageiro.', s: 'diagT', p: [55, 74] },
+  { id: 'dte', t: 'Diagonal traseira esquerda', d: 'Canto de trás, lado do motorista.', s: 'diagT', m: 1, p: [5, 74] },
+  { id: 'tras', t: 'Traseira', d: 'De trás, centralizado. Pegue a placa.', s: 'traseira', p: [30, 78] },
+  { id: 'intP', t: 'Interior pela porta do passageiro', d: 'Porta do passageiro aberta: bancos e painel.', s: 'interior', p: [54, 36] },
+  { id: 'intM', t: 'Interior pela porta do motorista', d: 'Porta do motorista aberta: banco, volante e console.', s: 'interior', p: [6, 36] },
+  { id: 'painel', t: 'Painel com km', d: 'Carro ligado. A quilometragem tem que dar para ler.', s: 'painel', p: [24, 34] },
+  { id: 'pneuD', t: 'Pneu dianteiro', d: 'Roda e pneu inteiros dentro do círculo.', s: 'pneu', p: [8, 26] },
+  { id: 'pneuT', t: 'Pneu traseiro', d: 'Roda e pneu inteiros dentro do círculo.', s: 'pneu', p: [8, 56] }
+];
+const svgMolde = (s, cls) => `<svg class="${cls}" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid meet"><g ${s.m ? 'transform="translate(400 0) scale(-1 1)"' : ''}>${SV[s.s]}</g></svg>`;
+const mapa = s => `<svg class="mapa" viewBox="0 0 60 82"><rect x="18" y="18" width="24" height="46" rx="7"/><path d="M22 24h16"/><circle cx="${s.p[0]}" cy="${s.p[1]}" r="4.5"/></svg>`;
+function slotsFeitos() { return SLOTS.filter(s => A.slot && A.slot[s.id]).length; }
+async function desenharSlots() {
+  A.slot = A.slot || {};
+  const parts = [];
+  for (const [i, s] of SLOTS.entries()) {
+    const k = A.slot[s.id];
+    if (k && !urls.has(k)) { const b = await fotoGet(k); if (b) urls.set(k, URL.createObjectURL(b)); }
+    parts.push(k && urls.has(k)
+      ? `<div class="f slot"><img src="${urls.get(k)}" alt="${esc(s.t)}" data-cam="${i}"><span class="sl">${i + 1}. ${esc(s.t)}</span><button data-delslot="${s.id}" aria-label="Apagar">×</button></div>`
+      : `<button class="slot vazio" data-cam="${i}">${svgMolde(s, 'ic')}<span class="sl">${i + 1}. ${esc(s.t)}</span></button>`);
+  }
+  $('#slots').innerHTML = parts.join('');
+  const n = slotsFeitos();
+  $('#bGuia').textContent = n === SLOTS.length ? '✓ Fotos completas · refazer alguma? toque na foto' : (n ? `📸 Continuar fotos guiadas (${n}/${SLOTS.length})` : `📸 Tirar fotos guiadas (${SLOTS.length} fotos)`);
+  $('#bGuia').classList.toggle('ok', n === SLOTS.length);
+}
+async function salvarSlot(id, blob) {
+  const k = A.id + '-s' + id + '-' + Date.now();
+  await fotoPut(k, blob);
+  const old = A.slot[id]; if (old) { await fotoDel(old); urls.delete(old); }
+  A.slot[id] = k; autosalvar();
+}
+$('#slots').addEventListener('click', async e => {
+  const d = e.target.closest('[data-delslot]');
+  if (d) { const id = d.dataset.delslot, k = A.slot[id]; delete A.slot[id]; if (k) { await fotoDel(k); urls.delete(k); } desenharSlots(); calcular(); autosalvar(); return; }
+  const c = e.target.closest('[data-cam]'); if (c) abrirCamera(+c.dataset.cam, false);
+});
+$('#bGuia').onclick = () => { const i = SLOTS.findIndex(s => !A.slot[s.id]); abrirCamera(i < 0 ? 0 : i, i >= 0); };
+
+/* câmera */
+const CAM = { stream: null, i: 0, seq: false, blob: null };
+async function abrirCamera(i, seq) {
+  CAM.i = i; CAM.seq = seq; $('#cam').classList.add('on'); document.body.style.overflow = 'hidden';
+  mostrarPasso();
+  if (!CAM.stream) {
+    try {
+      CAM.stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1080 } }, audio: false });
+      $('#camV').srcObject = CAM.stream; await $('#camV').play().catch(() => {});
+      $('#camErro').classList.remove('on');
+    } catch (e) { $('#camErro').classList.add('on'); }
+  }
+}
+function fecharCamera() {
+  $('#cam').classList.remove('on'); document.body.style.overflow = '';
+  if (CAM.stream) { CAM.stream.getTracks().forEach(t => t.stop()); CAM.stream = null; }
+  $('#camPrev').classList.remove('on'); desenharSlots(); calcular();
+}
+function mostrarPasso() {
+  const s = SLOTS[CAM.i];
+  $('#camPasso').textContent = `${CAM.i + 1}/${SLOTS.length}`;
+  $('#camT').textContent = s.t; $('#camD').textContent = s.d;
+  $('#camMolde').innerHTML = svgMolde(s, 'molde'); $('#camMapa').innerHTML = mapa(s);
+  $('#camPrev').classList.remove('on');
+  $('#camVire').style.display = ['interior', 'painel', 'pneu'].includes(s.s) ? 'none' : '';
+}
+$('#camShot').onclick = async () => {
+  const v = $('#camV'); if (!v.videoWidth) return;
+  const sc = Math.min(1, 1600 / Math.max(v.videoWidth, v.videoHeight));
+  const cv = document.createElement('canvas'); cv.width = Math.round(v.videoWidth * sc); cv.height = Math.round(v.videoHeight * sc);
+  cv.getContext('2d').drawImage(v, 0, 0, cv.width, cv.height);
+  $('#cam').classList.add('flash'); setTimeout(() => $('#cam').classList.remove('flash'), 150);
+  CAM.blob = await new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.85));
+  previa();
+};
+$('#camFile').addEventListener('change', async e => { const f = e.target.files[0]; e.target.value = ''; if (!f) return; CAM.blob = await reduzir(f, 1600); previa(); });
+function previa() {
+  if ($('#camPrevImg').src) URL.revokeObjectURL($('#camPrevImg').src);
+  $('#camPrevImg').src = URL.createObjectURL(CAM.blob); $('#camPrev').classList.add('on');
+  const prox = CAM.seq ? SLOTS.findIndex((s, j) => j > CAM.i && !A.slot[s.id]) : -1;
+  $('#camOk').textContent = prox >= 0 ? 'Usar e ir para a próxima' : 'Usar esta foto';
+}
+$('#camRefazer').onclick = () => $('#camPrev').classList.remove('on');
+$('#camOk').onclick = async () => {
+  await salvarSlot(SLOTS[CAM.i].id, CAM.blob);
+  const prox = CAM.seq ? SLOTS.findIndex((s, j) => j > CAM.i && !A.slot[s.id]) : -1;
+  if (prox >= 0) { CAM.i = prox; mostrarPasso(); } else { fecharCamera(); toast(slotsFeitos() === SLOTS.length ? 'Fotos completas ✓' : 'Foto salva'); }
+};
+$('#camPular').onclick = () => { const prox = SLOTS.findIndex((s, j) => j > CAM.i && (!CAM.seq || !A.slot[s.id])); if (prox >= 0) { CAM.i = prox; mostrarPasso(); } else fecharCamera(); };
+$('#camX').onclick = fecharCamera;
 
 /* ---------- salvar / histórico ---------- */
 const HK = 'aval-lista';
@@ -476,7 +624,7 @@ $('#bHist').onclick = abrirHist;
 $('#histLista').addEventListener('click', async e => {
   const a = e.target.closest('[data-abre]'), d = e.target.closest('[data-apaga]');
   if (a) { const x = ler(HK, []).find(i => i.id === a.dataset.abre); if (x) { if (A.fipe) salvar(true); A = { ...novo(), ...x }; delete A.resultado; preencher(); $('#dHist').classList.remove('on'); window.scrollTo({ top: 0 }); } }
-  if (d) { const l = ler(HK, []); const x = l.find(i => i.id === d.dataset.apaga); if (x && confirmarApagar(d)) { [...(x.fotos || []), ...(x.prints || [])].forEach(fotoDel); gravar(HK, l.filter(i => i.id !== x.id)); abrirHist(); } }
+  if (d) { const l = ler(HK, []); const x = l.find(i => i.id === d.dataset.apaga); if (x && confirmarApagar(d)) { [...(x.fotos || []), ...(x.prints || []), ...Object.values(x.slot || {})].forEach(fotoDel); gravar(HK, l.filter(i => i.id !== x.id)); abrirHist(); } }
 });
 function confirmarApagar(btn) { if (btn.dataset.ok) return true; btn.dataset.ok = '1'; btn.textContent = 'Apagar?'; setTimeout(() => { if (btn.isConnected) { delete btn.dataset.ok; btn.textContent = '🗑'; } }, 2500); return false; }
 document.querySelectorAll('[data-fecha]').forEach(b => b.onclick = () => b.closest('.dlg').classList.remove('on'));
@@ -581,7 +729,7 @@ $('#bShare').onclick = async () => {
   ].filter(l => l !== null).filter((l, i, a) => l !== '' || (i > 0 && a[i - 1] !== '')).join('\n');
   const arqs = [];
   for (const [i, k] of (A.prints || []).entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `webmotors-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
-  for (const [i, k] of A.fotos.entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `avaliacao-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
+  for (const [i, k] of [...SLOTS.map(s => A.slot[s.id]).filter(Boolean), ...A.fotos].entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `avaliacao-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
   try {
     if (arqs.length && navigator.canShare && navigator.canShare({ files: arqs, text: linhas })) { await navigator.share({ files: arqs, text: linhas }); return; }
     if (navigator.share) { await navigator.share({ text: linhas }); return; }
