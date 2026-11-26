@@ -645,8 +645,11 @@ async function compor(recorteBlob) {
 }
 let ESTQ = [];
 async function porNoEstoque(x) {
-  const ids = SLOTS.map(s => s.id).filter(id => x.slot && x.slot[id]);
-  if (!ids.length) { toast('Essa avaliação não tem fotos guiadas'); return; }
+  const temSlot = x.slot && Object.keys(x.slot).length;
+  const itens = temSlot
+    ? [...SLOTS.filter(s => x.slot[s.id]).map(s => ({ k: x.slot[s.id], t: s.t, ext: EXTERNAS.includes(s.id) })), ...(x.fotos || []).map((k, i) => ({ k, t: 'Extra ' + (i + 1), ext: false }))]
+    : (x.fotos || []).map((k, i) => ({ k, t: SLOTS[i] ? SLOTS[i].t : 'Foto ' + (i + 1), ext: i < 6 }));
+  if (!itens.length) { toast('Essa avaliação não tem fotos'); return; }
   $('#dHist').classList.remove('on'); $('#dEst').classList.add('on');
   $('#estTit').textContent = `${x.marca?.nome || ''} ${x.modelo?.nome || ''}`.trim();
   $('#estGrade').innerHTML = ''; $('#estAcoes').style.display = 'none'; ESTQ = [];
@@ -654,13 +657,13 @@ async function porNoEstoque(x) {
   let rm;
   try { st('Preparando o recortador… (na primeira vez baixa uns 40–80 MB, use Wi-Fi)'); rm = await recortador(); }
   catch (e) { st('Não consegui carregar o recortador. Verifique a internet e tente de novo.'); RECORTE = null; return; }
-  for (const [n, id] of ids.entries()) {
-    const k = x.slot[id], s = SLOTS.find(z => z.id === id);
+  for (const [n, s] of itens.entries()) {
+    const k = s.k;
     let out = await fotoGet('ed-' + k);
     if (!out) {
       const orig = await fotoGet(k); if (!orig) continue;
-      if (EXTERNAS.includes(id)) {
-        st(`Trocando o fundo: ${n + 1}/${ids.length} · ${s.t}…`);
+      if (s.ext) {
+        st(`Trocando o fundo: ${n + 1}/${itens.length} · ${s.t}…`);
         try {
           const cut = await rm(orig, { output: { format: 'image/png' }, progress: (key, cur, tot) => { if (tot && /fetch/.test(key)) st(`Baixando o recortador… ${Math.round(cur / tot * 100)}%`); } });
           out = await compor(cut);
@@ -673,7 +676,7 @@ async function porNoEstoque(x) {
   }
   st(`Pronto: ${ESTQ.length} fotos na ordem. Confira antes de enviar.`);
   $('#estAcoes').style.display = '';
-  $('#estRefaz').onclick = async () => { for (const id of ids) await fotoDel('ed-' + x.slot[id]); porNoEstoque(x); };
+  $('#estRefaz').onclick = async () => { for (const s of itens) await fotoDel('ed-' + s.k); porNoEstoque(x); };
 }
 $('#estEnviar').onclick = async () => {
   if (!ESTQ.length) return;
@@ -706,7 +709,7 @@ function preencher() {
 }
 function abrirHist() {
   const l = ler(HK, []);
-  $('#histLista').innerHTML = l.length ? l.map(x => `<div class="hist"><div class="t"><b>${esc(x.marca?.nome || '')} ${esc(x.modelo?.nome || '')}</b><small>${esc(x.ano?.nome || '')}${x.placa ? ' · ' + esc(x.placa) : ''}${x.cliente ? ' · ' + esc(x.cliente) : ''} · ${new Date(x.atualizado).toLocaleDateString('pt-BR')}</small></div><span class="v">${x.resultado ? brl(x.resultado.sug) : ''}</span><button class="mini" data-abre="${esc(x.id)}">Abrir</button>${x.slot && Object.keys(x.slot).length ? `<button class="mini est" data-est="${esc(x.id)}">Pôr no estoque</button>` : ''}<button class="mini" data-apaga="${esc(x.id)}" aria-label="Apagar">🗑</button></div>`).join('') : '<p class="vazio">Nenhuma avaliação salva ainda.</p>';
+  $('#histLista').innerHTML = l.length ? l.map(x => `<div class="hist"><div class="t"><b>${esc(x.marca?.nome || '')} ${esc(x.modelo?.nome || '')}</b><small>${esc(x.ano?.nome || '')}${x.placa ? ' · ' + esc(x.placa) : ''}${x.cliente ? ' · ' + esc(x.cliente) : ''} · ${new Date(x.atualizado).toLocaleDateString('pt-BR')}</small></div><span class="v">${x.resultado ? brl(x.resultado.sug) : ''}</span><button class="mini" data-abre="${esc(x.id)}">Abrir</button>${(x.slot && Object.keys(x.slot).length) || (x.fotos || []).length ? `<button class="mini est" data-est="${esc(x.id)}">Pôr no estoque</button>` : ''}<button class="mini" data-apaga="${esc(x.id)}" aria-label="Apagar">🗑</button></div>`).join('') : '<p class="vazio">Nenhuma avaliação salva ainda.</p>';
   $('#dHist').classList.add('on');
 }
 $('#bHist').onclick = abrirHist;
