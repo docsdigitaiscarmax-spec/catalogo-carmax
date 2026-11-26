@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111114">
+<title>Simulação nos bancos · Carmax</title>
+<style>
+:root{--bg:#f3f3f5;--card:#fff;--ink:#141416;--mut:#6c6c75;--line:#e2e2e7;--soft:#f1f1f4;--red:#d80c15;--ok:#13874a}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding-bottom:40px}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+header{position:sticky;top:0;z-index:20;background:#111114;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+header h1{font-size:17px;font-weight:800}header h1 b{color:#ff3b43}
+header button{margin-left:auto;border:0;background:#26262b;color:#fff;border-radius:10px;height:36px;padding:0 12px;font-weight:700;font-size:13.5px}
+main{max-width:860px;margin:0 auto;padding:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.card h2{font-size:15px;margin-bottom:10px;display:flex;gap:8px;align-items:center}
+label.l{display:block;font-size:12.5px;font-weight:700;color:var(--mut);margin:10px 0 5px}
+.in,select.in{width:100%;height:46px;border:1px solid #d6d6dc;border-radius:11px;background:#fff;padding:0 12px;font-size:16px}
+.in.err{border-color:var(--red)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:560px){.g3{grid-template-columns:1fr 1fr}}
+.msg{font-size:12.5px;color:var(--red);margin-top:4px;min-height:1em}
+.busca{position:relative}
+.lista{position:absolute;left:0;right:0;top:100%;z-index:10;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.14);max-height:300px;overflow:auto;display:none;margin-top:4px}
+.lista.on{display:block}
+.lista button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:0;background:none;padding:9px 12px;font-size:14px;border-bottom:1px solid var(--soft)}
+.lista button:hover{background:var(--soft)}.lista img{width:56px;height:42px;object-fit:cover;border-radius:7px;background:#eee;flex:none}.lista small{display:block;color:var(--mut);font-size:12px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:14px;background:#fff7e6;border-radius:12px;padding:10px 12px}
+.chk input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--red)}
+.big{width:100%;height:54px;border:0;border-radius:13px;background:var(--red);color:#fff;font-weight:800;font-size:16px;margin-top:12px}
+.big:disabled{opacity:.45}
+.bancos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.banco{border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.banco .top{display:flex;align-items:center;gap:10px}
+.banco .lg{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:13px;flex:none}
+.banco b{flex:1;font-size:15px}
+.banco a{border-radius:9px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:8px 11px;white-space:nowrap}
+.banco .res{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:6px}
+.banco .res select,.banco .res input{height:38px;border:1px solid #d6d6dc;border-radius:9px;padding:0 8px;font-size:14px;width:100%;background:#fff}
+.banco.aprovado{border-color:#9fd8b6;background:#f3fbf6}.banco.recusado{border-color:#f0b4b7;background:#fff6f6}
+.passo{display:flex;gap:10px;margin:8px 0;font-size:14px}.passo span{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:12px;display:grid;place-items:center;flex:none}
+.bm{display:inline-block;margin:6px 0;background:var(--red);color:#fff;font-weight:800;padding:10px 16px;border-radius:10px;text-decoration:none;cursor:grab}
+.nota{font-size:12.5px;color:var(--mut);margin-top:8px}
+.acoes{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.mini{border:1px solid var(--line);background:#fff;border-radius:10px;height:40px;padding:0 14px;font-weight:700;font-size:14px}
+.mini.v{background:#1faa52;color:#fff;border-color:#1faa52}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;z-index:60;pointer-events:none}
+.toast.on{opacity:1}
+details summary{cursor:pointer;font-weight:800;font-size:15px}
+</style>
+</head>
+<body>
+<header><h1>Simulação nos bancos · <b>Carmax</b></h1><button id="bNovo">Novo cliente</button></header>
+<main>
+<section class="card">
+  <h2>👤 Cliente</h2>
+  <label class="l" for="nome">Nome completo</label><input class="in" id="nome" autocomplete="off">
+  <div class="g2">
+    <div><label class="l" for="cpf">CPF</label><input class="in" id="cpf" inputmode="numeric" placeholder="000.000.000-00" autocomplete="off"><div class="msg" id="mCpf"></div></div>
+    <div><label class="l" for="nasc">Data de nascimento</label><input class="in" id="nasc" inputmode="numeric" placeholder="dd/mm/aaaa" autocomplete="off"><div class="msg" id="mNasc"></div></div>
+  </div>
+  <div class="g2">
+    <div><label class="l" for="tel">Celular</label><input class="in" id="tel" inputmode="tel" placeholder="(13) 99999-9999" autocomplete="off"></div>
+    <div><label class="l" for="email">E-mail (opcional)</label><input class="in" id="email" inputmode="email" autocomplete="off"></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>🚗 Veículo e valores</h2>
+  <div class="busca"><input class="in" id="carro" placeholder="Carregando estoque…" autocomplete="off"><div class="lista" id="lCarro"></div></div>
+  <div class="g3">
+    <div><label class="l" for="placa">Placa</label><input class="in" id="placa" maxlength="7" style="text-transform:uppercase"></div>
+    <div><label class="l" for="valor">Valor do veículo</label><input class="in" id="valor" inputmode="numeric" placeholder="R$"></div>
+    <div><label class="l" for="entrada">Entrada</label><input class="in" id="entrada" inputmode="numeric" placeholder="R$"></div>
+  </div>
+  <div class="g2">
+    <div><label class="l" for="prazo">Prazo desejado</label><select class="in" id="prazo"><option>12</option><option>24</option><option>36</option><option selected>48</option><option>60</option></select></div>
+    <div><label class="l">Valor a financiar</label><div class="in" id="fin" style="display:flex;align-items:center;background:var(--soft)">—</div></div>
+  </div>
+  <label class="chk"><input type="checkbox" id="aut"><span>O cliente <b>autorizou</b> a consulta de crédito nos bancos (SCR / Banco Central).</span></label>
+  <button class="big" id="bCopiar" disabled>Copiar para os bancos</button>
+  <p class="nota">Depois de copiar, abra cada banco abaixo e toque em <b>Preencher Carmax</b> na barra de favoritos do Chrome.</p>
+</section>
+
+<section class="card">
+  <h2>🏦 Bancos</h2>
+  <div class="bancos" id="bancos"></div>
+  <div class="acoes"><button class="mini v" id="bResumo">Enviar resumo no WhatsApp</button><button class="mini" id="bLimparRes">Limpar resultados</button></div>
+</section>
+
+<section class="card">
+  <details id="inst"><summary>⚙️ Instalar o botão "Preencher Carmax" (só uma vez por computador)</summary>
+    <div class="passo"><span>1</span><div>No Chrome do computador, deixe a barra de favoritos visível: <b>Ctrl + Shift + B</b>.</div></div>
+    <div class="passo"><span>2</span><div>Arraste este botão vermelho para a barra de favoritos:<br><a class="bm" id="bm" href="#">Preencher Carmax</a><br><small style="color:var(--mut)">Se não der para arrastar: clique com o botão direito em "Preencher Carmax" → Copiar endereço do link. Depois, na barra de favoritos, botão direito → Adicionar página → Nome: Preencher Carmax · URL: cole.</small></div></div>
+    <div class="passo"><span>3</span><div>Na primeira vez em cada banco, o Chrome pergunta se pode <b>ler a área de transferência</b>. Clique em <b>Permitir</b>.</div></div>
+    <p class="nota">O botão só preenche os campos. Ele nunca clica em Simular nem envia proposta. Você confere e envia.</p>
+  </details>
+</section>
+<p class="nota" style="text-align:center">Os dados dos clientes ficam só neste aparelho e navegador.</p>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+{
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
+const dig = s => String(s || '').replace(/\D/g, '');
+const brl = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+const N = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+function toast(t) { const e = $('#toast'); e.textContent = t; e.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove('on'), 2400); }
+const ler = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } };
+const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+
+$('#bm').href = "javascript:(async()%3D%3E%7Bconst%20T%3D'CARMAX-SIM%3A'%3Blet%20raw%3D''%3Btry%7Braw%3Dawait%20navigator.clipboard.readText()%3B%7Dcatch(e)%7B%7Dif(!raw%7C%7Craw.indexOf(T)!%3D%3D0)%7Braw%3Dprompt('Cole%20aqui%20os%20dados%20do%20cliente%20copiados%20no%20Integrador%20Carmax%20(Ctrl%2BV)%3A')%7C%7C''%3B%7Dif(raw.indexOf(T)!%3D%3D0)%7Balert('Dados%20da%20Carmax%20n%C3%A3o%20encontrados.%20No%20integrador%2C%20toque%20em%20%22Copiar%20para%20os%20bancos%22%20e%20tente%20de%20novo.')%3Breturn%3B%7Dlet%20d%3Btry%7Bd%3DJSON.parse(raw.slice(T.length))%3B%7Dcatch(e)%7Balert('Dados%20inv%C3%A1lidos.')%3Breturn%3B%7Dconst%20R%3D%5B%5B'cpf'%2C%2F%5Cbcpf%5Cb%2Fi%2Cd.cpf%5D%2C%5B'nascimento'%2C%2Fnasc%7Cbirth%2Fi%2Cd.nasc%5D%2C%5B'celular'%2C%2Fcelular%7Ctelefone%7C%5Cbfone%5Cb%7Cphone%7Cwhats%2Fi%2Cd.tel%5D%2C%5B'e-mail'%2C%2Fe-%3Fmail%2Fi%2Cd.email%5D%2C%5B'placa'%2C%2Fplaca%2Fi%2Cd.placa%5D%2C%5B'entrada'%2C%2Fentrada%2Fi%2Cd.entrada%5D%2C%5B'valor%20do%20ve%C3%ADculo'%2C%2Fvalor%5Cs*(do%5Cs*)%3F(ve%5Bi%C3%AD%5Dculo%7Cbem%7Ccompra%7Ccarro)%7Cpre%5Bc%C3%A7%5Do%5Cs*(do%5Cs*)%3F(ve%5Bi%C3%AD%5Dculo%7Cbem)%2Fi%2Cd.valor%5D%2C%5B'nome'%2C%2F(%5E%7C%5Cs)nome(%5Cs*completo)%3F(%5Cs*do%5Cs*cliente)%3F(%5Cs%7C%24%7C%5C*)%7Cfull%5Cs*name%2Fi%2Cd.nome%5D%5D%3Bconst%20NAO%3D%2Fm%5Ba%C3%A3%5De%7Cpai%7Csocial%7Cfantasia%7Cempresa%7Cbusca%7Cpesquis%7Csearch%7Crevenda%7Cvendedor%7Coperador%7Cagente%7Cloja%2Fi%3Bconst%20vis%3De%3D%3E%7Bconst%20r%3De.getBoundingClientRect()%3Breturn%20r.width%3E0%26%26r.height%3E0%26%26getComputedStyle(e).visibility!%3D%3D'hidden'%3B%7D%3Bconst%20ctx%3De%3D%3E%7Blet%20s%3D%5Be.placeholder%2Ce.getAttribute('aria-label')%2Ce.name%2Ce.id%2Ce.getAttribute('formcontrolname')%2Ce.getAttribute('data-testid')%5D.join('%20')%3Bif(e.labels)for(const%20l%20of%20e.labels)s%2B%3D'%20'%2Bl.innerText%3Blet%20p%3De.parentElement%3Bfor(let%20i%3D0%3Bi%3C3%26%26p%3Bi%2B%2B%2Cp%3Dp.parentElement)%7Bconst%20t%3D(p.innerText%7C%7C'').trim()%3Bif(t%26%26t.length%3C90)%7Bs%2B%3D'%20'%2Bt%3Bbreak%3B%7D%7Dreturn%20s%3B%7D%3Bconst%20tipar%3D(el%2Ctxt)%3D%3E%7Bel.focus()%3Bconst%20pr%3DObject.getPrototypeOf(el)%3Bconst%20set%3DObject.getOwnPropertyDescriptor(pr%2C'value').set%3Bset.call(el%2C'')%3Bel.dispatchEvent(new%20Event('input'%2C%7Bbubbles%3Atrue%7D))%3Bfor(const%20ch%20of%20String(txt))%7Bconst%20c%3Dch.charCodeAt(0)%3Bel.dispatchEvent(new%20KeyboardEvent('keydown'%2C%7Bkey%3Ach%2CkeyCode%3Ac%2Cbubbles%3Atrue%7D))%3Bconst%20kp%3Dnew%20KeyboardEvent('keypress'%2C%7Bkey%3Ach%2CcharCode%3Ac%2CkeyCode%3Ac%2Cwhich%3Ac%2Cbubbles%3Atrue%2Ccancelable%3Atrue%7D)%3Bel.dispatchEvent(kp)%3Bif(!kp.defaultPrevented)%7Bconst%20ml%3Del.maxLength%3E0%3Fel.maxLength%3A9999%3Bif(el.value.length%3Cml)%7Bset.call(el%2Cel.value%2Bch)%3B%7Del.dispatchEvent(new%20InputEvent('input'%2C%7Bdata%3Ach%2CinputType%3A'insertText'%2Cbubbles%3Atrue%7D))%3B%7Del.dispatchEvent(new%20KeyboardEvent('keyup'%2C%7Bkey%3Ach%2CkeyCode%3Ac%2Cbubbles%3Atrue%7D))%3B%7Del.dispatchEvent(new%20Event('change'%2C%7Bbubbles%3Atrue%7D))%3Bel.dispatchEvent(new%20Event('blur'%2C%7Bbubbles%3Atrue%7D))%3B%7D%3Bconst%20campos%3D%5B...document.querySelectorAll('input')%5D.filter(e%3D%3E%2F%5E(text%7Ctel%7Cemail%7Cnumber%7Csearch%7Cdate%7C)%24%2Fi.test(e.type)%26%26!e.disabled%26%26!e.readOnly%26%26vis(e))%3Bconst%20feitos%3D%5B%5D%2Cusado%3Dnew%20Set()%3Bfor(const%5Bnm%2Cre%2Cval%5Dof%20R)%7Bif(!val)continue%3Bfor(const%20e%20of%20campos)%7Bif(usado.has(e)%7C%7Ce.value)continue%3Bconst%20c%3Dctx(e)%3Bif(!re.test(c)%7C%7C(nm!%3D%3D'cpf'%26%26NAO.test(c))%7C%7C(nm%3D%3D%3D'cpf'%26%26%2Fbusca%7Cpesquis%7Csearch%7Crevenda%2Fi.test(c)))continue%3Blet%20v%3Dval%3Bif(e.type%3D%3D%3D'date'%26%26nm%3D%3D%3D'nascimento')%7Bconst%20m%3Dval.split('%2F')%3Bv%3Dm%5B2%5D%2B'-'%2Bm%5B1%5D%2B'-'%2Bm%5B0%5D%3Bconst%20set%3DObject.getOwnPropertyDescriptor(HTMLInputElement.prototype%2C'value').set%3Bset.call(e%2Cv)%3Be.dispatchEvent(new%20Event('input'%2C%7Bbubbles%3Atrue%7D))%3Be.dispatchEvent(new%20Event('change'%2C%7Bbubbles%3Atrue%7D))%3B%7Delse%20tipar(e%2Cv)%3Busado.add(e)%3Bfeitos.push(nm)%3Bbreak%3B%7D%7Dconst%20box%3Ddocument.createElement('div')%3Bbox.style.cssText%3D'position%3Afixed%3Bz-index%3A2147483647%3Bright%3A16px%3Bbottom%3A16px%3Bmax-width%3A320px%3Bbackground%3A%23111%3Bcolor%3A%23fff%3Bpadding%3A12px%2014px%3Bborder-radius%3A12px%3Bfont%3A14px%2F1.4%20sans-serif%3Bbox-shadow%3A0%208px%2030px%20rgba(0%2C0%2C0%2C.35)'%3Bbox.innerHTML%3D'%3Cb%20style%3D%22color%3A%23ff5a5f%22%3ECarmax%3C%2Fb%3E%20%C2%B7%20'%2B(feitos.length%3F'Preenchido%3A%20'%2Bfeitos.join('%2C%20')%2B'.%3Cbr%3E%3Csmall%3EConfira%20tudo%20antes%20de%20simular.%20Se%20aparecerem%20campos%20novos%2C%20toque%20de%20novo%20em%20Preencher%20Carmax.%3C%2Fsmall%3E'%3A'Nenhum%20campo%20reconhecido%20nesta%20tela.%20Avance%20at%C3%A9%20o%20formul%C3%A1rio%20e%20toque%20de%20novo.')%3Bdocument.body.appendChild(box)%3BsetTimeout(()%3D%3Ebox.remove()%2C9000)%3B%7D)()%3B";
+$('#bm').addEventListener('click', e => { e.preventDefault(); toast('Arraste este botão para a barra de favoritos'); });
+
+const BANCOS = [
+  { id: 'santander', n: 'Santander', c: '#ec0000', u: 'https://brpioneer.accenture.com/originacao-auto/showcase' },
+  { id: 'itau', n: 'Itaú', c: '#ec7000', u: 'https://www.credlineitau.com.br/' },
+  { id: 'bv', n: 'BV', c: '#1a3fd6', u: 'https://parceiro.bv.com.br/ng15-ppar-base-portal/simulacao' },
+  { id: 'safra', n: 'Safra', c: '#0f2a5c', u: 'https://financeira.safra.com.br/portal-veiculos/home' },
+  { id: 'pan', n: 'PAN', c: '#00a7e1', u: 'https://veiculos.bancopan.com.br/captura/inicio' },
+  { id: 'c6', n: 'C6', c: '#242424', u: 'https://c6auto.com.br/originacaolojista/login/store' }
+];
+let S = ler('sim-atual', { nome: '', cpf: '', nasc: '', tel: '', email: '', carro: null, placa: '', valor: 0, entrada: 0, prazo: '48', aut: false, res: {} });
+
+/* máscaras */
+const mCpf = v => { v = dig(v).slice(0, 11); return v.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2'); };
+const mData = v => { v = dig(v).slice(0, 8); return v.replace(/(\d{2})(\d)/, '$1/$2').replace(/(\d{2})(\d)/, '$1/$2'); };
+const mTel = v => { v = dig(v).slice(0, 11); if (v.length <= 2) return v ? '(' + v : ''; if (v.length <= 6) return `(${v.slice(0, 2)}) ${v.slice(2)}`; if (v.length <= 10) return `(${v.slice(0, 2)}) ${v.slice(2, 6)}-${v.slice(6)}`; return `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`; };
+function cpfOk(c) { c = dig(c); if (c.length !== 11 || /^(\d)\1+$/.test(c)) return false; for (const t of [9, 10]) { let s = 0; for (let i = 0; i < t; i++) s += +c[i] * (t + 1 - i); if ((s * 10 % 11) % 10 !== +c[t]) return false; } return true; }
+function dataOk(d) { const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(d); if (!m) return false; const dt = new Date(+m[3], m[2] - 1, +m[1]); if (dt.getDate() !== +m[1] || dt.getMonth() !== m[2] - 1) return false; const idade = (Date.now() - dt) / 31557600000; return idade >= 18 && idade < 100; }
+
+function validar() {
+  const c = $('#cpf').value, d = $('#nasc').value;
+  $('#mCpf').textContent = c && dig(c).length === 11 && !cpfOk(c) ? 'CPF inválido' : '';
+  $('#cpf').classList.toggle('err', !!$('#mCpf').textContent);
+  $('#mNasc').textContent = d.length === 10 && !dataOk(d) ? 'Data inválida (precisa ter 18+ anos)' : '';
+  $('#nasc').classList.toggle('err', !!$('#mNasc').textContent);
+  const fin = Math.max(0, (S.valor || 0) - (S.entrada || 0));
+  $('#fin').textContent = S.valor ? brl(fin) + (S.valor ? ` (${Math.round(S.entrada / S.valor * 100) || 0}% de entrada)` : '') : '—';
+  $('#bCopiar').disabled = !(S.nome.trim().split(/\s+/).length >= 2 && cpfOk(S.cpf) && dataOk(S.nasc) && S.aut);
+  gravar('sim-atual', S);
+}
+function preencher() {
+  $('#nome').value = S.nome; $('#cpf').value = S.cpf; $('#nasc').value = S.nasc; $('#tel').value = S.tel; $('#email').value = S.email;
+  $('#placa').value = S.placa; $('#valor').value = S.valor ? brl(S.valor) : ''; $('#entrada').value = S.entrada ? brl(S.entrada) : ''; $('#prazo').value = S.prazo; $('#aut').checked = S.aut;
+  $('#carro').value = S.carro ? S.carro.nome : ''; desenharBancos(); validar();
+}
+$('#nome').addEventListener('input', e => { S.nome = e.target.value.toUpperCase(); e.target.value = S.nome; validar(); });
+$('#cpf').addEventListener('input', e => { e.target.value = S.cpf = mCpf(e.target.value); validar(); });
+$('#nasc').addEventListener('input', e => { e.target.value = S.nasc = mData(e.target.value); validar(); });
+$('#tel').addEventListener('input', e => { e.target.value = S.tel = mTel(e.target.value); validar(); });
+$('#email').addEventListener('input', e => { S.email = e.target.value.trim(); validar(); });
+$('#placa').addEventListener('input', e => { e.target.value = S.placa = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); validar(); });
+['valor', 'entrada'].forEach(k => $('#' + k).addEventListener('input', e => { const v = +dig(e.target.value) || 0; S[k] = v; e.target.value = v ? brl(v) : ''; validar(); }));
+$('#prazo').addEventListener('change', e => { S.prazo = e.target.value; validar(); });
+$('#aut').addEventListener('change', e => { S.aut = e.target.checked; validar(); });
+
+/* estoque */
+let EST = [];
+const placaDe = c => { const m = /\/Fotos\/([A-Z]{3})-?(\d[A-Z0-9]\d{2})_/.exec(c.capa || (c.fotos || [])[0] || ''); return m ? m[1] + m[2] : ''; };
+fetch('../estoque.json?t=' + Date.now()).then(r => r.json()).then(d => { EST = (d.carros || []).map(c => ({ ...c, placa: placaDe(c) })); $('#carro').placeholder = `Buscar no estoque (${EST.length} carros) ou deixe vazio`; }).catch(() => { $('#carro').placeholder = 'Não consegui carregar o estoque'; });
+{
+  const inp = $('#carro'), box = $('#lCarro');
+  const draw = () => { const q = N(inp.value).split(/\s+/).filter(Boolean); const v = EST.filter(c => { const s = N(`${c.nome} ${c.ano} ${c.placa} ${c.cor}`); return q.every(w => s.includes(w)); }).slice(0, 40);
+    box.innerHTML = v.length ? v.map(c => `<button data-id="${esc(c.loja + ':' + c.id)}">${c.capa ? `<img src="${esc(c.capa)}" alt="" loading="lazy">` : ''}<span>${esc(c.nome)}<small>${esc(c.ano)} · ${(+c.km || 0).toLocaleString('pt-BR')} km · ${c.preco ? brl(c.preco) : ''}${c.placa ? ' · ' + c.placa : ''}</small></span></button>`).join('') : '<p class="nota" style="padding:10px">Nada encontrado</p>'; box.classList.add('on'); };
+  inp.addEventListener('focus', () => { inp.select(); draw(); }); inp.addEventListener('input', draw);
+  inp.addEventListener('blur', () => setTimeout(() => { box.classList.remove('on'); inp.value = S.carro ? S.carro.nome : inp.value; }, 150));
+  box.addEventListener('mousedown', e => e.preventDefault());
+  box.addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if (!b) return; const c = EST.find(x => x.loja + ':' + x.id === b.dataset.id); if (!c) return;
+    S.carro = { nome: c.nome, ano: c.ano, km: c.km, loja: c.loja }; S.placa = c.placa || ''; S.valor = +c.preco || 0; if (!S.entrada && S.valor) S.entrada = Math.round(S.valor * 0.3 / 1000) * 1000;
+    box.classList.remove('on'); inp.blur(); preencher(); });
+}
+
+/* copiar */
+$('#bCopiar').onclick = async () => {
+  const d = { v: 1, nome: S.nome.trim(), cpf: S.cpf, nasc: S.nasc, tel: S.tel, email: S.email, placa: S.placa, valor: S.valor ? S.valor.toLocaleString('pt-BR') + ',00' : '', entrada: S.entrada ? S.entrada.toLocaleString('pt-BR') + ',00' : '', prazo: S.prazo, veiculo: S.carro ? S.carro.nome : '' };
+  const txt = 'CARMAX-SIM:' + JSON.stringify(d);
+  try { await navigator.clipboard.writeText(txt); toast('Copiado! Agora abra o banco e toque em Preencher Carmax'); }
+  catch (e) { prompt('Copie este texto (Ctrl+C):', txt); }
+};
+
+/* bancos */
+function desenharBancos() {
+  $('#bancos').innerHTML = BANCOS.map(b => { const r = S.res[b.id] || {}; return `<div class="banco ${r.st || ''}" data-b="${b.id}"><div class="top"><span class="lg" style="background:${b.c}">${esc(b.n.slice(0, 3).toUpperCase())}</span><b>${esc(b.n)}</b><a href="${b.u}" target="carmax-${b.id}" rel="noopener">Abrir ↗</a></div>
+  <div class="res"><select data-k="st"><option value="">Resultado…</option>${[['aprovado', 'Aprovado'], ['analise', 'Em análise'], ['recusado', 'Recusado']].map(([v, t]) => `<option value="${v}"${r.st === v ? ' selected' : ''}>${t}</option>`).join('')}</select><input data-k="parc" inputmode="numeric" placeholder="Parcela" value="${r.parc ? brl(r.parc) : ''}"><input data-k="taxa" inputmode="decimal" placeholder="Taxa %" value="${esc(r.taxa || '')}"></div></div>`; }).join('');
+}
+$('#bancos').addEventListener('input', e => { const b = e.target.closest('[data-b]'); if (!b) return; const k = e.target.dataset.k; const r = S.res[b.dataset.b] = S.res[b.dataset.b] || {};
+  if (k === 'parc') { r.parc = +dig(e.target.value) || 0; e.target.value = r.parc ? brl(r.parc) : ''; } else r[k] = e.target.value;
+  if (k === 'st') b.className = 'banco ' + r.st; gravar('sim-atual', S); });
+$('#bLimparRes').onclick = () => { S.res = {}; desenharBancos(); gravar('sim-atual', S); };
+$('#bResumo').onclick = () => {
+  const st = { aprovado: '✅ Aprovado', analise: '⏳ Em análise', recusado: '❌ Recusado' };
+  const linhas = ['*SIMULAÇÃO DE FINANCIAMENTO – CARMAX*', '', `Cliente: ${S.nome}`, S.carro ? `Veículo: ${S.carro.nome} ${S.carro.ano || ''}` : '', S.valor ? `Valor: ${brl(S.valor)} · Entrada: ${brl(S.entrada)} · Prazo: ${S.prazo}x` : '', '',
+    ...BANCOS.filter(b => S.res[b.id] && (S.res[b.id].st || S.res[b.id].parc)).map(b => { const r = S.res[b.id]; return `*${b.n}:* ${st[r.st] || ''}${r.parc ? ' · ' + S.prazo + 'x de ' + brl(r.parc) : ''}${r.taxa ? ' · taxa ' + r.taxa + '%' : ''}`; })].filter((l, i, a) => l !== '' || a[i - 1] !== '');
+  location.href = 'https://wa.me/?text=' + encodeURIComponent(linhas.join('\n'));
+};
+$('#bNovo').onclick = () => { S = { nome: '', cpf: '', nasc: '', tel: '', email: '', carro: null, placa: '', valor: 0, entrada: 0, prazo: '48', aut: false, res: {} }; preencher(); try { navigator.clipboard.writeText(''); } catch (e) {} toast('Pronto para um novo cliente'); window.scrollTo({ top: 0 }); };
+if (!ler('sim-instalado', false)) { $('#inst').open = true; gravar('sim-instalado', true); }
+preencher();
+}
+</script>
+</body>
+</html>
