@@ -136,8 +136,22 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
     </div>
     <div class="g2">
       <div><label class="l" for="cor">Cor</label><input class="in" id="cor" placeholder="Ex.: Prata"></div>
-      <div><label class="l" for="cliente">Cliente</label><input class="in" id="cliente" placeholder="Nome do cliente"></div>
+      <div><label class="l" for="detalhe">Detalhes do veículo</label><input class="in" id="detalhe" placeholder="Ex.: com teto solar"></div>
     </div>
+  </section>
+
+  <!-- dados do cliente -->
+  <section class="card">
+    <h2><span class="n">👤</span>Dados do cliente</h2>
+    <div class="g2">
+      <div><label class="l" for="vendedor">Vendedor</label><input class="in" id="vendedor" placeholder="Seu nome"></div>
+      <div><label class="l" for="cliente">Nome do cliente</label><input class="in" id="cliente" placeholder="Nome do cliente"></div>
+    </div>
+    <div class="g2">
+      <div><label class="l" for="telefone">Telefone</label><input class="in" id="telefone" inputmode="tel" placeholder="13 99999-9999"></div>
+      <div><label class="l" for="origem">Origem do contato</label><input class="in" id="origem" list="origens" placeholder="Ex.: passagem"></div>
+    </div>
+    <datalist id="origens"><option value="passagem"><option value="WhatsApp"><option value="Instagram"><option value="Facebook"><option value="Napista"><option value="Webmotors"><option value="OLX"><option value="indicação"><option value="site Carmax"><option value="cliente da loja"></datalist>
   </section>
 
   <!-- 2. estado -->
@@ -155,7 +169,8 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 
   <!-- 4. troca -->
   <section class="card">
-    <h2><span class="n">4</span>Carro da troca (meu estoque)</h2>
+    <h2><span class="n">4</span>Veículo desejado (meu estoque)</h2>
+    <p class="nota" style="margin:-6px 0 8px">Deixe vazio se for somente venda.</p>
     <div class="busca"><input class="in" id="troca" placeholder="Carregando estoque…" autocomplete="off"><div class="lista" id="lTroca"></div></div>
     <div class="troca" id="trocaBox"></div>
   </section>
@@ -165,10 +180,12 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
     <h2><span class="n">5</span>Resultado</h2>
     <div id="calc"><p class="vazio">Escolha marca, modelo e ano para buscar a FIPE.</p></div>
     <div class="alerta" id="alerta"></div>
-    <label class="l" for="proposta">Proposta final ao cliente (opcional)</label>
-    <input class="in" id="proposta" inputmode="numeric" placeholder="R$">
+    <label class="l" for="pretendido">Valor pretendido pelo cliente</label>
+    <input class="in" id="pretendido" placeholder="Ex.: quer a FIPE / R$ 110.000">
+    <label class="l" for="proposta">Minha ideia de valor</label>
+    <input class="in" id="proposta" inputmode="numeric" placeholder="R$ (se vazio, vai o valor sugerido)">
     <label class="l" for="obs">Observações</label>
-    <textarea class="in" id="obs" placeholder="Ex.: dono único, revisões na concessionária, quer usar na troca do Compass…"></textarea>
+    <textarea class="in" id="obs" placeholder="Se não tiver, deixe vazio"></textarea>
   </section>
 </main>
 
@@ -215,8 +232,8 @@ let CFG = Object.fromEntries(Object.entries(PADRAO).map(([k, o]) => [k, (ler('av
 
 /* ---------- estado da avaliação ---------- */
 const novo = () => ({ id: 'a' + Date.now(), criado: new Date().toISOString(), tipo: 'carros', marca: null, modelo: null, ano: null, fipe: null,
-  km: '', webmotors: 0, wmVersao: '', placa: '', cor: '', cliente: '', proposta: '', obs: '',
-  e: { pintura: 0, martelinho: 0, pneu: 0, parabrisa: false, revisao: true, chave: true, interior: 'bom', mecanica: 'ok', mecanicaValor: 0, sinistro: false, outros: 0 },
+  km: '', webmotors: 0, wmVersao: '', placa: '', cor: '', detalhe: '', cliente: '', telefone: '', origem: '', vendedor: ler('aval-vendedor', 'Nickolas'), pretendido: '', proposta: '', obs: '',
+  e: { ar: 'gelado', freios: 'ok', motor: 'ok', cambio: 'ok', amort: 'top', donos: 'unico', pintura: 0, martelinho: 0, pneu: 0, parabrisa: false, revisao: true, revTxt: '', pneuTxt: '', chave: true, interior: 'bom', mecanicaValor: 0, sinistro: false, outros: 0 },
   fotos: [], prints: [], troca: null });
 let A = novo();
 
@@ -303,18 +320,25 @@ $('#tipo').addEventListener('click', async e => {
 });
 
 /* ---------- estado do veículo ---------- */
+const OK3 = [['ok', 'OK'], ['atencao', 'Atenção'], ['problema', 'Problema']];
 const ITENS = [
+  { k: 'ar', t: 'Ar-condicionado', tipo: 'op', ops: [['gelado', 'Gelado'], ['fraco', 'Fraco'], ['nao', 'Não funciona'], ['sem', 'Não tem']] },
+  { k: 'freios', t: 'Freios', tipo: 'op', ops: OK3 },
+  { k: 'motor', t: 'Motor', tipo: 'op', ops: OK3 },
+  { k: 'cambio', t: 'Câmbio', tipo: 'op', ops: OK3, extra: true },
+  { k: 'amort', t: 'Amortecedores', tipo: 'op', ops: [['top', 'Top'], ['ok', 'OK'], ['verificar', 'Verificar'], ['trocar', 'Trocar']] },
+  { k: 'donos', t: 'Proprietários', tipo: 'op', ops: [['unico', 'Único dono'], ['2', '2 donos'], ['3', '3 ou mais']] },
   { k: 'pintura', t: 'Peças com pintura / retoque', s: () => `${brl(CFG.pintura)} por peça`, tipo: 'cont', max: 12 },
   { k: 'martelinho', t: 'Amassados (martelinho)', s: () => `${brl(CFG.martelinho)} cada`, tipo: 'cont', max: 12 },
-  { k: 'pneu', t: 'Pneus a trocar', s: () => `${brl(CFG.pneu)} cada`, tipo: 'cont', max: 5 },
+  { k: 'pneu', t: 'Pneus a trocar', s: () => `${brl(CFG.pneu)} cada`, tipo: 'cont', max: 5, txt: 'pneuTxt', ph: 'Estado dos pneus. Ex.: 80%' },
   { k: 'parabrisa', t: 'Para-brisa trincado', s: () => brl(CFG.parabrisa), tipo: 'sim' },
-  { k: 'revisao', t: 'Revisões em dia', s: () => `Se não: −${brl(CFG.revisao)}`, tipo: 'sim' },
+  { k: 'revisao', t: 'Revisões em dia', s: () => `Se não: −${brl(CFG.revisao)}`, tipo: 'sim', txt: 'revTxt', ph: 'Onde/quais? Ex.: todas na CSS' },
   { k: 'chave', t: 'Tem chave reserva', s: () => `Se não: −${brl(CFG.chave)}`, tipo: 'sim' },
   { k: 'interior', t: 'Interior (bancos, forros, painel)', tipo: 'op', ops: [['bom', 'Bom'], ['regular', 'Regular'], ['ruim', 'Ruim']] },
-  { k: 'mecanica', t: 'Motor e câmbio', tipo: 'op', ops: [['ok', 'OK'], ['atencao', 'Atenção'], ['problema', 'Problema']], extra: true },
   { k: 'sinistro', t: 'Sinistro / leilão / remarcado', s: () => `Desconta ${CFG.sinistro}% do valor`, tipo: 'sim' },
   { k: 'outros', t: 'Outros reparos', s: () => 'Valor estimado', tipo: 'valor' }
 ];
+const mecOk = () => !['motor', 'cambio', 'freios'].some(k => A.e[k] !== 'ok');
 function desenharEstado() {
   $('#estado').innerHTML = ITENS.map(i => {
     let ctl = '';
@@ -322,7 +346,7 @@ function desenharEstado() {
     if (i.tipo === 'sim') ctl = `<label class="sw"><input type="checkbox" data-k="${i.k}" ${A.e[i.k] ? 'checked' : ''} aria-label="${esc(i.t)}"><i></i></label>`;
     if (i.tipo === 'valor') ctl = `<input class="money" data-k="${i.k}" inputmode="numeric" placeholder="R$ 0" value="${A.e[i.k] ? brl(A.e[i.k]) : ''}">`;
     if (i.tipo === 'op') ctl = `<div class="chips" data-k="${i.k}">${i.ops.map(([v, r]) => `<button data-v="${v}" class="${A.e[i.k] === v ? 'on' : ''}">${r}</button>`).join('')}</div>`;
-    const extra = i.extra && A.e.mecanica !== 'ok' ? `<div style="margin-top:8px;display:flex;align-items:center;gap:8px"><small style="color:var(--mut)">Custo estimado do reparo</small><input class="money" data-k="mecanicaValor" inputmode="numeric" placeholder="R$ 0" value="${A.e.mecanicaValor ? brl(A.e.mecanicaValor) : ''}"></div>` : '';
+    const extra = (i.extra && mecOk() === false ? `<div style="margin-top:8px;display:flex;align-items:center;gap:8px"><small style="color:var(--mut)">Custo do reparo (motor/câmbio/freios)</small><input class="money" data-k="mecanicaValor" inputmode="numeric" placeholder="R$ 0" value="${A.e.mecanicaValor ? brl(A.e.mecanicaValor) : ''}"></div>` : '') + (i.txt ? `<input class="in" data-t="${i.txt}" style="margin-top:8px;height:40px;font-size:14px" placeholder="${esc(i.ph)}" value="${esc(A.e[i.txt] || '')}">` : '');
     return `<div class="item" style="${i.tipo === 'op' ? 'flex-wrap:wrap' : ''}"><div class="t"><b>${esc(i.t)}</b>${i.s ? `<small>${esc(i.s())}</small>` : ''}${extra}</div>${ctl}</div>`;
   }).join('');
 }
@@ -332,7 +356,7 @@ $('#estado').addEventListener('click', e => {
   const ch = b.closest('.chips'); if (ch) { A.e[ch.dataset.k] = b.dataset.v; desenharEstado(); calcular(); }
 });
 $('#estado').addEventListener('change', e => { if (e.target.type === 'checkbox') { A.e[e.target.dataset.k] = e.target.checked; calcular(); } });
-$('#estado').addEventListener('input', e => { if (e.target.classList.contains('money')) { const v = num(e.target.value); A.e[e.target.dataset.k] = v; e.target.value = v ? brl(v) : ''; calcular(); } });
+$('#estado').addEventListener('input', e => { if (e.target.dataset.t) { A.e[e.target.dataset.t] = e.target.value; return; } if (e.target.classList.contains('money')) { const v = num(e.target.value); A.e[e.target.dataset.k] = v; e.target.value = v ? brl(v) : ''; calcular(); } });
 
 /* ---------- cálculo ---------- */
 function calcular() {
@@ -353,7 +377,7 @@ function calcular() {
     ['Pintura / retoque', A.e.pintura * CFG.pintura], ['Martelinho', A.e.martelinho * CFG.martelinho], ['Pneus', A.e.pneu * CFG.pneu],
     ['Para-brisa', A.e.parabrisa ? CFG.parabrisa : 0], ['Revisão atrasada', A.e.revisao ? 0 : CFG.revisao], ['Chave reserva', A.e.chave ? 0 : CFG.chave],
     ['Interior', A.e.interior === 'regular' ? CFG.interiorReg : A.e.interior === 'ruim' ? CFG.interiorRuim : 0],
-    ['Motor / câmbio', A.e.mecanica !== 'ok' ? A.e.mecanicaValor : 0], ['Outros reparos', A.e.outros]
+    ['Motor / câmbio / freios', !mecOk() ? A.e.mecanicaValor : 0], ['Outros reparos', A.e.outros]
   ].filter(r => r[1] > 0);
   const totRep = rep.reduce((s, r) => s + r[1], 0);
   const fixos = CFG.preparo + CFG.documentacao, margem = mercado * CFG.margem / 100;
@@ -371,16 +395,16 @@ function calcular() {
     `<div class="total"><small>Valor sugerido de compra</small><b>${brl(r5(sug))}</b><span class="fx">Faixa de negociação: ${brl(r5(sug * 0.97))} a ${brl(r5(sug * 1.03))} · ${(sug / fipe * 100).toFixed(0)}% da FIPE</span></div>`;
   const avisos = [];
   if (!km && !zero) avisos.push('Informe a quilometragem para ajustar o valor.');
-  if (A.e.mecanica === 'problema' && !A.e.mecanicaValor) avisos.push('Marcou problema no motor/câmbio: informe o custo estimado do reparo.');
+  if (!mecOk() && !A.e.mecanicaValor) avisos.push('Motor, câmbio ou freios com atenção/problema: informe o custo estimado do reparo.');
   if (A.e.sinistro) avisos.push('Carro com sinistro/leilão: confirme a política da loja antes de fazer proposta.');
   if (!A.fotos.length) avisos.push('Nenhuma foto ainda.');
   al.innerHTML = avisos.join('<br>'); al.classList.toggle('on', avisos.length > 0);
   return { fipe, wm, km, esperado, ajKm, mercado, totRep, fixos, margem, sug: r5(sug), min: r5(sug * 0.97), max: r5(sug * 1.03), rep };
 }
-['km', 'placa', 'cor', 'cliente', 'obs'].forEach(k => $('#' + k).addEventListener('input', e => {
+['km', 'placa', 'cor', 'detalhe', 'cliente', 'telefone', 'origem', 'vendedor', 'pretendido', 'obs'].forEach(k => $('#' + k).addEventListener('input', e => {
   if (k === 'km') { const v = num(e.target.value); e.target.value = v ? v.toLocaleString('pt-BR') : ''; A.km = v; calcular(); }
   else if (k === 'placa') { e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); A.placa = e.target.value; }
-  else A[k] = e.target.value;
+  else { A[k] = e.target.value; if (k === 'vendedor') gravar('aval-vendedor', A[k]); }
 }));
 $('#proposta').addEventListener('input', e => { const v = num(e.target.value); e.target.value = v ? brl(v) : ''; A.proposta = v; });
 
@@ -430,7 +454,7 @@ function preencher() {
   $('#tipo').querySelectorAll('button').forEach(x => x.classList.toggle('on', x.dataset.t === A.tipo));
   $('#marca').value = A.marca ? A.marca.nome : ''; $('#modelo').value = A.modelo ? A.modelo.nome : ''; $('#modelo').disabled = !A.marca;
   $('#ano').innerHTML = A.ano ? `<option value="${esc(A.ano.codigo)}">${esc(A.ano.nome)}</option>` : '<option value="">Escolha o modelo primeiro</option>'; $('#ano').disabled = !A.modelo;
-  $('#km').value = A.km ? (+A.km).toLocaleString('pt-BR') : ''; $('#placa').value = A.placa || ''; $('#cor').value = A.cor || ''; $('#cliente').value = A.cliente || '';
+  $('#km').value = A.km ? (+A.km).toLocaleString('pt-BR') : ''; $('#placa').value = A.placa || ''; $('#cor').value = A.cor || ''; $('#cliente').value = A.cliente || ''; ['detalhe', 'telefone', 'origem', 'vendedor', 'pretendido'].forEach(k => $('#' + k).value = A[k] || '');
   $('#proposta').value = A.proposta ? brl(A.proposta) : ''; $('#wmVal').value = A.webmotors ? brl(A.webmotors) : ''; $('#obs').value = A.obs || '';
   mostrarFipe(); desenharEstado(); desenharFotos(); desenharTroca(); calcular();
   if (A.marca) api(`${A.tipo}/marcas/${A.marca.codigo}/modelos`).then(r => { MODELOS = r.modelos; }).catch(() => {});
@@ -501,24 +525,52 @@ function desenharTroca() {
 $('#bShare').onclick = async () => {
   const r = calcular(); if (!r) { toast('Escolha o veículo e o ano primeiro'); return; }
   salvar(true);
+  const V = (m, k) => m[A.e[k]] || A.e[k];
+  const st = { ok: 'ok', atencao: 'atenção', problema: 'problema' };
+  const kmTxt = A.km ? (+A.km).toLocaleString('pt-BR') + ' km' : 'não informado';
+  const minha = A.proposta || r.sug;
+  const t = A.troca;
   const linhas = [
-    `*Avaliação de veículo · Carmax*`,
-    `${A.marca.nome} ${A.modelo.nome} · ${A.ano.nome}`,
-    [A.placa && 'Placa ' + A.placa, A.cor, A.km && (+A.km).toLocaleString('pt-BR') + ' km'].filter(Boolean).join(' · '),
-    A.cliente ? 'Cliente: ' + A.cliente : '',
+    '📋 *PROPOSTA PARA ANÁLISE DE AVALIAÇÃO – CARMAX / OUTLET*',
     '',
+    '🚘 *VEÍCULO DESEJADO*',
+    ...(t ? [`* Veículo: ${t.nome}`, `* Placa: *${t.placa || 'não informada'}*`, `* Ano: ${t.ano}`, `* Quilometragem: ${(+t.km || 0).toLocaleString('pt-BR')} km`, '* Origem: loja', `* Unidade: ${t.loja === 'outlet' ? 'Outlet' : 'Carmax'}`] : ['Somente venda']),
+    '',
+    '👤 *DADOS DO CLIENTE / VENDEDOR*',
+    `* Vendedor: ${A.vendedor || ''}`,
+    `* Nome do cliente: ${A.cliente || ''}`,
+    `* Telefone: ${A.telefone || ''}`,
+    `* Origem do contato: ${A.origem || ''}`,
+    '',
+    '🚗 *VEÍCULO DA TROCA:*',
+    `🚘 Veículo: ${A.marca.nome} ${A.modelo.nome}${A.detalhe ? ' ' + A.detalhe : ''}`,
+    A.placa ? `* Placa: ${A.placa}` : '',
+    A.cor ? `* Cor: ${A.cor}` : '',
+    `* Ar-condicionado: ${V({ gelado: 'gelado / ok', fraco: 'fraco', nao: 'não funciona', sem: 'não tem' }, 'ar')}`,
+    `* Km: ${kmTxt}`,
+    `* Ano: ${A.ano.nome}`,
+    `* Freios: ${V(st, 'freios')}`,
+    `* Motor: ${V(st, 'motor')}`,
+    `* Câmbio: ${V(st, 'cambio')}`,
+    `* Pneus: ${A.e.pneuTxt || (A.e.pneu ? A.e.pneu + ' a trocar' : 'bons')}`,
+    `* Peças: ${A.e.pintura}${A.e.martelinho ? ` (+ ${A.e.martelinho} amassado${A.e.martelinho > 1 ? 's' : ''})` : ''}`,
+    `* Amortecedores: ${V({ top: 'top', ok: 'ok', verificar: 'verificar', trocar: 'trocar' }, 'amort')}`,
+    `* Proprietários: ${V({ unico: 'único dono', 2: '2 donos', 3: '3 ou mais' }, 'donos')}`,
+    `* Revisões: ${A.e.revTxt || (A.e.revisao ? 'em dia' : 'atrasadas')}`,
+    A.e.interior !== 'bom' ? `* Interior: ${A.e.interior}` : '',
+    A.e.parabrisa ? '* Para-brisa: trincado' : '',
+    !A.e.chave ? '* Chave reserva: não tem' : '',
+    A.e.sinistro ? '* ⚠️ Sinistro / leilão / remarcado' : '',
+    '',
+    '💰 *IDEIA DE PREÇO DO CLIENTE*',
+    `* Valor pretendido: ${A.pretendido || ''}`,
+    `Minha ideia: *${brl(minha)}*`,
     `FIPE (${A.fipe.ref}): ${brl(r.fipe)}`,
-    A.wmVersao ? `Versão Webmotors: ${A.wmVersao}` : '',
-    r.wm ? `Média Webmotors: ${brl(r.wm)} (${r.wm >= r.fipe ? '+' : '−'}${Math.abs((r.wm / r.fipe - 1) * 100).toFixed(1).replace('.', ',')}% da FIPE)` : '',
-    (A.prints || []).length ? `${A.prints.length} print(s) de anúncios da Webmotors em anexo` : '',
-    `Mercado estimado: ${brl(r.mercado)}`,
-    r.rep.length ? 'Reparos: ' + r.rep.map(x => `${x[0]} ${brl(x[1])}`).join('; ') : 'Sem reparos apontados',
-    `*Valor sugerido: ${brl(r.sug)}* (faixa ${brl(r.min)} a ${brl(r.max)})`,
-    A.proposta ? `Proposta ao cliente: ${brl(A.proposta)}` : '',
-    ...(A.troca ? ['', `*Carro da troca (nosso estoque):*`, `${A.troca.nome} · ${A.troca.ano} · ${(+A.troca.km || 0).toLocaleString('pt-BR')} km`,
-      `Placa: *${A.troca.placa || 'não informada'}*` + (A.troca.preco ? ` · Preço: ${brl(A.troca.preco)}` : ''),
-      A.troca.preco ? `Diferença (troca − ${A.proposta ? 'proposta' : 'valor sugerido'}): *${brl(A.troca.preco - (A.proposta || r.sug))}*` : ''] : []),
-    A.obs ? 'Obs.: ' + A.obs : ''
+    r.wm ? `Média Webmotors${A.wmVersao ? ' (' + A.wmVersao + ')' : ''}: ${brl(r.wm)}` : '',
+    '',
+    `📌 *OBSERVAÇÕES / CONSIDERAÇÕES:* ${A.obs || ''}`,
+    '',
+    '🔧 *RETORNO DA AVALIAÇÃO*'
   ].filter((l, i, a) => l !== '' || (i > 0 && a[i - 1] !== '')).join('\n');
   const arqs = [];
   for (const [i, k] of (A.prints || []).entries()) { const b = await fotoGet(k); if (b) arqs.push(new File([b], `webmotors-${A.placa || 'carro'}-${i + 1}.jpg`, { type: 'image/jpeg' })); }
