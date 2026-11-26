@@ -102,7 +102,7 @@ const anoEx = a => extenso(+a);
 
 /* ---------- estoque ---------- */
 let EST = [], CAR = null, SEL = [], VERSAO = 0;
-fetch('../estoque.json?t=' + Date.now()).then(r => r.json()).then(d => { EST = (d.carros || []).filter(c => (c.fotos || []).length); $('#carro').placeholder = `Buscar no estoque (${EST.length} carros)`; }).catch(() => $('#carro').placeholder = 'Não consegui carregar o estoque');
+fetch('../estoque.json?t=' + Date.now()).then(r => r.json()).then(d => { EST = (d.carros || []).filter(c => (c.fotos || []).length >= 3); $('#carro').placeholder = `Buscar no estoque (${EST.length} carros)`; }).catch(() => $('#carro').placeholder = 'Não consegui carregar o estoque');
 const prox = u => 'https://wsrv.nl/?url=' + encodeURIComponent(String(u).replace(/^https?:\/\//, '')) + '&w=1280&output=jpg';
 {
   const inp = $('#carro'), box = $('#lCarro');
@@ -121,7 +121,8 @@ function escolheu() {
 $('#fotos').addEventListener('click', e => { const im = e.target.closest('img'); if (!im) return; const i = +im.dataset.i; if (SEL.includes(i)) { if (SEL.length > 1) SEL = SEL.filter(x => x !== i); } else if (SEL.length < 8) SEL.push(i); SEL.sort((a, b) => a - b); im.parentElement.querySelectorAll('img').forEach(x => x.classList.toggle('on', SEL.includes(+x.dataset.i))); carregarFotos().then(() => previa(0)); });
 
 /* ---------- roteiro ---------- */
-const nomeFala = n => String(n).replace(/(\d)\.(\d)/g, '$1 ponto $2').replace(/\b16v\b/ig, '').replace(/\bAut\.?\b/ig, 'automático').replace(/\s+/g, ' ').trim();
+const tit = s => String(s).toLowerCase().replace(/(^|\s)([a-zà-ú])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Gm|Vw|Bmw|Byd|Gwm|Jac|Ram|Suv|Tsi|Tgdi|Gdi|Cvt|Exl|Ex|Lx|Gli|Xei|Xre|Ltz|Lt|Rs|Gt|Hev|Phev)\b/g, m => m.toUpperCase());
+const nomeFala = n => tit(String(n)).replace(/(\d)\.(\d)/g, '$1 ponto $2').replace(/\b16v\b/ig, '').replace(/\bAut\.?\b/ig, 'automático').replace(/\s+/g, ' ').trim();
 function roteiro() {
   if (!CAR) return; const c = CAR, ano = String(c.ano || '').split('/').pop(), km = +c.km || 0, loja = c.loja === 'outlet' ? 'no Outlet Carmax' : 'na Carmax';
   const op = (c.opcionais || []).filter(o => !/air bag|computador/i.test(o)).slice(0, 3).map(o => o.toLowerCase());
