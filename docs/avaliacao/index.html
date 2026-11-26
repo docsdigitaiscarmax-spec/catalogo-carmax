@@ -51,6 +51,10 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 .troca .pl input{width:120px;height:36px;border:1px solid #d6d6dc;border-radius:9px;padding:0 9px;text-transform:uppercase;font-weight:700}
 .lista .tc{display:flex;gap:10px;align-items:center}.lista .tc img{width:56px;height:42px;object-fit:cover;border-radius:7px;background:#eee;flex:none}
 .lista .tc small{display:block;color:var(--mut);font-size:12px}
+.card h2 .e{font-size:18px;line-height:1}
+.sub{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin:18px 0 4px}
+.sv{margin-top:10px;display:inline-block;background:var(--soft);border-radius:99px;padding:6px 12px;font-weight:700;font-size:13px}
+.wm{margin-top:0;background:none;padding:0}
 .item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--soft)}
 .item:last-child{border-bottom:0}
 .item .t{flex:1}.item .t b{display:block;font-size:14.5px}.item .t small{color:var(--mut);font-size:12.5px}
@@ -107,9 +111,29 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
   <div class="sp"><button class="hb" id="bHist">Histórico</button><button class="hb" id="bCfg" aria-label="Configurações">⚙︎</button></div>
 </header>
 <main>
-  <!-- 1. veículo -->
   <section class="card">
-    <h2><span class="n">1</span>Veículo</h2>
+    <h2><span class="e">🚘</span>Veículo desejado</h2>
+    <p class="nota" style="margin:-6px 0 8px">Busque no seu estoque. Se o cliente só quer vender, deixe vazio: vai como "Somente venda".</p>
+    <div class="busca"><input class="in" id="troca" placeholder="Carregando estoque…" autocomplete="off"><div class="lista" id="lTroca"></div></div>
+    <div class="troca" id="trocaBox"></div>
+    <p class="sv" id="soVenda">Somente venda</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="e">👤</span>Dados do cliente / vendedor</h2>
+    <div class="g2">
+      <div><label class="l" for="vendedor">Vendedor</label><input class="in" id="vendedor" placeholder="Seu nome"></div>
+      <div><label class="l" for="cliente">Nome do cliente</label><input class="in" id="cliente" placeholder="Nome do cliente"></div>
+    </div>
+    <div class="g2">
+      <div><label class="l" for="telefone">Telefone</label><input class="in" id="telefone" inputmode="tel" placeholder="13 99999-9999"></div>
+      <div><label class="l" for="origem">Origem do contato</label><input class="in" id="origem" list="origens" placeholder="Ex.: passagem"></div>
+    </div>
+    <datalist id="origens"><option value="passagem"><option value="WhatsApp"><option value="Instagram"><option value="Facebook"><option value="Napista"><option value="Webmotors"><option value="OLX"><option value="indicação"><option value="site Carmax"><option value="cliente da loja"></datalist>
+  </section>
+
+  <section class="card">
+    <h2><span class="e">🚗</span>Veículo da troca</h2>
     <div class="seg" id="tipo"><button data-t="carros" class="on">Carro</button><button data-t="motos">Moto</button><button data-t="caminhoes">Caminhão</button></div>
     <label class="l" for="marca">Marca</label>
     <div class="busca"><input class="in" id="marca" placeholder="Carregando marcas…" autocomplete="off"><div class="lista" id="lMarca"></div></div>
@@ -118,6 +142,27 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
     <label class="l" for="ano">Ano modelo</label>
     <select class="in" id="ano" disabled><option value="">Escolha o modelo primeiro</option></select>
     <div class="fipe" id="fipe"><small id="fRef">Tabela FIPE</small><b id="fVal">—</b><div class="m" id="fMod"></div></div>
+    <div class="g2">
+      <div><label class="l" for="km">Quilometragem</label><input class="in" id="km" inputmode="numeric" placeholder="Ex.: 45.000"></div>
+      <div><label class="l" for="placa">Placa</label><input class="in" id="placa" placeholder="ABC1D23" maxlength="8" style="text-transform:uppercase"></div>
+    </div>
+    <div class="g2">
+      <div><label class="l" for="cor">Cor</label><input class="in" id="cor" placeholder="Ex.: Prata"></div>
+      <div><label class="l" for="detalhe">Detalhes do veículo</label><input class="in" id="detalhe" placeholder="Ex.: com teto solar"></div>
+    </div>
+    <h3 class="sub">Estado do veículo</h3>
+    <div id="estado"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="e">📷</span>Fotos do veículo da troca</h2>
+    <div class="fotos" id="fotos"></div>
+    <p class="nota">Tire fotos da frente, traseira, laterais, painel (com km), bancos, pneus e de cada avaria.</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="e">🔎</span>Pesquisa Webmotors</h2>
+    <p class="nota" id="wmVazio">Escolha marca, modelo e ano do veículo da troca para abrir a pesquisa.</p>
     <div class="wm" id="wm">
       <p class="wmdica" id="wmDica"></p>
       <label class="l" for="wmVer">Versão exata na Webmotors</label>
@@ -130,61 +175,21 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
       <label class="l">Prints de anúncios na Webmotors</label>
       <div class="fotos" id="prints"></div>
     </div>
-    <div class="g2">
-      <div><label class="l" for="km">Quilometragem</label><input class="in" id="km" inputmode="numeric" placeholder="Ex.: 45.000"></div>
-      <div><label class="l" for="placa">Placa</label><input class="in" id="placa" placeholder="ABC1D23" maxlength="8" style="text-transform:uppercase"></div>
-    </div>
-    <div class="g2">
-      <div><label class="l" for="cor">Cor</label><input class="in" id="cor" placeholder="Ex.: Prata"></div>
-      <div><label class="l" for="detalhe">Detalhes do veículo</label><input class="in" id="detalhe" placeholder="Ex.: com teto solar"></div>
-    </div>
   </section>
 
-  <!-- dados do cliente -->
-  <section class="card">
-    <h2><span class="n">👤</span>Dados do cliente</h2>
-    <div class="g2">
-      <div><label class="l" for="vendedor">Vendedor</label><input class="in" id="vendedor" placeholder="Seu nome"></div>
-      <div><label class="l" for="cliente">Nome do cliente</label><input class="in" id="cliente" placeholder="Nome do cliente"></div>
-    </div>
-    <div class="g2">
-      <div><label class="l" for="telefone">Telefone</label><input class="in" id="telefone" inputmode="tel" placeholder="13 99999-9999"></div>
-      <div><label class="l" for="origem">Origem do contato</label><input class="in" id="origem" list="origens" placeholder="Ex.: passagem"></div>
-    </div>
-    <datalist id="origens"><option value="passagem"><option value="WhatsApp"><option value="Instagram"><option value="Facebook"><option value="Napista"><option value="Webmotors"><option value="OLX"><option value="indicação"><option value="site Carmax"><option value="cliente da loja"></datalist>
-  </section>
-
-  <!-- 2. estado -->
-  <section class="card">
-    <h2><span class="n">2</span>Estado do veículo</h2>
-    <div id="estado"></div>
-  </section>
-
-  <!-- 3. fotos -->
-  <section class="card">
-    <h2><span class="n">3</span>Fotos</h2>
-    <div class="fotos" id="fotos"></div>
-    <p class="nota">Tire fotos da frente, traseira, laterais, painel (com km), bancos, pneus e de cada avaria.</p>
-  </section>
-
-  <!-- 4. troca -->
-  <section class="card">
-    <h2><span class="n">4</span>Veículo desejado (meu estoque)</h2>
-    <p class="nota" style="margin:-6px 0 8px">Deixe vazio se for somente venda.</p>
-    <div class="busca"><input class="in" id="troca" placeholder="Carregando estoque…" autocomplete="off"><div class="lista" id="lTroca"></div></div>
-    <div class="troca" id="trocaBox"></div>
-  </section>
-
-  <!-- 5. resultado -->
   <section class="card res">
-    <h2><span class="n">5</span>Resultado</h2>
-    <div id="calc"><p class="vazio">Escolha marca, modelo e ano para buscar a FIPE.</p></div>
-    <div class="alerta" id="alerta"></div>
+    <h2><span class="e">💰</span>Ideia de preço do cliente</h2>
     <label class="l" for="pretendido">Valor pretendido pelo cliente</label>
     <input class="in" id="pretendido" placeholder="Ex.: quer a FIPE / R$ 110.000">
     <label class="l" for="proposta">Minha ideia de valor</label>
     <input class="in" id="proposta" inputmode="numeric" placeholder="R$ (se vazio, vai o valor sugerido)">
-    <label class="l" for="obs">Observações</label>
+    <h3 class="sub">Cálculo de apoio (não vai na mensagem)</h3>
+    <div id="calc"><p class="vazio">Escolha marca, modelo e ano para buscar a FIPE.</p></div>
+    <div class="alerta" id="alerta"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="e">📌</span>Observações / considerações</h2>
     <textarea class="in" id="obs" placeholder="Se não tiver, deixe vazio"></textarea>
   </section>
 </main>
@@ -278,6 +283,7 @@ $('#ano').addEventListener('change', async () => {
 function mostrarFipe(carregando) {
   const b = $('#fipe');
   if (carregando) { b.classList.add('on'); $('#fVal').textContent = 'Buscando…'; $('#fMod').textContent = ''; $('#fRef').textContent = 'Tabela FIPE'; return; }
+  $('#wmVazio').style.display = A.fipe ? 'none' : '';
   if (!A.fipe) { b.classList.remove('on'); $('#wm').classList.remove('on'); return; }
   b.classList.add('on'); $('#wm').classList.add('on'); atualizarWm(); $('#fVal').textContent = A.fipe.texto || brl(A.fipe.valor);
   $('#fRef').textContent = `Tabela FIPE · ${A.fipe.ref} · código ${A.fipe.codigo}`;
@@ -495,6 +501,7 @@ fetch('../estoque.json?t=' + Date.now()).then(r => r.json()).then(d => {
 const lojaN = l => l === 'outlet' ? 'Outlet' : 'Carmax';
 function desenharTroca() {
   const t = A.troca, box = $('#trocaBox');
+  $('#soVenda').style.display = t ? 'none' : '';
   if (!t) { box.classList.remove('on'); box.innerHTML = ''; $('#troca').value = ''; return; }
   $('#troca').value = t.nome;
   box.innerHTML = `${t.capa ? `<img src="${esc(t.capa)}" alt="">` : ''}<div class="t"><b>${esc(t.nome)}</b><small>${esc(t.ano)} · ${(+t.km || 0).toLocaleString('pt-BR')} km · ${esc(t.cor || '')} · ${lojaN(t.loja)}</small><small><b style="display:inline">${t.preco ? brl(t.preco) : 'Consulte'}</b></small><div class="pl"><small>Placa</small><input id="trocaPlaca" maxlength="7" value="${esc(t.placa || '')}" placeholder="Digite"></div></div><button class="mini" id="trocaX" aria-label="Tirar carro da troca">×</button>`;
