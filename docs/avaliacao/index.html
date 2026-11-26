@@ -638,12 +638,11 @@ function caixaAlfa(img) {
 async function compor(recorteBlob) {
   const W = 1200, H = 900, img = await createImageBitmap(recorteBlob), b = caixaAlfa(img);
   const cv = fundoEstudio(W, H), g = cv.getContext('2d');
-  const sc = Math.min(W * 0.84 / b.w, H * 0.62 / b.h), w = b.w * sc, h = b.h * sc, x = (W - w) / 2, base = H * 0.88, y = base - h;
+  const sc = Math.min(W * 0.78 / b.w, H * 0.58 / b.h), w = b.w * sc, h = b.h * sc, x = (W - w) / 2, base = H * 0.88, y = base - h;
   g.save(); g.filter = 'blur(22px)'; g.fillStyle = 'rgba(0,0,0,.55)'; g.beginPath(); g.ellipse(W / 2, base - 6, w * 0.47, h * 0.07, 0, 0, Math.PI * 2); g.fill(); g.restore();
   g.drawImage(img, b.x, b.y, b.w, b.h, x, y, w, h);
   return new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.88));
 }
-window.__estudio = { fundoEstudio, compor };
 let ESTQ = [];
 async function porNoEstoque(x) {
   const ids = SLOTS.map(s => s.id).filter(id => x.slot && x.slot[id]);
