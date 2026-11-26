@@ -88,8 +88,6 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 .camPrev div{display:flex;gap:10px;padding:14px 14px calc(18px + var(--bot))}
 .camPrev button{flex:1;height:52px;border-radius:13px;border:0;font-weight:800;font-size:15px}
 #camRefazer{background:#2a2a30;color:#fff}#camOk{background:#1faa52;color:#fff}
-.hist{flex-wrap:wrap}.mini.est{background:var(--ink);color:#fff;border-color:var(--ink)}
-.est4{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}.est4 .f{aspect-ratio:4/3}
 .item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--soft)}
 .item:last-child{border-bottom:0}
 .item .t{flex:1}.item .t b{display:block;font-size:14.5px}.item .t small{color:var(--mut);font-size:12.5px}
@@ -240,7 +238,6 @@ textarea.in{height:auto;min-height:70px;padding:10px 12px;resize:vertical}
 
 <div class="dlg" id="dHist"><div class="box"><h3>Avaliações salvas <button class="x" data-fecha>×</button></h3><div id="histLista"></div><p class="nota">As avaliações ficam salvas neste aparelho e navegador.</p></div></div>
 <div class="dlg" id="dCfg"><div class="box"><h3>Valores de referência <button class="x" data-fecha>×</button></h3><div id="cfgLista"></div><p class="nota">Ajuste com a gerência. Os valores ficam salvos neste aparelho.</p><div style="margin-top:12px"><button class="mini" id="cfgPadrao">Voltar aos valores padrão</button></div></div></div>
-<div class="dlg" id="dEst"><div class="box"><h3><span>📸 Fotos para o estoque<small id="estTit" style="display:block;font-size:13px;color:var(--mut);font-weight:600"></small></span><button class="x" data-fecha>×</button></h3><p class="nota" id="estSt" style="font-size:14px;color:var(--ink)"></p><div class="fotos est4" id="estGrade" style="margin-top:10px"></div><div id="estAcoes" style="display:none;margin-top:14px"><button class="guia" id="estEnviar" style="background:#1faa52">Enviar fotos no WhatsApp</button><button class="mini" id="estRefaz">Refazer recortes</button></div></div></div>
 <div class="toast" id="toast" role="status"></div>
 <div class="cam" id="cam" role="dialog" aria-label="Câmera guiada">
   <video id="camV" playsinline muted autoplay></video>
@@ -595,95 +592,6 @@ $('#camOk').onclick = async () => {
 $('#camPular').onclick = () => { const prox = SLOTS.findIndex((s, j) => j > CAM.i && (!CAM.seq || !A.slot[s.id])); if (prox >= 0) { CAM.i = prox; mostrarPasso(); } else fecharCamera(); };
 $('#camX').onclick = fecharCamera;
 
-/* ---------- pôr no estoque: fundo de estúdio ---------- */
-const EXTERNAS = ['frente', 'dde', 'ddd', 'dtd', 'dte', 'tras'];
-let RECORTE = null;
-async function recortador() {
-  if (!RECORTE) RECORTE = import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1/+esm').then(m => m.removeBackground || m.default);
-  return RECORTE;
-}
-function fundoEstudio(W, H) {
-  const cv = document.createElement('canvas'); cv.width = W; cv.height = H; const g = cv.getContext('2d');
-  const hz = H * 0.53, xc = W * 0.34;
-  // parede do fundo
-  let gr = g.createLinearGradient(0, 0, 0, hz); gr.addColorStop(0, '#6f7277'); gr.addColorStop(1, '#8d9094');
-  g.fillStyle = gr; g.fillRect(0, 0, W, hz);
-  // teto
-  g.fillStyle = '#2c2e32'; g.beginPath(); g.moveTo(0, 0); g.lineTo(W, 0); g.lineTo(W, H * 0.05); g.lineTo(xc, H * 0.07); g.lineTo(0, 0); g.fill();
-  // parede lateral escura
-  gr = g.createLinearGradient(0, 0, xc, 0); gr.addColorStop(0, '#2a2c30'); gr.addColorStop(1, '#3e4045');
-  g.fillStyle = gr; g.beginPath(); g.moveTo(0, 0); g.lineTo(xc, H * 0.07); g.lineTo(xc, hz); g.lineTo(0, H * 0.62); g.closePath(); g.fill();
-  // fitas de LED
-  g.save(); g.shadowColor = 'rgba(255,255,255,.9)'; g.shadowBlur = 18; g.strokeStyle = '#fff'; g.lineCap = 'round';
-  [[W * 0.1, 0.018, 0.012, 0.5], [W * 0.22, 0.04, 0.03, 0.42], [xc, 0.07, 0.07, 0.3]].forEach(([x, y1, _, y2]) => { g.lineWidth = W * 0.006; g.beginPath(); g.moveTo(x, H * y1 + 4); g.lineTo(x, H * (y2 + 0.15)); g.stroke(); });
-  g.lineWidth = W * 0.005; g.beginPath(); g.moveTo(xc + 20, H * 0.065); g.lineTo(W * 0.62, H * 0.04); g.stroke();
-  g.restore();
-  // piso
-  gr = g.createLinearGradient(0, hz, 0, H); gr.addColorStop(0, '#a6a8ab'); gr.addColorStop(1, '#cfd0d2');
-  g.fillStyle = gr; g.beginPath(); g.moveTo(0, H * 0.62); g.lineTo(xc, hz); g.lineTo(W, hz); g.lineTo(W, H); g.lineTo(0, H); g.closePath(); g.fill();
-  // brilho suave no piso
-  gr = g.createRadialGradient(W * 0.5, H * 0.8, 10, W * 0.5, H * 0.8, W * 0.6); gr.addColorStop(0, 'rgba(255,255,255,.25)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
-  g.fillStyle = gr; g.fillRect(0, hz, W, H - hz);
-  return cv;
-}
-function caixaAlfa(img) {
-  const s = Math.min(1, 400 / Math.max(img.width, img.height));
-  const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(img.width * s)); c.height = Math.max(1, Math.round(img.height * s));
-  const g = c.getContext('2d'); g.drawImage(img, 0, 0, c.width, c.height);
-  const d = g.getImageData(0, 0, c.width, c.height).data; let x0 = c.width, y0 = c.height, x1 = 0, y1 = 0;
-  for (let y = 0; y < c.height; y++) for (let x = 0; x < c.width; x++) if (d[(y * c.width + x) * 4 + 3] > 40) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
-  if (x1 <= x0) return { x: 0, y: 0, w: img.width, h: img.height };
-  return { x: x0 / s, y: y0 / s, w: (x1 - x0 + 1) / s, h: (y1 - y0 + 1) / s };
-}
-async function compor(recorteBlob) {
-  const W = 1200, H = 900, img = await createImageBitmap(recorteBlob), b = caixaAlfa(img);
-  const cv = fundoEstudio(W, H), g = cv.getContext('2d');
-  const sc = Math.min(W * 0.78 / b.w, H * 0.58 / b.h), w = b.w * sc, h = b.h * sc, x = (W - w) / 2, base = H * 0.88, y = base - h;
-  g.save(); g.filter = 'blur(22px)'; g.fillStyle = 'rgba(0,0,0,.55)'; g.beginPath(); g.ellipse(W / 2, base - 6, w * 0.47, h * 0.07, 0, 0, Math.PI * 2); g.fill(); g.restore();
-  g.drawImage(img, b.x, b.y, b.w, b.h, x, y, w, h);
-  return new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.88));
-}
-let ESTQ = [];
-async function porNoEstoque(x) {
-  const temSlot = x.slot && Object.keys(x.slot).length;
-  const itens = temSlot
-    ? [...SLOTS.filter(s => x.slot[s.id]).map(s => ({ k: x.slot[s.id], t: s.t, ext: EXTERNAS.includes(s.id) })), ...(x.fotos || []).map((k, i) => ({ k, t: 'Extra ' + (i + 1), ext: false }))]
-    : (x.fotos || []).map((k, i) => ({ k, t: SLOTS[i] ? SLOTS[i].t : 'Foto ' + (i + 1), ext: i < 6 }));
-  if (!itens.length) { toast('Essa avaliação não tem fotos'); return; }
-  $('#dHist').classList.remove('on'); $('#dEst').classList.add('on');
-  $('#estTit').textContent = `${x.marca?.nome || ''} ${x.modelo?.nome || ''}`.trim();
-  $('#estGrade').innerHTML = ''; $('#estAcoes').style.display = 'none'; ESTQ = [];
-  const st = t => $('#estSt').textContent = t;
-  let rm;
-  try { st('Preparando o recortador… (na primeira vez baixa uns 40–80 MB, use Wi-Fi)'); rm = await recortador(); }
-  catch (e) { st('Não consegui carregar o recortador. Verifique a internet e tente de novo.'); RECORTE = null; return; }
-  for (const [n, s] of itens.entries()) {
-    const k = s.k;
-    let out = await fotoGet('ed-' + k);
-    if (!out) {
-      const orig = await fotoGet(k); if (!orig) continue;
-      if (s.ext) {
-        st(`Trocando o fundo: ${n + 1}/${itens.length} · ${s.t}…`);
-        try {
-          const cut = await rm(orig, { output: { format: 'image/png' }, progress: (key, cur, tot) => { if (tot && /fetch/.test(key)) st(`Baixando o recortador… ${Math.round(cur / tot * 100)}%`); } });
-          out = await compor(cut);
-        } catch (e) { out = orig; toast(`Não consegui recortar: ${s.t}`); }
-      } else out = orig;
-      await fotoPut('ed-' + k, out);
-    }
-    ESTQ.push(new File([out], `${String(n + 1).padStart(2, '0')}-${slug(s.t)}.jpg`, { type: 'image/jpeg' }));
-    $('#estGrade').insertAdjacentHTML('beforeend', `<div class="f"><img src="${URL.createObjectURL(out)}" alt="${esc(s.t)}"></div>`);
-  }
-  st(`Pronto: ${ESTQ.length} fotos na ordem. Confira antes de enviar.`);
-  $('#estAcoes').style.display = '';
-  $('#estRefaz').onclick = async () => { for (const s of itens) await fotoDel('ed-' + s.k); porNoEstoque(x); };
-}
-$('#estEnviar').onclick = async () => {
-  if (!ESTQ.length) return;
-  try { if (navigator.canShare && navigator.canShare({ files: ESTQ })) { await navigator.share({ files: ESTQ }); return; } } catch (e) { if (e.name === 'AbortError') return; }
-  ESTQ.forEach(f => { const a = document.createElement('a'); a.href = URL.createObjectURL(f); a.download = f.name; a.click(); });
-};
-
 /* ---------- salvar / histórico ---------- */
 const HK = 'aval-lista';
 function resumo() { const r = calcular(); return { ...A, resultado: r, atualizado: new Date().toISOString() }; }
@@ -709,15 +617,14 @@ function preencher() {
 }
 function abrirHist() {
   const l = ler(HK, []);
-  $('#histLista').innerHTML = l.length ? l.map(x => `<div class="hist"><div class="t"><b>${esc(x.marca?.nome || '')} ${esc(x.modelo?.nome || '')}</b><small>${esc(x.ano?.nome || '')}${x.placa ? ' · ' + esc(x.placa) : ''}${x.cliente ? ' · ' + esc(x.cliente) : ''} · ${new Date(x.atualizado).toLocaleDateString('pt-BR')}</small></div><span class="v">${x.resultado ? brl(x.resultado.sug) : ''}</span><button class="mini" data-abre="${esc(x.id)}">Abrir</button>${(x.slot && Object.keys(x.slot).length) || (x.fotos || []).length ? `<button class="mini est" data-est="${esc(x.id)}">Pôr no estoque</button>` : ''}<button class="mini" data-apaga="${esc(x.id)}" aria-label="Apagar">🗑</button></div>`).join('') : '<p class="vazio">Nenhuma avaliação salva ainda.</p>';
+  $('#histLista').innerHTML = l.length ? l.map(x => `<div class="hist"><div class="t"><b>${esc(x.marca?.nome || '')} ${esc(x.modelo?.nome || '')}</b><small>${esc(x.ano?.nome || '')}${x.placa ? ' · ' + esc(x.placa) : ''}${x.cliente ? ' · ' + esc(x.cliente) : ''} · ${new Date(x.atualizado).toLocaleDateString('pt-BR')}</small></div><span class="v">${x.resultado ? brl(x.resultado.sug) : ''}</span><button class="mini" data-abre="${esc(x.id)}">Abrir</button><button class="mini" data-apaga="${esc(x.id)}" aria-label="Apagar">🗑</button></div>`).join('') : '<p class="vazio">Nenhuma avaliação salva ainda.</p>';
   $('#dHist').classList.add('on');
 }
 $('#bHist').onclick = abrirHist;
 $('#histLista').addEventListener('click', async e => {
-  const es = e.target.closest('[data-est]'); if (es) { const x = ler(HK, []).find(i => i.id === es.dataset.est); if (x) porNoEstoque(x); return; }
   const a = e.target.closest('[data-abre]'), d = e.target.closest('[data-apaga]');
   if (a) { const x = ler(HK, []).find(i => i.id === a.dataset.abre); if (x) { if (A.fipe) salvar(true); A = { ...novo(), ...x }; delete A.resultado; preencher(); $('#dHist').classList.remove('on'); window.scrollTo({ top: 0 }); } }
-  if (d) { const l = ler(HK, []); const x = l.find(i => i.id === d.dataset.apaga); if (x && confirmarApagar(d)) { [...(x.fotos || []), ...(x.prints || []), ...Object.values(x.slot || {}), ...Object.values(x.slot || {}).map(k => 'ed-' + k)].forEach(fotoDel); gravar(HK, l.filter(i => i.id !== x.id)); abrirHist(); } }
+  if (d) { const l = ler(HK, []); const x = l.find(i => i.id === d.dataset.apaga); if (x && confirmarApagar(d)) { [...(x.fotos || []), ...(x.prints || []), ...Object.values(x.slot || {})].forEach(fotoDel); gravar(HK, l.filter(i => i.id !== x.id)); abrirHist(); } }
 });
 function confirmarApagar(btn) { if (btn.dataset.ok) return true; btn.dataset.ok = '1'; btn.textContent = 'Apagar?'; setTimeout(() => { if (btn.isConnected) { delete btn.dataset.ok; btn.textContent = '🗑'; } }, 2500); return false; }
 document.querySelectorAll('[data-fecha]').forEach(b => b.onclick = () => b.closest('.dlg').classList.remove('on'));
