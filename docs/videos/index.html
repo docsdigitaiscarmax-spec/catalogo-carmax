@@ -222,8 +222,10 @@ $('#bGerar').onclick = async () => {
   rec.ondataavailable = e => e.data.size && partes.push(e.data);
   const pronto = new Promise(r => rec.onstop = r);
   $('#bGerar').disabled = true; $('#bBaixar').style.display = 'none'; $('#st').textContent = 'Gravando… deixe esta tela aberta.';
-  quadro(0, T); rec.start(250); const t0 = ac.currentTime + 0.05; fontes.forEach(([s, d]) => s.start(t0 + d));
-  await new Promise(fim => { const passo = () => { const t = ac.currentTime - t0; if (t >= T) return fim(); quadro(Math.max(0, t), T); $('#barra').style.width = (t / T * 100).toFixed(1) + '%'; requestAnimationFrame(passo); }; requestAnimationFrame(passo); });
+  try { await ac.resume(); } catch (e) {}
+  quadro(0, T); rec.start(250); const t0 = ac.currentTime + 0.05, p0 = performance.now() + 50; fontes.forEach(([s, d]) => s.start(t0 + d));
+  const relogio = () => ac.state === 'running' && ac.currentTime > 0 ? ac.currentTime - t0 : (performance.now() - p0) / 1000;
+  await new Promise(fim => { const passo = () => { const t = relogio(); if (t >= T) return fim(); quadro(Math.max(0, t), T); $('#barra').style.width = (t / T * 100).toFixed(1) + '%'; setTimeout(passo, 1000 / 30); }; passo(); });
   rec.stop(); await pronto; fontes.forEach(([s]) => { try { s.stop(); } catch (e) {} }); ac.close(); vs.getTracks().forEach(t => t.stop());
   const ext = tipo.includes('mp4') ? 'mp4' : 'webm'; const blob = new Blob(partes, { type: tipo.split(';')[0] });
   SAIDA = new File([blob], `carmax-${String(CAR.nome).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${String(CAR.ano).replace('/', '-')}.${ext}`, { type: blob.type });
