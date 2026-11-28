@@ -1,6 +1,6 @@
 {
- "atualizado": "28/11/2026 03:17",
- "total": 132,
+ "atualizado": "28/11/2026 04:41",
+ "total": 133,
  "carros": [
   {
    "loja": "carmax",
@@ -1060,17 +1060,17 @@
   },
   {
    "loja": "carmax",
-   "id": "2331386",
-   "link": "https://carmax.com.br/veiculo/2331386-geely-ex2-394-kw-max",
+   "id": "2331385",
+   "link": "https://carmax.com.br/veiculo/2331385-geely-ex2-394-kw-max",
    "nome": "GEELY EX2 39,4 KW MAX",
    "ano": "2026/2026",
    "km": 0,
-   "cor": "Verde",
+   "cor": "Cinza",
    "combustivel": "Elétrico",
    "preco": 151790,
-   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY33_01.jpg?u=20261030133134",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY22_01.jpg?u=20261030132918",
    "fotos": [
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY33_01.jpg?u=20261030133134"
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY22_01.jpg?u=20261030132918"
    ],
    "marca_modelo": "GEELY EX2",
    "cambio": "Automático",
@@ -1080,33 +1080,10 @@
     "Computador de bordo",
     "Direção elétrica",
     "Freios ABS",
+    "Retrovisores elétricos",
+    "Start / Stop Engine",
     "Travas elétricas",
     "Vidros elétricos"
-   ],
-   "marca": "GEELY",
-   "modelo": "EX2 39,4 KW MAX",
-   "desde": "2026-01-01"
-  },
-  {
-   "loja": "carmax",
-   "id": "2334825",
-   "link": "https://carmax.com.br/veiculo/2334825-geely-ex2-394-kw-max",
-   "nome": "GEELY EX2 39,4 KW MAX",
-   "ano": "2026/2026",
-   "km": 0,
-   "cor": "Verde",
-   "combustivel": "Elétrico",
-   "preco": 151790,
-   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY05_01.jpg?u=20261113121148",
-   "fotos": [
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY05_01.jpg?u=20261113121148"
-   ],
-   "marca_modelo": "GEELY EX2",
-   "cambio": "Automático",
-   "opcionais": [
-    "Air bag",
-    "Ar condicionado",
-    "Computador de bordo"
    ],
    "marca": "GEELY",
    "modelo": "EX2 39,4 KW MAX",
@@ -1144,17 +1121,42 @@
   },
   {
    "loja": "carmax",
-   "id": "2331385",
-   "link": "https://carmax.com.br/veiculo/2331385-geely-ex2-394-kw-max",
+   "id": "2334825",
+   "link": "https://carmax.com.br/veiculo/2334825-geely-ex2-394-kw-max",
    "nome": "GEELY EX2 39,4 KW MAX",
    "ano": "2026/2026",
    "km": 0,
-   "cor": "Cinza",
+   "cor": "Verde",
    "combustivel": "Elétrico",
    "preco": 151790,
-   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY22_01.jpg?u=20261030132918",
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY05_01.jpg?u=20261113121148",
    "fotos": [
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY22_01.jpg?u=20261030132918"
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY05_01.jpg?u=20261113121148"
+   ],
+   "marca_modelo": "GEELY EX2",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo"
+   ],
+   "marca": "GEELY",
+   "modelo": "EX2 39,4 KW MAX",
+   "desde": "2026-01-01"
+  },
+  {
+   "loja": "carmax",
+   "id": "2331386",
+   "link": "https://carmax.com.br/veiculo/2331386-geely-ex2-394-kw-max",
+   "nome": "GEELY EX2 39,4 KW MAX",
+   "ano": "2026/2026",
+   "km": 0,
+   "cor": "Verde",
+   "combustivel": "Elétrico",
+   "preco": 151790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY33_01.jpg?u=20261030133134",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GELLY33_01.jpg?u=20261030133134"
    ],
    "marca_modelo": "GEELY EX2",
    "cambio": "Automático",
@@ -1164,8 +1166,6 @@
     "Computador de bordo",
     "Direção elétrica",
     "Freios ABS",
-    "Retrovisores elétricos",
-    "Start / Stop Engine",
     "Travas elétricas",
     "Vidros elétricos"
    ],
@@ -2251,6 +2251,35 @@
   },
   {
    "loja": "carmax",
+   "id": "2338342",
+   "link": "https://carmax.com.br/veiculo/2338342-peugeot-3008-16-16v-thp-griffe",
+   "nome": "PEUGEOT 3008 1.6 16V THP Griffe",
+   "ano": "2021/2022",
+   "km": 51600,
+   "cor": "Cinza",
+   "combustivel": "Gasolina",
+   "preco": 132790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RMJ-3J74_01.jpg?u=20261127191727",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/RMJ-3J74_01.jpg?u=20261127191727"
+   ],
+   "marca_modelo": "PEUGEOT 3008",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "PEUGEOT",
+   "modelo": "3008 1.6 16V THP Griffe",
+   "desde": "2026-11-28"
+  },
+  {
+   "loja": "carmax",
    "id": "2190189",
    "link": "https://carmax.com.br/veiculo/2190189-porsche-cayenne-36-4x4-v6-24v",
    "nome": "PORSCHE CAYENNE 3.6 4X4 V6 24V",
@@ -2673,52 +2702,6 @@
   },
   {
    "loja": "carmax",
-   "id": "2301185",
-   "link": "https://carmax.com.br/veiculo/2301185-toyota-yaris-15-16v-sedan-xls",
-   "nome": "TOYOTA YARIS 1.5 16V Sedan XLS",
-   "ano": "2024/2025",
-   "km": 40583,
-   "cor": "Branco",
-   "combustivel": "Flex",
-   "preco": 115790,
-   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_10.jpg?u=20260722123013",
-   "fotos": [
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_10.jpg?u=20260722123013",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_07.jpg?u=20260722123007",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_02.jpg?u=20260722122958",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_04.jpg?u=20260722123002",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_01.jpg?u=20260722122956",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_06.jpg?u=20260722123005",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_09.jpg?u=20260722123011",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_05.jpg?u=20260722123004",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_03.jpg?u=20260722123000",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_08.jpg?u=20260722123009",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_11.jpg?u=20260722123015",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_16.jpg?u=20260722123025",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_14.jpg?u=20260722123021",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_13.jpg?u=20260722123019",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_12.jpg?u=20260722123017",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_15.jpg?u=20260722123023",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_17.jpg?u=20260722123026",
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_18.jpg?u=20260722123028"
-   ],
-   "marca_modelo": "TOYOTA YARIS",
-   "cambio": "Automático",
-   "opcionais": [
-    "Air bag",
-    "Ar condicionado",
-    "Computador de bordo",
-    "Direção elétrica",
-    "Freios ABS",
-    "Travas elétricas",
-    "Vidros elétricos"
-   ],
-   "marca": "TOYOTA",
-   "modelo": "YARIS 1.5 16V Sedan XLS",
-   "desde": "2026-11-28"
-  },
-  {
-   "loja": "carmax",
    "id": "2286852",
    "link": "https://carmax.com.br/veiculo/2286852-toyota-corolla-20-vvt-ie-xei",
    "nome": "TOYOTA COROLLA 2.0 Vvt-ie XEI",
@@ -2856,6 +2839,39 @@
    "marca": "TOYOTA",
    "modelo": "COROLLA CROSS 2.0 Vvt-ie XRE",
    "desde": "2026-11-26"
+  },
+  {
+   "loja": "carmax",
+   "id": "2335243",
+   "link": "https://carmax.com.br/veiculo/2335243-toyota-corolla-cross-20-vvt-ie-xre",
+   "nome": "TOYOTA COROLLA CROSS 2.0 Vvt-ie XRE",
+   "ano": "2023/2024",
+   "km": 22728,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 139790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBC-3B93_03.jpg?u=20261118182423",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBC-3B93_03.jpg?u=20261118182423",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/GBC-3B93_02.jpg?u=20261118182415"
+   ],
+   "marca_modelo": "TOYOTA COROLLA CROSS",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Bancos de couro",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Retrovisores elétricos",
+    "Rodas de liga leve",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "TOYOTA",
+   "modelo": "COROLLA CROSS 2.0 Vvt-ie XRE",
+   "desde": "2026-11-28"
   },
   {
    "loja": "carmax",
