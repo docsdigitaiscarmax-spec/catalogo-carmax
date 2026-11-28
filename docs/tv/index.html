@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Carmax Santos · Estoque na TV</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e3121b;--ink:#0e0f13;--panel:#15161c;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--ink);color:#fff;overflow:hidden;cursor:none;font-family:Barlow,system-ui,sans-serif}
+.tv{position:fixed;inset:0;display:grid;grid-template-columns:64vw 36vw;grid-template-rows:1fr 7.5vh}
+/* fotos */
+.palco{position:relative;overflow:hidden;background:#000}
+.foto{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity 1.2s ease;transform:scale(1.02)}
+.foto.on{opacity:1;animation:kb 9s ease-out forwards}
+@keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+.palco:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 70%,rgba(14,15,19,.85));pointer-events:none}
+.selos{position:absolute;top:3vh;left:2.5vw;display:flex;gap:1vw;z-index:2}
+.selo{font:800 2.4vh "Barlow Condensed",sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.8vh 1.4vw;border-radius:99px;background:var(--red);box-shadow:0 .6vh 2vh rgba(0,0,0,.4)}
+.selo.out{background:#ffb400;color:#111}.selo.nv{background:#fff;color:#111}
+.pontos{position:absolute;bottom:3vh;left:2.5vw;display:flex;gap:.6vw;z-index:2}
+.pontos i{width:1.1vh;height:1.1vh;border-radius:50%;background:rgba(255,255,255,.4)}.pontos i.on{background:#fff}
+/* painel */
+.info{background:var(--panel);padding:5vh 3vw 3vh;display:flex;flex-direction:column;min-width:0}
+.logo{font:800 4.6vh "Barlow Condensed",sans-serif;letter-spacing:.06em}.logo b{color:var(--red)}
+.logo small{display:block;font:600 1.9vh Barlow,sans-serif;letter-spacing:.02em;opacity:.6;margin-top:-.4vh}
+.dados{margin-top:auto;transition:opacity .6s,transform .6s}
+.dados.sai{opacity:0;transform:translateY(2vh)}
+.marca{font:700 2.6vh "Barlow Condensed",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.nome{font:800 6.4vh/1 "Barlow Condensed",sans-serif;text-transform:uppercase;margin:.6vh 0 1.2vh;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ver{font:600 2.5vh Barlow,sans-serif;opacity:.75;margin-bottom:2.4vh;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ficha{display:grid;grid-template-columns:1fr 1fr;gap:1.2vh 1.4vw;margin-bottom:2.6vh}
+.ficha div{border-top:1px solid var(--line);padding-top:1vh}
+.ficha small{display:block;font:600 1.6vh Barlow,sans-serif;text-transform:uppercase;letter-spacing:.1em;opacity:.55}
+.ficha b{font:700 3vh "Barlow Condensed",sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:.8vh .6vw;margin-bottom:2.8vh;max-height:9vh;overflow:hidden}
+.chips span{font:600 1.7vh Barlow,sans-serif;padding:.6vh .9vw;border:1px solid var(--line);border-radius:99px;opacity:.85}
+.preco small{font:600 2vh Barlow,sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.12em}
+.preco b{display:block;font:800 9vh/1 "Barlow Condensed",sans-serif;letter-spacing:-.01em}
+.contato{margin-top:3vh;display:flex;align-items:center;gap:1.4vw;background:#fff;color:#111;border-radius:1.6vh;padding:1.4vh 1.2vw}
+.qr{width:13vh;height:13vh;flex:none}.qr img,.qr canvas{width:100%!important;height:100%!important;display:block}
+.contato b{display:block;font:800 2.9vh "Barlow Condensed",sans-serif;text-transform:uppercase;line-height:1.05}
+.contato span{display:block;font:600 1.8vh Barlow,sans-serif;opacity:.75;margin-top:.4vh}
+.contato em{display:block;font:800 3.1vh "Barlow Condensed",sans-serif;font-style:normal;color:var(--red);margin-top:.5vh}
+/* rodapé */
+.rod{grid-column:1/3;background:var(--red);display:flex;align-items:center;gap:2vw;padding:0 2.5vw;font:700 2.5vh "Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase;position:relative;overflow:hidden}
+.rod .cont{margin-left:auto;opacity:.9}
+.barra{position:absolute;left:0;top:0;height:.5vh;background:rgba(255,255,255,.85);width:0}
+.barra.anda{transition:width linear}
+/* início / tela cheia */
+.capa{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3vh;background:radial-gradient(ellipse at center,#24262f,#0e0f13);cursor:pointer;text-align:center;padding:4vw}
+.capa .logo{font-size:12vh}.capa .logo small{font-size:3vh}
+.capa p{font:600 3vh Barlow,sans-serif;opacity:.8}
+.capa button{font:800 4vh "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#fff;background:var(--red);border:0;border-radius:99px;padding:2vh 5vw;cursor:pointer}
+.capa button:focus{outline:.6vh solid #fff;outline-offset:.6vh}
+.capa.fora{display:none}
+.aviso{position:fixed;right:2vw;top:2vh;z-index:5;font:600 1.8vh Barlow,sans-serif;background:rgba(0,0,0,.6);padding:.8vh 1vw;border-radius:1vh;display:none}
+@media (max-aspect-ratio:1/1){.tv{grid-template-columns:1fr;grid-template-rows:48vh 1fr 6vh}.rod{grid-column:1}.palco:after{background:linear-gradient(180deg,transparent 70%,rgba(14,15,19,.85))}}
+</style>
+</head>
+<body>
+<div class="tv">
+  <div class="palco" id="palco"><div class="foto" id="f0"></div><div class="foto" id="f1"></div><div class="selos" id="selos"></div><div class="pontos" id="pontos"></div></div>
+  <div class="info">
+    <div class="logo">CAR<b>MAX</b><small>Santos · Seminovos</small></div>
+    <div class="dados" id="dados">
+      <div class="marca" id="marca"></div>
+      <div class="nome" id="nome"></div>
+      <div class="ver" id="ver"></div>
+      <div class="ficha" id="ficha"></div>
+      <div class="chips" id="chips"></div>
+      <div class="preco"><small id="precoTit">Por apenas</small><b id="preco"></b></div>
+    </div>
+    <div class="contato"><div class="qr" id="qr"></div><div><b>Aponte a câmera</b><span>Veja todas as fotos e fale comigo no WhatsApp</span><em>Nickolas · (13) 98839-6022</em></div></div>
+  </div>
+  <div class="rod"><div class="barra" id="barra"></div><span>Financiamos · Aceitamos seu carro na troca</span><span class="cont" id="cont"></span></div>
+</div>
+<div class="capa" id="capa"><div class="logo">CAR<b>MAX</b><small>Estoque na TV</small></div><p id="capaMsg">Carregando o estoque…</p><button id="bIni">Iniciar em tela cheia</button><p style="font-size:2vh;opacity:.5">Começa sozinho em 10 segundos</p></div>
+<div class="aviso" id="aviso"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  var BASE = 'https://docsdigitaiscarmax-spec.github.io/catalogo-carmax/';
+  var q = new URLSearchParams(location.search);
+  var SEG = Math.max(4, +(q.get('tempo') || 5));      // segundos por foto
+  var FOTOS = Math.max(1, +(q.get('fotos') || 3));    // fotos por carro
+  var LOJA = q.get('loja');                           // carmax | outlet
+  var MIN = +(q.get('min') || 0), MAX = +(q.get('max') || 0);
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
+  var brl = function (v) { return 'R$ ' + Math.round(v).toLocaleString('pt-BR'); };
+  var km = function (v) { return (+v || 0).toLocaleString('pt-BR') + ' km'; };
+  var img = function (u, host) { return 'https://' + (host || 'wsrv.nl') + '/?url=' + encodeURIComponent(u.replace(/^https?:\/\//, '')) + '&w=1600&h=1000&fit=cover&output=jpg&q=80'; };
+  var carros = [], fila = [], atual = null, fotoIdx = 0, camada = 0, timer = null, qr = null;
+
+  function embaralhar(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function carregar() {
+    return fetch('../estoque.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+      var lista = (d.carros || []).filter(function (c) {
+        if (!c.fotos || !c.fotos.length || !c.preco) return false;
+        if (LOJA && c.loja !== LOJA) return false;
+        if (MIN && c.preco < MIN) return false;
+        if (MAX && c.preco > MAX) return false;
+        return true;
+      });
+      if (lista.length) { carros = lista; $('cont').textContent = carros.length + ' carros no estoque · atualizado ' + (d.atualizado || ''); }
+      $('capaMsg').textContent = carros.length + ' carros prontos para passar na TV';
+    }).catch(function () { if (!carros.length) $('capaMsg').textContent = 'Não consegui carregar o estoque. Tentando de novo…'; });
+  }
+  function proximoCarro() {
+    if (!fila.length) fila = embaralhar(carros.slice());
+    return fila.shift();
+  }
+  function precarregar(c) { if (!c) return; for (var i = 0; i < Math.min(FOTOS, c.fotos.length); i++) { var im = new Image(); im.src = img(c.fotos[i]); } }
+  function mostrarFoto(u) {
+    camada = 1 - camada;
+    var el = $('f' + camada), outro = $('f' + (1 - camada)), teste = new Image(), feito = false;
+    var aplicar = function (src) { if (feito) return; feito = true; el.style.backgroundImage = 'url("' + src + '")'; el.classList.remove('on'); void el.offsetWidth; el.classList.add('on'); outro.classList.remove('on'); };
+    teste.onload = function () { aplicar(teste.src); };
+    teste.onerror = function () { var t2 = new Image(); t2.onload = function () { aplicar(t2.src); }; t2.src = img(u, 'images.weserv.nl'); };
+    teste.src = img(u);
+    setTimeout(function () { if (!feito) aplicar(img(u)); }, 4000);
+  }
+  function mostrarCarro(c) {
+    atual = c; fotoIdx = 0;
+    var d = $('dados'); d.classList.add('sai');
+    setTimeout(function () {
+      var marca = c.marca || (c.nome || '').split(' ')[0];
+      var resto = c.modelo || c.nome || '';
+      var partes = resto.split(' ');
+      $('marca').textContent = marca;
+      $('nome').textContent = partes.slice(0, 2).join(' ');
+      $('ver').textContent = partes.slice(2).join(' ');
+      var ficha = [['Ano', c.ano], ['KM', km(c.km)], ['Câmbio', c.cambio || '—'], ['Combustível', c.combustivel || '—']];
+      $('ficha').innerHTML = ficha.map(function (f) { return '<div><small>' + esc(f[0]) + '</small><b>' + esc(f[1]) + '</b></div>'; }).join('');
+      var ops = Array.isArray(c.opcionais) ? c.opcionais.slice(0, 6) : [];
+      $('chips').innerHTML = ops.map(function (o) { return '<span>' + esc(o) + '</span>'; }).join('');
+      $('preco').textContent = brl(c.preco);
+      var selos = '';
+      if (c.loja === 'outlet') selos += '<span class="selo out">Outlet</span>';
+      if (c.desde && (Date.now() - new Date(c.desde + 'T12:00:00').getTime()) < 7 * 864e5) selos += '<span class="selo nv">Acabou de chegar</span>';
+      if (c.cor) selos += '<span class="selo">' + esc(c.cor) + '</span>';
+      $('selos').innerHTML = selos;
+      var url = BASE + 'c/' + encodeURIComponent(c.id) + '.html';
+      try { if (window.QRCode) { if (!qr) qr = new QRCode($('qr'), { text: url, width: 256, height: 256, correctLevel: QRCode.CorrectLevel.M }); else qr.makeCode(url); } } catch (e) {}
+      d.classList.remove('sai');
+    }, 600);
+    var n = Math.min(FOTOS, c.fotos.length);
+    $('pontos').innerHTML = n > 1 ? new Array(n + 1).join('<i></i>') : '';
+    passoFoto();
+  }
+  function passoFoto() {
+    var c = atual, n = Math.min(FOTOS, c.fotos.length);
+    mostrarFoto(c.fotos[fotoIdx]);
+    var ps = $('pontos').children; for (var i = 0; i < ps.length; i++) ps[i].className = i === fotoIdx ? 'on' : '';
+    if (fotoIdx === 0) { var b = $('barra'); b.classList.remove('anda'); b.style.width = '0'; void b.offsetWidth; b.classList.add('anda'); b.style.transitionDuration = (n * SEG) + 's'; b.style.width = '100%'; }
+    if (fotoIdx === n - 1) precarregar(fila[0] || null);
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fotoIdx++;
+      if (fotoIdx >= n) { if (!fila.length) fila = embaralhar(carros.slice()); mostrarCarro(proximoCarro()); }
+      else passoFoto();
+    }, SEG * 1000);
+  }
+  var comecou = false;
+  function iniciar(cheia) {
+    if (comecou || !carros.length) return; comecou = true;
+    $('capa').classList.add('fora');
+    if (cheia) { var e = document.documentElement, f = e.requestFullscreen || e.webkitRequestFullscreen; try { f && f.call(e); } catch (x) {} }
+    try { navigator.wakeLock && navigator.wakeLock.request('screen').catch(function () {}); } catch (x) {}
+    fila = embaralhar(carros.slice()); mostrarCarro(proximoCarro());
+  }
+  $('bIni').onclick = function (e) { e.stopPropagation(); iniciar(true); };
+  $('capa').onclick = function () { iniciar(true); };
+  document.addEventListener('keydown', function (e) {
+    if (!comecou) { if (e.key === 'Enter' || e.key === ' ') iniciar(true); return; }
+    if (e.key === 'ArrowRight') { clearTimeout(timer); mostrarCarro(proximoCarro()); }
+    if (e.key === 'Enter' || e.key === 'f') { var el = document.documentElement, f = el.requestFullscreen || el.webkitRequestFullscreen; try { f && f.call(el); } catch (x) {} }
+  });
+  document.addEventListener('visibilitychange', function () { try { if (!document.hidden && navigator.wakeLock) navigator.wakeLock.request('screen').catch(function () {}); } catch (x) {} });
+  carregar().then(function () { $('bIni').focus(); setTimeout(function () { iniciar(false); }, 10000); });
+  setInterval(carregar, 20 * 60 * 1000);                 // atualiza o estoque a cada 20 min
+  setTimeout(function () { location.reload(); }, 6 * 3600 * 1000); // recarrega a página a cada 6 h
+})();
+</script>
+</body>
+</html>
