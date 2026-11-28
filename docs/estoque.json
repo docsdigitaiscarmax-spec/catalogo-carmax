@@ -1,6 +1,6 @@
 {
- "atualizado": "28/11/2026 08:07",
- "total": 133,
+ "atualizado": "28/11/2026 09:04",
+ "total": 134,
  "carros": [
   {
    "loja": "carmax",
@@ -1239,6 +1239,27 @@
   },
   {
    "loja": "carmax",
+   "id": "2338339",
+   "link": "https://carmax.com.br/veiculo/2338339-honda-hr-v-15-di-i-vtec-exl",
+   "nome": "HONDA HR-V 1.5 DI I-vtec EXL",
+   "ano": "2023/2024",
+   "km": 32947,
+   "cor": "Azul",
+   "combustivel": "Flex",
+   "preco": 136790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FQF-0A24_01.jpg?u=20261127191129",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FQF-0A24_01.jpg?u=20261127191129"
+   ],
+   "marca_modelo": "HONDA HR-V",
+   "cambio": "CVT",
+   "opcionais": [],
+   "marca": "HONDA",
+   "modelo": "HR-V 1.5 DI I-vtec EXL",
+   "desde": "2026-11-27"
+  },
+  {
+   "loja": "carmax",
    "id": "2337461",
    "link": "https://carmax.com.br/veiculo/2337461-honda-hr-v-15-di-i-vtec-exl",
    "nome": "HONDA HR-V 1.5 DI I-vtec EXL",
@@ -1276,27 +1297,6 @@
    "marca": "HONDA",
    "modelo": "HR-V 1.5 DI I-vtec EXL",
    "desde": "2026-01-01"
-  },
-  {
-   "loja": "carmax",
-   "id": "2338339",
-   "link": "https://carmax.com.br/veiculo/2338339-honda-hr-v-15-di-i-vtec-exl",
-   "nome": "HONDA HR-V 1.5 DI I-vtec EXL",
-   "ano": "2023/2024",
-   "km": 32947,
-   "cor": "Azul",
-   "combustivel": "Flex",
-   "preco": 136790,
-   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FQF-0A24_01.jpg?u=20261127191129",
-   "fotos": [
-    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/FQF-0A24_01.jpg?u=20261127191129"
-   ],
-   "marca_modelo": "HONDA HR-V",
-   "cambio": "CVT",
-   "opcionais": [],
-   "marca": "HONDA",
-   "modelo": "HR-V 1.5 DI I-vtec EXL",
-   "desde": "2026-11-27"
   },
   {
    "loja": "carmax",
@@ -2699,6 +2699,52 @@
    "marca": "TOYOTA",
    "modelo": "YARIS 1.5 16V XLS",
    "desde": "2026-11-27"
+  },
+  {
+   "loja": "carmax",
+   "id": "2301185",
+   "link": "https://carmax.com.br/veiculo/2301185-toyota-yaris-15-16v-sedan-xls",
+   "nome": "TOYOTA YARIS 1.5 16V Sedan XLS",
+   "ano": "2024/2025",
+   "km": 40583,
+   "cor": "Branco",
+   "combustivel": "Flex",
+   "preco": 115790,
+   "capa": "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_10.jpg?u=20260722123013",
+   "fotos": [
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_10.jpg?u=20260722123013",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_07.jpg?u=20260722123007",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_02.jpg?u=20260722122958",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_04.jpg?u=20260722123002",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_01.jpg?u=20260722122956",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_06.jpg?u=20260722123005",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_09.jpg?u=20260722123011",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_05.jpg?u=20260722123004",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_03.jpg?u=20260722123000",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_08.jpg?u=20260722123009",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_11.jpg?u=20260722123015",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_16.jpg?u=20260722123025",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_14.jpg?u=20260722123021",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_13.jpg?u=20260722123019",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_12.jpg?u=20260722123017",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_15.jpg?u=20260722123023",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_17.jpg?u=20260722123026",
+    "https://dsae.s3.amazonaws.com/08362999000120/Fotos/SVQ-6E09_18.jpg?u=20260722123028"
+   ],
+   "marca_modelo": "TOYOTA YARIS",
+   "cambio": "Automático",
+   "opcionais": [
+    "Air bag",
+    "Ar condicionado",
+    "Computador de bordo",
+    "Direção elétrica",
+    "Freios ABS",
+    "Travas elétricas",
+    "Vidros elétricos"
+   ],
+   "marca": "TOYOTA",
+   "modelo": "YARIS 1.5 16V Sedan XLS",
+   "desde": "2026-11-28"
   },
   {
    "loja": "carmax",
